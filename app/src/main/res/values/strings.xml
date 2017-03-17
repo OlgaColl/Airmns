@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Airmns</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Sign up Label -->
+    <string name="radioClient">Client</string>
+    <string name="radioProfessional">Professional</string>
+
+    <!-- Edit Profile Label -->
+    <string name="saveChanges">Save changes</string>
+    <string name="anyChangesBack">Any changes? Back</string>
+
+    <!-- Info Label -->
+    <string name="titleCompany">Global Facility Management</string>
+    <string name="infoCompany">Global es una empresa especializada en limpieza de oficinas, instalaciones industriales, locales comerciales, centros logísticos, edificios y dependencias administrativas, fachadas de inmuebles y sus entornos. La calidad en la prestación del servicio, el control riguroso de los procesos y el seguimiento de los trabajos programados convierten a Global en un referente cualificado del sector.</string>
+    <string name="infoApp">App creada por Eric Ayala Andreu y Olga Coll Pérez.</string>
+    <string name="titleContact">Contacto</string>
+    <string name="infoContactTelf">+34658750746</string>
+    <string name="infoContactMail">admin@globalserviciosgenerales.com</string>
+</resources>
