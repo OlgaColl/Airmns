@@ -75,6 +75,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         String name = _nameText.getText().toString();
         String lastname = _lastnameText.getText().toString();
+        //TODO Spinner
         //String address = _addressText.getText().toString();
         String mobile = _mobileText.getText().toString();
         String email = _emailText.getText().toString();

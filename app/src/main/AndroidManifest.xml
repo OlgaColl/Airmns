@@ -16,6 +16,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--activity android:name="com.sourcey.materiallogindemo.EditAddressActivity" android:theme="@style/AppTheme.Dark" /-->
         <activity android:name="com.sourcey.materiallogindemo.EditProfileActivity" android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.sourcey.materiallogindemo.InfoActivity" android:theme="@style/AppTheme.Dark" />
         <activity android:name="com.sourcey.materiallogindemo.SignupActivity" android:theme="@style/AppTheme.Dark" />
