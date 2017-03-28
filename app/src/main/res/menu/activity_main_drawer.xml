@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_manage_reservation"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Manage reservation" />
+        <item
+            android:id="@+id/nav_booking_history"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Booking history" />
+        <item
+            android:id="@+id/nav_rate_reservation"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Rate a reservation" />
+
+    </group>
+
+    <item android:title="Configuration and info">
+        <menu>
+            <item
+                android:id="@+id/nav_edit_profile"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Edit profile"/>
+            <item
+                android:id="@+id/nav_info_app"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Info APP" />
+        </menu>
+    </item>
+
+</menu>
