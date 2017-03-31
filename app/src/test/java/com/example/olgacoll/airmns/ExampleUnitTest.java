@@ -1,4 +1,4 @@
-package com.example.olgacoll.navigationdrawer;
+package com.example.olgacoll.airmns;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.olgacoll.navigationdrawer;
+package com.example.olgacoll.airmns;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.example.olgacoll.navigationdrawer", appContext.getPackageName());
+        assertEquals("com.example.olgacoll.airmns", appContext.getPackageName());
     }
 }

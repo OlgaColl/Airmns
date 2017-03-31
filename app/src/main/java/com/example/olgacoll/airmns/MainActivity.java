@@ -1,9 +1,8 @@
-package com.example.olgacoll.navigationdrawer;
+package com.example.olgacoll.airmns;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -81,19 +80,20 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (id == R.id.nav_camera) {
+            // Handle the camera action
+        } else if (id == R.id.nav_gallery) {
 
-        if (id == R.id.nav_manage_reservation) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new ManageReservationActivity()).commit();
-        } else if (id == R.id.nav_booking_history) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new BookingHistoryActivity()).commit();
-        } else if (id == R.id.nav_rate_reservation) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new RateReservationActivity()).commit();
-        } else if (id == R.id.nav_edit_profile) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new EditProfileActivity()).commit();
-        } else if (id == R.id.nav_info_app) {
-            fragmentManager.beginTransaction().replace(R.id.contenedor, new InfoActivity()).commit();
+        } else if (id == R.id.nav_slideshow) {
+
+        } else if (id == R.id.nav_manage) {
+
+        } else if (id == R.id.nav_share) {
+
+        } else if (id == R.id.nav_send) {
+
         }
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
