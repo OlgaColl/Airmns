@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView android:id="@+id/titleCompany"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/titleCompany"
+        android:gravity="center_horizontal"
+        android:textSize="20dip"/>
+
+    <TextView
+        android:id="@+id/textCompany"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:layout_marginLeft="20dp"
+        android:gravity="left"
+        android:text="@string/infoCompany"
+        android:textSize="16dip" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dip"
+        android:background="#c0c0c0"/>
+
+    <TextView android:id="@+id/titleApp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/app_name"
+        android:gravity="center_horizontal"
+        android:textSize="20dip"/>
+
+    <TextView android:id="@+id/infoApp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/infoApp"
+        android:layout_marginLeft="20dp"
+        android:gravity="left"
+        android:textSize="16dip"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="20dip"
+        android:background="#c0c0c0"/>
+
+    <TextView android:id="@+id/titleContact"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/titleContact"
+        android:gravity="center_horizontal"
+        android:textSize="20dip"/>
+
+    <TextView android:id="@+id/infoContactTelf"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/infoContactTelf"
+        android:layout_marginLeft="20dp"
+        android:gravity="left"
+        android:textSize="16dip"/>
+
+    <TextView android:id="@+id/infoContactMail"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="@string/infoContactMail"
+        android:layout_marginLeft="20dp"
+        android:gravity="left"
+        android:textSize="16dip"/>
+</LinearLayout>

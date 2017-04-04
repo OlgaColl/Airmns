@@ -4,11 +4,11 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_action_menu"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_action_info"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -18,20 +18,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activity3AMainUser"
-            android:label="@string/app_name" >
-        </activity>
 
-        <activity
-            android:name=".Activity3BMainProfessional"
-            android:label="@string/app_name" >
-        </activity>
-    </application>
+        <!-- Activities Olga -->
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".EditProfileActivity"/>
+        <activity android:name=".EditAddressActivity"/>
+        <activity android:name=".InfoActivity"/>
 
-    <activity
-        android:name=".Activity4EditProfile"
-        android:label="@string/app_name" >
-    </activity>
+        <!-- Activities Eric -->
+        <activity android:name=".Activity3AMainUser"/>
+        <activity android:name=".Activity3BMainProfessional"/>
+        <activity android:name=".Activity4EditProfile"/>
+        <activity android:name=".Activity5Reserve"/>
     </application>
 </manifest>

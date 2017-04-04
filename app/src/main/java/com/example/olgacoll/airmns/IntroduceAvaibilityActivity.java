@@ -7,10 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class IntroduceAvaibilityActivity extends Fragment {
-    @Override
+   /* @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_introduce_avaibility, container, false);
-    }
+    }*/
 }
