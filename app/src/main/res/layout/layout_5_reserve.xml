@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity5_Reserve"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_dark"
+    android:orientation="vertical"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:weightSum="1"
+    tools:context="org.proven.airmns.Activity5Reserve">
+
+
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/title_manage_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.33"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="MANAGE RESERVE"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        tools:fontFamily="cursive" />
+
+
+
+    <!-- DATE -->
+    <TextView
+        android:id="@+id/date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Date"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/print_date"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.59"
+            android:gravity="bottom"
+            android:text="1/1/2000"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="18sp" />
+
+        <!-- BUTTON -->
+        <Button
+            android:id="@+id/button_date"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.24"
+            android:text="Input date" />
+
+    </LinearLayout>
+
+    <!-- Linea -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+    <!-- Time -->
+    <TextView
+        android:id="@+id/time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Time"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/print_time"
+            android:layout_width="85dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.59"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:text="00:00"
+            android:textColor="#1b4f72"
+            android:textSize="18sp" />
+
+        <!-- BUTTON -->
+        <Button
+            android:id="@+id/button_time"
+            android:layout_width="74dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.24"
+            android:text="Input time" />
+
+    </LinearLayout>
+
+    <!--Linea-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+    <!-- LONG TIME -->
+    <TextView
+        android:id="@+id/long_time_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Long time"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <Spinner
+        android:id="@+id/spinner_long_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false" />
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+    <!-- ADDRESS -->
+    <TextView
+        android:id="@+id/address_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Address"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <Spinner
+        android:id="@+id/spinner_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+    <!-- OBSERVATIONS -->
+    <TextView
+        android:id="@+id/observations_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Observations"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/input_observations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.12"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="#1b4f72" />
+
+
+    <!-- SPACE -->
+
+    <LinearLayout
+        android:layout_width="344dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <!-- TOTAL PAY-->
+        <TextView
+            android:id="@+id/total_pay_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="TOTAL:"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/total_value_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="0€"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+
+    <!-- BUTTON CONTINUE-->
+    <Button
+        android:id="@+id/button_pay"
+        android:layout_width="329dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="CONTINUE" />
+
+</LinearLayout>

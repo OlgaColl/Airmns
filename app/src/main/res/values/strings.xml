@@ -5,4 +5,43 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+
+    <string name="app_name">Airmns</string>
+
+    <!-- **LAYOUT 5 RESERVE** -->
+    <!--title-->
+    <string name="title_manage_reserve">MANAGE RESERVE</string>
+    <!--date-->
+    <string name="date_text">Date</string>
+    <string name="print_date">1/1/2000</string>
+    <!--time-->
+    <string name="time_text">Time</string>
+    <string name="print_time">00:00</string>
+    <!--long time-->
+    <string name="long_time_text">Long time</string>
+    <!--Spinner long time-->
+    <string-array name="time_value">
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>5 hours</item>
+        <item>6 hours</item>
+        <item>7 hours</item>
+    </string-array>
+    <!--address-->
+    <string name="address_text">Address</string>
+    <!--Spinner address-->
+    <string-array name="address_value">
+        <item>C/ Mallorca 96, 8-2, 08015 Bcn</item>
+        <item>C/ Valencia 22, 2-2, 08015 Bcn</item>
+        <item>C/ Arago 85, 5-1, 08015 Bcn</item>
+        <item>C/ Diputacio 45, 1-2, 08015 Bcn</item>
+    </string-array>
+    <!--observations-->
+    <string name="observations_text">Observations</string>
+    <!--total pay-->
+    <string name="total_pay_text">Total</string>
+    <string name="total_value_text">0€</string>
 </resources>
