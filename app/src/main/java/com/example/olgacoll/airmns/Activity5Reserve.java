@@ -75,7 +75,7 @@ public class Activity5Reserve extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_5_reserve);
+        setContentView(R.layout.layout5_reserve);
 
         //Prepare views
         prepareViews();

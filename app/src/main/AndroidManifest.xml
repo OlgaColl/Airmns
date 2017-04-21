@@ -8,9 +8,9 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_action_info"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme.NoActionBar" >
         <activity
-            android:name=".LoginActivity"
+            android:name=".Activity0SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,17 +19,14 @@
             </intent-filter>
         </activity>
 
-        <!-- Activities Olga -->
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".EditProfileActivity"/>
-        <activity android:name=".EditAddressActivity"/>
-        <activity android:name=".InfoActivity"/>
-
-        <!-- Activities Eric -->
-        <activity android:name=".Activity3AMainUser"/>
+        <activity android:name=".Activity1LoginActivity"/>
+        <activity android:name=".Activity2SignupActivity" />
+        <activity android:name=".Activity3AMainUser" />
         <activity android:name=".Activity3BMainProfessional"/>
         <activity android:name=".Activity4EditProfile"/>
         <activity android:name=".Activity5Reserve"/>
+
+        <!-- TODO Activities 6-8 -->
+        <activity android:name=".Activity9InfoActivity"/>
     </application>
 </manifest>

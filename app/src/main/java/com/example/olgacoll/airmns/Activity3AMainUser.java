@@ -12,6 +12,6 @@ public class Activity3AMainUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_3a_main_user);
+        setContentView(R.layout.layout3a_main_user);
     }
 }

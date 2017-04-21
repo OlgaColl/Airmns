@@ -9,7 +9,7 @@ import android.widget.TextView;
  * This Activity shows info to company, app, contact and Google Maps NO!! ¿?¿?¿?
  */
 
-public class InfoActivity extends AppCompatActivity {
+public class Activity9InfoActivity extends AppCompatActivity {
 
     //@Bind(R.id.textCompany)
     TextView _textCompany;
@@ -17,7 +17,7 @@ public class InfoActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_info);
+        setContentView(R.layout.layout9_info);
         //ButterKnife.bind(this);
     }
 

@@ -42,7 +42,7 @@ public class EditAddressActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editaddress);
+        setContentView(R.layout.layout4a_editaddress);
         //ButterKnife.bind(this);
 
         _saveChanges.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +56,7 @@ public class EditAddressActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Activity4EditProfile.class);
                 startActivity(intent);
                 finish();
                 //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -103,7 +103,7 @@ public class EditAddressActivity extends AppCompatActivity{
     public void onEditAddressSuccess() {
         _saveChanges.setEnabled(true);
         setResult(RESULT_OK, null);
-        Intent intent = new Intent(getApplicationContext(),EditProfileActivity.class);
+        Intent intent = new Intent(getApplicationContext(),Activity4EditProfile.class);
         startActivity(intent);
         finish();
         //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

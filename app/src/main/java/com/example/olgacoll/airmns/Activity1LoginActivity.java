@@ -3,6 +3,7 @@ package com.example.olgacoll.airmns;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -17,8 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //Removes Bind
-public class LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private static final String TAG = "LoginActivity";
+public class Activity1LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    private static final String TAG = "Activity1LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
     /*@Bind(R.id.input_email) EditText _emailText;
@@ -34,10 +36,10 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.layout1_login);
 
         //Navigation menu
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
 
@@ -48,10 +50,10 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         //ButterKnife.bind(this);
 
-        _loginButton.setOnClickListener(new View.OnClickListener() {
+        /*_loginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -64,15 +66,15 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Activity2SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
                 finish();
                 //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
-        });
+        });*/
     }
 
-    public void login() {
+    /*public void login() {
         Log.d(TAG, "Login");
 
         if (!validate()) {
@@ -82,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this,
+        final ProgressDialog progressDialog = new ProgressDialog(Activity1LoginActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
@@ -156,7 +158,7 @@ public class LoginActivity extends AppCompatActivity implements NavigationView.O
 
         return valid;
     }
-
+*/
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         return false;
