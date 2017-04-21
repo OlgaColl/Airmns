@@ -86,7 +86,6 @@
             android:src="@drawable/button_3a_4_edit_profile"
             android:scaleType="fitCenter"
             android:layout_weight="0.15" />
-
     </LinearLayout>
 
 </LinearLayout>

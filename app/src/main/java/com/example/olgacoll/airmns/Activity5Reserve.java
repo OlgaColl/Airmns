@@ -115,7 +115,7 @@ public class Activity5Reserve extends Activity {
 
     // -- Prepare Reserve objects --
     private void prepareObjects() {
-        precio_hora = 995;
+        precio_hora = 5;
         long_time = 1;
         address = "";
         observations = "";
