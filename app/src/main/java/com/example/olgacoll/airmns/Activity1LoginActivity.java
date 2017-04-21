@@ -17,6 +17,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //Removes Bind
 public class Activity1LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -28,18 +33,35 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
     @Bind(R.id.btn_login) Button _loginButton;
     @Bind(R.id.link_signup) TextView _signupLink;*/
 
-    EditText _emailText;
+    /*EditText _emailText;
     EditText _passwordText;
     Button _loginButton;
-    TextView _signupLink;
+    TextView _signupLink;*/
+
+    EditText editTextEmail, editTextPassword;
+    Button buttonLogin;
+    TextView textViewSignUpLink;
+    View.OnClickListener listener;
+    List<User> listUsers; //Per fer proves
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout1_login);
 
+        editTextEmail = (EditText)findViewById(R.id.input_email);
+        editTextPassword = (EditText)findViewById(R.id.input_password);
+        buttonLogin = (Button)findViewById(R.id.btn_login);
+        textViewSignUpLink = (TextView)findViewById(R.id.link_signup);
+
+        //listUsers = loadUsers();
+
+        //prepareListener();
+        textViewSignUpLink.setOnClickListener(listener);
+        buttonLogin.setOnClickListener(listener);
+
         //Navigation menu
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
 
@@ -50,18 +72,18 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });*/
+        });
         //ButterKnife.bind(this);
 
-        /*_loginButton.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                login();
+                checkLogin();
             }
         });
 
-        _signupLink.setOnClickListener(new View.OnClickListener() {
+        textViewSignUpLink.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -71,7 +93,43 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
                 finish();
                 //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
-        });*/
+        });
+    }
+
+    //Proves per saltar directament
+    public List<User> loadUsers(){
+        List<User> list = new ArrayList();
+        User user = new User("Olga", "1234", "user");
+        User user2 = new User("Eric", "1234", "professional");
+        listUsers.add(user);
+        listUsers.add(user2);
+        return list;
+    }
+
+    public void prepareListener(){
+        listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                switch(view.getId()){
+                    case R.id.btn_login:
+                        checkLogin();
+                        break;
+                    case R.id.link_signup:
+                        initSignUp();
+                        break;
+                }
+            }
+        };
+    }
+
+    public void checkLogin(){
+        Log.d(TAG, "Login");
+    }
+
+    //Go to sign up user
+    public void initSignUp(){
+        Intent intent = new Intent(this, Activity2SignupActivity.class);
+        startActivity(intent);
     }
 
     /*public void login() {
