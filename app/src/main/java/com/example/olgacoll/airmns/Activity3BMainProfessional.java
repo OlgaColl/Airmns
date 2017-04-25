@@ -62,7 +62,7 @@ public class Activity3BMainProfessional extends AppCompatActivity {
     }
 
     public void initBookingHistory(){
-        Intent intent = new Intent(this, BookingHistoryActivity.class);
+        Intent intent = new Intent(this, BookingHistoryProfessional.class);
         startActivity(intent);
     }
 

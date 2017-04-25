@@ -100,7 +100,7 @@ public class Activity2SignupActivity extends AppCompatActivity {
         _signupButton.setEnabled(true);
     }
 
-    public boolean validate() {
+   /* public boolean validate() {
         boolean valid = true;
 
         String name = _nameText.getText().toString();
@@ -132,7 +132,7 @@ public class Activity2SignupActivity extends AppCompatActivity {
             _addressText.setError(null);
         }*/
 
-        if (mobile.isEmpty() || mobile.length()!=10) {
+        /*if (mobile.isEmpty() || mobile.length()!=10) {
             _mobileText.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
@@ -177,5 +177,5 @@ public class Activity2SignupActivity extends AppCompatActivity {
                     //TODO
                     break;
         }
-    }
+    }*/
 }
