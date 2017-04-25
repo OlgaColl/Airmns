@@ -1,6 +1,5 @@
 package com.example.olgacoll.airmns;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,7 +14,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.olgacoll.airmns.model.User;
 
@@ -54,14 +52,18 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
         buttonLogin = (Button)findViewById(R.id.btn_login);
         textViewSignUpLink = (TextView)findViewById(R.id.link_signup);
 
-        //listUsers = loadUsers();
+        listUsers = new ArrayList();
+        User user = new User("Olga", "1234", "user");
+        User user2 = new User("Eric", "1234", "professional");
+        listUsers.add(user);
+        listUsers.add(user2);
 
         //prepareListener();
         textViewSignUpLink.setOnClickListener(listener);
         buttonLogin.setOnClickListener(listener);
 
         //Navigation menu
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setSupportActionBar(toolbar);
 
@@ -72,7 +74,7 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
         //ButterKnife.bind(this);
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +126,17 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
 
     public void checkLogin(){
         Log.d(TAG, "Login");
+        for(int i = 0; i < listUsers.size(); i++){
+            if(listUsers.get(i).getUser().equals(editTextEmail.getText().toString())){ //comprovació per saber si l'usuari es client o profesional
+                if(listUsers.get(i).getType().equals("user")){
+                    Intent intent = new Intent(this, Activity3AMainUser.class);
+                    startActivity(intent);
+                }else{
+                    Intent intent = new Intent(this, Activity3BMainProfessional.class);
+                    startActivity(intent);
+                }
+            }
+        }
     }
 
     //Go to sign up user

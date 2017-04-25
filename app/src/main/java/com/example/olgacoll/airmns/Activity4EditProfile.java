@@ -19,42 +19,50 @@ public class Activity4EditProfile extends AppCompatActivity {
 
     private static final String TAG = "Activity4EditProfile";
 
-    EditText _nameText;
-    EditText _lastnameText;
-    //@Bind(R.id.input_address) EditText _addressText;
-    EditText _emailText;
-    EditText _mobileText;
-    EditText _passwordText;
-    EditText _reEnterPasswordText;
-    Button _saveChanges;
-    TextView _linkBack;
+    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
+    Button buttonSaveChanges;
+    TextView textViewLinkBack;
+    View.OnClickListener listener;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout4a_editprofile);
-        //ButterKnife.bind(this);
 
-        _saveChanges.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveChanges();
-            }
-        });
+        editTextName = (EditText)findViewById(R.id.input_name);
+        editTextLastname = (EditText)findViewById(R.id.input_lastname);
+        editTextEmail = (EditText)findViewById(R.id.input_email);
+        editTextMobile = (EditText)findViewById(R.id.input_mobile);
+        editTextPassword = (EditText)findViewById(R.id.input_password);
+        editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
 
-        _linkBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(),Activity1LoginActivity.class);
-                startActivity(intent);
-                finish();
-                //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-            }
-        });
+        buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
+
+        prepareListener();
+
+        buttonSaveChanges.setOnClickListener(listener);
     }
 
-    public void saveChanges() {
+    public void prepareListener(){
+        listener = new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                switch(view.getId()){
+                    case R.id.btn_save_changes:
+                        saveChanges();
+                        break;
+                }
+            }
+        };
+    }
+
+    public void saveChanges(){
+        Log.d(TAG, "SaveChanges");
+        Intent intent = new Intent(this, Activity3AMainUser.class);
+        startActivity(intent);
+    }
+
+    /*public void saveChanges() {
         Log.d(TAG, "SaveChanges");
 
         if (!validate()) {
@@ -135,7 +143,7 @@ public class Activity4EditProfile extends AppCompatActivity {
             valid = false;
         } else {
             _addressText.setError(null);
-        }*/
+        }
 
         if (mobile.isEmpty() || mobile.length()!=10) {
             _mobileText.setError("Enter Valid Mobile Number");
@@ -166,5 +174,5 @@ public class Activity4EditProfile extends AppCompatActivity {
         }
 
         return valid;
-    }
+    }*/
 }

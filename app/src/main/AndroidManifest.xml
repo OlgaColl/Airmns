@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
 
+        <!--activity android:name=".Activity0SplashScreen"/-->
         <activity android:name=".Activity1LoginActivity"/>
         <activity android:name=".Activity2SignupActivity" />
         <activity android:name=".Activity3AMainUser" />

@@ -7,8 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1"
-    android:background="@android:color/holo_blue_dark"
-    tools:context="org.proven.airmns.Activity3AMainUser">
+    android:background="@color/primary_darker"
+    tools:context="com.example.olgacoll.airmns.Activity3AMainUser">
 
     <ImageView
         android:layout_width="48dp"
@@ -40,7 +40,7 @@
         android:layout_weight="0.08"
         android:gravity="center">
 
-        <ImageView android:id="@+id/imagenLogo0"
+        <ImageView android:id="@+id/imageViewManageReservation"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/button_3a_1_manage_reservation"
@@ -48,7 +48,7 @@
             android:layout_weight="0.15"/>
 
 
-        <ImageView android:id="@+id/imagenLogo1"
+        <ImageView android:id="@+id/imageViewBookingHistory"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/button_3a_2_booking_history"
@@ -72,7 +72,7 @@
         android:layout_weight="0.08"
         android:gravity="center">
 
-        <ImageView android:id="@+id/imagenLogo4"
+        <ImageView android:id="@+id/imageViewRateReservation"
             android:layout_height="match_parent"
             android:src="@drawable/button_3a_3_valoration_reserve"
             android:scaleType="fitCenter"
@@ -80,7 +80,7 @@
             android:layout_width="60dp" />
 
 
-        <ImageView android:id="@+id/imagenLogo5"
+        <ImageView android:id="@+id/imageViewEditProfile"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/button_3a_4_edit_profile"
