@@ -72,7 +72,7 @@ public class Activity3BMainProfessional extends AppCompatActivity {
     }
 
     public void initEditProfile(){
-        Intent intent = new Intent(this, Activity4EditProfile.class);
+        Intent intent = new Intent(this, Activity4EditProfileProfessional.class);
         startActivity(intent);
     }
 }

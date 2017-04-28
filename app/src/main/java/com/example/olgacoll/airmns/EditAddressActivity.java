@@ -56,7 +56,7 @@ public class EditAddressActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(), Activity4EditProfile.class);
+                Intent intent = new Intent(getApplicationContext(), Activity4EditProfileClient.class);
                 startActivity(intent);
                 finish();
                 //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -103,7 +103,7 @@ public class EditAddressActivity extends AppCompatActivity{
     public void onEditAddressSuccess() {
         _saveChanges.setEnabled(true);
         setResult(RESULT_OK, null);
-        Intent intent = new Intent(getApplicationContext(),Activity4EditProfile.class);
+        Intent intent = new Intent(getApplicationContext(), Activity4EditProfileClient.class);
         startActivity(intent);
         finish();
         //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);

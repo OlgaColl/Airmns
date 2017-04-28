@@ -91,7 +91,7 @@ public class Activity3AMainUser extends AppCompatActivity{
     }
 
     public void initEditProfile(){
-        Intent intent = new Intent(this, Activity4EditProfile.class);
+        Intent intent = new Intent(this, Activity4EditProfileClient.class);
         startActivity(intent);
     }
 }

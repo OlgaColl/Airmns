@@ -4,7 +4,6 @@ package com.example.olgacoll.airmns;
  * Created by olgacoll on 14/3/17.
  */
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,9 +12,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class Activity4EditProfile extends AppCompatActivity {
+public class Activity4EditProfileProfessional extends AppCompatActivity {
 
     private static final String TAG = "Activity4EditProfile";
 
