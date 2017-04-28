@@ -16,37 +16,57 @@ public class Activity2SignupActivity extends AppCompatActivity {
 
     private static final String TAG = "Activity2SignupActivity";
 
-    EditText _nameText;
-    EditText _lastnameText;
-    EditText _emailText;
-    EditText _mobileText;
-    EditText _passwordText;
-    EditText _reEnterPasswordText;
-    Button _signupButton;
-    TextView _loginLink;
-    
+    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
+    Button buttonSignup;
+    TextView textViewLogin;
+    RadioButton radioButtonClient, radioButtonProfessional;
+    View.OnClickListener listener;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout2_signup);
 
-        _signupButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                signup();
-            }
-        });
+        editTextName = (EditText)findViewById(R.id.input_name);
+        editTextLastname = (EditText)findViewById(R.id.input_lastname);
+        editTextEmail = (EditText)findViewById(R.id.input_email);
+        editTextMobile = (EditText)findViewById(R.id.input_mobile);
+        editTextPassword = (EditText)findViewById(R.id.input_password);
+        editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
+        buttonSignup = (Button)findViewById(R.id.btn_signup);
+        textViewLogin = (TextView)findViewById(R.id.link_login);
+        radioButtonClient = (RadioButton)findViewById(R.id.radio_client);
+        radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional);
 
-        _loginLink.setOnClickListener(new View.OnClickListener() {
+        onPrepareListener();
+
+        //prepareListener();
+        buttonSignup.setOnClickListener(listener);
+        textViewLogin.setOnClickListener(listener);
+        radioButtonClient.setOnClickListener(listener);
+        radioButtonProfessional.setOnClickListener(listener);
+    }
+
+    public void onPrepareListener(){
+        listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Finish the registration screen and return to the Login activity
-                Intent intent = new Intent(getApplicationContext(),Activity1LoginActivity.class);
-                startActivity(intent);
-                finish();
-                //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out); Posar-ho?
+                switch(v.getId()){
+                    case R.id.btn_signup:
+                        signup();
+                        break;
+                    case R.id.link_login:
+                        Intent intent = new Intent(getApplicationContext(), Activity1LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case R.id.radio_client:
+                        break;
+                    case R.id.radio_professional:
+                        break;
+                }
             }
-        });
+        };
     }
 
     public void signup() {
@@ -57,7 +77,7 @@ public class Activity2SignupActivity extends AppCompatActivity {
             return;
         }
 
-        _signupButton.setEnabled(false);
+        buttonSignup.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(Activity2SignupActivity.this,
                 R.style.AppTheme);
@@ -65,13 +85,13 @@ public class Activity2SignupActivity extends AppCompatActivity {
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
 
-        String name = _nameText.getText().toString();
-        String lastname = _lastnameText.getText().toString();
+        String name = editTextName.getText().toString();
+        String lastname = editTextLastname.getText().toString();
         //String address = _addressText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String email = _emailText.getText().toString();
-        String password = _passwordText.getText().toString();
-        String reEnterPassword = _reEnterPasswordText.getText().toString();
+        String mobile = editTextMobile.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String password = editTextPassword.getText().toString();
+        String reEnterPassword = editTextPassword2.getText().toString();
 
         // TODO: Implement your own signup logic here.
 
@@ -89,7 +109,7 @@ public class Activity2SignupActivity extends AppCompatActivity {
 
 
     public void onSignupSuccess() {
-        _signupButton.setEnabled(true);
+        buttonSignup.setEnabled(true);
         setResult(RESULT_OK, null);
         finish();
     }
@@ -97,32 +117,32 @@ public class Activity2SignupActivity extends AppCompatActivity {
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
 
-        _signupButton.setEnabled(true);
+        buttonSignup.setEnabled(true);
     }
 
-   /* public boolean validate() {
+    public boolean validate() {
         boolean valid = true;
 
-        String name = _nameText.getText().toString();
-        String lastname = _lastnameText.getText().toString();
+        String name = editTextName.getText().toString();
+        String lastname = editTextLastname.getText().toString();
         //String address = _addressText.getText().toString();
-        String email = _emailText.getText().toString();
-        String mobile = _mobileText.getText().toString();
-        String password = _passwordText.getText().toString();
-        String reEnterPassword = _reEnterPasswordText.getText().toString();
+        String email = editTextEmail.getText().toString();
+        String mobile = editTextMobile.getText().toString();
+        String password = editTextPassword.getText().toString();
+        String reEnterPassword = editTextPassword2.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
-            _nameText.setError("at least 3 characters");
+            editTextName.setError("at least 3 characters");
             valid = false;
         } else {
-            _nameText.setError(null);
+            editTextName.setError(null);
         }
 
-        if(lastname.isEmpty() || lastname.length() < 3){
-            _lastnameText.setError("at least 3 characters");
+        if (lastname.isEmpty() || lastname.length() < 3) {
+            editTextLastname.setError("at least 3 characters");
             valid = false;
-        } else{
-            _lastnameText.setError(null);
+        } else {
+            editTextLastname.setError(null);
         }
 
         /*if (address.isEmpty()) {
@@ -132,38 +152,38 @@ public class Activity2SignupActivity extends AppCompatActivity {
             _addressText.setError(null);
         }*/
 
-        /*if (mobile.isEmpty() || mobile.length()!=10) {
-            _mobileText.setError("Enter Valid Mobile Number");
+        if (mobile.isEmpty() || mobile.length()!=10) {
+            editTextMobile.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
-            _mobileText.setError(null);
+            editTextMobile.setError(null);
         }
 
         if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            _emailText.setError("enter a valid email address");
+            editTextEmail.setError("enter a valid email address");
             valid = false;
         } else {
-            _emailText.setError(null);
+            editTextEmail.setError(null);
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
-            _passwordText.setError("between 4 and 10 alphanumeric characters");
+            editTextPassword.setError("between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
-            _passwordText.setError(null);
+            editTextPassword.setError(null);
         }
 
         if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
-            _reEnterPasswordText.setError("Password Do not match");
+            editTextPassword2.setError("Password Do not match");
             valid = false;
         } else {
-            _reEnterPasswordText.setError(null);
+            editTextPassword2.setError(null);
         }
 
         return valid;
     }
 
-    public void onRadioButtonClicked(View view) {
+    /*public void onRadioButtonClicked(View view) {
         boolean checked = ((RadioButton) view).isChecked();
 
         // Check which radio button was clicked
