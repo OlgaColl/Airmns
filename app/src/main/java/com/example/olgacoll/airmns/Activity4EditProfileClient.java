@@ -7,11 +7,12 @@ package com.example.olgacoll.airmns;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 
 public class Activity4EditProfileClient extends AppCompatActivity {
 
@@ -19,26 +20,42 @@ public class Activity4EditProfileClient extends AppCompatActivity {
 
     EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
     Button buttonSaveChanges;
-    TextView textViewLinkBack;
+    Button buttonEditAddress;
+    Spinner spinnerAddress;
+    String dataAddress[];
+    Bundle bundle;
+
     View.OnClickListener listener;
+    AdapterView.OnItemSelectedListener listenerSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4a_editprofile);
+        setContentView(R.layout.layout4a_editprofileclient);
 
-        editTextName = (EditText)findViewById(R.id.input_name);
+        /*editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextEmail = (EditText)findViewById(R.id.input_email);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
-
+        buttonEditAddress = (Button)findViewById(R.id.btn_edit_address);
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
+        spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
+        bundle = new Bundle();
+        loadDataSpinner();
         prepareListener();
+        controlSpinner();
 
-        buttonSaveChanges.setOnClickListener(listener);
+        buttonEditAddress.setOnClickListener(listener);
+        buttonSaveChanges.setOnClickListener(listener);*/
+    }
+
+    /*public void loadDataSpinner(){
+        for(int i = 1; i < 21; i++){
+            dataAddress[i] = "Address " + i ;
+        }
     }
 
     public void prepareListener(){
@@ -49,16 +66,38 @@ public class Activity4EditProfileClient extends AppCompatActivity {
                     case R.id.btn_save_changes:
                         saveChanges();
                         break;
+                    case R.id.btn_edit_address:
+                        editAddress(); //TODO Bundle!!
+                        break;
                 }
             }
         };
     }
 
     public void saveChanges(){
-        Log.d(TAG, "SaveChanges");
+        //Log.d(TAG, "SaveChanges");
         Intent intent = new Intent(this, Activity3AMainUser.class);
         startActivity(intent);
     }
+
+    public void editAddress(){
+        Intent intent = new Intent(this, EditAddressActivity.class);
+        startActivity(intent);
+    }
+
+    //Control address Spinner
+    private void controlSpinner() {
+        //Address
+        dataAddress = getResources().getStringArray(R.array.address_value);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.address_value, android.R.layout.simple_list_item_1);
+        // Specify the layout to use when the list of choices appears
+        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinnerAddress.setAdapter(adapter1);
+        spinnerAddress.setOnItemSelectedListener(listenerSpinner);
+    }*/
+
 
     /*public void saveChanges() {
         Log.d(TAG, "SaveChanges");

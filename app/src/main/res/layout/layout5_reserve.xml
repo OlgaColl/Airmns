@@ -5,12 +5,12 @@
     android:id="@+id/activity5_Reserve"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
     android:orientation="vertical"
     android:paddingLeft="24dp"
     android:paddingRight="24dp"
     android:weightSum="1"
-    tools:context="org.proven.airmns.Activity5Reserve">
+    tools:context="com.example.olgacoll.airmns.Activity5Reserve"
+    android:background="@color/primary_darker">>
 
 
 

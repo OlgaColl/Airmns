@@ -7,9 +7,10 @@
     <string name="radioClient">Client</string>
     <string name="radioProfessional">Professional</string>
 
-    <!-- Edit Profile Label -->
+    <!-- Edit Profile Client Label -->
     <string name="saveChanges">Save changes</string>
-    <string name="anyChangesBack">Any changes? Back</string>
+    <string name="editAddressClient">Edit address</string>
+    <string name="anyChangesBack">Any changes? Back</string> <!-- TODO-->
 
     <!-- Info Label -->
     <string name="titleCompany">Global Facility Management</string>
