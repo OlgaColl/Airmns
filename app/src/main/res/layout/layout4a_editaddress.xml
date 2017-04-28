@@ -93,7 +93,8 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="@string/saveChanges"/>
+            android:text="@string/saveChanges"
+            />
 
         <!-- Any changes? Back -->
         <TextView android:id="@+id/link_back"

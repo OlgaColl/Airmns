@@ -18,9 +18,8 @@ public class Activity4EditProfileClient extends AppCompatActivity {
 
     private static final String TAG = "Activity4EditProfileClient";
 
-    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
+    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2, editTextAddress;
     Button buttonSaveChanges;
-    Button buttonEditAddress;
     Spinner spinnerAddress;
     String dataAddress[];
     Bundle bundle;
@@ -39,7 +38,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
-        buttonEditAddress = (Button)findViewById(R.id.btn_edit_address);
+        editTextAddress = (EditText)findViewById(R.id.input_address);
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
         spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
@@ -48,7 +47,6 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         prepareListener();
         controlSpinner();
         //loadDataSpinner();
-        buttonEditAddress.setOnClickListener(listener);
         buttonSaveChanges.setOnClickListener(listener);
     }
 
@@ -66,9 +64,6 @@ public class Activity4EditProfileClient extends AppCompatActivity {
                     case R.id.btn_save_changes:
                         saveChanges();
                         break;
-                    case R.id.btn_edit_address:
-                        editAddress(); //TODO Bundle!!
-                        break;
                 }
             }
         };
@@ -78,12 +73,6 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         //Log.d(TAG, "SaveChanges");
         Intent intent = new Intent(this, Activity3AMainUser.class);
         startActivity(intent);
-    }
-
-    public void editAddress(){
-        /*Intent intent = new Intent(this, EditAddressActivity.class);
-        startActivity(intent);*/
-
     }
 
     //Control address Spinner
@@ -96,8 +85,84 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinnerAddress.setAdapter(adapter1);
+        prepareItemListener();
         spinnerAddress.setOnItemSelectedListener(listenerSpinner);
     }
+
+    public void prepareItemListener(){
+        listenerSpinner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(
+                    AdapterView<?> parent,
+                    View view,
+                    int position,
+                    long id) {
+                editTextAddress.setText(dataAddress[position]);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+    }
+
+    /*
+
+    public void controlSpinner(){
+        spinner = (Spinner)findViewById(R.id.spinner);
+        dadesSpinner =  new String[]{"Vermell","Blau","Groc","Verd","Rosa", "Negre"};
+        ArrayAdapter<String> adaptador =
+                new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_item,
+                        dadesSpinner);
+        spinner.setAdapter(adaptador);
+        prepareItemListener();
+        spinner.setOnItemSelectedListener(listenerSpinner);
+    }
+
+    */
+    /*
+    public void prepareItemListener() {
+        listenerSpinner =
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(
+                            AdapterView<?> parent,
+                            View view,
+                            int position,
+                            long id) {
+                        switch (dadesSpinner[position]) {
+                            case "Vermell":
+                                colorFons="Vermell";
+                                break;
+                            case "Blau":
+                                colorFons="Blau";
+                                showMessage();
+                                break;
+                            case "Groc":
+                                colorFons="Groc";
+                                showMessage();
+                                break;
+                            case "Verd":
+                                colorFons="Verd";
+                                showMessage();
+                                break;
+                            case "Rosa":
+                                colorFons="Rosa";
+                                showMessage();
+                                break;
+                            case "Negre":
+                                colorFons="Negre";
+                                showMessage();
+                                break;
+                        }
+                    }
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                };
+    }*/
 
 
     /*public void saveChanges() {
