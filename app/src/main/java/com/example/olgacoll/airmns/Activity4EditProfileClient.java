@@ -33,7 +33,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout4a_editprofileclient);
 
-        /*editTextName = (EditText)findViewById(R.id.input_name);
+        editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextEmail = (EditText)findViewById(R.id.input_email);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
@@ -44,15 +44,15 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
         bundle = new Bundle();
-        loadDataSpinner();
+
         prepareListener();
         controlSpinner();
-
+        //loadDataSpinner();
         buttonEditAddress.setOnClickListener(listener);
-        buttonSaveChanges.setOnClickListener(listener);*/
+        buttonSaveChanges.setOnClickListener(listener);
     }
 
-    /*public void loadDataSpinner(){
+    public void loadDataSpinner(){
         for(int i = 1; i < 21; i++){
             dataAddress[i] = "Address " + i ;
         }
@@ -81,8 +81,9 @@ public class Activity4EditProfileClient extends AppCompatActivity {
     }
 
     public void editAddress(){
-        Intent intent = new Intent(this, EditAddressActivity.class);
-        startActivity(intent);
+        /*Intent intent = new Intent(this, EditAddressActivity.class);
+        startActivity(intent);*/
+
     }
 
     //Control address Spinner
@@ -96,7 +97,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinnerAddress.setAdapter(adapter1);
         spinnerAddress.setOnItemSelectedListener(listenerSpinner);
-    }*/
+    }
 
 
     /*public void saveChanges() {
