@@ -7,6 +7,7 @@ package com.example.olgacoll.airmns;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +20,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
     private static final String TAG = "Activity4EditProfileClient";
 
     EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2, editTextAddress;
-    Button buttonSaveChanges;
+    Button buttonAddAddress, buttonSaveChanges;
     Spinner spinnerAddress;
     String dataAddress[];
     Bundle bundle;
@@ -38,6 +39,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
         editTextAddress = (EditText)findViewById(R.id.input_address);
+        buttonAddAddress = (Button)findViewById(R.id.buttonAddAddress);
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
         spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
@@ -46,6 +48,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         prepareListener();
         controlSpinner();
         //loadDataSpinner();
+        buttonAddAddress.setOnClickListener(listener);
         buttonSaveChanges.setOnClickListener(listener);
     }
 
@@ -60,12 +63,19 @@ public class Activity4EditProfileClient extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 switch(view.getId()){
+                    case R.id.buttonAddAddress:
+                        addAddress();
+                        break;
                     case R.id.btn_save_changes:
                         saveChanges();
                         break;
                 }
             }
         };
+    }
+
+    public void addAddress(){
+        Log.d("Add address", "Add address");
     }
 
     public void saveChanges(){

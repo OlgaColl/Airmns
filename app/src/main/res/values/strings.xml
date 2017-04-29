@@ -8,6 +8,7 @@
     <string name="radioProfessional">Professional</string>
 
     <!-- Edit Profile Client Label -->
+    <string name="buttonAddAddress">Add Address</string>
     <string name="saveChanges">Save changes</string>
     <string name="editAddressClient">Edit address</string>
     <string name="anyChangesBack">Any changes? Back</string> <!-- TODO-->
