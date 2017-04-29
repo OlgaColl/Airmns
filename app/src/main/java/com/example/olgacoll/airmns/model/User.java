@@ -5,26 +5,51 @@ package com.example.olgacoll.airmns.model;
  */
 
 public class User {
-    private String user;
+
+    private int id;
+    private String mail;
     private String password;
     private String type;
+    private String name;
+    private String lastname;
+    private String phone;
+
 
     public User(){
 
     }
 
-    public User(String user, String password, String type){
-        this.user = user;
+    public User(String mail, String password, String name, String lastname, String phone) {
+        this.mail = mail;
+        this.password = password;
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
+    }
+
+    public User(String mail, String password, String type, String name, String lastname, String phone) {
+        this.mail = mail;
         this.password = password;
         this.type = type;
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
     }
 
-    public String getUser() {
-        return user;
+    public int getId() {
+        return id;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 
     public String getPassword() {
@@ -43,12 +68,27 @@ public class User {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "user='" + user + '\'' +
-                ", password='" + password + '\'' +
-                ", type='" + type + '\'' +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
