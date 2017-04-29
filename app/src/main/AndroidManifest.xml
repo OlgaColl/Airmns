@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar" >
         <activity
-            android:name=".Activity4EditProfileClient"
+            android:name=".Activity0SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,14 +19,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Activity0SplashScreen"/>
+        <!--activity android:name=".Activity0SplashScreen"/-->
         <activity android:name=".Activity1LoginActivity"/>
         <activity android:name=".Activity2SignupActivity"/>
         <activity android:name=".Activity3AMainUser" />
         <activity android:name=".Activity3BMainProfessional"/>
-        <!--activity android:name=".Activity4EditProfile"/-->
+        <activity android:name=".Activity4EditProfileClient"/>
         <activity android:name=".Activity4EditProfileProfessional"/>
+        <activity android:name=".BookingHistoryUser"/>
         <activity android:name=".Activity5Reserve"/>
+        <activity android:name=".RateReservationActivity"/>
 
         <!-- TODO Activities 6-8 -->
         <activity android:name=".Activity9InfoActivity"/>

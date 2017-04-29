@@ -12,6 +12,8 @@ public class BookingHistoryUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout3b_main_autonomous);
+        setContentView(R.layout.booking_history_user);
     }
 }
+
+
