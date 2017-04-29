@@ -3,11 +3,8 @@ package com.example.olgacoll.airmns;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,9 +49,11 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
         buttonLogin = (Button)findViewById(R.id.btn_login);
         textViewSignUpLink = (TextView)findViewById(R.id.link_signup);
 
-        listUsers = new ArrayList();
-        User user = new User("Olga", "1234", "user");
-        User user2 = new User("Eric", "1234", "professional");
+        //listUsers = loadUsers();
+
+        listUsers = new ArrayList<>();
+        User user = new User("Olga", "1234", "Olga", "Coll Pérez", "687452135", "user");
+        User user2 = new User("Eric", "1234", "Eric", "Ayala Andreu", "674218593", "professional");
         listUsers.add(user);
         listUsers.add(user2);
 
@@ -99,10 +98,11 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
     }
 
     //Proves per saltar directament
+    //User(String mail, String password, String name, String lastname, String phone)
     public List<User> loadUsers(){
         List<User> list = new ArrayList();
-        User user = new User("Olga", "1234", "user");
-        User user2 = new User("Eric", "1234", "professional");
+        User user = new User("Olga", "1234", "Olga", "Coll Pérez", "687452135", "user");
+        User user2 = new User("Eric", "1234", "Eric", "Ayala Andreu", "674218593", "professional");
         listUsers.add(user);
         listUsers.add(user2);
         return list;
@@ -127,7 +127,7 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
     public void checkLogin(){
         Log.d(TAG, "Login");
         for(int i = 0; i < listUsers.size(); i++){
-            if(listUsers.get(i).getUser().equals(editTextEmail.getText().toString())){ //comprovació per saber si l'usuari es client o profesional
+            if(listUsers.get(i).getMail().equals(editTextEmail.getText().toString())){ //comprovació per saber si l'usuari es client o profesional
                 if(listUsers.get(i).getType().equals("user")){
                     Intent intent = new Intent(this, Activity3AMainUser.class);
                     startActivity(intent);

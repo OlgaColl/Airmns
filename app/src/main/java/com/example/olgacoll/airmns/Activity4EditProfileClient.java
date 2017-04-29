@@ -18,7 +18,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
 
     private static final String TAG = "Activity4EditProfileClient";
 
-    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2, editTextAddress;
+    EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2, editTextAddress;
     Button buttonSaveChanges;
     Spinner spinnerAddress;
     String dataAddress[];
@@ -34,7 +34,6 @@ public class Activity4EditProfileClient extends AppCompatActivity {
 
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
-        editTextEmail = (EditText)findViewById(R.id.input_email);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
@@ -43,7 +42,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
         bundle = new Bundle();
-
+        editTextAddress.setVisibility(View.INVISIBLE);
         prepareListener();
         controlSpinner();
         //loadDataSpinner();
@@ -97,6 +96,7 @@ public class Activity4EditProfileClient extends AppCompatActivity {
                     View view,
                     int position,
                     long id) {
+
                 editTextAddress.setText(dataAddress[position]);
             }
             @Override

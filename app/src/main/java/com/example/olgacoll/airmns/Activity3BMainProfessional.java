@@ -2,6 +2,7 @@ package com.example.olgacoll.airmns;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,6 +13,7 @@ import android.widget.ImageView;
 
 public class Activity3BMainProfessional extends AppCompatActivity {
 
+    FloatingActionButton fab;
     View.OnClickListener listener;
     ImageView imageViewManageReservation, imageViewBookingHistory;
     ImageView imageViewIntroduceAvailability, imageViewEditProfile;
@@ -21,6 +23,7 @@ public class Activity3BMainProfessional extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3b_main_autonomous);
 
+        fab = (FloatingActionButton)findViewById(R.id.fab);
         imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation);
         imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory);
         imageViewIntroduceAvailability = (ImageView)findViewById(R.id.imageViewIntroduceAvailability);
@@ -28,6 +31,7 @@ public class Activity3BMainProfessional extends AppCompatActivity {
 
         prepareListener();
 
+        fab.setOnClickListener(listener);
         imageViewManageReservation.setOnClickListener(listener);
         imageViewBookingHistory.setOnClickListener(listener);
         imageViewIntroduceAvailability.setOnClickListener(listener);
@@ -39,6 +43,9 @@ public class Activity3BMainProfessional extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 switch(view.getId()){
+                    case R.id.fab:
+                        initFab();
+                        break;
                     case R.id.imageViewManageReservation:
                         initManageReservation();
                         break;
@@ -54,6 +61,11 @@ public class Activity3BMainProfessional extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    public void initFab(){
+        Intent intent = new Intent(this, Activity9InfoActivity.class);
+        startActivity(intent);
     }
 
     public void initManageReservation(){
