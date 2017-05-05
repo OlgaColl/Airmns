@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar" >
         <activity
-            android:name=".Activity0SplashScreen"
+            android:name=".Activity0_SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,18 +19,21 @@
             </intent-filter>
         </activity>
 
-        <!--activity android:name=".Activity0SplashScreen"/-->
-        <activity android:name=".Activity1LoginActivity"/>
-        <activity android:name=".Activity2SignupActivity"/>
-        <activity android:name=".Activity3AMainUser" />
-        <activity android:name=".Activity3BMainProfessional"/>
-        <activity android:name=".Activity4EditProfileClient"/>
-        <activity android:name=".Activity4EditProfileProfessional"/>
-        <activity android:name=".BookingHistoryUser"/>
-        <activity android:name=".Activity5Reserve"/>
-        <activity android:name=".RateReservationActivity"/>
+        <!--activity android:name=".Activity0_SplashScreen"/-->
+        <activity android:name=".Activity1_LoginActivity"/>
+        <activity android:name=".Activity2_SignupActivity"/>
+        <activity android:name=".Activity3A_MainUser" />
+        <activity android:name=".Activity3B_MainProfessional"/>
+        <activity android:name=".Activity4A_EditProfileClient"/>
+        <activity android:name=".Activity4B_EditProfileProfessional"/>
+        <activity android:name=".Activity6A_BookingHistoryUser"/>
+        <activity android:name=".Activity5A_Reserve"/>
+        <activity android:name=".Activity5B_ResumeReserve"/>
+        <activity android:name=".Activity7_ProfessionalAvailability"/>
+        <activity android:name=".Activity8A_RateReservations"/>
+        <activity android:name=".Activity8B_ValueReserve"/>
 
         <!-- TODO Activities 6-8 -->
-        <activity android:name=".Activity9InfoActivity"/>
+        <activity android:name=".Activity9_InfoActivity"/>
     </application>
 </manifest>

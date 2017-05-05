@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:background="@android:color/holo_blue_dark">
+
+
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/title_valorate_reserve_L8_value_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.18"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="VALUE RESERVE"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        tools:fontFamily="cursive" />
+
+
+
+    <!-- USER -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:background="@drawable/borde">
+
+
+        <!-- User data -->
+        <LinearLayout
+            android:layout_width="220dp"
+            android:layout_height="125dp"
+            android:orientation="vertical">
+
+            <!-- Name -->
+            <TextView
+                android:id="@+id/user_name_L8_value_reserve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="bottom"
+                android:paddingBottom="3dp"
+                android:text="User name"
+                android:textColor="#1b4f72"
+                android:textSize="14sp"
+                android:paddingLeft="3dp" />
+
+            <!-- Surname -->
+            <TextView
+                android:id="@+id/user_surname_L8_value_reserve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="bottom"
+                android:paddingBottom="3dp"
+                android:text="User surname"
+                android:textColor="#1b4f72"
+                android:textSize="14sp"
+                android:paddingLeft="3dp" />
+
+            <!-- Email -->
+            <TextView
+                android:id="@+id/user_email_L8_value_reserve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="bottom"
+                android:paddingBottom="3dp"
+                android:text="user@mailinator.com"
+                android:textColor="#1b4f72"
+                android:textSize="14sp"
+                android:paddingLeft="3dp" />
+
+            <!-- Number phone -->
+            <TextView
+                android:id="@+id/user_phone_L8_value_reserve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="bottom"
+                android:paddingBottom="3dp"
+                android:text="(+34) 689 098 098"
+                android:textColor="#1b4f72"
+                android:textSize="14sp"
+                android:paddingLeft="3dp" />
+
+        </LinearLayout>
+
+        <!-- User image -->
+        <ImageView
+            android:id="@+id/user_image_L8_value_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+    </LinearLayout>
+
+
+
+    <!-- SPACE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal"></LinearLayout>
+
+
+
+    <!-- RESERVE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:background="@drawable/borde">
+
+
+        <!-- DATE -->
+        <TextView
+            android:id="@+id/print_date_L8_resume_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="1/1/2000"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp"/>
+
+        <!-- TIME -->
+        <TextView
+            android:id="@+id/time_L8_resume_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="00:00 - 01:00"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+        <!-- ADDRESS -->
+        <TextView
+            android:id="@+id/address_L8_resume_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="C/ Mallorca 96, 8-2, 08015 Bcn"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+        <!-- OBSERVATIONS -->
+        <TextView
+            android:id="@+id/observations_L8_resume_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:text="Observations..."
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+    </LinearLayout>
+
+
+
+    <!-- SPACE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:orientation="horizontal"></LinearLayout>
+
+
+
+    <!-- OBSERVATIONS -->
+    <TextView
+        android:id="@+id/title_observations_text_L8_valore_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Observations"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/input_observations_L8_valore_reserve_false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.09"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="#1b4f72" />
+
+
+
+    <!-- VALORATION -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0.03dp"
+            android:layout_weight="0.02"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:id="@+id/star_0_L8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
+                android:background="@drawable/star_8_valore_reserve_false"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/star_1_L8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
+                android:background="@drawable/star_8_valore_reserve_false"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/star_2_L8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
+                android:background="@drawable/star_8_valore_reserve_false"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/star_3_L8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
+                android:background="@drawable/star_8_valore_reserve_false"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/star_4_L8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
+                android:background="@drawable/star_8_valore_reserve_false"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+    <!-- BUTTON DONE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:orientation="vertical"
+        android:layout_weight="0.07">
+
+        <!-- BUTTON PAY-->
+        <Button
+            android:id="@+id/button_done_L8_resume_reserve"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="DONE" />
+
+    </LinearLayout>
+
+</LinearLayout>

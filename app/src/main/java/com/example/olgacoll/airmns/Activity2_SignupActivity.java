@@ -12,9 +12,9 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Activity2SignupActivity extends AppCompatActivity {
+public class Activity2_SignupActivity extends AppCompatActivity {
 
-    private static final String TAG = "Activity2SignupActivity";
+    private static final String TAG = "Activity2_SignupActivity";
 
     EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
     Button buttonSignup;
@@ -56,7 +56,7 @@ public class Activity2SignupActivity extends AppCompatActivity {
                         signup();
                         break;
                     case R.id.link_login:
-                        Intent intent = new Intent(getApplicationContext(), Activity1LoginActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
                         startActivity(intent);
                         finish();
                         break;
@@ -79,7 +79,7 @@ public class Activity2SignupActivity extends AppCompatActivity {
 
         buttonSignup.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(Activity2SignupActivity.this,
+        final ProgressDialog progressDialog = new ProgressDialog(Activity2_SignupActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");

@@ -26,6 +26,7 @@
 
     <string name="action_settings">Settings</string>
 
+
     <!-- **LAYOUT 5 RESERVE** -->
     <!--title-->
     <string name="title_manage_reserve">MANAGE RESERVE</string>
@@ -61,4 +62,53 @@
     <!--total pay-->
     <string name="total_pay_text">Total</string>
     <string name="total_value_text">0€</string>
+
+
+
+    <!-- **LAYOUT 5 RESUME RESERVE** -->
+    <!--title-->
+    <string name="title_manage_reserve_L5_resume_reserve">RESUME RESERVE</string>
+    <!--date-->
+    <string name="date_text_L5_resume_reserve">Date</string>
+    <string name="print_date_L5_resume_reserve">1/1/2000</string>
+    <!--time-->
+    <string name="time_text_L5_resume_reserve">Time</string>
+    <string name="time_L5_resume_reserve">00:00</string>
+    <!--address-->
+    <string name="address_text_L5_resume_reserve">Address</string>
+    <string name="address_L5_resume_reserve">C/ Mallorca 96, 8-2, 08015 Bcn</string>
+    <!--observations-->
+    <string name="observations_text_L5_resume_reserve">Observations</string>
+    <string name="observations_L5_resume_reserve">Observations...</string>
+    <!--total pay-->
+    <string name="total_pay_text_L5_resume_reserve">Total: </string>
+    <string name="total_value_text_L5_resume_reserve">0€</string>
+
+
+
+    <!-- **LAYOUT 7 PROFESSIONAL AVAILABILITY** -->
+    <!--title-->
+    <string name="title_manage_reserve_L7_professional_availability">AVAILABILITY</string>
+    <string name="textView_date_text_L7_professional_availability">Date</string>
+    <string name="textView_date_L7_professional_availability">1/1/2000</string>
+
+
+
+    <!-- **LAYOUT 8 VALUE RESERVE** -->
+    <!--title-->
+    <string name="title_valorate_reserve_L8_value_reserve">VALUE RESERVE</string>
+    <!-- user -->
+    <string name="user_name_L8_value_reserve">User name</string>
+    <string name="user_surname_L8_value_reserve">User surname</string>
+    <string name="user_email_L8_value_reserve">user@mailinator.com</string>
+    <string name="user_phone_L8_value_reserve">(+34) 689 098 098</string>
+    <!-- reserve -->
+    <string name="print_date_L8_resume_reserve">1/1/2000</string>
+    <string name="time_L8_resume_reserve">00:00 - 01:00</string>
+    <string name="address_L8_resume_reserve">C/ Mallorca 96, 8-2, 08015 Bcn</string>
+    <string name="observations_L8_resume_reserve">Observations...</string>
+    <!-- observations -->
+    <string name="observations_text_L8_valore_reserve_false">Observations...</string>
+    <string name="title_observations_L8_resume_reserve">Observations...</string>
+
 </resources>

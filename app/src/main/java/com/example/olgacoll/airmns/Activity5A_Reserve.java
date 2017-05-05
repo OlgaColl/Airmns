@@ -1,12 +1,14 @@
 package com.example.olgacoll.airmns;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 import java.util.Calendar;
 
@@ -24,9 +27,13 @@ import java.util.Calendar;
  * Created by alumne on 10/03/17.
  */
 
-public class Activity5Reserve extends Activity {
+public class Activity5A_Reserve extends Activity {
+
 
     // -- ATTRIBUTES --
+
+    //Bundle
+    Bundle mBundle = new Bundle();
     //Listener
     OnClickListener listener;
     AdapterView.OnItemSelectedListener listener_time_spinner;
@@ -71,11 +78,12 @@ public class Activity5Reserve extends Activity {
 
 
 
+
     // -- ON CREATE --
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout5_reserve);
+        setContentView(R.layout.layout5a_reserve);
 
         //Prepare views
         prepareViews();
@@ -92,7 +100,10 @@ public class Activity5Reserve extends Activity {
     }
 
 
+
+
     // -- PREPARES --
+
     //-- Prepare views--
     private void prepareViews() {
         //Date
@@ -115,7 +126,7 @@ public class Activity5Reserve extends Activity {
 
     // -- Prepare Reserve objects --
     private void prepareObjects() {
-        precio_hora = 5;
+        precio_hora = (float) 9.95;
         long_time = 1;
         address = "";
         observations = "";
@@ -131,13 +142,10 @@ public class Activity5Reserve extends Activity {
                 switch (v.getId()) {
                     //DATE
                     case R.id.button_date: //Choose date
-                        //Toast.makeText(getApplicationContext(), "INPUT DATE", Toast.LENGTH_SHORT).show();
                         mostrarCalendario(v);
-                        //startDialogDate();
                         break;
                     //TIME
                     case R.id.button_time: //Choose date
-                        //Toast.makeText(getApplicationContext(), "INPUT TIME", Toast.LENGTH_SHORT).show();
                         mostrarHora(v);
                         break;
                     //OBSERVATIONS
@@ -146,7 +154,8 @@ public class Activity5Reserve extends Activity {
                         break;
                     //CONTINUE
                     case R.id.button_pay: //Continue
-                        Toast.makeText(getApplicationContext(), "CONTINUE", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "CONTINUE", Toast.LENGTH_SHORT).show();
+                        reserveDone();
                         break;
                     //DEFAULT
                     default:
@@ -162,9 +171,9 @@ public class Activity5Reserve extends Activity {
                                                 int position,
                                                 long id) {
                         Toast.makeText(getApplicationContext(), "("+ datos_time[position]+")", Toast.LENGTH_SHORT).show();
-                        //TODO - almacenar el valor de la tabla en una variable
-                        // (para saber el numero de horas);
+                        //Increment 1 valor to index for to now how many hours
                         long_time = position+1;
+                        //Calcule total price
                         calcularPrecio();
                     }
 
@@ -180,8 +189,7 @@ public class Activity5Reserve extends Activity {
                                                 int position,
                                                 long id) {
                         Toast.makeText(getApplicationContext(), "("+ datos_address[position]+")", Toast.LENGTH_SHORT).show();
-                        //TODO - almacenar el valor de la tabla en una variable
-                        // (para saber el numero de horas);
+                        //Get address to spinner
                         address = datos_address[position];
                     }
 
@@ -232,27 +240,44 @@ public class Activity5Reserve extends Activity {
 
 
 
+
     // -- DATE --
+
     private void createDate() {
+        //Instance date
         calendar = Calendar.getInstance();
+        //Add two days
         calendar.add(Calendar.HOUR, 48);
+
+        //Instance date variables with real data
+        minute = calendar.get(Calendar.MINUTE);
+        //If minute is more than 30 increment hour
+        if(minute >= 30) {
+            int many_minutes = 60-minute;
+            calendar.add(Calendar.MINUTE,many_minutes);
+        }
+        //Minute always must be 00:00
+        minute = 0;
         anyo = calendar.get(Calendar.YEAR);
         mes = calendar.get(Calendar.MONTH);
         dia = calendar.get(Calendar.DAY_OF_MONTH);
         hour = calendar.get(Calendar.HOUR_OF_DAY);
-        minute = calendar.get(Calendar.MINUTE);
+
+        //Print date
         printDateTime();
+
+        //Instance poput for input date
         oyenteSelectorFecha = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 anyo = year;
                 mes = month;
                 dia = dayOfMonth;
+                calendar.set(year,month,dayOfMonth);
                 printDateTime();
             }
         };
     }
-
 
 
     // -- DIALOG TO INPUT DATE CLASS --
@@ -265,7 +290,6 @@ public class Activity5Reserve extends Activity {
         return null;
     }
 
-
     public void mostrarCalendario(View control){
         showDialog(TIPO_DIALOGO);
     }
@@ -276,16 +300,18 @@ public class Activity5Reserve extends Activity {
         if (minute < 10) tv_time.setText( hour + ":0" + minute);
         else tv_time.setText( hour + ":" + minute);
         //Date
-        tv_date.setText(dia + "/" + mes + "/" + anyo);
+        tv_date.setText(dia + "/" + (mes+1) + "/" + anyo);
+
     }
+
 
 
 
     // -- TIME --
     private void mostrarHora(View v) {
         Calendar calendar_time = Calendar.getInstance();
-        hour = calendar_time.get(Calendar.HOUR_OF_DAY);
-        minute = calendar_time.get(Calendar.MINUTE);
+        //hour = calendar_time.get(Calendar.HOUR_OF_DAY);
+        //minute = calendar_time.get(Calendar.MINUTE);
 
         TimePickerDialog mTimePicker;
         mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
@@ -301,29 +327,74 @@ public class Activity5Reserve extends Activity {
     }
 
 
+
+
     // -- PAY --
     private void calcularPrecio() {
+        //Calcule total pay
         total_pay = long_time*precio_hora;
-
+        //Rounded to 2 decimals
+        total_pay = Math.round(total_pay*100.0)/100.0;
+        //Print total price
         tv_total_pay.setText(String.valueOf(total_pay)+"€");
     }
 
 
-    //RESERVE
+
+
+    // -- RESERVE --
     public void reserveDone(){
-        //TODO fer tots els objectes de Reserve i pujarlos a un bundle per
-        //TODO fer pujar a una nova activity on mostri al layout les dades
+        //If input data is correct
+        if (correctData()) {
+            //Date
+            String date_reserve = dia + "/" + (mes+1) + "/" + anyo;
+            mBundle.putString("date_reserve", date_reserve);
+            //Time
+            mBundle.putInt("time_reserve", hour);
+            //Long Time
+            mBundle.putInt("long_time_reserve", long_time);
+            //Address
+            mBundle.putString("address_reserve", address);
+            //Observations
+            observations = input_observations.getText().toString();
+            mBundle.putString("observations_reserve", observations);
+            //Total pay
+            mBundle.putDouble("total_pay_reserve", total_pay);
 
-        //Date
+            //Start ResumeReserve activity
+            Intent intent = new Intent(this, Activity5B_ResumeReserve.class);
+            // set Bundle to intent
+            intent.putExtras(mBundle);
+            startActivity(intent);
 
-        //Long Time
+            //Else print message
+        } else {
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            //Show message
+            alertbox.setMessage("Input date must be 2 days greater than current date and minutes must be 0.");
+            //Add option
+            alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                //To do whe press Ok
+                public void onClick(DialogInterface arg0, int arg1) {
+                    //mensaje("Pulsado el botón SI");
+                }
+            });
 
-        //Address
+            //Show
+            alertbox.show();
+        }
 
-        //Observations
-        observations = input_observations.getText().toString();
-
-        //Total pay
     }
+
+    //Comprove if correct input date
+    private boolean correctData(){
+        //Current date more 2 days (date correct input availability)
+        Calendar calendario_actual = Calendar.getInstance();
+        calendario_actual.add(Calendar.HOUR, 24);
+        //If calendar more or igual than current date return false
+        if(calendar.before(calendario_actual) || minute != 0) return false;
+        else return true;
+    }
+
 
 }

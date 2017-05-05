@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:weightSum="1"
     android:background="@color/primary_darker"
-    tools:context="com.example.olgacoll.airmns.Activity3BMainProfessional">
+    tools:context="com.example.olgacoll.airmns.Activity3B_MainProfessional">
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

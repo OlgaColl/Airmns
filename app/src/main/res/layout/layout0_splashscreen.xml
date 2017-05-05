@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@color/primary_darker"
-    tools:context=".Activity0SplashScreen">
+    tools:context=".Activity0_SplashScreen">
 
     <LinearLayout
         android:orientation="vertical"

@@ -12,7 +12,7 @@ import java.util.TimerTask;
  * Created by olgacoll on 21/4/17.
  */
 
-public class Activity0SplashScreen extends AppCompatActivity {
+public class Activity0_SplashScreen extends AppCompatActivity {
 
     // Set the duration of the splash screen
     private static final long SPLASH_SCREEN_DELAY = 2000;
@@ -34,7 +34,7 @@ public class Activity0SplashScreen extends AppCompatActivity {
 
                 // Start the next activity
                 Intent mainIntent = new Intent().setClass(
-                        Activity0SplashScreen.this, Activity1LoginActivity.class);
+                        Activity0_SplashScreen.this, Activity1_LoginActivity.class);
                 startActivity(mainIntent);
 
                 // Close the activity so the user won't able to go back this

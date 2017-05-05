@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 //Removes Bind
-public class Activity1LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Activity1_LoginActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private static final String TAG = "Activity1LoginActivity";
+    private static final String TAG = "Activity1_LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
 
     /*@Bind(R.id.input_email) EditText _emailText;
@@ -89,7 +89,7 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
             @Override
             public void onClick(View v) {
                 // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), Activity2SignupActivity.class);
+                Intent intent = new Intent(getApplicationContext(), Activity2_SignupActivity.class);
                 startActivityForResult(intent, REQUEST_SIGNUP);
                 finish();
                 //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
@@ -126,22 +126,40 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
 
     public void checkLogin(){
         Log.d(TAG, "Login");
+
+        String mail = editTextEmail.getText().toString();
+        String pwd = editTextPassword.getText().toString();
+
+        
+
+
+        int index = -1;
         for(int i = 0; i < listUsers.size(); i++){
             if(listUsers.get(i).getMail().equals(editTextEmail.getText().toString())){ //comprovació per saber si l'usuari es client o profesional
-                if(listUsers.get(i).getType().equals("user")){
-                    Intent intent = new Intent(this, Activity3AMainUser.class);
-                    startActivity(intent);
-                }else{
-                    Intent intent = new Intent(this, Activity3BMainProfessional.class);
-                    startActivity(intent);
-                }
+                index = i;
             }
         }
+
+        if (index > 0) {
+            if(listUsers.get(index).getType().equals("user")){
+                Intent intent = new Intent(this, Activity3A_MainUser.class);
+                startActivity(intent);
+            }else{
+                Intent intent = new Intent(this, Activity3B_MainProfessional.class);
+                startActivity(intent);
+            }
+
+        } else {
+            //notificar error
+        }
+
+
+
     }
 
     //Go to sign up user
     public void initSignUp(){
-        Intent intent = new Intent(this, Activity2SignupActivity.class);
+        Intent intent = new Intent(this, Activity2_SignupActivity.class);
         startActivity(intent);
     }
 
@@ -155,7 +173,7 @@ public class Activity1LoginActivity extends AppCompatActivity implements Navigat
 
         _loginButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(Activity1LoginActivity.this,
+        final ProgressDialog progressDialog = new ProgressDialog(Activity1_LoginActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:background="@android:color/holo_blue_dark">
+
+
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/title_manage_reserve_L5_resume_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.14"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="RESUME RESERVE"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        tools:fontFamily="cursive" />
+
+
+
+
+    <!-- DATE -->
+    <TextView
+        android:id="@+id/date_text_L5_resume_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Date"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/print_date_L5_resume_reserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="1/1/2000"
+        android:paddingBottom="3dp"
+        android:textColor="#1b4f72"
+        android:textSize="18sp"
+        android:layout_weight="0.05" />
+
+    <!-- Linea -->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+
+    <!-- TIME -->
+    <TextView
+        android:id="@+id/time_text_L5_resume_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Time"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/time_L5_resume_reserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="00:00 - 01:00"
+        android:paddingBottom="3dp"
+        android:textColor="#1b4f72"
+        android:textSize="18sp"
+        android:layout_weight="0.05" />
+
+    <!--Linea-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+    <!-- ADDRESS -->
+    <TextView
+        android:id="@+id/address_text_L5_resume_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Address"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/address_L5_resume_reserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="C/ Mallorca 96, 8-2, 08015 Bcn"
+        android:paddingBottom="3dp"
+        android:textColor="#1b4f72"
+        android:textSize="18sp"
+        android:layout_weight="0.05" />
+
+    <!--Linea-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+    <!-- OBSERVATIONS -->
+    <TextView
+        android:id="@+id/observations_text_L5_resume_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="Observations"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/observations_L5_resume_reserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:text="Observations..."
+        android:paddingBottom="3dp"
+        android:textColor="#1b4f72"
+        android:textSize="18sp"
+        android:layout_weight="0.05" />
+
+    <!--Linea-->
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dip"
+        android:layout_marginBottom="10dip"
+        android:background="#007095" />
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:orientation="vertical"
+        android:layout_weight="0.14">
+
+
+        <!-- SPACE -->
+        <LinearLayout
+            android:layout_width="344dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- TOTAL PAY-->
+            <TextView
+                android:id="@+id/total_pay_text_L5_resume_reserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="TOTAL: "
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/total_value_text_L5_resume_reserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="0€"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#ffffff"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+        <!-- BUTTON PAY-->
+        <Button
+            android:id="@+id/button_pay_L5_resume_reserve"
+            android:layout_width="329dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="PAY" />
+
+    </LinearLayout>
+
+</LinearLayout>

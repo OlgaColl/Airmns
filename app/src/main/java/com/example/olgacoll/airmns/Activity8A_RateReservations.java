@@ -4,16 +4,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by olgacoll on 25/4/17.
+ * Created by ericayala on 5/5/17.
  */
 
-public class BookingHistoryUser extends AppCompatActivity {
+public class Activity8A_RateReservations extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.booking_history_user);
+        setContentView(R.layout.layout8a_rate_reservations);
     }
+
 }
-
-

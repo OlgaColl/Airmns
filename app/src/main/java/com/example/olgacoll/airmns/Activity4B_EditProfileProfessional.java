@@ -9,53 +9,36 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.TextView;
 
-public class Activity4EditProfileClient extends AppCompatActivity {
+public class Activity4B_EditProfileProfessional extends AppCompatActivity {
 
-    private static final String TAG = "Activity4EditProfileClient";
+    private static final String TAG = "Activity4EditProfile";
 
-    EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2, editTextAddress;
-    Button buttonAddAddress, buttonSaveChanges;
-    Spinner spinnerAddress;
-    String dataAddress[];
-    Bundle bundle;
-
+    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
+    Button buttonSaveChanges;
+    TextView textViewLinkBack;
     View.OnClickListener listener;
-    AdapterView.OnItemSelectedListener listenerSpinner;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4a_editprofileclient);
+        setContentView(R.layout.layout4a_edit_profile_client);
 
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
+        editTextEmail = (EditText)findViewById(R.id.input_email);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
-        editTextAddress = (EditText)findViewById(R.id.input_address);
-        buttonAddAddress = (Button)findViewById(R.id.buttonAddAddress);
+
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
-        spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
-        bundle = new Bundle();
-        editTextAddress.setVisibility(View.INVISIBLE);
         prepareListener();
-        controlSpinner();
-        //loadDataSpinner();
-        buttonAddAddress.setOnClickListener(listener);
-        buttonSaveChanges.setOnClickListener(listener);
-    }
 
-    public void loadDataSpinner(){
-        for(int i = 1; i < 21; i++){
-            dataAddress[i] = "Address " + i ;
-        }
+        buttonSaveChanges.setOnClickListener(listener);
     }
 
     public void prepareListener(){
@@ -63,9 +46,6 @@ public class Activity4EditProfileClient extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 switch(view.getId()){
-                    case R.id.buttonAddAddress:
-                        addAddress();
-                        break;
                     case R.id.btn_save_changes:
                         saveChanges();
                         break;
@@ -74,106 +54,11 @@ public class Activity4EditProfileClient extends AppCompatActivity {
         };
     }
 
-    public void addAddress(){
-        Log.d("Add address", "Add address");
-    }
-
     public void saveChanges(){
-        //Log.d(TAG, "SaveChanges");
-        Intent intent = new Intent(this, Activity3AMainUser.class);
+        Log.d(TAG, "SaveChanges");
+        Intent intent = new Intent(this, Activity3A_MainUser.class);
         startActivity(intent);
     }
-
-    //Control address Spinner
-    private void controlSpinner() {
-        //Address
-        dataAddress = getResources().getStringArray(R.array.address_value);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.address_value, android.R.layout.simple_list_item_1);
-        // Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinnerAddress.setAdapter(adapter1);
-        prepareItemListener();
-        spinnerAddress.setOnItemSelectedListener(listenerSpinner);
-    }
-
-    public void prepareItemListener(){
-        listenerSpinner = new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(
-                    AdapterView<?> parent,
-                    View view,
-                    int position,
-                    long id) {
-
-                editTextAddress.setText(dataAddress[position]);
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        };
-    }
-
-    /*
-
-    public void controlSpinner(){
-        spinner = (Spinner)findViewById(R.id.spinner);
-        dadesSpinner =  new String[]{"Vermell","Blau","Groc","Verd","Rosa", "Negre"};
-        ArrayAdapter<String> adaptador =
-                new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item,
-                        dadesSpinner);
-        spinner.setAdapter(adaptador);
-        prepareItemListener();
-        spinner.setOnItemSelectedListener(listenerSpinner);
-    }
-
-    */
-    /*
-    public void prepareItemListener() {
-        listenerSpinner =
-                new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(
-                            AdapterView<?> parent,
-                            View view,
-                            int position,
-                            long id) {
-                        switch (dadesSpinner[position]) {
-                            case "Vermell":
-                                colorFons="Vermell";
-                                break;
-                            case "Blau":
-                                colorFons="Blau";
-                                showMessage();
-                                break;
-                            case "Groc":
-                                colorFons="Groc";
-                                showMessage();
-                                break;
-                            case "Verd":
-                                colorFons="Verd";
-                                showMessage();
-                                break;
-                            case "Rosa":
-                                colorFons="Rosa";
-                                showMessage();
-                                break;
-                            case "Negre":
-                                colorFons="Negre";
-                                showMessage();
-                                break;
-                        }
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                };
-    }*/
-
 
     /*public void saveChanges() {
         Log.d(TAG, "SaveChanges");

@@ -11,22 +11,22 @@ import android.widget.ImageView;
  * Created by alumne on 07/03/17.
  */
 
-public class Activity3BMainProfessional extends AppCompatActivity {
+public class Activity3A_MainUser extends AppCompatActivity{
 
     FloatingActionButton fab;
     View.OnClickListener listener;
     ImageView imageViewManageReservation, imageViewBookingHistory;
-    ImageView imageViewIntroduceAvailability, imageViewEditProfile;
+    ImageView imageViewRateReservation, imageViewEditProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout3b_main_autonomous);
+        setContentView(R.layout.layout3a_main_user);
 
         fab = (FloatingActionButton)findViewById(R.id.fab);
         imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation);
         imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory);
-        imageViewIntroduceAvailability = (ImageView)findViewById(R.id.imageViewIntroduceAvailability);
+        imageViewRateReservation = (ImageView)findViewById(R.id.imageViewRateReservation);
         imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile);
 
         prepareListener();
@@ -34,7 +34,7 @@ public class Activity3BMainProfessional extends AppCompatActivity {
         fab.setOnClickListener(listener);
         imageViewManageReservation.setOnClickListener(listener);
         imageViewBookingHistory.setOnClickListener(listener);
-        imageViewIntroduceAvailability.setOnClickListener(listener);
+        imageViewRateReservation.setOnClickListener(listener);
         imageViewEditProfile.setOnClickListener(listener);
     }
 
@@ -45,6 +45,7 @@ public class Activity3BMainProfessional extends AppCompatActivity {
                 switch(view.getId()){
                     case R.id.fab:
                         initFab();
+                        //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         break;
                     case R.id.imageViewManageReservation:
                         initManageReservation();
@@ -52,39 +53,40 @@ public class Activity3BMainProfessional extends AppCompatActivity {
                     case R.id.imageViewBookingHistory:
                         initBookingHistory();
                         break;
-                    case R.id.imageViewIntroduceAvailability:
-                        initIntroduceAvailability();
+                    case R.id.imageViewRateReservation:
+                        initRateReservation();
                         break;
                     case R.id.imageViewEditProfile:
                         initEditProfile();
                         break;
+
                 }
             }
         };
     }
 
     public void initFab(){
-        Intent intent = new Intent(this, Activity9InfoActivity.class);
+        Intent intent = new Intent(this, Activity9_InfoActivity.class);
         startActivity(intent);
     }
 
     public void initManageReservation(){
-        Intent intent = new Intent(this, Activity5Reserve.class);
+        Intent intent = new Intent(this, Activity5A_Reserve.class);
         startActivity(intent);
     }
 
     public void initBookingHistory(){
-        Intent intent = new Intent(this, BookingHistoryProfessional.class);
+        Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
         startActivity(intent);
     }
 
-    public void initIntroduceAvailability(){
-        Intent intent = new Intent(this, IntroduceAvailabilityActivity.class);
+    public void initRateReservation(){
+        Intent intent = new Intent(this, Activity8A_RateReservations.class);
         startActivity(intent);
     }
 
     public void initEditProfile(){
-        Intent intent = new Intent(this, Activity4EditProfileProfessional.class);
+        Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
         startActivity(intent);
     }
 }

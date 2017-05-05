@@ -9,7 +9,7 @@ import android.widget.TextView;
  * This Activity shows info to company, app, contact and Google Maps NO!! ¿?¿?¿?
  */
 
-public class Activity9InfoActivity extends AppCompatActivity {
+public class Activity9_InfoActivity extends AppCompatActivity {
 
     //@Bind(R.id.textCompany)
     TextView _textCompany;
