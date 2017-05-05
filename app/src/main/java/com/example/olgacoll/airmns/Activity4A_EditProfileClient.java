@@ -48,7 +48,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         prepareListener();
         controlSpinner();
         //loadDataSpinner();
-        buttonAddAddress.setOnClickListener(listener);
+        //buttonAddAddress.setOnClickListener(listener);
         buttonSaveChanges.setOnClickListener(listener);
     }
 

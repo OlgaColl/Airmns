@@ -52,8 +52,9 @@ public class Activity1_LoginActivity extends AppCompatActivity implements Naviga
         //listUsers = loadUsers();
 
         listUsers = new ArrayList<>();
-        User user = new User("Olga", "1234", "Olga", "Coll Pérez", "687452135", "user");
-        User user2 = new User("Eric", "1234", "Eric", "Ayala Andreu", "674218593", "professional");
+        User user = new User("Olga", "1234", "user", "Olga", "Coll Pérez", "687452135");
+        User user2 = new User("Eric", "1234", "professional", "Eric", "Ayala Andreu", "674218593");
+
         listUsers.add(user);
         listUsers.add(user2);
 
@@ -108,6 +109,7 @@ public class Activity1_LoginActivity extends AppCompatActivity implements Naviga
         return list;
     }
 
+
     public void prepareListener(){
         listener = new View.OnClickListener(){
             @Override
@@ -124,23 +126,20 @@ public class Activity1_LoginActivity extends AppCompatActivity implements Naviga
         };
     }
 
+
     public void checkLogin(){
         Log.d(TAG, "Login");
-
-        String mail = editTextEmail.getText().toString();
-        String pwd = editTextPassword.getText().toString();
-
-        
 
 
         int index = -1;
         for(int i = 0; i < listUsers.size(); i++){
-            if(listUsers.get(i).getMail().equals(editTextEmail.getText().toString())){ //comprovació per saber si l'usuari es client o profesional
+            if( listUsers.get(i).getMail().equals(  editTextEmail.getText().toString() )){ //comprovació per saber si l'usuari es client o profesional
                 index = i;
             }
         }
 
-        if (index > 0) {
+
+        if (index >= 0) {
             if(listUsers.get(index).getType().equals("user")){
                 Intent intent = new Intent(this, Activity3A_MainUser.class);
                 startActivity(intent);
@@ -156,6 +155,7 @@ public class Activity1_LoginActivity extends AppCompatActivity implements Naviga
 
 
     }
+
 
     //Go to sign up user
     public void initSignUp(){
