@@ -8,7 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_action_info"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar" >
+        android:theme="@style/AppThemeProva" >
+        <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
+
+        <!-- TODO - Mirar de crear un estil propi perquè es vegin bé buttons i les funcions d'entrar data i hora. -->
+
         <activity
             android:name=".Activity0_SplashScreen"
             android:label="@string/app_name"
@@ -26,14 +30,14 @@
         <activity android:name=".Activity3B_MainProfessional"/>
         <activity android:name=".Activity4A_EditProfileClient"/>
         <activity android:name=".Activity4B_EditProfileProfessional"/>
+        <activity android:name=".Activity5A_UserReserve"/>
+        <activity android:name=".Activity5A_ResumeReserve"/>
+        <activity android:name=".Activity5B_ProfessionalReserve"/>
         <activity android:name=".Activity6A_BookingHistoryUser"/>
-        <activity android:name=".Activity5A_Reserve"/>
-        <activity android:name=".Activity5B_ResumeReserve"/>
+        <activity android:name=".Activity6B_BookingHistoryProfessional"/>
         <activity android:name=".Activity7_ProfessionalAvailability"/>
         <activity android:name=".Activity8A_RateReservations"/>
         <activity android:name=".Activity8B_ValueReserve"/>
-
-        <!-- TODO Activities 6-8 -->
         <activity android:name=".Activity9_InfoActivity"/>
     </application>
 </manifest>

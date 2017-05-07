@@ -69,12 +69,12 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     }
 
     public void initManageReservation(){
-        Intent intent = new Intent(this, Activity5A_Reserve.class);
+        Intent intent = new Intent(this, Activity5B_ProfessionalReserve.class);
         startActivity(intent);
     }
 
     public void initBookingHistory(){
-        Intent intent = new Intent(this, BookingHistoryProfessional.class);
+        Intent intent = new Intent(this, Activity6B_BookingHistoryProfessional.class);
         startActivity(intent);
     }
 

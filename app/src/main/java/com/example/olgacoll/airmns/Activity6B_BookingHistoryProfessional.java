@@ -7,11 +7,11 @@ import android.support.v7.app.AppCompatActivity;
  * Created by olgacoll on 25/4/17.
  */
 
-public class BookingHistoryProfessional extends AppCompatActivity{
+public class Activity6B_BookingHistoryProfessional extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.booking_history_professional);
+        setContentView(R.layout.layout6b_booking_history_professional);
     }
 }

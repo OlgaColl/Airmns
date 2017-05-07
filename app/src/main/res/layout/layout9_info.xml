@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_darker">
+    android:background="@color/primary_darker"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
 
-    <TextView android:id="@+id/titleCompany"
+    <TextView
+        android:id="@+id/titleCompany"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="24dp"
-        android:text="@string/titleCompany"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:textSize="20dip"/>
+        android:text="@string/titleCompany"
+        android:textColor="@android:color/white"
+        android:textSize="20dip"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textCompany"
@@ -19,7 +24,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="20dp"
-        android:gravity="left"
+        android:layout_marginRight="20dp"
+        android:gravity="center"
         android:text="@string/infoCompany"
         android:textSize="16dip" />
 
@@ -27,53 +33,66 @@
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="20dip"
-        android:background="#c0c0c0"/>
+        android:background="#c0c0c0" />
 
-    <TextView android:id="@+id/titleApp"
+    <TextView
+        android:id="@+id/titleApp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="@string/app_name"
         android:gravity="center_horizontal"
-        android:textSize="20dip"/>
+        android:text="@string/app_name"
+        android:textColor="@android:color/white"
+        android:textSize="20dip"
+        android:textStyle="bold" />
 
-    <TextView android:id="@+id/infoApp"
+    <TextView
+        android:id="@+id/infoApp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="@string/infoApp"
         android:layout_marginLeft="20dp"
-        android:gravity="left"
-        android:textSize="16dip"/>
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/infoApp"
+        android:textSize="16dip" />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="20dip"
-        android:background="#c0c0c0"/>
+        android:background="#c0c0c0" />
 
-    <TextView android:id="@+id/titleContact"
+    <TextView
+        android:id="@+id/titleContact"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="@string/titleContact"
         android:gravity="center_horizontal"
-        android:textSize="20dip"/>
+        android:text="@string/titleContact"
+        android:textColor="@android:color/white"
+        android:textSize="20dip"
+        android:textStyle="bold" />
 
-    <TextView android:id="@+id/infoContactTelf"
+    <TextView
+        android:id="@+id/infoContactTelf"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/infoContactTelf"
         android:layout_marginLeft="20dp"
-        android:gravity="left"
-        android:textSize="16dip"/>
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/infoContactTelf"
+        android:textSize="16dip" />
 
-    <TextView android:id="@+id/infoContactMail"
+    <TextView
+        android:id="@+id/infoContactMail"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
-        android:text="@string/infoContactMail"
         android:layout_marginLeft="20dp"
-        android:gravity="left"
-        android:textSize="16dip"/>
+        android:layout_marginRight="20dp"
+        android:gravity="center"
+        android:text="@string/infoContactMail"
+
+        android:textSize="16dip" />
 </LinearLayout>

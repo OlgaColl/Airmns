@@ -71,7 +71,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
     }
 
     public void initManageReservation(){
-        Intent intent = new Intent(this, Activity5A_Reserve.class);
+        Intent intent = new Intent(this, Activity5A_UserReserve.class);
         startActivity(intent);
     }
 

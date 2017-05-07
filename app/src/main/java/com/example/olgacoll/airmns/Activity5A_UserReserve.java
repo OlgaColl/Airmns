@@ -27,7 +27,7 @@ import java.util.Calendar;
  * Created by alumne on 10/03/17.
  */
 
-public class Activity5A_Reserve extends Activity {
+public class Activity5A_UserReserve extends Activity {
 
 
     // -- ATTRIBUTES --
@@ -362,7 +362,7 @@ public class Activity5A_Reserve extends Activity {
             mBundle.putDouble("total_pay_reserve", total_pay);
 
             //Start ResumeReserve activity
-            Intent intent = new Intent(this, Activity5B_ResumeReserve.class);
+            Intent intent = new Intent(this, Activity5A_ResumeReserve.class);
             // set Bundle to intent
             intent.putExtras(mBundle);
             startActivity(intent);

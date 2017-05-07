@@ -14,7 +14,7 @@ import java.util.Date;
  * Created by ericayala on 1/5/17.
  */
 
-public class Activity5B_ResumeReserve extends Activity {
+public class Activity5A_ResumeReserve extends Activity {
 
 
     // -- ATTRIBUTES --
@@ -53,7 +53,7 @@ public class Activity5B_ResumeReserve extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout5b_resume_reserve);
+        setContentView(R.layout.layout5a_resume_reserve);
 
         //Get bundle attributes
         mbundle = this.getIntent().getExtras();

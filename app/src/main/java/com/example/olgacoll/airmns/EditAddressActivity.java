@@ -42,7 +42,7 @@ public class EditAddressActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4a_edit_address);
+        setContentView(R.layout.layout4_edit_address);
         //ButterKnife.bind(this);
 
         _saveChanges.setOnClickListener(new View.OnClickListener() {

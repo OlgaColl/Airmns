@@ -25,7 +25,7 @@ public class Activity4B_EditProfileProfessional extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4a_edit_profile_client);
+        setContentView(R.layout.layout4_edit_profile);
 
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);

@@ -19,7 +19,8 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     private static final String TAG = "Activity4A_EditProfileClient";
 
-    EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2, editTextAddress;
+    EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2;
+    //EditText editTextAddress;
     Button buttonAddAddress, buttonSaveChanges;
     Spinner spinnerAddress;
     String dataAddress[];
@@ -31,20 +32,20 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4a_edit_profile_client);
+        setContentView(R.layout.layout4_edit_profile);
 
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
-        editTextAddress = (EditText)findViewById(R.id.input_address);
+        //editTextAddress = (EditText)findViewById(R.id.input_address);
         //buttonAddAddress = (Button)findViewById(R.id.buttonAddAddress);
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
         spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
         bundle = new Bundle();
-        editTextAddress.setVisibility(View.INVISIBLE);
+        //editTextAddress.setVisibility(View.INVISIBLE);
         prepareListener();
         controlSpinner();
         //loadDataSpinner();
@@ -107,7 +108,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                     int position,
                     long id) {
 
-                editTextAddress.setText(dataAddress[position]);
+                //editTextAddress.setText(dataAddress[position]);
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
