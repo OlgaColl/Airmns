@@ -12,7 +12,6 @@
         <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
 
         <!-- TODO - Mirar de crear un estil propi perquè es vegin bé buttons i les funcions d'entrar data i hora. -->
-
         <activity
             android:name=".Activity0_SplashScreen"
             android:label="@string/app_name"

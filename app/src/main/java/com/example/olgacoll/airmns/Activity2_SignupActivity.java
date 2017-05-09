@@ -16,7 +16,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     private static final String TAG = "Activity2_SignupActivity";
 
-    EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
+    EditText editTextName, editTextLastname, editTextEmail, editTextPrefix, editTextMobile, editTextPassword, editTextPassword2;
     Button buttonSignup;
     TextView textViewLogin;
     RadioButton radioButtonClient, radioButtonProfessional;
@@ -31,6 +31,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextEmail = (EditText)findViewById(R.id.input_email);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
+        editTextPrefix = (EditText)findViewById(R.id.input_prefix);
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
         buttonSignup = (Button)findViewById(R.id.btn_signup);
@@ -70,7 +71,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void signup() {
-        Log.d(TAG, "Signup");
+        //Log.d(TAG, "Signup");
 
         if (!validate()) {
             onSignupFailed();
@@ -88,6 +89,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         String name = editTextName.getText().toString();
         String lastname = editTextLastname.getText().toString();
         //String address = _addressText.getText().toString();
+        String prefix = editTextPrefix.getText().toString();
         String mobile = editTextMobile.getText().toString();
         String email = editTextEmail.getText().toString();
         String password = editTextPassword.getText().toString();
@@ -127,6 +129,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         String lastname = editTextLastname.getText().toString();
         //String address = _addressText.getText().toString();
         String email = editTextEmail.getText().toString();
+        String prefix = editTextPrefix.getText().toString();
         String mobile = editTextMobile.getText().toString();
         String password = editTextPassword.getText().toString();
         String reEnterPassword = editTextPassword2.getText().toString();
@@ -151,6 +154,13 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         } else {
             _addressText.setError(null);
         }*/
+        
+        if (prefix.isEmpty() || prefix.charAt(0) != '+'){
+            editTextPrefix.setError("First character must be '+'");
+            valid = false;
+        } else {
+            editTextPrefix.setError(null);
+        }
 
         if (mobile.isEmpty() || mobile.length()!=10) {
             editTextMobile.setError("Enter Valid Mobile Number");

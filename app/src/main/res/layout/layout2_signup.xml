@@ -33,6 +33,19 @@
                 android:hint="Address" />
         </android.support.design.widget.TextInputLayout-->
 
+        <!-- Name Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="Name" />
+        </android.support.design.widget.TextInputLayout>
+
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,37 +90,53 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+            </LinearLayout>
+
             <EditText android:id="@+id/input_reEnterPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:hint="Re-enter Password"/>
+
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Name Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:hint="Name" />
-        </android.support.design.widget.TextInputLayout>
-
-        <!-- Mobile number -->
-        <android.support.design.widget.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_mobile"
+            android:gravity="bottom|center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <!-- Prefix phone -->
+            <EditText
+                android:id="@+id/input_prefix"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:hint="+34"
+                android:inputType="number" />
+
+            <!-- Mobile number -->
+            <EditText
+                android:id="@+id/input_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Mobile Number"
                 android:inputType="number"
-                android:hint="Mobile Number" />
+                android:layout_weight="0.65" />
+
+            </LinearLayout>
         </android.support.design.widget.TextInputLayout>
 
         <!-- User type Label -->
