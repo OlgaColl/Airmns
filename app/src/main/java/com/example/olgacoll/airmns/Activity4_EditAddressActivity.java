@@ -19,9 +19,9 @@ import android.widget.Toast;
     TODO modificar una direcció en concret que gestionarem des d'un Spinner, a l'Activity anterior (Edit ProfileActivity),
 
  */
-public class EditAddressActivity extends AppCompatActivity{
+public class Activity4_EditAddressActivity extends AppCompatActivity{
 
-    private static final String TAG = "EditAddressActivity";
+    private static final String TAG = "Activity4_EditAddressActivity";
 
     /*@Bind(R.id.change_address) EditText _addressText;
     @Bind(R.id.change_postal_code) EditText _postal_codeText;
@@ -45,7 +45,7 @@ public class EditAddressActivity extends AppCompatActivity{
         setContentView(R.layout.layout4_edit_address);
         //ButterKnife.bind(this);
 
-        _saveChanges.setOnClickListener(new View.OnClickListener() {
+        /*_saveChanges.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 saveChanges();
@@ -61,11 +61,11 @@ public class EditAddressActivity extends AppCompatActivity{
                 finish();
                 //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
-        });
+        });*/
     }
 
     public void saveChanges() {
-        Log.d(TAG, "SaveChanges");
+        //Log.d(TAG, "SaveChanges");
 
         if (!validate()) {
             onEditAddressFailed();
@@ -74,7 +74,7 @@ public class EditAddressActivity extends AppCompatActivity{
 
         _saveChanges.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(EditAddressActivity.this, R.style.AppTheme);
+        final ProgressDialog progressDialog = new ProgressDialog(Activity4_EditAddressActivity.this, R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Saving changes...");
         progressDialog.show();

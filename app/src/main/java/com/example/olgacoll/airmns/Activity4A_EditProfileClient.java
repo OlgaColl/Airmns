@@ -80,8 +80,8 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     public void addAddress(){
         Log.d("Add address", "Add address");
-        /*Intent intent = new Intent(this, Activity.class);
-        startActivity(intent);*/
+        Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
+        startActivity(intent);
     }
 
     private void removeAddress(){
@@ -91,6 +91,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     private void showRemoveAlert(){
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setTitle("Remove address");
         builder1.setMessage("Are you sure to delete the address " + dataAddress[indexAddress].toString() + "?");
         builder1.setCancelable(true);
 

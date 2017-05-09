@@ -29,6 +29,7 @@
         <activity android:name=".Activity3B_MainProfessional"/>
         <activity android:name=".Activity4A_EditProfileClient"/>
         <activity android:name=".Activity4B_EditProfileProfessional"/>
+        <activity android:name=".Activity4_EditAddressActivity"/>
         <activity android:name=".Activity5A_UserReserve"/>
         <activity android:name=".Activity5A_ResumeReserve"/>
         <activity android:name=".Activity5B_ProfessionalReserve"/>
