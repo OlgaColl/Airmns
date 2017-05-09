@@ -154,7 +154,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         } else {
             _addressText.setError(null);
         }*/
-        
+
         if (prefix.isEmpty() || prefix.charAt(0) != '+'){
             editTextPrefix.setError("First character must be '+'");
             valid = false;

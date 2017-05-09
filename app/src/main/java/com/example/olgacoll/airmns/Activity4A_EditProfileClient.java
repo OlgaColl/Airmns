@@ -4,8 +4,10 @@ package com.example.olgacoll.airmns;
  * Created by olgacoll on 14/3/17.
  */
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,9 +23,10 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2;
     //EditText editTextAddress;
-    Button buttonAddAddress, buttonSaveChanges;
+    Button buttonAddAddress, buttonRemoveAddress, buttonSaveChanges;
     Spinner spinnerAddress;
     String dataAddress[];
+    int indexAddress;
     Bundle bundle;
 
     View.OnClickListener listener;
@@ -40,23 +43,20 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         editTextPassword = (EditText)findViewById(R.id.input_password);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
         //editTextAddress = (EditText)findViewById(R.id.input_address);
-        //buttonAddAddress = (Button)findViewById(R.id.buttonAddAddress);
+        buttonAddAddress = (Button)findViewById(R.id.button_add_L4_edit_profile);
+        buttonRemoveAddress = (Button)findViewById(R.id.button_remove_L4_edit_profile);
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
         spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
 
+        indexAddress = 0; //assignamos un indice por defecto
         bundle = new Bundle();
         //editTextAddress.setVisibility(View.INVISIBLE);
         prepareListener();
         controlSpinner();
         //loadDataSpinner();
-        //buttonAddAddress.setOnClickListener(listener);
+        buttonAddAddress.setOnClickListener(listener);
+        buttonRemoveAddress.setOnClickListener(listener);
         buttonSaveChanges.setOnClickListener(listener);
-    }
-
-    public void loadDataSpinner(){
-        for(int i = 1; i < 21; i++){
-            dataAddress[i] = "Address " + i ;
-        }
     }
 
     public void prepareListener(){
@@ -64,9 +64,12 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 switch(view.getId()){
-                    /*case R.id.buttonAddAddress:
+                    case R.id.button_add_L4_edit_profile:
                         addAddress();
-                        break;*/
+                        break;
+                    case R.id.button_remove_L4_edit_profile:
+                        removeAddress();
+                        break;
                     case R.id.btn_save_changes:
                         saveChanges();
                         break;
@@ -77,6 +80,39 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     public void addAddress(){
         Log.d("Add address", "Add address");
+        /*Intent intent = new Intent(this, Activity.class);
+        startActivity(intent);*/
+    }
+
+    private void removeAddress(){
+        Log.d("Remove address", "Remove address");
+        showRemoveAlert();
+    }
+
+    private void showRemoveAlert(){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Are you sure to delete the address " + dataAddress[indexAddress].toString() + "?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        //dialog.cancel();
+                        //Add toast to confirm remove item
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 
     public void saveChanges(){
@@ -108,6 +144,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                     int position,
                     long id) {
 
+                indexAddress = position;
                 //editTextAddress.setText(dataAddress[position]);
             }
             @Override
