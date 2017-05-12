@@ -5,6 +5,9 @@ package com.example.olgacoll.airmns.model;
  */
 
 public class Address {
+
+    //--Attributes--
+
     private int id_address;
     private int id_user;
     private String street;
@@ -14,6 +17,10 @@ public class Address {
     private String door;
     private String city;
     private String postal_code;
+
+
+
+    //--Constructors--
 
     public Address(){
 
@@ -30,6 +37,10 @@ public class Address {
         this.city = city;
         this.postal_code = postal_code;
     }
+
+
+
+    //--Getters & Setters--
 
     public int getId_address() {
         return id_address;

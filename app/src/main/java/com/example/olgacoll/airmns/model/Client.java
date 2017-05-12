@@ -8,17 +8,28 @@ import java.util.List;
 
 public class Client extends User{
 
+    //--Attributes--
+
     private List<String> address;
 
-    public Client(){
 
+
+    //--Constructors--
+
+    public Client(){ }
+
+    public Client(String mail, String password, String name, String lastname, String prefix_phone, String phone){
+        super(mail, password, name, lastname, prefix_phone, phone);
     }
 
-    public Client(String mail, String password, String name, String lastname, String phone, List<String> address){
-        super(mail, password, name, lastname, phone);
+    public Client(String mail, String password, String name, String lastname, String prefix_phone, String phone, List<String> address){
+        super(mail, password, name, lastname, prefix_phone, phone);
         this.address = address;
     }
 
+
+
+    //--Getters & Setters--
 
     public List<String> getAddress() {
         return address;

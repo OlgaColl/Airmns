@@ -9,16 +9,28 @@ import java.util.List;
 
 public class Professional extends User{
 
+    //--Attributes--
+
     private List<Boolean> availability;
 
-    public Professional(){
 
+
+    //--Constructors--
+
+    public Professional(){ }
+
+    public Professional(String mail, String password, String name, String lastname, String prefix_phone, String phone){
+        super(mail, password, name, lastname, prefix_phone, phone);
     }
 
-    public Professional(String mail, String password, String name, String lastname, String phone,  List<Boolean> availability){
-        super(mail, password, name, lastname, phone);
+    public Professional(String mail, String password, String name, String lastname, String prefix_phone, String phone,  List<Boolean> availability){
+        super(mail, password, name, lastname, prefix_phone, phone);
         this.availability = availability;
     }
+
+
+
+    //--Getters & Setters
 
     public List<Boolean> getAvailability() {
         return availability;
@@ -27,4 +39,5 @@ public class Professional extends User{
     public void setAvailability(List<Boolean> availability) {
         this.availability = availability;
     }
+
 }

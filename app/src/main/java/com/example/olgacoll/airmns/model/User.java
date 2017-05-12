@@ -6,35 +6,48 @@ package com.example.olgacoll.airmns.model;
 
 public class User {
 
+
+    //--Attributes--
+
     private int id;
     private String mail;
     private String password;
     private String type;
     private String name;
     private String lastname;
+    private String prefix_phone;
     private String phone;
 
+
+
+    //--Constructors--
 
     public User(){
 
     }
 
-    public User(String mail, String password, String name, String lastname, String phone) {
+    public User(String mail, String password, String name, String lastname, String prefix_phone, String phone) {
         this.mail = mail;
         this.password = password;
         this.name = name;
         this.lastname = lastname;
+        this.prefix_phone = prefix_phone;
         this.phone = phone;
     }
 
-    public User(String mail, String password, String type, String name, String lastname, String phone) {
+    public User(String mail, String password, String type, String name, String lastname, String prefix_phone, String phone) {
         this.mail = mail;
         this.password = password;
         this.type = type;
         this.name = name;
         this.lastname = lastname;
+        this.prefix_phone = prefix_phone;
         this.phone = phone;
     }
+
+
+
+    //--Getters & Setters--
 
     public int getId() {
         return id;
@@ -84,6 +97,14 @@ public class User {
         this.lastname = lastname;
     }
 
+    public String getPrefix_phone() {
+        return prefix_phone;
+    }
+
+    public void setPrefix_phone(String prefix_phone) {
+        this.prefix_phone = prefix_phone;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -91,4 +112,6 @@ public class User {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
 }
