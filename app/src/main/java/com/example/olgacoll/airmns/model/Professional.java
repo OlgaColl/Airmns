@@ -30,7 +30,7 @@ public class Professional extends User{
 
 
 
-    //--Getters & Setters
+    //--Getters & Setters--
 
     public List<Boolean> getAvailability() {
         return availability;
