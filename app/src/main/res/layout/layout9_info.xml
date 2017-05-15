@@ -7,26 +7,26 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/titleCompany"
+        android:id="@+id/titleCompany_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
-        android:text="@string/titleCompany"
+        android:text="@string/txt_titleCompany_L9_info"
         android:textColor="@android:color/white"
         android:textSize="20dip"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textCompany"
+        android:id="@+id/textCompany_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="@string/infoCompany"
+        android:text="@string/txt_infoCompany_L9_info"
         android:textSize="16dip" />
 
     <View
@@ -36,7 +36,7 @@
         android:background="#c0c0c0" />
 
     <TextView
-        android:id="@+id/titleApp"
+        android:id="@+id/titleApp_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
@@ -47,14 +47,14 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/infoApp"
+        android:id="@+id/infoApp_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="@string/infoApp"
+        android:text="@string/txt_infoApp_L9_info"
         android:textSize="16dip" />
 
     <View
@@ -64,35 +64,35 @@
         android:background="#c0c0c0" />
 
     <TextView
-        android:id="@+id/titleContact"
+        android:id="@+id/titleContact_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:gravity="center_horizontal"
-        android:text="@string/titleContact"
+        android:text="@string/txt_titleContact_L9_info"
         android:textColor="@android:color/white"
         android:textSize="20dip"
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/infoContactTelf"
+        android:id="@+id/infoContactTelf_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="@string/infoContactTelf"
+        android:text="@string/txt_infoContactTelf_L9_info"
         android:textSize="16dip" />
 
     <TextView
-        android:id="@+id/infoContactMail"
+        android:id="@+id/infoContactMail_L9_info"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:gravity="center"
-        android:text="@string/infoContactMail"
+        android:text="@string/txt_infoContactMail_L9_info"
 
         android:textSize="16dip" />
 </LinearLayout>

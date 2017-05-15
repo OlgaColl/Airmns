@@ -12,14 +12,14 @@
 
     <!-- TITLE -->
     <TextView
-        android:id="@+id/title_manage_reserve"
+        android:id="@+id/title_manage_reserve_5A_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.33"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="MANAGE RESERVE"
+        android:text="@string/txt_title_manage_reserve_5A_reserve"
         android:textColor="@android:color/background_light"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -29,11 +29,11 @@
 
     <!-- DATE -->
     <TextView
-        android:id="@+id/date_text"
+        android:id="@+id/date_text_5A_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Date"
+        android:text="@string/txt_date_text_5A_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -45,23 +45,23 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/print_date"
+            android:id="@+id/print_date_5A_reserve"
             android:layout_width="85dp"
             android:layout_height="match_parent"
             android:layout_weight="0.59"
             android:gravity="bottom"
-            android:text="1/1/2000"
+            android:text="@string/txt_print_date_5A_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
             android:textSize="18sp" />
 
         <!-- BUTTON -->
         <Button
-            android:id="@+id/button_date"
+            android:id="@+id/button_date_5A_reserve"
             android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.24"
-            android:text="Input date" />
+            android:text="@string/txt_button_date_5A_reserve" />
 
     </LinearLayout>
 
@@ -77,11 +77,11 @@
 
     <!-- Time -->
     <TextView
-        android:id="@+id/time_text"
+        android:id="@+id/time_text_5A_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Time"
+        android:text="@string/txt_time_text_5A_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -93,23 +93,23 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/print_time"
+            android:id="@+id/print_time_5A_reserve"
             android:layout_width="85dp"
             android:layout_height="match_parent"
             android:layout_weight="0.59"
             android:gravity="bottom"
             android:paddingBottom="3dp"
-            android:text="00:00"
+            android:text="@string/txt_print_time_5A_reserve"
             android:textColor="#1b4f72"
             android:textSize="18sp" />
 
         <!-- BUTTON -->
         <Button
-            android:id="@+id/button_time"
+            android:id="@+id/button_time_5A_reserve"
             android:layout_width="74dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.24"
-            android:text="Input time" />
+            android:text="@string/txt_button_time_5A_reserve" />
 
     </LinearLayout>
 
@@ -125,17 +125,17 @@
 
     <!-- LONG TIME -->
     <TextView
-        android:id="@+id/long_time_text"
+        android:id="@+id/long_time_text_5A_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Long time"
+        android:text="@string/txt_long_time_text_5A_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
 
     <Spinner
-        android:id="@+id/spinner_long_time"
+        android:id="@+id/spinner_long_time_5A_reserve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
@@ -153,17 +153,17 @@
 
     <!-- ADDRESS -->
     <TextView
-        android:id="@+id/address_text"
+        android:id="@+id/address_text_5A_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Address"
+        android:text="@string/txt_address_text_5A_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
 
     <Spinner
-        android:id="@+id/spinner_address"
+        android:id="@+id/spinner_address_5A_reserve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="false"
@@ -180,17 +180,17 @@
 
     <!-- OBSERVATIONS -->
     <TextView
-        android:id="@+id/observations_text"
+        android:id="@+id/observations_text_5A_reserve"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Observations"
+        android:text="@string/txt_observations_text_5A_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
 
     <EditText
-        android:id="@+id/input_observations"
+        android:id="@+id/input_observations_5A_reserve"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.09"
@@ -219,21 +219,21 @@
 
             <!-- TOTAL PAY-->
             <TextView
-                android:id="@+id/total_pay_text"
+                android:id="@+id/total_pay_text_5A_reserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="TOTAL: "
+                android:text="@string/txt_total_pay_text_5A_reserve"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/total_value_text"
+                android:id="@+id/total_value_text_5A_reserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="0€"
+                android:text="@string/txt_total_value_text_5A_reserve"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
@@ -244,11 +244,11 @@
 
         <!-- BUTTON CONTINUE-->
         <Button
-            android:id="@+id/button_pay"
+            android:id="@+id/button_pay_5A_reserve"
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="CONTINUE" />
+            android:text="@string/txt_button_pay_5A_reserve" />
 
     </LinearLayout>
 

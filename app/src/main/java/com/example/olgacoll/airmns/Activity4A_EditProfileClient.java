@@ -40,13 +40,13 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
-        editTextPassword = (EditText)findViewById(R.id.input_password);
+        editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
         //editTextAddress = (EditText)findViewById(R.id.input_address);
         buttonAddAddress = (Button)findViewById(R.id.button_add_L4_edit_profile);
         buttonRemoveAddress = (Button)findViewById(R.id.button_remove_L4_edit_profile);
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
-        spinnerAddress = (Spinner)findViewById(R.id.spinner_address);
+        spinnerAddress = (Spinner)findViewById(R.id.spinner_address_5A_reserve);
 
         indexAddress = 0; //assignamos un indice por defecto
         bundle = new Bundle();
@@ -125,9 +125,9 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     //Control address Spinner
     private void controlSpinner() {
         //Address
-        dataAddress = getResources().getStringArray(R.array.address_value);
+        dataAddress = getResources().getStringArray(R.array.txt_time_value_L5A_reserve);
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.address_value, android.R.layout.simple_list_item_1);
+        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.txt_address_value_5A_reserve, android.R.layout.simple_list_item_1);
         // Specify the layout to use when the list of choices appears
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner

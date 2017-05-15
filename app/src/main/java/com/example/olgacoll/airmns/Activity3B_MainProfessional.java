@@ -23,11 +23,11 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3b_main_autonomous);
 
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation);
-        imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory);
-        imageViewIntroduceAvailability = (ImageView)findViewById(R.id.imageViewIntroduceAvailability);
-        imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile);
+        fab = (FloatingActionButton)findViewById(R.id.fab_L3B_main_professional);
+        imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation_L3B_main_professional);
+        imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory_L3B_main_professional);
+        imageViewIntroduceAvailability = (ImageView)findViewById(R.id.imageViewIntroduceAvailability_L3B_main_professional);
+        imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile_L3B_main_professional);
 
         prepareListener();
 
@@ -43,19 +43,19 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 switch(view.getId()){
-                    case R.id.fab:
+                    case R.id.fab_L3B_main_professional:
                         initFab();
                         break;
-                    case R.id.imageViewManageReservation:
+                    case R.id.imageViewManageReservation_L3B_main_professional:
                         initManageReservation();
                         break;
-                    case R.id.imageViewBookingHistory:
+                    case R.id.imageViewBookingHistory_L3B_main_professional:
                         initBookingHistory();
                         break;
-                    case R.id.imageViewIntroduceAvailability:
+                    case R.id.imageViewIntroduceAvailability_L3B_main_professional:
                         initIntroduceAvailability();
                         break;
-                    case R.id.imageViewEditProfile:
+                    case R.id.imageViewEditProfile_L3B_main_professional:
                         initEditProfile();
                         break;
                 }

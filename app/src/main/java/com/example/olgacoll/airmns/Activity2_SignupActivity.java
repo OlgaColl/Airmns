@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,15 +28,15 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
-        editTextEmail = (EditText)findViewById(R.id.input_email);
+        editTextEmail = (EditText)findViewById(R.id.input_email_L1_login);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
         editTextPrefix = (EditText)findViewById(R.id.input_prefix);
-        editTextPassword = (EditText)findViewById(R.id.input_password);
+        editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
-        buttonSignup = (Button)findViewById(R.id.btn_signup);
-        textViewLogin = (TextView)findViewById(R.id.link_login);
-        radioButtonClient = (RadioButton)findViewById(R.id.radio_client);
-        radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional);
+        buttonSignup = (Button)findViewById(R.id.btn_signup_L2_signup);
+        textViewLogin = (TextView)findViewById(R.id.link_login_L2_sign_up);
+        radioButtonClient = (RadioButton)findViewById(R.id.radio_client_L2_sign_up);
+        radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional_L2_sign_up);
 
         onPrepareListener();
 
@@ -53,17 +52,17 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch(v.getId()){
-                    case R.id.btn_signup:
+                    case R.id.btn_signup_L2_signup:
                         signup();
                         break;
-                    case R.id.link_login:
+                    case R.id.link_login_L2_sign_up:
                         Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
                         startActivity(intent);
                         finish();
                         break;
-                    case R.id.radio_client:
+                    case R.id.radio_client_L2_sign_up:
                         break;
-                    case R.id.radio_professional:
+                    case R.id.radio_professional_L2_sign_up:
                         break;
                 }
             }

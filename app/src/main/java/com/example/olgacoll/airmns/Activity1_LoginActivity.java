@@ -2,11 +2,8 @@ package com.example.olgacoll.airmns;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -40,10 +37,10 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout1_login);
 
-        editTextEmail = (EditText)findViewById(R.id.input_email);
-        editTextPassword = (EditText)findViewById(R.id.input_password);
-        buttonLogin = (Button)findViewById(R.id.btn_login);
-        textViewSignUpLink = (TextView)findViewById(R.id.link_signup);
+        editTextEmail = (EditText)findViewById(R.id.input_email_L1_login);
+        editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
+        buttonLogin = (Button)findViewById(R.id.btn_login_L1_login);
+        textViewSignUpLink = (TextView)findViewById(R.id.link_signup_L1_login);
 
         //listUsers = loadUsers();
 

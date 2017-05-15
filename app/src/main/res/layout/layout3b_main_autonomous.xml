@@ -11,7 +11,7 @@
     tools:context="com.example.olgacoll.airmns.Activity3B_MainProfessional">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_L3B_main_professional"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top|end"
@@ -42,7 +42,7 @@
         android:layout_weight="0.08"
         android:gravity="center">
 
-        <ImageView android:id="@+id/imageViewManageReservation"
+        <ImageView android:id="@+id/imageViewManageReservation_L3B_main_professional"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/button_3b_1_manage_reservation"
@@ -50,7 +50,7 @@
             android:layout_weight="0.15"/>
 
 
-        <ImageView android:id="@+id/imageViewBookingHistory"
+        <ImageView android:id="@+id/imageViewBookingHistory_L3B_main_professional"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/button_3b_2_booking_history"
@@ -75,7 +75,7 @@
         android:layout_weight="0.08"
         android:gravity="center">
 
-        <ImageView android:id="@+id/imageViewIntroduceAvailability"
+        <ImageView android:id="@+id/imageViewIntroduceAvailability_L3B_main_professional"
             android:layout_height="match_parent"
             android:src="@drawable/button_3b_3_introduce_availability"
             android:scaleType="fitCenter"
@@ -83,7 +83,7 @@
             android:layout_width="60dp" />
 
 
-        <ImageView android:id="@+id/imageViewEditProfile"
+        <ImageView android:id="@+id/imageViewEditProfile_L3B_main_professional"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:src="@drawable/button_3b_4_edit_profile"

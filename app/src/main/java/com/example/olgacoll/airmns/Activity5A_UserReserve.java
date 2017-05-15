@@ -107,21 +107,21 @@ public class Activity5A_UserReserve extends Activity {
     //-- Prepare views--
     private void prepareViews() {
         //Date
-        tv_date = (TextView) findViewById(R.id.print_date);
-        b_input_date = (Button) findViewById(R.id.button_date);
+        tv_date = (TextView) findViewById(R.id.print_date_5A_reserve);
+        b_input_date = (Button) findViewById(R.id.button_date_5A_reserve);
         //Time
-        tv_time = (TextView) findViewById(R.id.print_time);
-        b_input_time = (Button) findViewById(R.id.button_time);
+        tv_time = (TextView) findViewById(R.id.print_time_5A_reserve);
+        b_input_time = (Button) findViewById(R.id.button_time_5A_reserve);
         //Long time
-        spinner_long_time = (Spinner) findViewById(R.id.spinner_long_time);
+        spinner_long_time = (Spinner) findViewById(R.id.spinner_long_time_5A_reserve);
         //Address
-        spinner_address = (Spinner) findViewById(R.id.spinner_address);
+        spinner_address = (Spinner) findViewById(R.id.spinner_address_5A_reserve);
         //Observations
-        input_observations = (EditText) findViewById(R.id.input_observations);
+        input_observations = (EditText) findViewById(R.id.input_observations_5A_reserve);
         //Button continue
-        b_continue = (Button) findViewById(R.id.button_pay);
+        b_continue = (Button) findViewById(R.id.button_pay_5A_reserve);
         //Total pay
-        tv_total_pay = (TextView) findViewById(R.id.total_value_text);
+        tv_total_pay = (TextView) findViewById(R.id.total_value_text_5A_reserve);
     }
 
     // -- Prepare Reserve objects --
@@ -141,19 +141,19 @@ public class Activity5A_UserReserve extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     //DATE
-                    case R.id.button_date: //Choose date
+                    case R.id.button_date_5A_reserve: //Choose date
                         mostrarCalendario(v);
                         break;
                     //TIME
-                    case R.id.button_time: //Choose date
+                    case R.id.button_time_5A_reserve: //Choose date
                         mostrarHora(v);
                         break;
                     //OBSERVATIONS
-                    case R.id.input_observations: //Input observations
+                    case R.id.input_observations_5A_reserve: //Input observations
 
                         break;
                     //CONTINUE
-                    case R.id.button_pay: //Continue
+                    case R.id.button_pay_5A_reserve: //Continue
                         //Toast.makeText(getApplicationContext(), "CONTINUE", Toast.LENGTH_SHORT).show();
                         reserveDone();
                         break;
@@ -202,10 +202,10 @@ public class Activity5A_UserReserve extends Activity {
     //Control long time and address spinner
     private void controlSpinner() {
         //TIME
-        datos_time = getResources().getStringArray(R.array.time_value);
+        datos_time = getResources().getStringArray(R.array.txt_time_value_L5A_reserve);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this, R.array.time_value, android.R.layout.simple_list_item_1);
+                ArrayAdapter.createFromResource(this, R.array.txt_time_value_L5A_reserve, android.R.layout.simple_list_item_1);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
@@ -214,10 +214,10 @@ public class Activity5A_UserReserve extends Activity {
 
 
         //Address
-        datos_address = getResources().getStringArray(R.array.address_value);
+        datos_address = getResources().getStringArray(R.array.txt_address_value_5A_reserve);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 =
-                ArrayAdapter.createFromResource(this, R.array.address_value, android.R.layout.simple_list_item_1);
+                ArrayAdapter.createFromResource(this, R.array.txt_address_value_5A_reserve, android.R.layout.simple_list_item_1);
         // Specify the layout to use when the list of choices appears
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner

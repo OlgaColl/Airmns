@@ -19,7 +19,7 @@
         android:layout_weight="0.18"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="VALUE RESERVE"
+        android:text="@string/txt_title_valorate_reserve_L8_value_reserve"
         android:textColor="@android:color/background_light"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -53,7 +53,7 @@
                 android:layout_weight="0.05"
                 android:gravity="bottom"
                 android:paddingBottom="3dp"
-                android:text="User name"
+                android:text="@string/txt_user_name_L8_value_reserve"
                 android:textColor="#1b4f72"
                 android:textSize="14sp"
                 android:paddingLeft="3dp" />
@@ -66,7 +66,7 @@
                 android:layout_weight="0.05"
                 android:gravity="bottom"
                 android:paddingBottom="3dp"
-                android:text="User surname"
+                android:text="@string/txt_user_surname_L8_value_reserve"
                 android:textColor="#1b4f72"
                 android:textSize="14sp"
                 android:paddingLeft="3dp" />
@@ -79,7 +79,7 @@
                 android:layout_weight="0.05"
                 android:gravity="bottom"
                 android:paddingBottom="3dp"
-                android:text="user@mailinator.com"
+                android:text="@string/txt_user_email_L8_value_reserve"
                 android:textColor="#1b4f72"
                 android:textSize="14sp"
                 android:paddingLeft="3dp" />
@@ -92,7 +92,7 @@
                 android:layout_weight="0.05"
                 android:gravity="bottom"
                 android:paddingBottom="3dp"
-                android:text="(+34) 689 098 098"
+                android:text="@string/txt_user_phone_L8_value_reserve"
                 android:textColor="#1b4f72"
                 android:textSize="14sp"
                 android:paddingLeft="3dp" />
@@ -137,7 +137,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:text="1/1/2000"
+            android:text="@string/txt_print_date_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
             android:textSize="14sp"
@@ -150,7 +150,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:text="00:00 - 01:00"
+            android:text="@string/txt_time_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
             android:textSize="14sp"
@@ -163,7 +163,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:text="C/ Mallorca 96, 8-2, 08015 Bcn"
+            android:text="@string/txt_address_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
             android:textSize="14sp"
@@ -176,7 +176,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:text="Observations..."
+            android:text="@string/txt_observations_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
             android:textSize="14sp"
@@ -201,7 +201,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Observations"
+        android:text="@string/txt_title_observations_text_L8_valore_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -302,7 +302,7 @@
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="DONE" />
+            android:text="@string/txt_button_done_L8_resume_reserve" />
 
     </LinearLayout>
 

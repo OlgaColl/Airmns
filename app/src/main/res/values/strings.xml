@@ -3,23 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
 
-    <!-- Sign up Label -->
-    <string name="radioClient">Client</string>
-    <string name="radioProfessional">Professional</string>
-
-    <!-- Edit Profile Client Label -->
-    <string name="buttonAddAddress">Add Address</string>
-    <string name="saveChanges">Save changes</string>
-    <string name="editAddressClient">Edit address</string>
-    <string name="anyChangesBack">Any changes? Back</string> <!-- TODO-->
-
-    <!-- Info Label -->
-    <string name="titleCompany">Global Facility Management</string>
-    <string name="infoCompany">Global es una empresa especializada en limpieza de oficinas, instalaciones industriales, locales comerciales, centros logísticos, edificios y dependencias administrativas, fachadas de inmuebles y sus entornos. La calidad en la prestación del servicio, el control riguroso de los procesos y el seguimiento de los trabajos programados convierten a Global en un referente cualificado del sector.</string>
-    <string name="infoApp">App creada por Eric Ayala Andreu y Olga Coll Pérez.</string>
-    <string name="titleContact">Contacto</string>
-    <string name="infoContactTelf">+34658750746</string>
-    <string name="infoContactMail">admin@globalserviciosgenerales.com</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -27,19 +10,50 @@
     <string name="action_settings">Settings</string>
 
 
-    <!-- **LAYOUT 5 RESERVE** -->
+
+
+    <!-- LAYOUT 1 LOGIN-->
+    <string name="txt_link_signup_L1_login">No account yet? Create one</string>
+    <string name="txt_btn_login_L1_login">Login</string>
+
+
+
+    <!-- LAYOUT 2 SIGN UP-->
+    <string name="txt_link_login_L2_sign_up">Already a member? Login</string>
+    <string name="txt_radio_client_L2_sign_up">Client</string>
+    <string name="txt_radio_professional_L2_sign_up">Professional</string>
+    <string name="txt_btn_signup_L2_signup">Create Account</string>
+
+
+
+    <!-- LAYOUT 3A MAIN USER (no have text views)-->
+    <!-- LAYOUT 3B MAIN PROFESSIONAL (no have text views)-->
+
+
+
+    <!-- LAYOUT  4 EDIT ADDRESS & PROFILE -->
+    <string name="txt_buttonAddAddress_L4_edit">Add Address</string>
+    <string name="txt_saveChanges_L4_edit">Save changes</string>
+    <string name="txt_add_L4_edit">Add</string>
+    <string name="txt_remove_L4_edit">Remove</string>
+    <string name="txt_editAddressClient_L4_edit">Edit address</string>
+    <string name="txt_anyChangesBack_L4_edit">Any changes? Back</string>
+
+
+
+    <!-- LAYOUT 5 RESERVE -->
     <!--title-->
-    <string name="title_manage_reserve">MANAGE RESERVE</string>
+    <string name="txt_title_manage_reserve_5A_reserve">MANAGE RESERVE</string>
     <!--date-->
-    <string name="date_text">Date</string>
-    <string name="print_date">1/1/2000</string>
+    <string name="txt_date_text_5A_reserve">Date</string>
+    <string name="txt_print_date_5A_reserve">1/1/2000</string>
     <!--time-->
-    <string name="time_text">Time</string>
-    <string name="print_time">00:00</string>
+    <string name="txt_time_text_5A_reserve">Time</string>
+    <string name="txt_print_time_5A_reserve">00:00</string>
     <!--long time-->
-    <string name="long_time_text">Long time</string>
+    <string name="txt_long_time_text_5A_reserve">Long time</string>
     <!--Spinner long time-->
-    <string-array name="time_value">
+    <string-array name="txt_time_value_L5A_reserve">
         <item>1 hour</item>
         <item>2 hours</item>
         <item>3 hours</item>
@@ -49,66 +63,87 @@
         <item>7 hours</item>
     </string-array>
     <!--address-->
-    <string name="address_text">Address</string>
+    <string name="txt_address_text_5A_reserve">Address</string>
     <!--Spinner address-->
-    <string-array name="address_value">
+    <string-array name="txt_address_value_5A_reserve">
         <item>C/ Mallorca 96, 8-2, 08015 Bcn</item>
         <item>C/ Valencia 22, 2-2, 08015 Bcn</item>
         <item>C/ Arago 85, 5-1, 08015 Bcn</item>
         <item>C/ Diputacio 45, 1-2, 08015 Bcn</item>
     </string-array>
     <!--observations-->
-    <string name="observations_text">Observations</string>
+    <string name="txt_observations_text_5A_reserve">Observations</string>
     <!--total pay-->
-    <string name="total_pay_text">Total</string>
-    <string name="total_value_text">0€</string>
+    <string name="txt_total_pay_text_5A_reserve">Total</string>
+    <string name="txt_total_value_text_5A_reserve">0€</string>
+    <!--buttons-->
+    <string name="txt_button_date_5A_reserve">INPUT DATE</string>
+    <string name="txt_button_time_5A_reserve">INPUT TIME</string>
+    <string name="txt_button_pay_5A_reserve">CONTINUE</string>
 
 
 
-    <!-- **LAYOUT 5 RESUME RESERVE** -->
+    <!-- LAYOUT 5 RESUME RESERVE -->
     <!--title-->
-    <string name="title_manage_reserve_L5_resume_reserve">RESUME RESERVE</string>
+    <string name="txt_title_manage_reserve_L5_resume_reserve">RESUME RESERVE</string>
     <!--date-->
-    <string name="date_text_L5_resume_reserve">Date</string>
-    <string name="print_date_L5_resume_reserve">1/1/2000</string>
+    <string name="txt_date_text_L5_resume_reserve">Date</string>
+    <string name="txt_print_date_L5_resume_reserve">1/1/2000</string>
     <!--time-->
-    <string name="time_text_L5_resume_reserve">Time</string>
-    <string name="time_L5_resume_reserve">00:00</string>
+    <string name="txt_time_text_L5_resume_reserve">Time</string>
+    <string name="txt_time_L5_resume_reserve">00:00</string>
     <!--address-->
-    <string name="address_text_L5_resume_reserve">Address</string>
-    <string name="address_L5_resume_reserve">C/ Mallorca 96, 8-2, 08015 Bcn</string>
+    <string name="txt_address_text_L5_resume_reserve">Address</string>
+    <string name="txt_address_L5_resume_reserve">C/ Mallorca 96, 8-2, 08015 Bcn</string>
     <!--observations-->
-    <string name="observations_text_L5_resume_reserve">Observations</string>
-    <string name="observations_L5_resume_reserve">Observations...</string>
+    <string name="txt_observations_text_L5_resume_reserve">Observations</string>
+    <string name="txt_observations_L5_resume_reserve">Observations...</string>
     <!--total pay-->
-    <string name="total_pay_text_L5_resume_reserve">Total: </string>
-    <string name="total_value_text_L5_resume_reserve">0€</string>
+    <string name="txt_total_pay_text_L5_resume_reserve">Total: </string>
+    <string name="txt_total_value_text_L5_resume_reserve">0€</string>
+    <!--buttons-->
+    <string name="txt_button_pay_L5_resume_reserve">PAY</string>
 
 
 
-    <!-- **LAYOUT 7 PROFESSIONAL AVAILABILITY** -->
+    <!-- LAYOUT 7 PROFESSIONAL AVAILABILITY -->
     <!--title-->
-    <string name="title_manage_reserve_L7_professional_availability">AVAILABILITY</string>
-    <string name="textView_date_text_L7_professional_availability">Date</string>
-    <string name="textView_date_L7_professional_availability">1/1/2000</string>
+    <string name="txt_title_manage_reserve_L7_professional_availability">AVAILABILITY</string>
+    <string name="txt_textView_date_text_L7_professional_availability">Date</string>
+    <string name="txt_textView_date_L7_professional_availability">1/1/2000</string>
+    <string name="txt_button_date_L7">INPUT DATE</string>
+    <string name="txt_button_restart_L7">RESTART</string>
+    <string name="txt_button_ok_L7">OK</string>
 
 
 
-    <!-- **LAYOUT 8 VALUE RESERVE** -->
+    <!-- LAYOUT 8 VALUE RESERVE -->
     <!--title-->
-    <string name="title_valorate_reserve_L8_value_reserve">VALUE RESERVE</string>
+    <string name="txt_title_valorate_reserve_L8_value_reserve">VALUE RESERVE</string>
     <!-- user -->
-    <string name="user_name_L8_value_reserve">User name</string>
-    <string name="user_surname_L8_value_reserve">User surname</string>
-    <string name="user_email_L8_value_reserve">user@mailinator.com</string>
-    <string name="user_phone_L8_value_reserve">(+34) 689 098 098</string>
+    <string name="txt_user_name_L8_value_reserve">User name</string>
+    <string name="txt_user_surname_L8_value_reserve">User surname</string>
+    <string name="txt_user_email_L8_value_reserve">user@mailinator.com</string>
+    <string name="txt_user_phone_L8_value_reserve">(+34) 689 098 098</string>
     <!-- reserve -->
-    <string name="print_date_L8_resume_reserve">1/1/2000</string>
-    <string name="time_L8_resume_reserve">00:00 - 01:00</string>
-    <string name="address_L8_resume_reserve">C/ Mallorca 96, 8-2, 08015 Bcn</string>
-    <string name="observations_L8_resume_reserve">Observations...</string>
+    <string name="txt_print_date_L8_resume_reserve">1/1/2000</string>
+    <string name="txt_time_L8_resume_reserve">00:00 - 01:00</string>
+    <string name="txt_address_L8_resume_reserve">C/ Mallorca 96, 8-2, 08015 Bcn</string>
+    <string name="txt_observations_L8_resume_reserve">Observations...</string>
     <!-- observations -->
-    <string name="observations_text_L8_valore_reserve_false">Observations...</string>
-    <string name="title_observations_L8_resume_reserve">Observations...</string>
+    <string name="txt_title_observations_text_L8_valore_reserve">Observations...</string>
+    <string name="txt_title_observations_L8_resume_reserve">Observations...</string>
+    <!-- observations -->
+    <string name="txt_button_done_L8_resume_reserve">DONE</string>
+
+
+
+    <!-- LAYOUT 9 INFO -->
+    <string name="txt_titleCompany_L9_info">Global Facility Management</string>
+    <string name="txt_infoCompany_L9_info">Global es una empresa especializada en limpieza de oficinas, instalaciones industriales, locales comerciales, centros logísticos, edificios y dependencias administrativas, fachadas de inmuebles y sus entornos. La calidad en la prestación del servicio, el control riguroso de los procesos y el seguimiento de los trabajos programados convierten a Global en un referente cualificado del sector.</string>
+    <string name="txt_infoApp_L9_info">App creada por Eric Ayala Andreu y Olga Coll Pérez.</string>
+    <string name="txt_titleContact_L9_info">Contacto</string>
+    <string name="txt_infoContactTelf_L9_info">+34658750746</string>
+    <string name="txt_infoContactMail_L9_info">admin@globalserviciosgenerales.com</string>
 
 </resources>

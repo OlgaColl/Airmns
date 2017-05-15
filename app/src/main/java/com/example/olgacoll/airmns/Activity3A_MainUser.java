@@ -23,11 +23,11 @@ public class Activity3A_MainUser extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3a_main_user);
 
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation);
-        imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory);
-        imageViewRateReservation = (ImageView)findViewById(R.id.imageViewRateReservation);
-        imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile);
+        fab = (FloatingActionButton)findViewById(R.id.fab_L3A_main_user);
+        imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation_L3A_main_user);
+        imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory_L3A_main_user);
+        imageViewRateReservation = (ImageView)findViewById(R.id.imageViewRateReservation_L3A_main_user);
+        imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile_L3A_main_user);
 
         prepareListener();
 
@@ -43,20 +43,20 @@ public class Activity3A_MainUser extends AppCompatActivity{
             @Override
             public void onClick(View view){
                 switch(view.getId()){
-                    case R.id.fab:
+                    case R.id.fab_L3A_main_user:
                         initFab();
                         //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         break;
-                    case R.id.imageViewManageReservation:
+                    case R.id.imageViewManageReservation_L3A_main_user:
                         initManageReservation();
                         break;
-                    case R.id.imageViewBookingHistory:
+                    case R.id.imageViewBookingHistory_L3A_main_user:
                         initBookingHistory();
                         break;
-                    case R.id.imageViewRateReservation:
+                    case R.id.imageViewRateReservation_L3A_main_user:
                         initRateReservation();
                         break;
-                    case R.id.imageViewEditProfile:
+                    case R.id.imageViewEditProfile_L3A_main_user:
                         initEditProfile();
                         break;
 

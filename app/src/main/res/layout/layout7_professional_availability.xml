@@ -19,7 +19,7 @@
         android:layout_weight="0.02"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="AVAILABILITY"
+        android:text="@string/txt_title_manage_reserve_L7_professional_availability"
         android:textColor="@android:color/background_light"
         android:textSize="26sp"
         android:textStyle="bold" />
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
         android:layout_weight="0.00"
-        android:text="Date"
+        android:text="@string/txt_textView_date_text_L7_professional_availability"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textSize="8pt"
@@ -71,12 +71,12 @@
     <!--Availability-->
 
     <TextView
-        android:id="@+id/titulo2_ejer3"
+        android:id="@id/title_manage_reserve_L7_professional_availability"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.01"
         android:gravity="center_vertical"
-        android:text="Input availability:"
+        android:text="@string/txt_title_manage_reserve_L7_professional_availability"
         android:textColor="#ffffff"
         android:textSize="8pt"
         android:textStyle="italic" />
@@ -398,14 +398,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            android:text="Restart" />
+            android:text="@string/txt_button_restart_L7" />
 
         <Button
             android:id="@+id/button_ok_L7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            android:text="Ok" />
+            android:text="@string/txt_button_ok_L7" />
 
     </LinearLayout>
 

@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_address"
+            <EditText android:id="@+id/change_address_L4_edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="63dp"
                 android:inputType=""
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_postal_code"
+            <EditText android:id="@+id/change_postal_code_L4_edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -53,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_city"
+            <EditText android:id="@+id/change_city_L4_edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -66,7 +66,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_province"
+            <EditText android:id="@+id/change_province_L4_edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_country"
+            <EditText android:id="@+id/change_country_L4_edit_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -88,21 +88,21 @@
 
         <!-- saveData Button -->
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_saveChanges"
+            android:id="@+id/btn_saveChanges_L4_edit_address"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="@string/saveChanges"
+            android:text="@string/txt_saveChanges_L4_edit"
             />
 
         <!-- Any changes? Back -->
-        <TextView android:id="@+id/link_back"
+        <TextView android:id="@+id/link_back_L4_edit_address"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="@string/anyChangesBack"
+            android:text="@string/txt_anyChangesBack_L4_edit"
             android:gravity="center"
             android:textSize="16dip"/>
     </LinearLayout>

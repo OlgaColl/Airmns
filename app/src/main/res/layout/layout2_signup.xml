@@ -14,24 +14,6 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <!--ImageView android:src="@drawable/airmns"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" /-->
-
-        <!-- Address Label -->
-        <!--android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:hint="Address" />
-        </android.support.design.widget.TextInputLayout-->
 
         <!-- Name Label -->
         <android.support.design.widget.TextInputLayout
@@ -64,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_email"
+            <EditText android:id="@+id/input_email_L1_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
@@ -77,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_password"
+            <EditText android:id="@+id/input_password_L1_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
@@ -150,33 +132,33 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <RadioButton android:id="@+id/radio_client"
+            <RadioButton android:id="@+id/radio_client_L2_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/radioClient"
+                android:text="@string/txt_radio_client_L2_sign_up"
                 android:onClick="onRadioButtonClicked"/>
-            <RadioButton android:id="@+id/radio_professional"
+            <RadioButton android:id="@+id/radio_professional_L2_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/radioProfessional"
+                android:text="@string/txt_radio_professional_L2_sign_up"
                 android:onClick="onRadioButtonClicked"/>
         </RadioGroup>
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_signup"
+            android:id="@+id/btn_signup_L2_signup"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Create Account"/>
+            android:text="@string/txt_btn_signup_L2_signup"/>
 
-        <TextView android:id="@+id/link_login"
+        <TextView android:id="@+id/link_login_L2_sign_up"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="Already a member? Login"
+            android:text="@string/txt_link_login_L2_sign_up"
             android:gravity="center"
             android:textSize="16dip"/>
 

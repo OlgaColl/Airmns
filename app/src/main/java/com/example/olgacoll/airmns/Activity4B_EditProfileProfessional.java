@@ -29,9 +29,9 @@ public class Activity4B_EditProfileProfessional extends AppCompatActivity {
 
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
-        editTextEmail = (EditText)findViewById(R.id.input_email);
+        editTextEmail = (EditText)findViewById(R.id.input_email_L1_login);
         editTextMobile = (EditText)findViewById(R.id.input_mobile);
-        editTextPassword = (EditText)findViewById(R.id.input_password);
+        editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
         editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
 
         buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);

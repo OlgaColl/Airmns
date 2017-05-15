@@ -128,7 +128,7 @@ public class Activity5A_ResumeReserve extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     //PAY
-                    case R.id.button_pay: //Continue
+                    case R.id.button_pay_5A_reserve: //Continue
                         reserveDone();
                         break;
                     //DEFAULT

@@ -19,7 +19,7 @@
         android:layout_weight="0.14"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="RESUME RESERVE"
+        android:text="@string/txt_title_manage_reserve_L5_resume_reserve"
         android:textColor="@android:color/background_light"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Date"
+        android:text="@string/txt_date_text_L5_resume_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -44,7 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:text="1/1/2000"
+        android:text="@string/txt_print_date_L5_resume_reserve"
         android:paddingBottom="3dp"
         android:textColor="#1b4f72"
         android:textSize="18sp"
@@ -67,7 +67,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Time"
+        android:text="@string/txt_time_text_L5_resume_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -77,7 +77,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:text="00:00 - 01:00"
+        android:text="@string/txt_time_L5_resume_reserve"
         android:paddingBottom="3dp"
         android:textColor="#1b4f72"
         android:textSize="18sp"
@@ -99,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Address"
+        android:text="@string/txt_address_text_L5_resume_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -109,7 +109,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:text="C/ Mallorca 96, 8-2, 08015 Bcn"
+        android:text="@string/txt_address_L5_resume_reserve"
         android:paddingBottom="3dp"
         android:textColor="#1b4f72"
         android:textSize="18sp"
@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
-        android:text="Observations"
+        android:text="@string/txt_observations_text_L5_resume_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#ffffff"
         android:textStyle="italic" />
@@ -141,7 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
-        android:text="Observations..."
+        android:text="@string/txt_observations_L5_resume_reserve"
         android:paddingBottom="3dp"
         android:textColor="#1b4f72"
         android:textSize="18sp"
@@ -180,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="TOTAL: "
+                android:text="@string/txt_total_pay_text_L5_resume_reserve"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
@@ -190,7 +190,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="0€"
+                android:text="@string/txt_total_value_text_L5_resume_reserve"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
@@ -205,7 +205,7 @@
             android:layout_width="329dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="PAY" />
+            android:text="@string/txt_button_pay_L5_resume_reserve" />
 
     </LinearLayout>
 
