@@ -35,18 +35,22 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         setContentView(R.layout.booking_history_user);
         initComponents();
         onPrepare();
+
+        String[] items = { "Milk", "Butter", "Yogurt", "Toothpaste", "Ice Cream" };
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, items);
+
+        listView.setAdapter(adapter);
     }
 
     private void initComponents(){
         reserves = new String[15];
         textViewTitle = (TextView)findViewById(R.id.tvtitle);
         textViewInfo= (TextView)findViewById(R.id.tvinfo);
-        for(int i = 1; i < reserves.length; i++){
-            reserves[i] = "Reserva " + i;
-            System.out.println(reserves[i]);
-        }
+        listView = (ListView)findViewById(R.id.listview);
 
-        loadReserves();
+        //loadReserves();
     }
 
     private void onPrepare(){
@@ -67,7 +71,11 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     }
 
     public void loadReserves(){
-        listView = (ListView)findViewById(R.id.listview);
+
+        for(int i = 1; i < reserves.length; i++){
+            reserves[i] = "Reserva " + i;
+            System.out.println(reserves[i]);
+        }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, R.layout.listitem, reserves);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(listener);
