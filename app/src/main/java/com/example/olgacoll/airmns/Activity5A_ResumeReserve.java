@@ -16,7 +16,6 @@ import java.util.Date;
 
 public class Activity5A_ResumeReserve extends Activity {
 
-
     // -- ATTRIBUTES --
 
     //CLASS

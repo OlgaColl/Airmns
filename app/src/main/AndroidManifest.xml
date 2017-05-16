@@ -12,7 +12,7 @@
         <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
 
         <activity
-            android:name=".Activity8B_ValueReserve"
+            android:name=".Activity6A_BookingHistoryUser"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -32,12 +32,12 @@
         <activity android:name=".Activity5A_UserReserve"/>
         <activity android:name=".Activity5A_ResumeReserve"/>
         <activity android:name=".Activity5B_ProfessionalReserve"/>
-        <activity android:name=".Activity6A_BookingHistoryUser"/>
+        <!--activity android:name=".Activity6A_BookingHistoryUser"/-->
         <activity android:name=".DescBookingUserActivity"/>
         <activity android:name=".Activity6B_BookingHistoryProfessional"/>
         <activity android:name=".Activity7_ProfessionalAvailability"/>
         <activity android:name=".Activity8A_RateReservations"/>
-        <!--activity android:name=".Activity8B_ValueReserve"/-->
+        <activity android:name=".Activity8B_ValueReserve"/>
         <activity android:name=".Activity9_InfoActivity"/>
     </application>
 </manifest>

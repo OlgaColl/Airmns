@@ -11,33 +11,23 @@ import android.widget.TextView;
 
 public class DescBookingUserActivity extends Activity {
 
-    /*TextView textViewUserId, textViewId, textViewTitle, textViewBody;
-
-    String userId, id, title, body;*/
+    TextView textView;
+    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout6_desc_booking_user);
 
-        /*textViewUserId = (TextView) findViewById(R.id.textViewUserId);
-        textViewId = (TextView) findViewById(R.id.textViewId);
-        textViewTitle = (TextView) findViewById(R.id.textViewTitle);
-        textViewBody = (TextView) findViewById(R.id.textViewBody);
+        textView = (TextView) findViewById(R.id.textView);
 
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
 
         if (extras != null) {
-            userId = (String) extras.get("userId").toString();
-            id = (String) extras.get("id").toString();
-            title = (String) extras.get("title");
-            body = (String) extras.get("body");
+            text = (String) extras.get("nom").toString();
         }
 
-        textViewUserId.setText(userId);
-        textViewId.setText(id);
-        textViewTitle.setText(title);
-        textViewBody.setText(body);*/
+        textView.setText(text);
     }
 }
