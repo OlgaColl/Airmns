@@ -12,7 +12,7 @@
         <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
 
         <activity
-            android:name=".Activity0_SplashScreen"
+            android:name=".Activity8B_ValueReserve"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <!--activity android:name=".Activity0_SplashScreen"/-->
+        <activity android:name=".Activity0_SplashScreen"/>
         <activity android:name=".Activity1_LoginActivity"/>
         <activity android:name=".Activity2_SignupActivity"/>
         <activity android:name=".Activity3A_MainUser" />
@@ -37,7 +37,7 @@
         <activity android:name=".Activity6B_BookingHistoryProfessional"/>
         <activity android:name=".Activity7_ProfessionalAvailability"/>
         <activity android:name=".Activity8A_RateReservations"/>
-        <activity android:name=".Activity8B_ValueReserve"/>
+        <!--activity android:name=".Activity8B_ValueReserve"/-->
         <activity android:name=".Activity9_InfoActivity"/>
     </application>
 </manifest>

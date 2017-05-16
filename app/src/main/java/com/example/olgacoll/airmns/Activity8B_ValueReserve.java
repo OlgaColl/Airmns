@@ -1,6 +1,10 @@
 package com.example.olgacoll.airmns;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -33,9 +37,6 @@ public class Activity8B_ValueReserve extends Activity {
     ImageView iv_star[];
     //Button
     Button b_done;
-
-
-
 
     // -- ON CREATE --
     @Override
@@ -133,11 +134,39 @@ public class Activity8B_ValueReserve extends Activity {
 
     //-- Print stairs --
     private void printStars() {
+        Drawable star, star_border;
+
+        star = getResources().getDrawable(R.drawable.ic_action_star);
+        star_border = getResources().getDrawable(R.drawable.ic_action_star_border);
+
+        ColorFilter filterBlack = new LightingColorFilter(Color.BLACK, Color.BLACK);
+        ColorFilter filterWhite = new LightingColorFilter(Color.WHITE, Color.WHITE);
+
         for(int i = 0; i<iv_star.length; i++) {
-            if (i<=valoration) iv_star[i].setImageResource(R.drawable.star_8_valore_reserve);
-            else iv_star[i].setImageResource(R.drawable.star_8_valore_reserve_false);
+            if (i<=valoration){
+                iv_star[i].setImageResource(R.drawable.ic_action_star);
+                star.setColorFilter(filterBlack);
+            } else{
+                iv_star[i].setImageResource(R.drawable.ic_action_star_border);
+            }
         }
     }
+
+
+    /**
+     *
+     * his is how I solved this issue :
+
+     Declare an ImageView with src="@drawable/button"
+     Create a Drawable and set ColorFilter to it and after that use it as src to your declared ImageView like this :
+     >
+
+     Drawable myIcon = getResources().getDrawable( R.drawable.button );
+     ColorFilter filter = new LightingColorFilter( Color.BLUE, Color.BLUE );
+     myIcon.setColorFilter(filter);
+     color.setImageDrawable(myIcon);
+
+     * */
 
     //-- Add Listeners--
     private void addListener() {
@@ -148,3 +177,4 @@ public class Activity8B_ValueReserve extends Activity {
     }
 
 }
+
