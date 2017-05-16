@@ -12,8 +12,6 @@ public class Client extends User{
 
     private List<String> address;
 
-
-
     //--Constructors--
 
     public Client(){ }

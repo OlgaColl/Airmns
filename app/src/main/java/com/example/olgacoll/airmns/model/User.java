@@ -43,8 +43,6 @@ public class User {
         this.phone = phone;
     }
 
-
-
     //--Getters & Setters--
 
     public int getId() {
@@ -112,4 +110,16 @@ public class User {
     }
 
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", mail='" + mail + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", prefix_phone='" + prefix_phone + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
+    }
 }

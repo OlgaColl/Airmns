@@ -11,7 +11,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.Client;
+import com.example.olgacoll.airmns.model.Professional;
 import com.example.olgacoll.airmns.model.User;
+
+import java.util.List;
 
 public class Activity2_SignupActivity extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     RadioButton radioButtonClient, radioButtonProfessional;
     View.OnClickListener listener;
     User user;
+    String email, password, name, lastname, prefix, mobile, reEnterPassword, type;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +55,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         textViewLogin = (TextView)findViewById(R.id.link_login_L2_sign_up);
         radioButtonClient = (RadioButton)findViewById(R.id.radio_client_L2_sign_up);
         radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional_L2_sign_up);
-        user = new User();
+        type = "client"; //inicialitzem amb tipus d'usuari client
     }
 
     public void onPrepareListener(){
@@ -67,8 +72,12 @@ public class Activity2_SignupActivity extends AppCompatActivity {
                         finish();
                         break;
                     case R.id.radio_client_L2_sign_up:
+                        type = "client";
+                        System.out.println(type);
                         break;
                     case R.id.radio_professional_L2_sign_up:
+                        type = "professional";
+                        System.out.println(type);
                         break;
                 }
             }
@@ -77,38 +86,15 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     public void signup() {
         //Log.d(TAG, "Signup");
-
         if (!validate()) {
             onSignupFailed();
         }else{
             onSignupSuccess();
         }
-
-        /*buttonSignup.setEnabled(false);
-
-        final ProgressDialog progressDialog = new ProgressDialog(Activity2_SignupActivity.this,
-                R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
-
-        // TODO: Implement your own signup logic here.
-
-        new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onSignupSuccess or onSignupFailed
-                        // depending on success
-                        onSignupSuccess();
-                        // onSignupFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);*/
     }
-
-
     public void onSignupSuccess() {
         buttonSignup.setEnabled(true);
+        setData();
         setResult(RESULT_OK, null);
         finish();
     }
@@ -122,13 +108,13 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     public boolean validate() {
         boolean valid = true;
 
-        String name = editTextName.getText().toString();
-        String lastname = editTextLastname.getText().toString();
-        String email = editTextEmail.getText().toString();
-        String prefix = editTextPrefix.getText().toString();
-        String mobile = editTextMobile.getText().toString();
-        String password = editTextPassword.getText().toString();
-        String reEnterPassword = editTextPassword2.getText().toString();
+        name = editTextName.getText().toString();
+        lastname = editTextLastname.getText().toString();
+        email = editTextEmail.getText().toString();
+        prefix = editTextPrefix.getText().toString();
+        mobile = editTextMobile.getText().toString();
+        password = editTextPassword.getText().toString();
+        reEnterPassword = editTextPassword2.getText().toString();
 
         if (name.isEmpty() || name.length() < 3) {
             editTextName.setError("at least 3 characters");
@@ -151,7 +137,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             editTextPrefix.setError(null);
         }
 
-        if (mobile.isEmpty() || mobile.length()!=10) {
+        if (mobile.isEmpty() || mobile.length()!=9) {
             editTextMobile.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
@@ -165,44 +151,35 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             editTextEmail.setError(null);
         }
 
-        if (password.isEmpty() || password.length() < 4 || password.length() > 10) {
+        if (password.isEmpty() || password.length() < 4 || password.length() > 15) {
             editTextPassword.setError("between 4 and 10 alphanumeric characters");
             valid = false;
         } else {
             editTextPassword.setError(null);
         }
 
-        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 10 || !(reEnterPassword.equals(password))) {
-            editTextPassword2.setError("Password Do not match");
+        if (reEnterPassword.isEmpty() || reEnterPassword.length() < 4 || reEnterPassword.length() > 15 || !(reEnterPassword.equals(password))) {
+            editTextPassword2.setError("Password do not match");
             valid = false;
-        } else {
+        } else{
             editTextPassword2.setError(null);
-        }
-
-        if(!password.equals(reEnterPassword)){
-            editTextPassword.setError("Password not match.");
-            editTextPassword.setError("Password not match.");
-            valid = false;
-        }else{
-            editTextPassword.setError("Password not match.");
         }
 
         return valid;
     }
 
-    /*public void onRadioButtonClicked(View view) {
-        boolean checked = ((RadioButton) view).isChecked();
+    public void setData(){
 
-        // Check which radio button was clicked
-        switch(view.getId()) {
-            case R.id.radio_client:
-                if (checked)
-                    //TODO
-                    break;
-            case R.id.radio_professional:
-                if (checked)
-                    //TODO
-                    break;
+        System.out.println(email);
+        System.out.println(password);
+        System.out.println(name);
+        System.out.println(lastname);
+        if(type.equals("client")){
+            user = new Client(email, password, name, lastname, "+" + prefix, mobile);
+        }else{
+            user = new Professional(email, password, name, lastname, prefix, mobile);
         }
-    }*/
+
+        user.toString();
+    }
 }
