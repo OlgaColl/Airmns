@@ -18,8 +18,6 @@ public class User {
     private String prefix_phone;
     private String phone;
 
-
-
     //--Constructors--
 
     public User(){

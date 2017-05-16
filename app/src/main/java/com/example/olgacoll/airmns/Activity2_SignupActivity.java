@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.User;
+
 public class Activity2_SignupActivity extends AppCompatActivity {
 
     private static final String TAG = "Activity2_SignupActivity";
@@ -20,12 +22,23 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     TextView textViewLogin;
     RadioButton radioButtonClient, radioButtonProfessional;
     View.OnClickListener listener;
+    User user;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout2_signup);
 
+        initComponents();
+        onPrepareListener();
+
+        buttonSignup.setOnClickListener(listener);
+        textViewLogin.setOnClickListener(listener);
+        radioButtonClient.setOnClickListener(listener);
+        radioButtonProfessional.setOnClickListener(listener);
+    }
+
+    public void initComponents(){
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextEmail = (EditText)findViewById(R.id.input_email_L1_login);
@@ -37,14 +50,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         textViewLogin = (TextView)findViewById(R.id.link_login_L2_sign_up);
         radioButtonClient = (RadioButton)findViewById(R.id.radio_client_L2_sign_up);
         radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional_L2_sign_up);
-
-        onPrepareListener();
-
-        //prepareListener();
-        buttonSignup.setOnClickListener(listener);
-        textViewLogin.setOnClickListener(listener);
-        radioButtonClient.setOnClickListener(listener);
-        radioButtonProfessional.setOnClickListener(listener);
+        user = new User();
     }
 
     public void onPrepareListener(){
@@ -74,25 +80,17 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
         if (!validate()) {
             onSignupFailed();
-            return;
+        }else{
+            onSignupSuccess();
         }
 
-        buttonSignup.setEnabled(false);
+        /*buttonSignup.setEnabled(false);
 
         final ProgressDialog progressDialog = new ProgressDialog(Activity2_SignupActivity.this,
                 R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
         progressDialog.show();
-
-        String name = editTextName.getText().toString();
-        String lastname = editTextLastname.getText().toString();
-        //String address = _addressText.getText().toString();
-        String prefix = editTextPrefix.getText().toString();
-        String mobile = editTextMobile.getText().toString();
-        String email = editTextEmail.getText().toString();
-        String password = editTextPassword.getText().toString();
-        String reEnterPassword = editTextPassword2.getText().toString();
 
         // TODO: Implement your own signup logic here.
 
@@ -105,7 +103,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
                         // onSignupFailed();
                         progressDialog.dismiss();
                     }
-                }, 3000);
+                }, 3000);*/
     }
 
 
@@ -116,7 +114,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Sign up failed", Toast.LENGTH_LONG).show();
 
         buttonSignup.setEnabled(true);
     }
@@ -126,7 +124,6 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
         String name = editTextName.getText().toString();
         String lastname = editTextLastname.getText().toString();
-        //String address = _addressText.getText().toString();
         String email = editTextEmail.getText().toString();
         String prefix = editTextPrefix.getText().toString();
         String mobile = editTextMobile.getText().toString();
@@ -147,15 +144,8 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             editTextLastname.setError(null);
         }
 
-        /*if (address.isEmpty()) {
-            _addressText.setError("Enter Valid Address");
-            valid = false;
-        } else {
-            _addressText.setError(null);
-        }*/
-
-        if (prefix.isEmpty() || prefix.charAt(0) != '+'){
-            editTextPrefix.setError("First character must be '+'");
+        if (prefix.isEmpty()){
+            editTextPrefix.setError("at least 2 numbers");
             valid = false;
         } else {
             editTextPrefix.setError(null);
@@ -187,6 +177,14 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             valid = false;
         } else {
             editTextPassword2.setError(null);
+        }
+
+        if(!password.equals(reEnterPassword)){
+            editTextPassword.setError("Password not match.");
+            editTextPassword.setError("Password not match.");
+            valid = false;
+        }else{
+            editTextPassword.setError("Password not match.");
         }
 
         return valid;

@@ -104,7 +104,7 @@
             <!-- Prefix phone -->
             <EditText
                 android:id="@+id/input_prefix"
-                android:layout_width="80dp"
+                android:layout_width="58dp"
                 android:layout_height="wrap_content"
                 android:hint="+34"
                 android:inputType="number" />
@@ -115,8 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Mobile Number"
-                android:inputType="number"
-                android:layout_weight="0.65" />
+                android:inputType="number" />
 
             </LinearLayout>
         </android.support.design.widget.TextInputLayout>
@@ -136,6 +135,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/txt_radio_client_L2_sign_up"
+                android:checked="true"
                 android:onClick="onRadioButtonClicked"/>
             <RadioButton android:id="@+id/radio_professional_L2_sign_up"
                 android:layout_width="wrap_content"
