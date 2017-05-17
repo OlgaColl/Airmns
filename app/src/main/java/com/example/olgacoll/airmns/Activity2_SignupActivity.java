@@ -69,7 +69,6 @@ public class Activity2_SignupActivity extends AppCompatActivity {
                     case R.id.link_login_L2_sign_up:
                         Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
                         startActivity(intent);
-                        finish();
                         break;
                     case R.id.radio_client_L2_sign_up:
                         type = "client";
@@ -85,7 +84,6 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void signup() {
-        //Log.d(TAG, "Signup");
         if (!validate()) {
             onSignupFailed();
         }else{
@@ -93,15 +91,15 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         }
     }
     public void onSignupSuccess() {
-        buttonSignup.setEnabled(true);
         setData();
         setResult(RESULT_OK, null);
-        finish();
+        Toast.makeText(getBaseContext(), "Sign up succes!", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
+        startActivity(intent);
     }
 
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Sign up failed", Toast.LENGTH_LONG).show();
-
         buttonSignup.setEnabled(true);
     }
 
