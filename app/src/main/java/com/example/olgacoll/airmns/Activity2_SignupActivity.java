@@ -175,7 +175,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         if(type.equals("client")){
             user = new Client(email, password, name, lastname, "+" + prefix, mobile);
         }else{
-            user = new Professional(email, password, name, lastname, prefix, mobile);
+            user = new Professional(email, password, name, lastname, "+" + prefix, mobile);
         }
 
         user.toString();

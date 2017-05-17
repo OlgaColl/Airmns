@@ -10,13 +10,9 @@ import java.util.List;
 public class Professional extends User{
 
     //--Attributes--
-
     private List<Boolean> availability;
 
-
-
     //--Constructors--
-
     public Professional(){ }
 
     public Professional(String mail, String password, String name, String lastname, String prefix_phone, String phone){

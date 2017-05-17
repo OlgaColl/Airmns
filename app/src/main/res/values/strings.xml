@@ -32,13 +32,13 @@
 
 
     <!-- LAYOUT  4 EDIT ADDRESS & PROFILE -->
+    <string name="txt_titleSpinner_L4_edit">Address list</string>
     <string name="txt_buttonAddAddress_L4_edit">Add Address</string>
     <string name="txt_saveChanges_L4_edit">Save changes</string>
     <string name="txt_add_L4_edit">Add</string>
     <string name="txt_remove_L4_edit">Remove</string>
     <string name="txt_editAddressClient_L4_edit">Edit address</string>
     <string name="txt_anyChangesBack_L4_edit">Any changes? Back</string>
-
 
 
     <!-- LAYOUT 5 RESERVE -->

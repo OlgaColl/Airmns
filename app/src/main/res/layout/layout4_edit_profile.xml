@@ -1,29 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="24dp"
-    android:paddingRight="24dp"
-    android:background="@color/primary_darker">
-
-<!--<ScrollView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:fitsSystemWindows="true"
     android:background="@color/primary_darker">
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:paddingTop="56dp"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp"
-        android:paddingTop="24dp"
-        android:weightSum="1">-->
+        android:paddingRight="24dp">
 
         <!-- Name Label -->
         <android.support.design.widget.TextInputLayout
@@ -74,81 +63,29 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/input_password_L1_login"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/input_password_L1_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:hint="Password"/>
         </android.support.design.widget.TextInputLayout>
 
         <!-- Password Re-enter Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
-            <EditText
-                android:id="@+id/input_reEnterPassword"
+            <EditText android:id="@+id/input_reEnterPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Re-enter Password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:hint="Re-enter password"/>
+
         </android.support.design.widget.TextInputLayout>
-
-        <!--<LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
-
-            <ImageButton
-                android:id="@+id/imageButton2"
-                android:layout_width="103dp"
-                android:layout_height="39dp"
-                app:srcCompat="@drawable/ic_action_plus" />
-
-            <Spinner
-                android:id="@+id/spinner_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipChildren="true"
-                android:clipToPadding="true" />
-
-        </LinearLayout>-->
-
-        <!-- Edit Address Client Label -->
-        <!--<android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp">
-
-            <EditText
-                android:id="@+id/input_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Change address"
-                android:inputType="textPersonName"
-                android:visibility="invisible" />
-        </android.support.design.widget.TextInputLayout>-->
-
-
-        <TextView
-            android:id="@+id/edit_address_L4_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:text="Change address"
-            android:paddingBottom="3dp"
-            android:textColor="#1b4f72"
-            android:textSize="18sp"
-            android:layout_weight="0.01" />
-
 
         <Spinner
             android:id="@+id/spinner_address_5A_reserve"
@@ -156,10 +93,10 @@
             android:layout_height="wrap_content"
             android:clipChildren="true"
             android:clipToPadding="true"
-            android:layout_weight="0.01" />
+            android:prompt="@string/txt_titleSpinner_L4_edit"
+            android:spinnerMode="dialog" />
 
         <!--Buttons-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -182,15 +119,6 @@
 
         </LinearLayout>
 
-
-
-        <!--<ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="103dp"
-            android:layout_height="39dp"
-            app:srcCompat="@drawable/ic_action_plus" />-->
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -207,6 +135,5 @@
 
         </LinearLayout>
 
-    <!--</LinearLayout>
-</ScrollView>-->
-</LinearLayout>
+    </LinearLayout>
+    </ScrollView>

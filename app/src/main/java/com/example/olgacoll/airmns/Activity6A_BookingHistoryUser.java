@@ -42,7 +42,11 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
     private void initComponents(){
         reserves = new String[15];
-        items = new String[] { "Milk", "Butter", "Yogurt", "Toothpaste", "Ice Cream" };
+        items = new String[20];
+        //items = new String[] { "Milk", "Butter", "Yogurt", "Toothpaste", "Ice Cream" };
+        for(int i = 0; i < 20; i++){
+            items[i] = "Reserva " + i;
+        }
         textViewTitle = (TextView)findViewById(R.id.tvtitle);
         textViewInfo= (TextView)findViewById(R.id.tvinfo);
         listView = (ListView)findViewById(R.id.listview);

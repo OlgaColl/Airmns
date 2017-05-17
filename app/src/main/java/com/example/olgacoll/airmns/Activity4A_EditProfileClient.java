@@ -37,33 +37,29 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout4_edit_profile);
 
-        editTextName = (EditText)findViewById(R.id.input_name);
-        editTextLastname = (EditText)findViewById(R.id.input_lastname);
-        editTextMobile = (EditText)findViewById(R.id.input_mobile);
-        editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
-        editTextPassword2 = (EditText)findViewById(R.id.input_reEnterPassword);
-        //editTextAddress = (EditText)findViewById(R.id.input_address);
-        buttonAddAddress = (Button)findViewById(R.id.button_add_L4_edit_profile);
-        buttonRemoveAddress = (Button)findViewById(R.id.button_remove_L4_edit_profile);
-        buttonSaveChanges = (Button)findViewById(R.id.btn_save_changes);
-        spinnerAddress = (Spinner)findViewById(R.id.spinner_address_5A_reserve);
-
+        editTextName = (EditText) findViewById(R.id.input_name);
+        editTextLastname = (EditText) findViewById(R.id.input_lastname);
+        editTextMobile = (EditText) findViewById(R.id.input_mobile);
+        editTextPassword = (EditText) findViewById(R.id.input_password_L1_login);
+        editTextPassword2 = (EditText) findViewById(R.id.input_reEnterPassword);
+        buttonAddAddress = (Button) findViewById(R.id.button_add_L4_edit_profile);
+        buttonRemoveAddress = (Button) findViewById(R.id.button_remove_L4_edit_profile);
+        buttonSaveChanges = (Button) findViewById(R.id.btn_save_changes);
+        spinnerAddress = (Spinner) findViewById(R.id.spinner_address_5A_reserve);
         indexAddress = 0; //assignamos un indice por defecto
         bundle = new Bundle();
-        //editTextAddress.setVisibility(View.INVISIBLE);
         prepareListener();
         controlSpinner();
-        //loadDataSpinner();
         buttonAddAddress.setOnClickListener(listener);
         buttonRemoveAddress.setOnClickListener(listener);
         buttonSaveChanges.setOnClickListener(listener);
     }
 
-    public void prepareListener(){
-        listener = new View.OnClickListener(){
+    public void prepareListener() {
+        listener = new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                switch(view.getId()){
+            public void onClick(View view) {
+                switch (view.getId()) {
                     case R.id.button_add_L4_edit_profile:
                         addAddress();
                         break;
@@ -78,18 +74,18 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         };
     }
 
-    public void addAddress(){
+    public void addAddress() {
         Log.d("Add address", "Add address");
         Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
         startActivity(intent);
     }
 
-    private void removeAddress(){
+    private void removeAddress() {
         Log.d("Remove address", "Remove address");
         showRemoveAlert();
     }
 
-    private void showRemoveAlert(){
+    private void showRemoveAlert() {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setTitle("Remove address");
         builder1.setMessage("Are you sure to delete the address " + dataAddress[indexAddress].toString() + "?");
@@ -116,7 +112,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         alert11.show();
     }
 
-    public void saveChanges(){
+    public void saveChanges() {
         //Log.d(TAG, "SaveChanges");
         Intent intent = new Intent(this, Activity3A_MainUser.class);
         startActivity(intent);
@@ -125,7 +121,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     //Control address Spinner
     private void controlSpinner() {
         //Address
-        dataAddress = getResources().getStringArray(R.array.txt_time_value_L5A_reserve);
+        dataAddress = getResources().getStringArray(R.array.txt_address_value_5A_reserve);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.txt_address_value_5A_reserve, android.R.layout.simple_list_item_1);
         // Specify the layout to use when the list of choices appears
@@ -136,7 +132,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         spinnerAddress.setOnItemSelectedListener(listenerSpinner);
     }
 
-    public void prepareItemListener(){
+    public void prepareItemListener() {
         listenerSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(
@@ -148,71 +144,13 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                 indexAddress = position;
                 //editTextAddress.setText(dataAddress[position]);
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         };
     }
-
-    /*
-
-    public void controlSpinner(){
-        spinner = (Spinner)findViewById(R.id.spinner);
-        dadesSpinner =  new String[]{"Vermell","Blau","Groc","Verd","Rosa", "Negre"};
-        ArrayAdapter<String> adaptador =
-                new ArrayAdapter<String>(this,
-                        android.R.layout.simple_spinner_item,
-                        dadesSpinner);
-        spinner.setAdapter(adaptador);
-        prepareItemListener();
-        spinner.setOnItemSelectedListener(listenerSpinner);
-    }
-
-    */
-    /*
-    public void prepareItemListener() {
-        listenerSpinner =
-                new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(
-                            AdapterView<?> parent,
-                            View view,
-                            int position,
-                            long id) {
-                        switch (dadesSpinner[position]) {
-                            case "Vermell":
-                                colorFons="Vermell";
-                                break;
-                            case "Blau":
-                                colorFons="Blau";
-                                showMessage();
-                                break;
-                            case "Groc":
-                                colorFons="Groc";
-                                showMessage();
-                                break;
-                            case "Verd":
-                                colorFons="Verd";
-                                showMessage();
-                                break;
-                            case "Rosa":
-                                colorFons="Rosa";
-                                showMessage();
-                                break;
-                            case "Negre":
-                                colorFons="Negre";
-                                showMessage();
-                                break;
-                        }
-                    }
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                };
-    }*/
-
 
     /*public void saveChanges() {
         Log.d(TAG, "SaveChanges");
@@ -231,7 +169,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
         String name = _nameText.getText().toString();
         String lastname = _lastnameText.getText().toString();
-        //TODO Spinner
+
         //String address = _addressText.getText().toString();
         String mobile = _mobileText.getText().toString();
         String email = _emailText.getText().toString();

@@ -29,9 +29,6 @@ import java.util.Calendar;
 
 public class Activity5A_UserReserve extends Activity {
 
-
-    // -- ATTRIBUTES --
-
     //Bundle
     Bundle mBundle = new Bundle();
     //Listener
@@ -75,9 +72,6 @@ public class Activity5A_UserReserve extends Activity {
     String observations;
     double total_pay;
     float precio_hora;
-
-
-
 
     // -- ON CREATE --
     @Override
