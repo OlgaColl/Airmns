@@ -8,11 +8,7 @@ import java.util.List;
 
 public class Client extends User{
 
-    //--Attributes--
-
     private List<String> address;
-
-    //--Constructors--
 
     public Client(){ }
 
@@ -36,4 +32,6 @@ public class Client extends User{
     public void setAddress(List<String> address) {
         this.address = address;
     }
+
+
 }

@@ -7,11 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.olgacoll.airmns.model.Client;
+import com.example.olgacoll.airmns.model.User;
+
 /**
  * Created by alumne on 07/03/17.
  */
 
 public class Activity3A_MainUser extends AppCompatActivity{
+
+    Bundle bundle;
+    User user;
+    int id;
+    String mail, password, type, name, lastname, prefix_phone, phone;
 
     FloatingActionButton fab;
     View.OnClickListener listener;
@@ -30,7 +38,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
         imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile_L3A_main_user);
 
         prepareListener();
-
+        initBundle();
         fab.setOnClickListener(listener);
         imageViewManageReservation.setOnClickListener(listener);
         imageViewBookingHistory.setOnClickListener(listener);
@@ -63,6 +71,40 @@ public class Activity3A_MainUser extends AppCompatActivity{
                 }
             }
         };
+    }
+
+    private void initBundle() {
+        //int id, String mail, password, type, name, lastname, prefix_phone, phone;
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("id") != null) {
+                id = Integer.parseInt(bundle.getString("id"));
+            }
+            if (bundle.getString("mail") != null) {
+                mail = bundle.getString("mail");
+            }
+            if (bundle.getString("password") != null) {
+                password = bundle.getString("password");
+            }
+            if (bundle.getString("type") != null) {
+                type = bundle.getString("type");
+            }
+            if (bundle.getString("name") != null) {
+                name = bundle.getString("name");
+            }
+            if (bundle.getString("lastname") != null) {
+                lastname = bundle.getString("lastname");
+            }
+            if (bundle.getString("prefix_phone") != null) {
+                prefix_phone = bundle.getString("prefix_phone");
+            }
+            if (bundle.getString("phone") != null) {
+                phone = bundle.getString("phone");
+            }
+        }
+
+        user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
+        System.out.println(user.toString());
     }
 
     public void initFab(){

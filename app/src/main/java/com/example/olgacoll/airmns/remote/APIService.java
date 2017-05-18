@@ -28,8 +28,7 @@ public interface APIService {
 
     //Post mirar layout registre, modificar variables es facil? Pensar a afegir id user a la taula address
     @GET("login")
-    Call<User> checkLogin(@Query("user") String user,
-                            @Query("pwd") String pwd);
+    Call<User> login(@Query("user") String user);
 
     /*@GET("Search") //i.e https://api.test.com/Search?
     Call<Products> getProducts(@Query("one") String one, @Query("two") String two,

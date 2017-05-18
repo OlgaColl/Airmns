@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
@@ -26,131 +27,189 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
     // -- Attributtes --
 
+    Bundle bundle;
     private static final String TAG = "Activity1_LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     private APIService apiService;
+    String mailuser, passworduser;
+    User user;
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     TextView textViewSignUpLink;
     View.OnClickListener listener;
-    List<User> listUsers; //Per fer proves
-
-
-
-    // -- OnCreate --
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout1_login);
 
+        initComponents();
+        prepareListener();
+        textViewSignUpLink.setOnClickListener(listener);
+        buttonLogin.setOnClickListener(listener);
+    }
+
+    public void initComponents(){
+        user = new User();
         editTextEmail = (EditText)findViewById(R.id.input_email_L1_login);
         editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
         buttonLogin = (Button)findViewById(R.id.btn_login_L1_login);
         textViewSignUpLink = (TextView)findViewById(R.id.link_signup_L1_login);
         apiService = APIUtils.getAPIService();
-        //listUsers = loadUsers();
-
-        /*listUsers = new ArrayList<>();
-        User user = new User("Olga", "1234", "user", "Olga", "Coll Pérez", "+34", "687452135");
-        User user2 = new User("Eric", "1234", "professional", "Eric", "Ayala Andreu", "+34", "674218593");
-
-        listUsers.add(user);
-        listUsers.add(user2);*/
-
-        //prepareListener();
-        //textViewSignUpLink.setOnClickListener(listener);
-        //buttonLogin.setOnClickListener(listener);
-
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                //checkLogin(); comentat per les proves del RETROFIT.
-                String userRetro = editTextEmail.getText().toString();
-                String pwdRetro = editTextPassword.getText().toString();
-                retrofitLogin(userRetro, pwdRetro);
-            }
-        });
-
-        textViewSignUpLink.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // Start the Signup activity
-                Intent intent = new Intent(getApplicationContext(), Activity2_SignupActivity.class);
-                startActivityForResult(intent, REQUEST_SIGNUP);
-                finish();
-                //overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
-            }
-        });
+        bundle = this.getIntent().getExtras();
+        if(bundle == null) bundle = new Bundle();
     }
 
-    // -- Longin Methods --
-
-    public void checkLogin(){
-        Log.d(TAG, "Login");
-
-        int index = -1;
-        for(int i = 0; i < listUsers.size(); i++){
-            if( listUsers.get(i).getMail().equals(  editTextEmail.getText().toString() )){ //comprovació per saber si l'usuari es client o profesional
-                index = i;
+    //eric es profesional 0 (no activitat), olga es client, comprovar amb pepe
+    public void prepareListener() {
+        listener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.btn_login_L1_login:
+                        login();
+                        //String userRetro = editTextEmail.getText().toString();
+                        //String pwdRetro = editTextPassword.getText().toString();
+                        //retrofitLogin(userRetro, pwdRetro);
+                        break;
+                    case R.id.link_login_L2_sign_up:
+                        Intent intent = new Intent(getApplicationContext(), Activity2_SignupActivity.class);
+                        startActivityForResult(intent, REQUEST_SIGNUP);
+                        //finish();
+                        break;
+                }
             }
-        }
+        };
+    }
 
-        if (index >= 0) {
-            if(listUsers.get(index).getType().equals("user")){
-                Intent intent = new Intent(this, Activity3A_MainUser.class);
-                startActivity(intent);
-            }else{
-                Intent intent = new Intent(this, Activity3B_MainProfessional.class);
-                startActivity(intent);
-            }
-
-        } else {
-            //notificar error
+    private void login(){
+        if (!validate()) {
+            onSignupFailed();
+        }else{
+            checkLogin();
+            //onSignupSuccess();
         }
     }
 
-    private void retrofitLogin(String userRetro, String pwdRetro) {
+    public void onSignupSuccess() {
+        setResult(RESULT_OK, null);
+        Toast.makeText(getBaseContext(), "Login succes!", Toast.LENGTH_SHORT).show();
 
+    }
 
-        apiService.checkLogin(userRetro, pwdRetro).enqueue(new Callback<User>() {
+    public void onSignupFailed() {
+        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+    }
+
+    public boolean validate(){
+
+        boolean valid = true;
+        mailuser = editTextEmail.getText().toString();
+        passworduser = editTextPassword.getText().toString();
+
+        if(mailuser.isEmpty()){
+            editTextEmail.setError("Field can't be empty");
+            valid = false;
+        }else{
+            editTextEmail.setError(null, getDrawable(R.drawable.ic_succes_ok));
+        }
+
+        if(passworduser.isEmpty()){
+            editTextPassword.setError("Field can't be empty");
+            valid = false;
+        }else{
+            editTextPassword.setError(null);
+        }
+
+        return valid;
+    }
+
+    private void checkLogin(){
+        apiService.login(mailuser).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-
                 System.out.println(response.body());
                 if(response.isSuccessful()) {
-                    System.out.println("Status code" + response.code());
+                    System.out.println("Status code " + response.code());
                     System.out.println(response.body().getType());
-                    Log.i(TAG, "post submitted to API." + response.body().toString());
+
+                    int id = response.body().getId();
+                    String mail = response.body().getMail();
+                    String password = response.body().getPassword();
+                    String type = response.body().getType();
+                    String name= response.body().getName();
+                    String lastname = response.body().getLastname();
+                    String prefix_phone = response.body().getPrefix_phone();
+                    String phone = response.body().getPhone();
+
+                    user = new User(id, mail, password, type, name, lastname, prefix_phone, phone);
+
+                    Log.i(TAG, "post submitted to API.\n" + response.body().toString());
+
+                    System.out.println("Contrasenya " + user.getPassword());
+
+                    if(checkPassword(passworduser)){
+                        checkTypeUser(user.getType());
+                    }else{
+                        showMessage("Password incorrect");
+                        cleanFields();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
                 Log.e(TAG, "Unable to submit post to API.");
+                showMessage("Unable to submit post to API.");
             }
         });
     }
 
-    /*public void sendPost(String title, String body) {
+    private void cleanFields(){
+        editTextPassword.setText("");
+    }
 
-        mAPIService.addPost(title, body).enqueue(new Callback<Post>() {
-            @Override
-            public void onResponse(Call<Post> call, Response<Post> response) {
+    private void checkTypeUser(String type){
 
-                if(response.isSuccessful()) {
-                    showResponse(response.body().toString());
-                    Log.i(TAG, "post submitted to API." + response.body().toString());
-                }
-            }
 
-            @Override
-            public void onFailure(Call<Post> call, Throwable t) {
-                showErrorMessage();
-                Log.e(TAG, "Unable to submit post to API.");
-            }
-        });
-    }*/
+        Intent intent;
+        initUserBundle();
+        switch(type){
+            case "client":
+                intent = new Intent(getApplicationContext(), Activity3A_MainUser.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+            case "professional0":
+                showMessage("Professional unactivated");
+                break;
+            case "professional1":
+                intent = new Intent(getApplicationContext(), Activity3B_MainProfessional.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                break;
+        }
+    }
+
+    private void initUserBundle(){
+        bundle.putString("id", Integer.toString(user.getId()));
+        bundle.putString("mail", user.getMail());
+        bundle.putString("password", user.getLastname());
+        bundle.putString("type", user.getType());
+        bundle.putString("name", user.getName());
+        bundle.putString("lastname", user.getLastname());
+        bundle.putString("prefix_phone", user.getPrefix_phone());
+        bundle.putString("phone", user.getPhone());
+    }
+
+    private boolean checkPassword(String passworduser){
+        boolean flag = false;
+        System.out.println(passworduser);
+        if(user.getPassword().equals(passworduser)) flag = true;
+        return flag;
+    }
+
+    private void showMessage(String str){
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
 }

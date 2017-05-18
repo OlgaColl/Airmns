@@ -10,8 +10,6 @@ public class PaymentMethod {
 
     private int id;
 
-
-
     //--Constructors--
 
     public PaymentMethod() { }

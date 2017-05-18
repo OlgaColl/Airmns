@@ -90,6 +90,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             onSignupSuccess();
         }
     }
+
     public void onSignupSuccess() {
         setData();
         setResult(RESULT_OK, null);
