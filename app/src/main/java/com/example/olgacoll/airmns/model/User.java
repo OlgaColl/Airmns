@@ -1,5 +1,8 @@
 package com.example.olgacoll.airmns.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by olgacoll on 21/4/17.
  */
@@ -9,13 +12,29 @@ public class User {
 
     //--Attributes--
 
+    @SerializedName("id")
+    @Expose
     private int id;
+    @SerializedName("mail")
+    @Expose
     private String mail;
+    @SerializedName("password")
+    @Expose
     private String password;
+    @SerializedName("type")
+    @Expose
     private String type;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("lastname")
+    @Expose
     private String lastname;
+    @SerializedName("prefix_phone")
+    @Expose
     private String prefix_phone;
+    @SerializedName("phone")
+    @Expose
     private String phone;
 
     //--Constructors--
@@ -24,7 +43,17 @@ public class User {
 
     }
 
-    public User(int id, String mail, String password, String name, String lastname, String prefix_phone, String phone) {
+    public User(int id, String mail, String password, String type, String name, String lastname, String prefix_phone, String phone){
+        this.id = id;
+        this.mail = mail;
+        this.password = password;
+        this.type = type;
+        this.name = name;
+        this.lastname = lastname;
+        this.prefix_phone = prefix_phone;
+        this.phone = phone;
+    }
+    /*public User(int id, String mail, String password, String name, String lastname, String prefix_phone, String phone) {
         this.id = id;
         this.mail = mail;
         this.password = password;
@@ -51,7 +80,7 @@ public class User {
         this.lastname = lastname;
         this.prefix_phone = prefix_phone;
         this.phone = phone;
-    }
+    }*/
 
     //--Getters & Setters--
 
@@ -126,6 +155,7 @@ public class User {
                 "id=" + id +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
+                ", type='" + type + '\'' +
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", prefix_phone='" + prefix_phone + '\'' +

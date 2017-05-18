@@ -16,12 +16,12 @@ public class Client extends User{
 
     public Client(){ }
 
-    public Client(String mail, String password, String name, String lastname, String prefix_phone, String phone){
-        super(mail, password, name, lastname, prefix_phone, phone);
+    public Client(int id, String mail, String password, String type, String name, String lastname, String prefix_phone, String phone){
+        super(id, mail, password, type, name, lastname, prefix_phone, phone);
     }
 
-    public Client(String mail, String password, String name, String lastname, String prefix_phone, String phone, List<String> address){
-        super(mail, password, name, lastname, prefix_phone, phone);
+    public Client(int id, String mail, String password, String type, String name, String lastname, String prefix_phone, String phone, List<String> address){
+        super(id, mail, password, type, name, lastname, prefix_phone, phone);
         this.address = address;
     }
 

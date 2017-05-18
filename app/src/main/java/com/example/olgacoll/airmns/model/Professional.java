@@ -15,12 +15,12 @@ public class Professional extends User{
     //--Constructors--
     public Professional(){ }
 
-    public Professional(String mail, String password, String name, String lastname, String prefix_phone, String phone){
-        super(mail, password, name, lastname, prefix_phone, phone);
+    public Professional(int id, String mail, String password, String type, String name, String lastname, String prefix_phone, String phone){
+        super(id, mail, password, type, name, lastname, prefix_phone, phone);
     }
 
-    public Professional(String mail, String password, String name, String lastname, String prefix_phone, String phone,  List<Boolean> availability){
-        super(mail, password, name, lastname, prefix_phone, phone);
+    public Professional(int id, String mail, String password, String type, String name, String lastname, String prefix_phone, String phone,  List<Boolean> availability){
+        super(id, mail, password, type, name, lastname, prefix_phone, phone);
         this.availability = availability;
     }
 

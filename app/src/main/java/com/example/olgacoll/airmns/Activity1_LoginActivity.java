@@ -10,9 +10,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.olgacoll.airmns.model.User;
+import com.example.olgacoll.airmns.remote.APIService;
+import com.example.olgacoll.airmns.remote.APIUtils;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 //Removes Bind
 public class Activity1_LoginActivity extends AppCompatActivity{
@@ -21,7 +28,7 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
     private static final String TAG = "Activity1_LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
-
+    private APIService apiService;
     EditText editTextEmail, editTextPassword;
     Button buttonLogin;
     TextView textViewSignUpLink;
@@ -41,15 +48,15 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         editTextPassword = (EditText)findViewById(R.id.input_password_L1_login);
         buttonLogin = (Button)findViewById(R.id.btn_login_L1_login);
         textViewSignUpLink = (TextView)findViewById(R.id.link_signup_L1_login);
-
+        apiService = APIUtils.getAPIService();
         //listUsers = loadUsers();
 
-        listUsers = new ArrayList<>();
+        /*listUsers = new ArrayList<>();
         User user = new User("Olga", "1234", "user", "Olga", "Coll Pérez", "+34", "687452135");
         User user2 = new User("Eric", "1234", "professional", "Eric", "Ayala Andreu", "+34", "674218593");
 
         listUsers.add(user);
-        listUsers.add(user2);
+        listUsers.add(user2);*/
 
         //prepareListener();
         //textViewSignUpLink.setOnClickListener(listener);
@@ -59,7 +66,10 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View v) {
-                checkLogin();
+                //checkLogin(); comentat per les proves del RETROFIT.
+                String userRetro = editTextEmail.getText().toString();
+                String pwdRetro = editTextPassword.getText().toString();
+                retrofitLogin(userRetro, pwdRetro);
             }
         });
 
@@ -75,8 +85,6 @@ public class Activity1_LoginActivity extends AppCompatActivity{
             }
         });
     }
-
-
 
     // -- Longin Methods --
 
@@ -104,5 +112,45 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         }
     }
 
+    private void retrofitLogin(String userRetro, String pwdRetro) {
 
+
+        apiService.checkLogin(userRetro, pwdRetro).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+
+                System.out.println(response.body());
+                if(response.isSuccessful()) {
+                    System.out.println("Status code" + response.code());
+                    System.out.println(response.body().getType());
+                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e(TAG, "Unable to submit post to API.");
+            }
+        });
+    }
+
+    /*public void sendPost(String title, String body) {
+
+        mAPIService.addPost(title, body).enqueue(new Callback<Post>() {
+            @Override
+            public void onResponse(Call<Post> call, Response<Post> response) {
+
+                if(response.isSuccessful()) {
+                    showResponse(response.body().toString());
+                    Log.i(TAG, "post submitted to API." + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Post> call, Throwable t) {
+                showErrorMessage();
+                Log.e(TAG, "Unable to submit post to API.");
+            }
+        });
+    }*/
 }
