@@ -18,8 +18,6 @@ public class Address {
     private String city;
     private String postal_code;
 
-
-
     //--Constructors--
 
     public Address(){

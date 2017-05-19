@@ -30,6 +30,15 @@ public interface APIService {
     @GET("login")
     Call<User> login(@Query("user") String user);
 
+    @POST("createUser")
+    Call<String> addUser(@Field("mail") String mail,
+                         @Field("password") String password,
+                         @Field("type") String type,
+                         @Field("name") String name,
+                         @Field("lastname") String lastname,
+                         @Field("prefix_phone") String prefix_phone,
+                         @Field("phone") String phone);
+
     /*@GET("Search") //i.e https://api.test.com/Search?
     Call<Products> getProducts(@Query("one") String one, @Query("two") String two,
                                @Query("key") String key)*/

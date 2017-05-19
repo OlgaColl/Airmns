@@ -26,7 +26,6 @@ import retrofit2.Response;
 public class Activity1_LoginActivity extends AppCompatActivity{
 
     // -- Attributtes --
-
     Bundle bundle;
     private static final String TAG = "Activity1_LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -68,14 +67,10 @@ public class Activity1_LoginActivity extends AppCompatActivity{
                 switch (v.getId()) {
                     case R.id.btn_login_L1_login:
                         login();
-                        //String userRetro = editTextEmail.getText().toString();
-                        //String pwdRetro = editTextPassword.getText().toString();
-                        //retrofitLogin(userRetro, pwdRetro);
                         break;
-                    case R.id.link_login_L2_sign_up:
+                    case R.id.link_signup_L1_login:
                         Intent intent = new Intent(getApplicationContext(), Activity2_SignupActivity.class);
-                        startActivityForResult(intent, REQUEST_SIGNUP);
-                        //finish();
+                        startActivity(intent);
                         break;
                 }
             }

@@ -1,9 +1,9 @@
 package com.example.olgacoll.airmns;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,11 +11,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.olgacoll.airmns.model.Client;
-import com.example.olgacoll.airmns.model.Professional;
 import com.example.olgacoll.airmns.model.User;
+import com.example.olgacoll.airmns.remote.APIService;
+import com.example.olgacoll.airmns.remote.APIUtils;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Activity2_SignupActivity extends AppCompatActivity {
 
@@ -23,6 +27,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     EditText editTextName, editTextLastname, editTextEmail, editTextPrefix, editTextMobile, editTextPassword, editTextPassword2;
     Button buttonSignup;
+    private APIService apiService;
     TextView textViewLogin;
     RadioButton radioButtonClient, radioButtonProfessional;
     View.OnClickListener listener;
@@ -56,6 +61,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         radioButtonClient = (RadioButton)findViewById(R.id.radio_client_L2_sign_up);
         radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional_L2_sign_up);
         type = "client"; //inicialitzem amb tipus d'usuari client
+        apiService = APIUtils.getAPIService();
     }
 
     public void onPrepareListener(){
@@ -87,8 +93,31 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         if (!validate()) {
             onSignupFailed();
         }else{
-            onSignupSuccess();
+            //onSignupSuccess();
+            signUpUser();
         }
+    }
+
+    public void signUpUser(){
+
+        apiService.addUser(email, password, type, name, lastname, prefix, mobile).enqueue(new Callback<String>() {
+
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                if(response.isSuccessful()) {
+
+                    System.out.println("Status code " + response.code());
+                    System.out.println(response.body().toString());
+                    //Log.i(TAG, "post submitted to API.\n" + response.body().toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t){
+                //Log.e(TAG, "Unable to submit post to API.");
+                showMessage("Unable to submit post to API.");
+            }
+        });
     }
 
     public void onSignupSuccess() {
@@ -182,4 +211,9 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
         user.toString();
     }
+
+    private void showMessage(String str){
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
+
 }

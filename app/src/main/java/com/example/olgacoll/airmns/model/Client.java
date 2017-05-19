@@ -33,5 +33,17 @@ public class Client extends User{
         this.address = address;
     }
 
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + this.getId() +
+                ", mail='" + this.getMail() + '\'' +
+                ", password='" + this.getPassword() + '\'' +
+                ", type='" + this.getType() + '\'' +
+                ", name='" + this.getName() + '\'' +
+                ", lastname='" + this.getLastname() + '\'' +
+                ", prefix_phone='" + this.getPrefix_phone() + '\'' +
+                ", phone='" + this.getPhone() + '\'' +
+                '}';
+    }
 }
