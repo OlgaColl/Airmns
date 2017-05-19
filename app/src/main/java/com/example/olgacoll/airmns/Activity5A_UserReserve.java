@@ -20,6 +20,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
+import com.example.olgacoll.airmns.model.Client;
+import com.example.olgacoll.airmns.model.User;
+
 import java.util.Calendar;
 
 
@@ -29,8 +32,11 @@ import java.util.Calendar;
 
 public class Activity5A_UserReserve extends Activity {
 
-    //Bundle
-    Bundle mBundle = new Bundle();
+    Bundle bundle;
+    User user;
+    String mail, password, type, name, lastname, prefix_phone, phone;
+    int id;
+
     //Listener
     OnClickListener listener;
     AdapterView.OnItemSelectedListener listener_time_spinner;
@@ -83,6 +89,8 @@ public class Activity5A_UserReserve extends Activity {
         prepareViews();
         //Prepare reserve objects;
         prepareObjects();
+
+        initBundle();
         //Inicialize listener
         prepareListener();
         //Control Time and Address Spinner
@@ -116,6 +124,40 @@ public class Activity5A_UserReserve extends Activity {
         b_continue = (Button) findViewById(R.id.button_pay_5A_reserve);
         //Total pay
         tv_total_pay = (TextView) findViewById(R.id.total_value_text_5A_reserve);
+    }
+
+    private void initBundle() {
+        //int id, String mail, password, type, name, lastname, prefix_phone, phone;
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("id") != null) {
+                id = Integer.parseInt(bundle.getString("id"));
+            }
+            if (bundle.getString("mail") != null) {
+                mail = bundle.getString("mail");
+            }
+            if (bundle.getString("password") != null) {
+                password = bundle.getString("password");
+            }
+            if (bundle.getString("type") != null) {
+                type = bundle.getString("type");
+            }
+            if (bundle.getString("name") != null) {
+                name = bundle.getString("name");
+            }
+            if (bundle.getString("lastname") != null) {
+                lastname = bundle.getString("lastname");
+            }
+            if (bundle.getString("prefix_phone") != null) {
+                prefix_phone = bundle.getString("prefix_phone");
+            }
+            if (bundle.getString("phone") != null) {
+                phone = bundle.getString("phone");
+            }
+        }
+
+        user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
+        System.out.println(user.toString());
     }
 
     // -- Prepare Reserve objects --
@@ -342,23 +384,23 @@ public class Activity5A_UserReserve extends Activity {
         if (correctData()) {
             //Date
             String date_reserve = dia + "/" + (mes+1) + "/" + anyo;
-            mBundle.putString("date_reserve", date_reserve);
+            bundle.putString("date_reserve", date_reserve);
             //Time
-            mBundle.putInt("time_reserve", hour);
+            bundle.putInt("time_reserve", hour);
             //Long Time
-            mBundle.putInt("long_time_reserve", long_time);
+            bundle.putInt("long_time_reserve", long_time);
             //Address
-            mBundle.putString("address_reserve", address);
+            bundle.putString("address_reserve", address);
             //Observations
             observations = input_observations.getText().toString();
-            mBundle.putString("observations_reserve", observations);
+            bundle.putString("observations_reserve", observations);
             //Total pay
-            mBundle.putDouble("total_pay_reserve", total_pay);
+            bundle.putDouble("total_pay_reserve", total_pay);
 
             //Start ResumeReserve activity
             Intent intent = new Intent(this, Activity5A_ResumeReserve.class);
             // set Bundle to intent
-            intent.putExtras(mBundle);
+            intent.putExtras(bundle);
             startActivity(intent);
 
             //Else print message

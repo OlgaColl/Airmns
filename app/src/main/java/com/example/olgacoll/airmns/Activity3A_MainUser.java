@@ -18,8 +18,8 @@ public class Activity3A_MainUser extends AppCompatActivity{
 
     Bundle bundle;
     User user;
-    int id;
     String mail, password, type, name, lastname, prefix_phone, phone;
+    int id;
 
     FloatingActionButton fab;
     View.OnClickListener listener;

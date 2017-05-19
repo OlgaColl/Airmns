@@ -11,6 +11,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -31,6 +32,7 @@ public interface APIService {
     Call<User> login(@Query("user") String user);
 
     @POST("createUser")
+    @FormUrlEncoded
     Call<String> addUser(@Field("mail") String mail,
                          @Field("password") String password,
                          @Field("type") String type,

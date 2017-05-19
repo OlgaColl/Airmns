@@ -32,7 +32,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     RadioButton radioButtonClient, radioButtonProfessional;
     View.OnClickListener listener;
     User user;
-    String email, password, name, lastname, prefix, mobile, reEnterPassword, type;
+    String mail, password, type, name, lastname, prefix_phone, phone, reEnterPassword;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,6 +49,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void initComponents(){
+        apiService = APIUtils.getAPIService();
         editTextName = (EditText)findViewById(R.id.input_name);
         editTextLastname = (EditText)findViewById(R.id.input_lastname);
         editTextEmail = (EditText)findViewById(R.id.input_email_L1_login);
@@ -61,7 +62,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         radioButtonClient = (RadioButton)findViewById(R.id.radio_client_L2_sign_up);
         radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional_L2_sign_up);
         type = "client"; //inicialitzem amb tipus d'usuari client
-        apiService = APIUtils.getAPIService();
+
     }
 
     public void onPrepareListener(){
@@ -78,11 +79,9 @@ public class Activity2_SignupActivity extends AppCompatActivity {
                         break;
                     case R.id.radio_client_L2_sign_up:
                         type = "client";
-                        System.out.println(type);
                         break;
                     case R.id.radio_professional_L2_sign_up:
                         type = "professional";
-                        System.out.println(type);
                         break;
                 }
             }
@@ -90,24 +89,34 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void signup() {
-        if (!validate()) {
+        /*if (!validate()) {
             onSignupFailed();
         }else{
             //onSignupSuccess();
             signUpUser();
-        }
+
+        }*/
+
+        name = editTextName.getText().toString();
+        lastname = editTextLastname.getText().toString();
+        mail = editTextEmail.getText().toString();
+        prefix_phone = editTextPrefix.getText().toString();
+        phone = editTextMobile.getText().toString();
+        password = editTextPassword.getText().toString();
+        signUpUser();
     }
 
     public void signUpUser(){
 
-        apiService.addUser(email, password, type, name, lastname, prefix, mobile).enqueue(new Callback<String>() {
+        System.out.println(mail + password + type + name + lastname + prefix_phone + phone);
+        apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
 
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
+                System.out.println(response.body().toString());
+                System.out.println(response);
                 if(response.isSuccessful()) {
-
                     System.out.println("Status code " + response.code());
-                    System.out.println(response.body().toString());
                     //Log.i(TAG, "post submitted to API.\n" + response.body().toString());
                 }
             }
@@ -138,9 +147,9 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
         name = editTextName.getText().toString();
         lastname = editTextLastname.getText().toString();
-        email = editTextEmail.getText().toString();
-        prefix = editTextPrefix.getText().toString();
-        mobile = editTextMobile.getText().toString();
+        mail = editTextEmail.getText().toString();
+        prefix_phone = editTextPrefix.getText().toString();
+        phone = editTextMobile.getText().toString();
         password = editTextPassword.getText().toString();
         reEnterPassword = editTextPassword2.getText().toString();
 
@@ -158,21 +167,21 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             editTextLastname.setError(null);
         }
 
-        if (prefix.isEmpty()){
+        if (prefix_phone.isEmpty()){
             editTextPrefix.setError("at least 2 numbers");
             valid = false;
         } else {
             editTextPrefix.setError(null);
         }
 
-        if (mobile.isEmpty() || mobile.length()!=9) {
+        if (phone.isEmpty() || phone.length()!=9) {
             editTextMobile.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
             editTextMobile.setError(null);
         }
 
-        if (email.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (mail.isEmpty() /*|| !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()*/) {
             editTextEmail.setError("enter a valid email address");
             valid = false;
         } else {
@@ -198,10 +207,6 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     public void setData(){
 
-        System.out.println(email);
-        System.out.println(password);
-        System.out.println(name);
-        System.out.println(lastname);
         if(type.equals("client")){
 
             //user = new Client(email, password, name, lastname, "+" + prefix, mobile);

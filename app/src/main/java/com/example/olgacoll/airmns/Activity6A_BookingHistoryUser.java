@@ -10,6 +10,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.User;
+
 import java.util.List;
 
 /**
@@ -18,10 +20,13 @@ import java.util.List;
 
 public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
+    Bundle bundle;
+    User user;
+    String mail, password, type, name, lastname, prefix_phone, phone;
+    int id;
     ListView listView;
     TextView textViewTitle, textViewInfo;
     String[] reserves;
-    Bundle bundle;
     String[] items;
     AdapterView.OnItemClickListener listener;
 
