@@ -107,16 +107,16 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void signUpUser(){
+        User user = new User();
 
-        System.out.println(mail + password + type + name + lastname + prefix_phone + phone);
+
+        System.out.println(" Mail: " + mail +  " Password " + password +  " Type: " + type +  " Nom: " + name +  " Apellidos " + lastname +  " Prefix " + prefix_phone + " Phone "+ phone);
         apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
-
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println(response.body().toString());
-                System.out.println(response);
                 if(response.isSuccessful()) {
                     System.out.println("Status code " + response.code());
+                    System.out.println(response.body());
                     //Log.i(TAG, "post submitted to API.\n" + response.body().toString());
                 }
             }

@@ -22,24 +22,19 @@ import retrofit2.http.Query;
  */
 
 public interface APIService {
-
-    //@GET("/login")
-    /*Call<String> checkLogin(@Field("user") String user,
-                          @Field("pwd") String pwd);*/
-
-    //Post mirar layout registre, modificar variables es facil? Pensar a afegir id user a la taula address
+    
     @GET("login")
     Call<User> login(@Query("user") String user);
 
     @POST("createUser")
-    @FormUrlEncoded
-    Call<String> addUser(@Field("mail") String mail,
-                         @Field("password") String password,
-                         @Field("type") String type,
-                         @Field("name") String name,
-                         @Field("lastname") String lastname,
-                         @Field("prefix_phone") String prefix_phone,
-                         @Field("phone") String phone);
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> addUser(@Query("mail") String mail,
+                         @Query("password") String password,
+                         @Query("type") String type,
+                         @Query("name") String name,
+                         @Query("lastname") String lastname,
+                         @Query("prefix_phone") String prefix_phone,
+                         @Query("phone") String phone);
 
     /*@GET("Search") //i.e https://api.test.com/Search?
     Call<Products> getProducts(@Query("one") String one, @Query("two") String two,
