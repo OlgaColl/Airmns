@@ -18,10 +18,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Client;
 import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -260,7 +263,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         return valid;
     }
 
-
     private void editProfileFailed(){
         showMessage("Error editing profile");
     }
@@ -288,7 +290,36 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     //Control address Spinner
     private void controlSpinner() {
-        //Address
+        System.out.println("ID USER en control sppiner " + id);
+        apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
+            @Override
+            public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
+                //System.out.println(response.body().get(1).toString());
+                System.out.println("Response code: " + response.code());
+
+                dataAddress = new String[response.body().size()];
+
+                //fillAddressSpinner
+                for(int i = 0; i < response.body().size(); i++){
+                    dataAddress[i] = response.body().get(i).toString();
+                }
+
+                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, dataAddress);
+                spinnerAddress.setAdapter(adaptador);
+                prepareItemListener();
+                spinnerAddress.setOnItemSelectedListener(listenerSpinner);
+            }
+
+            @Override
+            public void onFailure(Call<List<Address>> call, Throwable t) {
+                showMessage("Unable to submit post to API.");
+            }
+        });
+
+        /*@GET("listAllAddress")
+        Call<String> listAllAddress(@Query("id") int id);*/
+
+        /*//Address
         dataAddress = getResources().getStringArray(R.array.txt_address_value_5A_reserve);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.txt_address_value_5A_reserve, android.R.layout.simple_list_item_1);
@@ -297,7 +328,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinnerAddress.setAdapter(adapter1);
         prepareItemListener();
-        spinnerAddress.setOnItemSelectedListener(listenerSpinner);
+        spinnerAddress.setOnItemSelectedListener(listenerSpinner);*/
     }
 
     public void prepareItemListener() {

@@ -1,5 +1,6 @@
 package com.example.olgacoll.airmns.remote;
 
+import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.User;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public interface APIService {
     Call<String> selectUser(@Query("user_id") int id);
 
     @GET("listAllAddress")
-    Call<String> listAllAddress(@Query("id") int id);
+    Call<List<Address>> listAllAddress(@Query("id_user") int id);
 
     @POST("addAddress")
     @Headers("Content-Type: application/x-www-form-urlencoded")

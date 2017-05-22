@@ -13,7 +13,7 @@ public class Address {
     @SerializedName("id_address")
     @Expose
     private int id_address;
-    @SerializedName("id")
+    @SerializedName("id_user")
     @Expose
     private int id_user;
     @SerializedName("street")
@@ -134,16 +134,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
-                "id_address=" + id_address +
-                ", id_user=" + id_user +
-                ", street='" + street + '\'' +
-                ", number='" + number + '\'' +
-                ", floor='" + floor + '\'' +
-                ", stair='" + stair + '\'' +
-                ", door='" + door + '\'' +
-                ", city='" + city + '\'' +
-                ", postal_code='" + postal_code + '\'' +
-                '}';
+        return "Street " + street + " " + number + ", " + floor + "º " + door + "ª " + stair + ", " + postal_code + " " + city;
     }
 }
