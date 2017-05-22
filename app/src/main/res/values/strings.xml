@@ -74,7 +74,7 @@
     <!--observations-->
     <string name="txt_observations_text_5A_reserve">Observations</string>
     <!--total pay-->
-    <string name="txt_total_pay_text_5A_reserve">Total</string>
+    <string name="txt_total_pay_text_5A_reserve">Total: </string>
     <string name="txt_total_value_text_5A_reserve">0€</string>
     <!--buttons-->
     <string name="txt_button_date_5A_reserve">INPUT DATE</string>

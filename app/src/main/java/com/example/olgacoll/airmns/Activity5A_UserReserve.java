@@ -32,9 +32,10 @@ import java.util.Calendar;
 
 public class Activity5A_UserReserve extends Activity {
 
-    Bundle bundle;
-    User user;
-    String mail, password, type, name, lastname, prefix_phone, phone;
+    //Bundle bundle;
+    Bundle mBundle = new Bundle();
+    //User user;
+    //String mail, password, type, name, lastname, prefix_phone, phone;
     int id;
 
     //Listener
@@ -90,7 +91,7 @@ public class Activity5A_UserReserve extends Activity {
         //Prepare reserve objects;
         prepareObjects();
 
-        initBundle();
+        //initBundle();
         //Inicialize listener
         prepareListener();
         //Control Time and Address Spinner
@@ -126,7 +127,7 @@ public class Activity5A_UserReserve extends Activity {
         tv_total_pay = (TextView) findViewById(R.id.total_value_text_5A_reserve);
     }
 
-    private void initBundle() {
+    /*private void initBundle() {
         //int id, String mail, password, type, name, lastname, prefix_phone, phone;
         bundle = this.getIntent().getExtras();
         if (bundle != null) {
@@ -158,7 +159,7 @@ public class Activity5A_UserReserve extends Activity {
 
         user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
         System.out.println(user.toString());
-    }
+    }*/
 
     // -- Prepare Reserve objects --
     private void prepareObjects() {
@@ -372,7 +373,7 @@ public class Activity5A_UserReserve extends Activity {
         //Rounded to 2 decimals
         total_pay = Math.round(total_pay*100.0)/100.0;
         //Print total price
-        tv_total_pay.setText(String.valueOf(total_pay)+"€");
+        tv_total_pay.setText(" " + String.valueOf(total_pay)+"€");
     }
 
 
@@ -383,53 +384,64 @@ public class Activity5A_UserReserve extends Activity {
         //If input data is correct
         if (correctData()) {
             //Date
-            String date_reserve = dia + "/" + (mes+1) + "/" + anyo;
-            bundle.putString("date_reserve", date_reserve);
+            String date_reserve = dia + "/" + (mes + 1) + "/" + anyo;
+            mBundle.putString("date_reserve", date_reserve);
             //Time
-            bundle.putInt("time_reserve", hour);
+            mBundle.putInt("time_reserve", hour);
             //Long Time
-            bundle.putInt("long_time_reserve", long_time);
+            mBundle.putInt("long_time_reserve", long_time);
             //Address
-            bundle.putString("address_reserve", address);
+            mBundle.putString("address_reserve", address);
             //Observations
             observations = input_observations.getText().toString();
-            bundle.putString("observations_reserve", observations);
+            mBundle.putString("observations_reserve", observations);
             //Total pay
-            bundle.putDouble("total_pay_reserve", total_pay);
+            mBundle.putDouble("total_pay_reserve", total_pay);
 
             //Start ResumeReserve activity
             Intent intent = new Intent(this, Activity5A_ResumeReserve.class);
             // set Bundle to intent
-            intent.putExtras(bundle);
+            intent.putExtras(mBundle);
             startActivity(intent);
-
-            //Else print message
-        } else {
-            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-            //Show message
-            alertbox.setMessage("Input date must be 2 days greater than current date and minutes must be 0.");
-            //Add option
-            alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                //To do whe press Ok
-                public void onClick(DialogInterface arg0, int arg1) {
-                    //mensaje("Pulsado el botón SI");
-                }
-            });
-
-            //Show
-            alertbox.show();
         }
-
     }
 
     //Comprove if correct input date
     private boolean correctData(){
+        //--ALERT--
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        //Add option
+        alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            //To do whe press Ok
+            public void onClick(DialogInterface arg0, int arg1) {
+                //mensaje("Pulsado el botón SI");
+            }
+        });
+
+        //--CALENDAR--
         //Current date more 2 days (date correct input availability)
         Calendar calendario_actual = Calendar.getInstance();
         calendario_actual.add(Calendar.HOUR, 24);
+
+        //--COMPROVE--
         //If calendar more or igual than current date return false
-        if(calendar.before(calendario_actual) || minute != 0) return false;
-        else return true;
+        if(calendar.before(calendario_actual) || minute != 0) {
+            //Show message
+            alertbox.setMessage("Input date must be 2 days greater than current date and minutes must be 0."); alertbox.show();
+            return false;
+        }
+        //If 7:00 is more than start time return false
+        else if(hour < 7) {
+            //Show message and Show
+            alertbox.setMessage("Start time must be more than 7:00."); alertbox.show();
+            return false;
+        //If end time is more than 23:00 return false
+        } else if((hour+long_time) > 23) {
+            //Show message
+            alertbox.setMessage("End time less than 23:00."); alertbox.show();
+            return false;
+        //Else return true
+        } else return true;
     }
 
 
