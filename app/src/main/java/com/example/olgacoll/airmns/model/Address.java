@@ -1,5 +1,8 @@
 package com.example.olgacoll.airmns.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by olgacoll on 9/5/17.
  */
@@ -7,15 +10,32 @@ package com.example.olgacoll.airmns.model;
 public class Address {
 
     //--Attributes--
-
+    @SerializedName("id_address")
+    @Expose
     private int id_address;
+    @SerializedName("id")
+    @Expose
     private int id_user;
+    @SerializedName("street")
+    @Expose
     private String street;
+    @SerializedName("number")
+    @Expose
     private String number;
+    @SerializedName("floor")
+    @Expose
     private String floor;
+    @SerializedName("stair")
+    @Expose
     private String stair;
+    @SerializedName("door")
+    @Expose
     private String door;
+    @SerializedName("city")
+    @Expose
     private String city;
+    @SerializedName("postal_code")
+    @Expose
     private String postal_code;
 
     //--Constructors--

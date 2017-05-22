@@ -109,7 +109,6 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     public void signUpUser(){
         User user = new User();
 
-
         System.out.println(" Mail: " + mail +  " Password " + password +  " Type: " + type +  " Nom: " + name +  " Apellidos " + lastname +  " Prefix " + prefix_phone + " Phone "+ phone);
         apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
@@ -132,7 +131,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     public void onSignupSuccess() {
         setData();
         setResult(RESULT_OK, null);
-        Toast.makeText(getBaseContext(), "Sign up succes!", Toast.LENGTH_LONG).show();
+        Toast.makeText(getBaseContext(), "Sign up success!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
         startActivity(intent);
     }

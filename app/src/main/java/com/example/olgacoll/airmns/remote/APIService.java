@@ -36,6 +36,46 @@ public interface APIService {
                          @Query("prefix_phone") String prefix_phone,
                          @Query("phone") String phone);
 
+    @POST("modifyUser")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> editUser(@Query("id") int id,
+                          @Query("mail") String mail,
+                          @Query("password") String password,
+                          @Query("name") String name,
+                          @Query("lastname") String lastname,
+                          @Query("prefix_phone") String prefix_phone,
+                          @Query("phone") String phone);
+
+    @GET("listAllAddress")
+    Call<String> listAllAddress(@Query("id") int id);
+
+    @POST("addAddress")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> addAddress(@Query("id") int id,
+                          @Query("street") String street,
+                          @Query("number") String number,
+                          @Query("floor") String floor,
+                          @Query("stair") String stair,
+                          @Query("door") String door,
+                          @Query("city") String city,
+                          @Query("postal_code") String postal_code);
+
+    @POST("modifyAddress")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> modifyAddress(@Query("id_address") int id_address,
+                            @Query("street") String street,
+                            @Query("number") String number,
+                            @Query("floor") String floor,
+                            @Query("stair") String stair,
+                            @Query("door") String door,
+                            @Query("city") String city,
+                            @Query("postal_code") String postal_code);
+
+    @POST("removeAddress")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> removeAddress(@Query("id_address") int id_address);
+
+
     /*@GET("Search") //i.e https://api.test.com/Search?
     Call<Products> getProducts(@Query("one") String one, @Query("two") String two,
                                @Query("key") String key)*/

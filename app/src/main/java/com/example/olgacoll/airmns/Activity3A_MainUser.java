@@ -67,14 +67,12 @@ public class Activity3A_MainUser extends AppCompatActivity{
                     case R.id.imageViewEditProfile_L3A_main_user:
                         initEditProfile();
                         break;
-
                 }
             }
         };
     }
 
     private void initBundle() {
-        //int id, String mail, password, type, name, lastname, prefix_phone, phone;
         bundle = this.getIntent().getExtras();
         if (bundle != null) {
             if (bundle.getString("id") != null) {
