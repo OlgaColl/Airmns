@@ -46,6 +46,10 @@ public interface APIService {
                           @Query("prefix_phone") String prefix_phone,
                           @Query("phone") String phone);
 
+    //TODO Gestionar mail com a user not found.
+    @GET("selectUser")
+    Call<String> selectUser(@Query("user_id") int id);
+
     @GET("listAllAddress")
     Call<String> listAllAddress(@Query("id") int id);
 
@@ -74,6 +78,8 @@ public interface APIService {
     @POST("removeAddress")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> removeAddress(@Query("id_address") int id_address);
+
+
 
 
     /*@GET("Search") //i.e https://api.test.com/Search?
