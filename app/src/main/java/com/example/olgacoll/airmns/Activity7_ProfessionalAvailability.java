@@ -48,6 +48,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
     TextView tv_availability[];
     //Buttons
+    Button b_select_all;
     Button b_restart;
     Button b_ok;
 
@@ -85,7 +86,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
         //Availability
         tv_availability = new TextView[16];
         inicialiceAvailability();
-        //Button continue
+        //Button Select all
+        b_select_all = (Button) findViewById(R.id.button_select_all_L7);
+        //Button Select none
         b_restart = (Button) findViewById(R.id.button_restart_L7);
         //Total pay
         b_ok = (Button) findViewById(R.id.button_ok_L7);
@@ -130,14 +133,16 @@ public class Activity7_ProfessionalAvailability extends Activity {
                     case R.id.button_date_L7: //Choose date
                         mostrarCalendario(v);
                         break;
-                    //RESTART
+                    //SELECT ALL
+                    case R.id.button_select_all_L7:
+                        changeAll(true);
+                        break;
+                    //SELECT NONE
                     case R.id.button_restart_L7:
-                        //Toast.makeText(getApplicationContext(), "Restart", Toast.LENGTH_SHORT).show();
-                        restartData();
+                        changeAll(false);
                         break;
                     //OK
                     case R.id.button_ok_L7:
-                        //Toast.makeText(getApplicationContext(), "OK", Toast.LENGTH_SHORT).show();
                         saveChanges();
                         break;
                     //DEFAULT
@@ -170,7 +175,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
     private void addListener() {
         //Button date
         b_input_date.setOnClickListener(listener);
-        //Button Restart
+        //Button Select all
+        b_select_all.setOnClickListener(listener);
+        //Button Select none
         b_restart.setOnClickListener(listener);
         //Button ok
         b_ok.setOnClickListener(listener);
@@ -247,11 +254,11 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
 
 
-    // -- RESTART --
+    // -- CHANGE ALL BOOLEANS --
 
-    private void restartData(){
+    private void changeAll(boolean bl){
         //Hours
-        for(int i = 0; i < availability.length; i++) availability[i] = false;
+        for(int i = 0; i < availability.length; i++) availability[i] = bl;
         updateAvailabilitViews();
     }
 
@@ -269,7 +276,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
             dia = calendar.get(Calendar.DAY_OF_MONTH);
             printDateTime();
             //Reestart availability
-            restartData();
+            changeAll(false);
             //Else print message
         } else {
             AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
