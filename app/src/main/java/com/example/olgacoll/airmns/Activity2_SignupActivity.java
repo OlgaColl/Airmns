@@ -24,7 +24,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     EditText editTextName, editTextLastname, editTextEmail, editTextPrefix, editTextMobile, editTextPassword, editTextPassword2;
     Button buttonSignup;
-    private APIService apiService;
+    APIService apiService;
     TextView textViewLogin;
     RadioButton radioButtonClient, radioButtonProfessional;
     View.OnClickListener listener;
@@ -59,7 +59,6 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         radioButtonClient = (RadioButton)findViewById(R.id.radio_client_L2_sign_up);
         radioButtonProfessional = (RadioButton)findViewById(R.id.radio_professional_L2_sign_up);
         type = "client"; //inicialitzem amb tipus d'usuari client
-
     }
 
     public void onPrepareListener(){

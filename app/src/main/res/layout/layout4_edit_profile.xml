@@ -149,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.02"
-                android:text="Modify" />
+                android:text="@string/txt_modify_L4_edit" />
 
             <Button
                 android:id="@+id/button_remove_L4_edit_profile"
