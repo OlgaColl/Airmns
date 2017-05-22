@@ -17,13 +17,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.example.olgacoll.airmns.model.Client;
+import com.example.olgacoll.airmns.model.User;
+
 public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     private static final String TAG = "Activity4A_EditProfileClient";
-
-    EditText editTextName, editTextLastname, editTextMobile, editTextPassword, editTextPassword2;
+    User user;
+    int id;
+    String mail, name, lastname, prefix_phone, phone, type, password, password2;
+    EditText editTextMail, editTextName, editTextLastname, editTextPrefix, editTextMobile, editTextPassword, editTextPassword2;
     //EditText editTextAddress;
-    Button buttonAddAddress, buttonRemoveAddress, buttonSaveChanges;
+    Button buttonAddAddress, buttonModifyAddress, buttonRemoveAddress, buttonSaveChanges;
     Spinner spinnerAddress;
     String dataAddress[];
     int indexAddress;
@@ -37,20 +42,25 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout4_edit_profile);
 
+        editTextMail = (EditText) findViewById(R.id.input_mail);
         editTextName = (EditText) findViewById(R.id.input_name);
         editTextLastname = (EditText) findViewById(R.id.input_lastname);
+        editTextPrefix = (EditText) findViewById(R.id.input_prefix);
         editTextMobile = (EditText) findViewById(R.id.input_mobile);
         editTextPassword = (EditText) findViewById(R.id.input_password_L1_login);
         editTextPassword2 = (EditText) findViewById(R.id.input_reEnterPassword);
         buttonAddAddress = (Button) findViewById(R.id.button_add_L4_edit_profile);
+        buttonModifyAddress = (Button) findViewById(R.id.button_modify_L4_edit_profile);
         buttonRemoveAddress = (Button) findViewById(R.id.button_remove_L4_edit_profile);
         buttonSaveChanges = (Button) findViewById(R.id.btn_save_changes);
         spinnerAddress = (Spinner) findViewById(R.id.spinner_address_5A_reserve);
         indexAddress = 0; //assignamos un indice por defecto
         bundle = new Bundle();
         prepareListener();
+        initBundle();
         controlSpinner();
         buttonAddAddress.setOnClickListener(listener);
+        buttonModifyAddress.setOnClickListener(listener);
         buttonRemoveAddress.setOnClickListener(listener);
         buttonSaveChanges.setOnClickListener(listener);
     }
@@ -63,6 +73,9 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                     case R.id.button_add_L4_edit_profile:
                         addAddress();
                         break;
+                    case R.id.button_modify_L4_edit_profile:
+                        modifyAddress();
+                        break;
                     case R.id.button_remove_L4_edit_profile:
                         removeAddress();
                         break;
@@ -74,7 +87,57 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         };
     }
 
+    //TODO ID no gestionada
+    private void initBundle(){
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("id") != null) {
+                id = Integer.parseInt(bundle.getString("id"));
+            }
+            if (bundle.getString("mail") != null) {
+                mail = bundle.getString("mail");
+            }
+            if (bundle.getString("name") != null) {
+                name = bundle.getString("name");
+            }
+            if (bundle.getString("lastname") != null) {
+                lastname = bundle.getString("lastname");
+            }
+
+            if (bundle.getString("type") != null) {
+                type = bundle.getString("type");
+            }
+            if (bundle.getString("prefix_phone") != null) {
+                prefix_phone = bundle.getString("prefix_phone");
+            }
+            if (bundle.getString("phone") != null) {
+                phone = bundle.getString("phone");
+            }
+        }
+
+        initFields();
+        user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
+        System.out.println("ID Client" + id);
+        System.out.println(user.toString());
+    }
+
+    private void initFields(){
+        editTextMail.setText(mail);
+        editTextName.setText(name);
+        editTextLastname.setText(lastname);
+        editTextPrefix.setText(prefix_phone);
+        editTextMobile.setText(phone);
+    }
+
+    //Per afegir, passem com a bundle id_user
     public void addAddress() {
+        Log.d("Add address", "Add address");
+        Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
+        startActivity(intent);
+    }
+
+    //Per modificar, el bundle serà id_address
+    public void modifyAddress(){
         Log.d("Add address", "Add address");
         Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
         startActivity(intent);

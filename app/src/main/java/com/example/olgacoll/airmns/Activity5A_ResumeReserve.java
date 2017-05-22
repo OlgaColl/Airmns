@@ -45,6 +45,9 @@ public class Activity5A_ResumeReserve extends Activity {
     TextView tv_total_price;
     Button b_pay;
 
+
+
+
     // -- OnCreate --
 
     public void onCreate(Bundle savedInstanceState) {

@@ -12,7 +12,6 @@ import android.widget.ImageView;
  */
 
 public class Activity3B_MainProfessional extends AppCompatActivity {
-
     FloatingActionButton fab;
     View.OnClickListener listener;
     ImageView imageViewManageReservation, imageViewBookingHistory;

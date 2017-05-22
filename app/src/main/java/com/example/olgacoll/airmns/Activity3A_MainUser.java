@@ -128,6 +128,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
 
     public void initEditProfile(){
         Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 }

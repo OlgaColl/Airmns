@@ -3,7 +3,6 @@ package com.example.olgacoll.airmns;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +13,6 @@ import android.widget.Toast;
 import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,21 +113,22 @@ public class Activity2_SignupActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     System.out.println("Status code " + response.code());
                     System.out.println(response.body());
-                    //Log.i(TAG, "post submitted to API.\n" + response.body().toString());
+                    if(response.body().equals("1")) {
+                        onSignupSuccess();
+                    }else{
+                        onSignupFailed();
+                    }
                 }
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t){
-                //Log.e(TAG, "Unable to submit post to API.");
                 showMessage("Unable to submit post to API.");
             }
         });
     }
 
     public void onSignupSuccess() {
-        setData();
-        setResult(RESULT_OK, null);
         Toast.makeText(getBaseContext(), "Sign up success!", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
         startActivity(intent);
@@ -138,7 +136,13 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Sign up failed", Toast.LENGTH_LONG).show();
-        buttonSignup.setEnabled(true);
+        cleanFields();
+    }
+
+    //TODO Clean fields in case of error
+    public void cleanFields(){
+        //editTextName.setText("");
+        //editTextName.setText("");
     }
 
     public boolean validate() {
