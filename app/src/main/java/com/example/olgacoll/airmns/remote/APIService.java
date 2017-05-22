@@ -38,7 +38,7 @@ public interface APIService {
 
     @POST("modifyUser")
     @Headers("Content-Type: application/x-www-form-urlencoded")
-    Call<String> editUser(@Query("id") int id,
+    Call<String> editUser(@Query("user_id") int id,
                           @Query("mail") String mail,
                           @Query("password") String password,
                           @Query("name") String name,

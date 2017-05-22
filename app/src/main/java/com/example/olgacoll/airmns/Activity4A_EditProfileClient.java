@@ -121,7 +121,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                 type = bundle.getString("type");
             }
             if (bundle.getString("prefix_phone") != null) {
-                prefix_phone = bundle.getString("prefix_phone");
+                prefix_phone = "+" + bundle.getString("prefix_phone");
             }
             if (bundle.getString("phone") != null) {
                 phone = bundle.getString("phone");
@@ -229,7 +229,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
             editTextPrefix.setError(null);
         }
 
-        if (phone.isEmpty() || phone.length()!=9) {
+        if (phone.isEmpty() || phone.length()!= 9) {
             editTextMobile.setError("Enter Valid Mobile Number");
             valid = false;
         } else {
@@ -267,6 +267,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     private void editProfileSuccess(){
 
+        System.out.println("ID:" + id + " mail:" + mail + "name: " + name + "lastname: " + lastname + "prefix_phone: " + prefix_phone + " phone: " + phone);
         apiService.editUser(id, mail, password, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
