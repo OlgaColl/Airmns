@@ -83,7 +83,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
         tv_date = (TextView) findViewById(R.id.textView_date_L7_professional_availability);
         b_input_date = (Button) findViewById(R.id.button_date_L7);
         //Availability
-        tv_availability = new TextView[24];
+        tv_availability = new TextView[16];
         inicialiceAvailability();
         //Button continue
         b_restart = (Button) findViewById(R.id.button_restart_L7);
@@ -93,36 +93,28 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
     //-- Inicialice Availability textViews--
     private void inicialiceAvailability() {
-        tv_availability[0] = (TextView) findViewById(R.id.imagenLogo0);
-        tv_availability[1] = (TextView) findViewById(R.id.imagenLogo1);
-        tv_availability[2] = (TextView) findViewById(R.id.imagenLogo2);
-        tv_availability[3] = (TextView) findViewById(R.id.imagenLogo3);
-        tv_availability[4] = (TextView) findViewById(R.id.imagenLogo4);
-        tv_availability[5] = (TextView) findViewById(R.id.imagenLogo5);
-        tv_availability[6] = (TextView) findViewById(R.id.imagenLogo6);
-        tv_availability[7] = (TextView) findViewById(R.id.imagenLogo7);
-        tv_availability[8] = (TextView) findViewById(R.id.imagenLogo8);
-        tv_availability[9] = (TextView) findViewById(R.id.imagenLogo9);
-        tv_availability[10] = (TextView) findViewById(R.id.imagenLogo10);
-        tv_availability[11] = (TextView) findViewById(R.id.imagenLogo11);
-        tv_availability[12] = (TextView) findViewById(R.id.imagenLogo12);
-        tv_availability[13] = (TextView) findViewById(R.id.imagenLogo13);
-        tv_availability[14] = (TextView) findViewById(R.id.imagenLogo14);
-        tv_availability[15] = (TextView) findViewById(R.id.imagenLogo15);
-        tv_availability[16] = (TextView) findViewById(R.id.imagenLogo16);
-        tv_availability[17] = (TextView) findViewById(R.id.imagenLogo17);
-        tv_availability[18] = (TextView) findViewById(R.id.imagenLogo18);
-        tv_availability[19] = (TextView) findViewById(R.id.imagenLogo19);
-        tv_availability[20] = (TextView) findViewById(R.id.imagenLogo20);
-        tv_availability[21] = (TextView) findViewById(R.id.imagenLogo21);
-        tv_availability[22] = (TextView) findViewById(R.id.imagenLogo22);
-        tv_availability[23] = (TextView) findViewById(R.id.imagenLogo23);
+        tv_availability[0] = (TextView) findViewById(R.id.imagenLogo01);
+        tv_availability[1] = (TextView) findViewById(R.id.imagenLogo02);
+        tv_availability[2] = (TextView) findViewById(R.id.imagenLogo03);
+        tv_availability[3] = (TextView) findViewById(R.id.imagenLogo04);
+        tv_availability[4] = (TextView) findViewById(R.id.imagenLogo05);
+        tv_availability[5] = (TextView) findViewById(R.id.imagenLogo06);
+        tv_availability[6] = (TextView) findViewById(R.id.imagenLogo07);
+        tv_availability[7] = (TextView) findViewById(R.id.imagenLogo08);
+        tv_availability[8] = (TextView) findViewById(R.id.imagenLogo09);
+        tv_availability[9] = (TextView) findViewById(R.id.imagenLogo10);
+        tv_availability[10] = (TextView) findViewById(R.id.imagenLogo11);
+        tv_availability[11] = (TextView) findViewById(R.id.imagenLogo12);
+        tv_availability[12] = (TextView) findViewById(R.id.imagenLogo13);
+        tv_availability[13] = (TextView) findViewById(R.id.imagenLogo14);
+        tv_availability[14] = (TextView) findViewById(R.id.imagenLogo15);
+        tv_availability[15] = (TextView) findViewById(R.id.imagenLogo16);
     }
 
     //-- Prepare objects (availability) --
     private void prepareObjects(){
         //Instance object
-        availability = new boolean[24];
+        availability = new boolean[16];
         //Inicialice objects
         for(int i = 0; i < availability.length; i++) availability[i] = false;
     }
@@ -163,7 +155,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
                 //Search TextView with their id
                 TextView tv_nombre = (TextView) findViewById(nombre);
                 //Int hour
-                int hour = Integer.parseInt( tv_nombre.getText().toString().substring(0,2) );
+                int hour = Integer.parseInt( tv_nombre.getText().toString().substring(0,2) ) -7;
                 //Change boalean to hour to true/false
                 availability[hour]= !availability[hour];
                 //Update AvailabilityViews

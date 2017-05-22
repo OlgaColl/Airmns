@@ -85,7 +85,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="75dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -95,87 +95,8 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-
             <TextView
-                android:id="@+id/imagenLogo0"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="00:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/imagenLogo1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="01:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="02:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="03:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="04:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo5"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="05:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo6"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="06:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo7"
+                android:id="@+id/imagenLogo01"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -185,17 +106,8 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0.03dp"
-            android:layout_weight="0.02"
-            android:gravity="center"
-            android:orientation="horizontal">
-
             <TextView
-                android:id="@+id/imagenLogo8"
+                android:id="@+id/imagenLogo02"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -206,7 +118,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo9"
+                android:id="@+id/imagenLogo03"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -217,7 +129,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo10"
+                android:id="@+id/imagenLogo04"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -228,7 +140,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo11"
+                android:id="@+id/imagenLogo05"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -239,7 +151,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo12"
+                android:id="@+id/imagenLogo06"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -250,7 +162,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo13"
+                android:id="@+id/imagenLogo07"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -261,24 +173,13 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo14"
+                android:id="@+id/imagenLogo08"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
                 android:background="@drawable/button7_image_hour"
                 android:gravity="center"
                 android:text="14:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/imagenLogo15"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="15:00"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -292,7 +193,18 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/imagenLogo16"
+                android:id="@+id/imagenLogo09"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.15"
+                android:background="@drawable/button7_image_hour"
+                android:gravity="center"
+                android:text="15:00"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/imagenLogo10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -303,7 +215,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo17"
+                android:id="@+id/imagenLogo11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -314,7 +226,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo18"
+                android:id="@+id/imagenLogo12"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -325,7 +237,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo19"
+                android:id="@+id/imagenLogo13"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -336,7 +248,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo20"
+                android:id="@+id/imagenLogo14"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -347,7 +259,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo21"
+                android:id="@+id/imagenLogo15"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -358,7 +270,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/imagenLogo22"
+                android:id="@+id/imagenLogo16"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.15"
@@ -368,18 +280,31 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/imagenLogo23"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.15"
-                android:background="@drawable/button7_image_hour"
-                android:gravity="center"
-                android:text="23:00"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
         </LinearLayout>
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_add_L4_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="@string/txt_button_select_all_L7" />
+
+
+        <Button
+            android:id="@+id/button_restart_L7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="@string/txt_button_restart_L7" />
 
     </LinearLayout>
 
@@ -393,12 +318,12 @@
         android:orientation="horizontal"
         android:layout_weight="0.08">
 
-        <Button
+        <!--<Button
             android:id="@+id/button_restart_L7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
-            android:text="@string/txt_button_restart_L7" />
+            android:text="@string/txt_button_restart_L7" />-->
 
         <Button
             android:id="@+id/button_ok_L7"

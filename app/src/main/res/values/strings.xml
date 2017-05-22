@@ -113,6 +113,7 @@
     <string name="txt_textView_date_text_L7_professional_availability">Date</string>
     <string name="txt_textView_date_L7_professional_availability">1/1/2000</string>
     <string name="txt_button_date_L7">INPUT DATE</string>
+    <string name="txt_button_select_all_L7">SELECT ALL</string>
     <string name="txt_button_restart_L7">RESTART</string>
     <string name="txt_button_ok_L7">OK</string>
 
