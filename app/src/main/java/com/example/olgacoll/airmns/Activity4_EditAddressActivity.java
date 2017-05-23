@@ -22,10 +22,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-/**
-    TODO modificar una direcció en concret que gestionarem des d'un Spinner, a l'Activity anterior (Edit ProfileActivity),
-
- */
 public class Activity4_EditAddressActivity extends AppCompatActivity{
 
     private static final String TAG = "Activity4_EditAddressActivity";
@@ -46,7 +42,6 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
         initComponents();
         initBundle();
         prepareListener();
-        //controlAddress();
         buttonSaveChanges.setOnClickListener(listener);
         textViewLinkBack.setOnClickListener(listener);
     }
@@ -68,7 +63,7 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     private void initBundle(){
         bundle = this.getIntent().getExtras();
         if (bundle != null) {
-            if (bundle.getString("id_user") != null) {
+            if (bundle.getString("id") != null) {
                 id_user = Integer.parseInt(bundle.getString("id"));
             }
             if (bundle.getString("controlAddress") != null) {
@@ -135,6 +130,7 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     }
 
     private void addAddress(){
+        System.out.println("Id_user:" + id_user + " street:" + street + " number:" + number + " floor:" + floor + " stair: " + stair + " door: " + door + " city: " + city + " postal code: " + postal_code);
         apiService.addAddress(id_user, street, number, floor, stair, door, city, postal_code).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

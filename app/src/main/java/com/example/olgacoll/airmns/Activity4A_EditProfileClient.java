@@ -180,6 +180,18 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                 "Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
+                        apiService.removeAddress(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+                                System.out.println("Status code " + response.code());
+                                System.out.println(response.body());
+                            }
+
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                                showMessage("Unable to submit post to API.");
+                            }
+                        });
                         //dialog.cancel();
                         //Add toast to confirm remove item
                     }

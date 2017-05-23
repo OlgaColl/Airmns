@@ -56,7 +56,7 @@ public interface APIService {
 
     @POST("addAddress")
     @Headers("Content-Type: application/x-www-form-urlencoded")
-    Call<String> addAddress(@Query("id") int id,
+    Call<String> addAddress(@Query("user_id") int user_id,
                             @Query("street") String street,
                             @Query("number") String number,
                             @Query("floor") String floor,
