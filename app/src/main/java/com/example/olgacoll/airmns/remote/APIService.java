@@ -57,17 +57,6 @@ public interface APIService {
     @POST("addAddress")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> addAddress(@Query("id") int id,
-                          @Query("street") String street,
-                          @Query("number") String number,
-                          @Query("floor") String floor,
-                          @Query("stair") String stair,
-                          @Query("door") String door,
-                          @Query("city") String city,
-                          @Query("postal_code") String postal_code);
-
-    @POST("modifyAddress")
-    @Headers("Content-Type: application/x-www-form-urlencoded")
-    Call<String> modifyAddress(@Query("id_address") int id_address,
                             @Query("street") String street,
                             @Query("number") String number,
                             @Query("floor") String floor,
@@ -75,6 +64,17 @@ public interface APIService {
                             @Query("door") String door,
                             @Query("city") String city,
                             @Query("postal_code") String postal_code);
+
+    @POST("modifyAddress")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> modifyAddress(@Query("id_address") int id_address,
+                               @Query("street") String street,
+                               @Query("number") String number,
+                               @Query("floor") String floor,
+                               @Query("stair") String stair,
+                               @Query("door") String door,
+                               @Query("city") String city,
+                               @Query("postal_code") String postal_code);
 
     @POST("removeAddress")
     @Headers("Content-Type: application/x-www-form-urlencoded")

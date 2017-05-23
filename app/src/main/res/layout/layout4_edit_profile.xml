@@ -119,8 +119,6 @@
             </LinearLayout>
         </android.support.design.widget.TextInputLayout>
 
-
-
         <Spinner
             android:id="@+id/spinner_address_5A_reserve"
             android:layout_width="match_parent"

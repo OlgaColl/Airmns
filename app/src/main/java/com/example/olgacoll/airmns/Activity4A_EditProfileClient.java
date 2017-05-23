@@ -24,6 +24,7 @@ import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -42,6 +43,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     Button buttonAddAddress, buttonModifyAddress, buttonRemoveAddress, buttonSaveChanges;
     Spinner spinnerAddress;
     String dataAddress[];
+    List<Address> dataObjectAddress;
     int indexAddress;
     Bundle bundle;
 
@@ -77,6 +79,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         buttonRemoveAddress = (Button) findViewById(R.id.button_remove_L4_edit_profile);
         buttonSaveChanges = (Button) findViewById(R.id.btn_save_changes);
         spinnerAddress = (Spinner) findViewById(R.id.spinner_address_5A_reserve);
+        dataObjectAddress = new ArrayList();
         indexAddress = 0; //assignamos un indice por defecto
         bundle = new Bundle();
     }
@@ -119,7 +122,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
             if (bundle.getString("lastname") != null) {
                 lastname = bundle.getString("lastname");
             }
-
             if (bundle.getString("type") != null) {
                 type = bundle.getString("type");
             }
@@ -130,7 +132,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                 phone = bundle.getString("phone");
             }
         }
-
         initFields();
         user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
         System.out.println("ID Client" + id);
@@ -148,14 +149,19 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     //Per afegir, passem com a bundle id_user
     public void addAddress() {
         Log.d("Add address", "Add address");
+        bundle.putString("controlAddress", "addAddress");
         Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     //Per modificar, el bundle serà id_address
     public void modifyAddress(){
-        Log.d("Add address", "Add address");
+        //Log.d("Add address", "Add address");
+        bundle.putString("controlAddress", "modifyAddress");
+        bundle.putInt("controlIdAddress", dataObjectAddress.get(indexAddress).getId_address());
         Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
@@ -197,7 +203,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         }else{
             editProfileSuccess();
         }
-
     }
 
     public boolean validate() {
@@ -302,6 +307,11 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                 //fillAddressSpinner
                 for(int i = 0; i < response.body().size(); i++){
                     dataAddress[i] = response.body().get(i).toString();
+                    dataObjectAddress.add(response.body().get(i));
+                }
+
+                for(int i = 0; i < dataObjectAddress.size(); i++){
+                    System.out.println(dataObjectAddress.get(i).toString());
                 }
 
                 ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, dataAddress);

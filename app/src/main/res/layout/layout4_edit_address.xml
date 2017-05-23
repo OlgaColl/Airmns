@@ -14,25 +14,71 @@
         android:paddingLeft="24dp"
         android:paddingRight="24dp">
 
-        <!--ImageView android:src="@drawable/airmns"
-            android:layout_width="wrap_content"
-            android:layout_height="72dp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" /-->
-
-        <!--  Address Label -->
+        <!-- Street Label -->
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_address_L4_edit_address"
+            <EditText android:id="@+id/change_street_L4_edit_address"
                 android:layout_width="match_parent"
-                android:layout_height="63dp"
-                android:inputType=""
-                android:hint="Street and number, post office box" />
-            <!-- TODO: segona linea -->
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Street"/>
         </android.support.design.widget.TextInputLayout>
+
+        <!-- Number Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/change_number_L4_edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Number"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Stair Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/change_stair_L4_edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Stair"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Floor Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/change_floor_L4_edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Floor"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <!-- Door Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
+            <EditText android:id="@+id/change_door_L4_edit_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:hint="Door"/>
+        </android.support.design.widget.TextInputLayout>
+
 
         <!-- Postal code Label -->
         <android.support.design.widget.TextInputLayout
@@ -60,32 +106,6 @@
                 android:hint="City"/>
         </android.support.design.widget.TextInputLayout>
 
-        <!-- Province Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_province_L4_edit_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Province"/>
-        </android.support.design.widget.TextInputLayout>
-
-        <!-- Country Label -->
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/change_country_L4_edit_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:hint="Country"/>
-        </android.support.design.widget.TextInputLayout>
-
         <!-- saveData Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_saveChanges_L4_edit_address"
@@ -94,8 +114,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="@string/txt_saveChanges_L4_edit"
-            />
+            android:text="@string/txt_saveChanges_L4_edit" />
 
         <!-- Any changes? Back -->
         <TextView android:id="@+id/link_back_L4_edit_address"
@@ -107,3 +126,5 @@
             android:textSize="16dip"/>
     </LinearLayout>
 </ScrollView>
+
+
