@@ -326,7 +326,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                     System.out.println(dataObjectAddress.get(i).toString());
                 }
 
-                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, dataAddress);
+                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dataAddress);
                 spinnerAddress.setAdapter(adaptador);
                 prepareItemListener();
                 spinnerAddress.setOnItemSelectedListener(listenerSpinner);

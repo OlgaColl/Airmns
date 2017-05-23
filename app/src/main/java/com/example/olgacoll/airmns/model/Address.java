@@ -56,8 +56,6 @@ public class Address {
         this.postal_code = postal_code;
     }
 
-
-
     //--Getters & Setters--
 
     public int getId_address() {
