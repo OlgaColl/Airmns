@@ -13,7 +13,7 @@
         android:layout_weight="0.01"
         android:fontFamily="sans-serif"
         android:gravity="center_vertical"
-        android:text="@string/txt_title_manage_reserve__L7_menu_availability"
+        android:text="@string/txt_title_manage_reserve_L7_menu_availability"
         android:textColor="@android:color/background_light"
         android:textSize="26sp"
         android:textStyle="bold" />
@@ -35,7 +35,7 @@
         android:textStyle="italic" />
 
     <Spinner
-        android:id="@+id/spinner_address_5A_reserve"
+        android:id="@+id/spinner_L7_professional_availability"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipChildren="true"
@@ -51,21 +51,21 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_add_L4_edit_profile"
+            android:id="@+id/button_add_L7_professional_availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
             android:text="@string/txt_add_L7_professional_availability" />
 
         <Button
-            android:id="@+id/button_modify_L4_edit_profile"
+            android:id="@+id/button_modify_L7_professional_availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"
             android:text="@string/txt_modify_L7_professional_availability" />
 
         <Button
-            android:id="@+id/button_remove_L4_edit_profile"
+            android:id="@+id/button_remove_L7_professional_availability"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.02"

@@ -48,8 +48,8 @@ public class Activity7_ProfessionalAvailability extends Activity {
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
     TextView tv_availability[];
     //Buttons
-    Button b_select_all;
-    Button b_restart;
+    //Button b_select_all;
+    //Button b_restart;
     Button b_ok;
 
 
@@ -85,18 +85,18 @@ public class Activity7_ProfessionalAvailability extends Activity {
         b_input_date = (Button) findViewById(R.id.button_date_L7);
         //Availability
         tv_availability = new TextView[16];
-        inicialiceAvailability();
+        //inicialiceAvailability();
         //Button Select all
-        b_select_all = (Button) findViewById(R.id.button_select_all_L7);
+        //b_select_all = (Button) findViewById(R.id.button_select_all_L7);
         //Button Select none
-        b_restart = (Button) findViewById(R.id.button_restart_L7);
+        //b_restart = (Button) findViewById(R.id.button_restart_L7);
         //Total pay
         b_ok = (Button) findViewById(R.id.button_ok_L7);
     }
 
     //-- Inicialice Availability textViews--
     private void inicialiceAvailability() {
-        tv_availability[0] = (TextView) findViewById(R.id.imagenLogo01);
+        /*tv_availability[0] = (TextView) findViewById(R.id.imagenLogo01);
         tv_availability[1] = (TextView) findViewById(R.id.imagenLogo02);
         tv_availability[2] = (TextView) findViewById(R.id.imagenLogo03);
         tv_availability[3] = (TextView) findViewById(R.id.imagenLogo04);
@@ -111,7 +111,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
         tv_availability[12] = (TextView) findViewById(R.id.imagenLogo13);
         tv_availability[13] = (TextView) findViewById(R.id.imagenLogo14);
         tv_availability[14] = (TextView) findViewById(R.id.imagenLogo15);
-        tv_availability[15] = (TextView) findViewById(R.id.imagenLogo16);
+        tv_availability[15] = (TextView) findViewById(R.id.imagenLogo16);*/
     }
 
     //-- Prepare objects (availability) --
@@ -134,13 +134,13 @@ public class Activity7_ProfessionalAvailability extends Activity {
                         mostrarCalendario(v);
                         break;
                     //SELECT ALL
-                    case R.id.button_select_all_L7:
+                    /*case R.id.button_select_all_L7:
                         changeAll(true);
                         break;
                     //SELECT NONE
                     case R.id.button_restart_L7:
                         changeAll(false);
-                        break;
+                        break;*/
                     //OK
                     case R.id.button_ok_L7:
                         saveChanges();
@@ -176,9 +176,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
         //Button date
         b_input_date.setOnClickListener(listener);
         //Button Select all
-        b_select_all.setOnClickListener(listener);
+        //b_select_all.setOnClickListener(listener);
         //Button Select none
-        b_restart.setOnClickListener(listener);
+        //b_restart.setOnClickListener(listener);
         //Button ok
         b_ok.setOnClickListener(listener);
         //Availability

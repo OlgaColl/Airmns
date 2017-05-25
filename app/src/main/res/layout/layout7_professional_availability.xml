@@ -82,7 +82,7 @@
         android:textStyle="italic" />
 
     <!--Images availability-->
-
+    <!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="75dp"
@@ -308,7 +308,7 @@
             android:text="@string/txt_button_restart_L7" />
 
     </LinearLayout>
-
+    -->
 
     <!--Buttons-->
 

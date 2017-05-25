@@ -78,7 +78,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     }
 
     public void initIntroduceAvailability(){
-        Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
+        Intent intent = new Intent(this, Activity7_MenuAvailability.class);
         startActivity(intent);
     }
 

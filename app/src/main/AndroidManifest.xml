@@ -37,6 +37,7 @@
         <activity android:name=".Activity6A_BookingHistoryUser"/>
         <activity android:name=".DescBookingUserActivity"/>
         <activity android:name=".Activity6B_BookingHistoryProfessional"/>
+        <activity android:name=".Activity7_MenuAvailability"/>
         <activity android:name=".Activity7_ProfessionalAvailability"/>
         <activity android:name=".Activity8A_RateReservations"/>
         <activity android:name=".Activity8B_ValueReserve"/>
