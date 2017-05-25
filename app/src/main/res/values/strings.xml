@@ -116,6 +116,14 @@
     <string name="txt_button_select_all_L7">SELECT ALL</string>
     <string name="txt_button_restart_L7">SELECT NONE</string>
     <string name="txt_button_ok_L7">OK</string>
+    <!--NEW-TODO-->
+    <string name="txt_title_manage_reserve__L7_menu_availability">AVAILABILITY</string>
+    <string name="txt_definition_L7_menu_availability">A list is shown with all the dates previously introduced in availability. Select one to either for modify or delete.</string>
+    <string name="txt_spinner_L7_menu_availability">Availability list</string>
+    <string name="txt_add_L7_professional_availability">ADD</string>
+    <string name="txt_modify_L7_professional_availability">MODIFY</string>
+    <string name="txt_remove_L7_professional_availability">DELETE</string>
+
 
 
 

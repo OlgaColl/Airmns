@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_darker">
+
+    <!-- TITLE -->
+    <TextView
+        android:id="@+id/title_manage_reserve_L7_professional_availability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.01"
+        android:fontFamily="sans-serif"
+        android:gravity="center_vertical"
+        android:text="@string/txt_title_manage_reserve__L7_menu_availability"
+        android:textColor="@android:color/background_light"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <!-- Definition -->
+    <TextView
+        android:id="@+id/textView_date_text_L7_professional_availability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:layout_weight="0.00"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:gravity="center"
+        android:text="@string/txt_definition_L7_menu_availability"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textSize="8pt"
+        android:textStyle="italic" />
+
+    <Spinner
+        android:id="@+id/spinner_address_5A_reserve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:prompt="@string/txt_spinner_L7_menu_availability"
+        android:spinnerMode="dialog" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_add_L4_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="@string/txt_add_L7_professional_availability" />
+
+        <Button
+            android:id="@+id/button_modify_L4_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="@string/txt_modify_L7_professional_availability" />
+
+        <Button
+            android:id="@+id/button_remove_L4_edit_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="@string/txt_remove_L7_professional_availability" />
+
+    </LinearLayout>
+
+</LinearLayout>
