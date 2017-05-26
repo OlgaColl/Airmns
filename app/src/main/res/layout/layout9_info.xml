@@ -1,98 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_darker"
-    android:gravity="center_vertical"
-    android:orientation="vertical">
+    android:background="@color/primary_darker">
 
-    <TextView
-        android:id="@+id/titleCompany_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="@string/txt_titleCompany_L9_info"
-        android:textColor="@android:color/white"
-        android:textSize="20dip"
-        android:textStyle="bold" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:id="@+id/textCompany_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:text="@string/txt_infoCompany_L9_info"
-        android:textSize="16dip" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="20dip"
-        android:background="#c0c0c0" />
+            <TextView
+                android:id="@+id/company_info_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_horizontal"
+                android:text="@string/company_info_L9_info"
+                android:textColor="@android:color/white"
+                android:paddingTop="10dp"
+                android:textSize="20dip"/>
 
-    <TextView
-        android:id="@+id/titleApp_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center_horizontal"
-        android:text="@string/app_name"
-        android:textColor="@android:color/white"
-        android:textSize="20dip"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/company_info_text_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:gravity="left"
+                android:textColor="@android:color/white"
+                android:textSize="18dip"
+                android:layout_marginBottom="24dp"/>
 
-    <TextView
-        android:id="@+id/infoApp_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:text="@string/txt_infoApp_L9_info"
-        android:textSize="16dip" />
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dip"
+                android:background="#c0c0c0" />
 
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:layout_marginBottom="20dip"
-        android:background="#c0c0c0" />
+            <TextView
+                android:id="@+id/app_info_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_horizontal"
+                android:text="@string/app_info_L9_info"
+                android:textColor="@android:color/white"
+                android:paddingTop="10dp"
+                android:textSize="20dip"/>
 
-    <TextView
-        android:id="@+id/titleContact_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:gravity="center_horizontal"
-        android:text="@string/txt_titleContact_L9_info"
-        android:textColor="@android:color/white"
-        android:textSize="20dip"
-        android:textStyle="bold" />
+            <TextView
+                android:id="@+id/app_info_text_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:gravity="left"
+                android:textColor="@android:color/white"
+                android:textSize="18dip"
+                android:layout_marginBottom="24dp"/>
 
-    <TextView
-        android:id="@+id/infoContactTelf_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:text="@string/txt_infoContactTelf_L9_info"
-        android:textSize="16dip" />
+            <TextView
+                android:id="@+id/dev_app_info_text_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="left"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="18dip" />
 
-    <TextView
-        android:id="@+id/infoContactMail_L9_info"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="24dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:gravity="center"
-        android:text="@string/txt_infoContactMail_L9_info"
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="20dip"
+                android:background="#c0c0c0" />
 
-        android:textSize="16dip" />
-</LinearLayout>
+            <TextView
+                android:id="@+id/titleContact_info_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginBottom="24dp"
+                android:gravity="center_horizontal"
+                android:text="@string/txt_titleContact_L9_info"
+                android:textColor="@android:color/white"
+                android:paddingTop="10dp"
+                android:textSize="20dip"/>
+
+            <TextView
+                android:id="@+id/mail_info_text_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:gravity="left"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="18dip" />
+
+            <TextView
+                android:id="@+id/phone_info_text_L9_info"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="left"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@android:color/white"
+                android:textSize="18dip" />
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>

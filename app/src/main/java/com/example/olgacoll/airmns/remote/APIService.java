@@ -136,5 +136,5 @@ public interface APIService {
     Call<String> listReservesNotRate(@Query("id_user") int id_user);
 
     @GET("selectInfo")
-    Call<String> selectInfo();
+    Call<Info> selectInfo();
 }

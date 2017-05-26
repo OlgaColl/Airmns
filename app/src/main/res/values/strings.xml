@@ -151,11 +151,7 @@
 
 
     <!-- LAYOUT 9 INFO -->
-    <string name="txt_titleCompany_L9_info">Global Facility Management</string>
-    <string name="txt_infoCompany_L9_info">Global es una empresa especializada en limpieza de oficinas, instalaciones industriales, locales comerciales, centros logísticos, edificios y dependencias administrativas, fachadas de inmuebles y sus entornos. La calidad en la prestación del servicio, el control riguroso de los procesos y el seguimiento de los trabajos programados convierten a Global en un referente cualificado del sector.</string>
-    <string name="txt_infoApp_L9_info">App creada por Eric Ayala Andreu y Olga Coll Pérez.</string>
-    <string name="txt_titleContact_L9_info">Contacto</string>
-    <string name="txt_infoContactTelf_L9_info">+34658750746</string>
-    <string name="txt_infoContactMail_L9_info">admin@globalserviciosgenerales.com</string>
-
+    <string name="company_info_L9_info">Company info</string>
+    <string name="app_info_L9_info">App info</string>
+    <string name="txt_titleContact_L9_info">Contact</string>
 </resources>
