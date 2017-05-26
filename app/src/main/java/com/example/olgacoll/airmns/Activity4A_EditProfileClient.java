@@ -33,8 +33,11 @@ import retrofit2.Response;
 
 public class Activity4A_EditProfileClient extends AppCompatActivity {
 
+
+    //--Attributes--
     private static final String TAG = "Activity4A_EditProfileClient";
     APIService apiService;
+    //Objects
     User user;
     int id;
     String mail, name, lastname, prefix_phone, phone, type, password, password2;
@@ -45,25 +48,31 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     String dataAddress[];
     List<Address> dataObjectAddress;
     int indexAddress;
+    //Bundle
     Bundle bundle;
-
+    //Listener
     View.OnClickListener listener;
     AdapterView.OnItemSelectedListener listenerSpinner;
+
+
+
+    //--OnCreate--
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout4_edit_profile);
-
+        //Prepares
         initComponents();
         prepareListener();
         initBundle();
         controlSpinner();
-        buttonAddAddress.setOnClickListener(listener);
-        buttonModifyAddress.setOnClickListener(listener);
-        buttonRemoveAddress.setOnClickListener(listener);
-        buttonSaveChanges.setOnClickListener(listener);
+        addListener();
     }
+
+
+
+    //--Prepares--
 
     public void initComponents(){
         apiService = APIUtils.getAPIService();
@@ -138,6 +147,52 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         System.out.println(user.toString());
     }
 
+    //Control address Spinner
+    private void controlSpinner() {
+        System.out.println("ID USER en control sppiner " + id);
+        apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
+            @Override
+            public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
+                //System.out.println(response.body().get(1).toString());
+                System.out.println("Response code: " + response.code());
+
+                dataAddress = new String[response.body().size()];
+
+                //fillAddressSpinner
+                for(int i = 0; i < response.body().size(); i++){
+                    dataAddress[i] = response.body().get(i).toString();
+                    dataObjectAddress.add(response.body().get(i));
+                }
+
+                for(int i = 0; i < dataObjectAddress.size(); i++){
+                    System.out.println(dataObjectAddress.get(i).toString());
+                }
+
+                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dataAddress);
+                spinnerAddress.setAdapter(adaptador);
+                prepareItemListener();
+                spinnerAddress.setOnItemSelectedListener(listenerSpinner);
+            }
+
+            @Override
+            public void onFailure(Call<List<Address>> call, Throwable t) {
+                showMessage("Unable to submit post to API.");
+            }
+        });
+
+    }
+
+    private void addListener(){
+        buttonAddAddress.setOnClickListener(listener);
+        buttonModifyAddress.setOnClickListener(listener);
+        buttonRemoveAddress.setOnClickListener(listener);
+        buttonSaveChanges.setOnClickListener(listener);
+    }
+
+
+
+    //--Methods--
+
     private void initFields(){
         editTextMail.setText(mail);
         editTextName.setText(name);
@@ -148,21 +203,28 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     //Per afegir, passem com a bundle id_user
     public void addAddress() {
+        //Put bundle
         Log.d("Add address", "Add address");
         bundle.putString("controlAddress", "addAddress");
+        //Put bundle
         Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
+        //Close activity
+        this.finish();
     }
 
     //Per modificar, el bundle serà id_address
     public void modifyAddress(){
-        //Log.d("Add address", "Add address");
+        //Put bundle
         bundle.putString("controlAddress", "modifyAddress");
         bundle.putInt("controlIdAddress", dataObjectAddress.get(indexAddress).getId_address());
+        //Instance intnent
         Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
+        //Close activity
+        this.finish();
     }
 
     private void removeAddress() {
@@ -305,54 +367,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         //startActivity(intent);
     }
 
-    //Control address Spinner
-    private void controlSpinner() {
-        System.out.println("ID USER en control sppiner " + id);
-        apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
-            @Override
-            public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
-                //System.out.println(response.body().get(1).toString());
-                System.out.println("Response code: " + response.code());
-
-                dataAddress = new String[response.body().size()];
-
-                //fillAddressSpinner
-                for(int i = 0; i < response.body().size(); i++){
-                    dataAddress[i] = response.body().get(i).toString();
-                    dataObjectAddress.add(response.body().get(i));
-                }
-
-                for(int i = 0; i < dataObjectAddress.size(); i++){
-                    System.out.println(dataObjectAddress.get(i).toString());
-                }
-
-                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dataAddress);
-                spinnerAddress.setAdapter(adaptador);
-                prepareItemListener();
-                spinnerAddress.setOnItemSelectedListener(listenerSpinner);
-            }
-
-            @Override
-            public void onFailure(Call<List<Address>> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
-            }
-        });
-
-        /*@GET("listAllAddress")
-        Call<String> listAllAddress(@Query("id") int id);*/
-
-        /*//Address
-        dataAddress = getResources().getStringArray(R.array.txt_address_value_5A_reserve);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.txt_address_value_5A_reserve, android.R.layout.simple_list_item_1);
-        // Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinnerAddress.setAdapter(adapter1);
-        prepareItemListener();
-        spinnerAddress.setOnItemSelectedListener(listenerSpinner);*/
-    }
-
     public void prepareItemListener() {
         listenerSpinner = new AdapterView.OnItemSelectedListener() {
             @Override
@@ -372,15 +386,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
             }
         };
     }
-
-        /*String name = _nameText.getText().toString();
-        String lastname = _lastnameText.getText().toString();
-
-        //String address = _addressText.getText();
-        String mobile = _mobileText.getText();
-        String email = _emailText.getText();
-        String password = _passwordText.getText();
-        String reEnterPassword = _reEnterPasswordText.getText().*/
 
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
