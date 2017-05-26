@@ -17,6 +17,7 @@ import com.example.olgacoll.airmns.model.Availability;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -90,6 +91,7 @@ public class Activity7_MenuAvailability extends Activity {
                 id = Integer.parseInt(bundle.getString("id"));
             }
         } else id = -1;
+        spinnerAvailability = (Spinner) findViewById(R.id.spinner_L7_professional_availability);
     }
 
     //-- Prepare objects (availability) --
@@ -107,6 +109,7 @@ public class Activity7_MenuAvailability extends Activity {
                 System.out.println("Response code: " + response.code());
 
                 dateAvailability = new String[response.body().size()];
+                dataObjectAvailability = new ArrayList<Availability>();
 
                 //fillAddressSpinner
                 for(int i = 0; i < response.body().size(); i++){
@@ -127,6 +130,12 @@ public class Activity7_MenuAvailability extends Activity {
             @Override
             public void onFailure(Call<List<Availability>> call, Throwable t) {
                 showMessage("Can't access to server.");
+                System.out.println("---------");
+                System.out.println(t.getCause());
+                System.out.println(t.getLocalizedMessage());
+                System.out.println(t.getMessage());
+                System.out.println(t.getStackTrace());
+                System.out.println(t.getSuppressed());
             }
         });
 
