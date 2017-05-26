@@ -80,8 +80,9 @@ public interface APIService {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> removeAddress(@Query("id_address") int id_address);
 
-
-
+    @GET
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> selectAddress(@Query("id_address") int id_address);
 
     /*@GET("Search") //i.e https://api.test.com/Search?
     Call<Products> getProducts(@Query("one") String one, @Query("two") String two,
