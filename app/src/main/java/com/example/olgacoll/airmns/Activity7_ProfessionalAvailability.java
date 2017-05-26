@@ -33,7 +33,8 @@ public class Activity7_ProfessionalAvailability extends Activity {
     int mes;
     int dia;
     //Availability
-    boolean availability[];
+    int start_time;
+    int end_time;
 
 
     //Layout objects
@@ -43,13 +44,13 @@ public class Activity7_ProfessionalAvailability extends Activity {
     //Date
     TextView tv_date;
     Button b_input_date;
-    //Availability
+    //Date
     private static final int TIPO_DIALOGO = 0;
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
-    TextView tv_availability[];
-    //Buttons
-    //Button b_select_all;
-    //Button b_restart;
+    //Start and end Time
+    EditText et_start_time;
+    EditText et_end_time;
+    //Button Ok
     Button b_ok;
 
 
@@ -84,42 +85,17 @@ public class Activity7_ProfessionalAvailability extends Activity {
         tv_date = (TextView) findViewById(R.id.textView_date_L7_professional_availability);
         b_input_date = (Button) findViewById(R.id.button_date_L7);
         //Availability
-        tv_availability = new TextView[16];
-        //inicialiceAvailability();
-        //Button Select all
-        //b_select_all = (Button) findViewById(R.id.button_select_all_L7);
-        //Button Select none
-        //b_restart = (Button) findViewById(R.id.button_restart_L7);
-        //Total pay
+        et_start_time = (EditText) findViewById(R.id.id_start_time_L7_professional_availability);
+        et_end_time = (EditText) findViewById(R.id.id_end_time_L7_professional_availability);
         b_ok = (Button) findViewById(R.id.button_ok_L7);
-    }
-
-    //-- Inicialice Availability textViews--
-    private void inicialiceAvailability() {
-        /*tv_availability[0] = (TextView) findViewById(R.id.imagenLogo01);
-        tv_availability[1] = (TextView) findViewById(R.id.imagenLogo02);
-        tv_availability[2] = (TextView) findViewById(R.id.imagenLogo03);
-        tv_availability[3] = (TextView) findViewById(R.id.imagenLogo04);
-        tv_availability[4] = (TextView) findViewById(R.id.imagenLogo05);
-        tv_availability[5] = (TextView) findViewById(R.id.imagenLogo06);
-        tv_availability[6] = (TextView) findViewById(R.id.imagenLogo07);
-        tv_availability[7] = (TextView) findViewById(R.id.imagenLogo08);
-        tv_availability[8] = (TextView) findViewById(R.id.imagenLogo09);
-        tv_availability[9] = (TextView) findViewById(R.id.imagenLogo10);
-        tv_availability[10] = (TextView) findViewById(R.id.imagenLogo11);
-        tv_availability[11] = (TextView) findViewById(R.id.imagenLogo12);
-        tv_availability[12] = (TextView) findViewById(R.id.imagenLogo13);
-        tv_availability[13] = (TextView) findViewById(R.id.imagenLogo14);
-        tv_availability[14] = (TextView) findViewById(R.id.imagenLogo15);
-        tv_availability[15] = (TextView) findViewById(R.id.imagenLogo16);*/
     }
 
     //-- Prepare objects (availability) --
     private void prepareObjects(){
-        //Instance object
-        availability = new boolean[16];
-        //Inicialice objects
-        for(int i = 0; i < availability.length; i++) availability[i] = false;
+        start_time = 7;
+        end_time = 23;
+        et_start_time.setText(String.valueOf(start_time));
+        et_end_time.setText(String.valueOf(end_time));
     }
 
     //-- Prepare listener --
@@ -133,14 +109,6 @@ public class Activity7_ProfessionalAvailability extends Activity {
                     case R.id.button_date_L7: //Choose date
                         mostrarCalendario(v);
                         break;
-                    //SELECT ALL
-                    /*case R.id.button_select_all_L7:
-                        changeAll(true);
-                        break;
-                    //SELECT NONE
-                    case R.id.button_restart_L7:
-                        changeAll(false);
-                        break;*/
                     //OK
                     case R.id.button_ok_L7:
                         saveChanges();
@@ -162,9 +130,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
                 //Int hour
                 int hour = Integer.parseInt( tv_nombre.getText().toString().substring(0,2) ) -7;
                 //Change boalean to hour to true/false
-                availability[hour]= !availability[hour];
+                //availability[hour]= !availability[hour];
                 //Update AvailabilityViews
-                updateAvailabilitViews();
+                //updateAvailabilitViews();
                 //Toast.makeText(getApplicationContext(), String.valueOf(hour), Toast.LENGTH_SHORT).show();
 
             }
@@ -175,14 +143,8 @@ public class Activity7_ProfessionalAvailability extends Activity {
     private void addListener() {
         //Button date
         b_input_date.setOnClickListener(listener);
-        //Button Select all
-        //b_select_all.setOnClickListener(listener);
-        //Button Select none
-        //b_restart.setOnClickListener(listener);
         //Button ok
         b_ok.setOnClickListener(listener);
-        //Availability
-        for(int i = 0; i<tv_availability.length; i++) tv_availability[i].setOnClickListener(listener_availability);
     }
 
 
@@ -236,34 +198,6 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
 
 
-    // -- AVAILABILITY --
-
-    private void updateAvailabilitViews() {
-        for(int i = 0; i<availability.length; i++){
-            if (availability[i]){
-                tv_availability[i].setBackgroundColor(Color.WHITE);
-                tv_availability[i].setTextColor(Color.parseColor("#1b4f72"));
-            } else {
-                //tv_availability[i].setBackgroundColor(Color.TRANSPARENT);
-                tv_availability[i].setBackgroundResource(R.drawable.button7_image_hour);
-                tv_availability[i].setTextColor(Color.WHITE);
-            }
-
-        }
-    }
-
-
-
-    // -- CHANGE ALL BOOLEANS --
-
-    private void changeAll(boolean bl){
-        //Hours
-        for(int i = 0; i < availability.length; i++) availability[i] = bl;
-        updateAvailabilitViews();
-    }
-
-
-
     // -- SAVE CHANGES --
 
     private void saveChanges() {
@@ -275,11 +209,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
             mes = calendar.get(Calendar.MONTH);
             dia = calendar.get(Calendar.DAY_OF_MONTH);
             printDateTime();
-            //Reestart availability
-            changeAll(false);
             //Else print message
         } else {
-            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            /*AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
             //Show message
             alertbox.setMessage("Input date must be 2 days greater than current date. ");
             //Add option
@@ -291,18 +223,58 @@ public class Activity7_ProfessionalAvailability extends Activity {
             });
 
             //Show
-            alertbox.show();
+            alertbox.show();*/
         }
 
     }
 
     //Comprove if correct input date
     private boolean correctData(){
+        //Declare alert
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        //Add option
+        alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            //To do whe press Ok
+            public void onClick(DialogInterface arg0, int arg1) {
+                //mensaje("Pulsado el botón SI");
+            }
+        });
+
+        //-DATE--
         //Current date more 2 days (date correct input availability)
         Calendar calendario_actual = Calendar.getInstance();
         calendario_actual.add(Calendar.HOUR, 24);
+        //-HOURS-
+        start_time = Integer.parseInt( et_start_time.getText().toString() );
+        end_time = Integer.parseInt( et_end_time.getText().toString() );
         //If calendar more or igual than current date return false
-        if(calendar.before(calendario_actual)) return false;
+        if(calendar.before(calendario_actual)) {
+            //Set text
+            alertbox.setMessage("Input date must be 2 days greater than current date. ");
+            //Show
+            alertbox.show();
+            //return
+            return false;
+        }
+        //-TIME-
+        /*//If 7 is more than start time return false
+        if(start_time < 7 & start_time > 22) return false;
+        //If end time is more than 23 return false
+        if(end_time > 23 & end_time < 8) return false;
+        //If start time is more than start time return false
+        if(end_time < start_time) return false;*/
+
+
+        //I-TIME-
+        if(start_time < 7 || start_time > 22 || end_time > 23 || end_time < 8 || end_time < start_time || end_time == start_time) {
+            //Set text
+            alertbox.setMessage("Input bad time.");
+            //Show
+            alertbox.show();
+            //Return
+            return false;
+        }
+        //Else
         else return true;
 
     }

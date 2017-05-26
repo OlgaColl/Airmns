@@ -45,8 +45,6 @@ public class Activity7_MenuAvailability extends Activity {
         prepareListener();
         //On click listener
         addListener();
-        //Date
-        createDate();
     }
 
 
@@ -56,10 +54,7 @@ public class Activity7_MenuAvailability extends Activity {
 
     //-- Prepare views --
     private void prepareViews() {
-        //Date
-        //tv_date = (TextView) findViewById(R.id.textView_date_L7_professional_availability);
-        //b_input_date = (Button) findViewById(R.id.button_date_L7);
-        //Total pay
+        //ADD
         b_add = (Button) findViewById(R.id.button_add_L7_professional_availability);
     }
 
@@ -81,10 +76,9 @@ public class Activity7_MenuAvailability extends Activity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     //DATE
-                    //case R.id.button_add_L7_professional_availability: //Choose date
-                        //Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
-                        //startActivity(intent);
-                        //break;
+                    case R.id.button_add_L7_professional_availability: //Choose date
+                        initIntroduceAvailability();
+                        break;
                     //SELECT ALL
                     /*case R.id.button_select_all_L7:
                         changeAll(true);
@@ -108,43 +102,14 @@ public class Activity7_MenuAvailability extends Activity {
 
     //-- Add Listeners--
     private void addListener() {
-        //Button date
-        //Button Select all
-        //b_select_all.setOnClickListener(listener);
-        //Button Select none
-        //b_restart.setOnClickListener(listener);
-        //Button ok
+        //Button ADD
         b_add.setOnClickListener(listener);
-        //Availability
-        //for(int i = 0; i<tv_availability.length; i++) tv_availability[i].setOnClickListener(listener_availability);
     }
 
 
-
-
-    // -- DATE --
-    private void createDate() {
-        //Object Calendar
-        /*calendar = Calendar.getInstance();
-        //Add two days
-        calendar.add(Calendar.HOUR, 48);
-        //Calendar attributes
-        anyo = calendar.get(Calendar.YEAR);
-        mes = calendar.get(Calendar.MONTH);
-        dia = calendar.get(Calendar.DAY_OF_MONTH);
-        //Print date
-        printDateTime();
-        //Create selected date
-        oyenteSelectorFecha = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                anyo = year;
-                mes = month;
-                dia = dayOfMonth;
-                calendar.set(year,month,dayOfMonth);
-                printDateTime();
-            }
-        };*/
+    public void initIntroduceAvailability(){
+        Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
+        startActivity(intent);
     }
 
 
