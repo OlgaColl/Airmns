@@ -16,12 +16,10 @@ import retrofit2.Response;
 
 /**
  * Created by olgacoll on 7/3/17.
- * This Activity shows info to company, app, contact and Google Maps NO!! ¿?¿?¿?
  */
 
 public class Activity9_InfoActivity extends AppCompatActivity {
 
-    //@Bind(R.id.textCompany)
     TextView textCompany, textApp;
     private APIService apiService;
     private static final String TAG = "Activity9_InfoActivity";
@@ -40,17 +38,21 @@ public class Activity9_InfoActivity extends AppCompatActivity {
         loadInfo();
     }
 
-    public void loadInfo(){
-        apiService.selectInfo().enqueue(new Callback<Info>() {
+    private void loadInfo(){
+        apiService.selectInfo().enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<Info> call, Response<Info> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 System.out.println(response.body().toString());
-                Log.i(TAG, "post submitted to API.\n" + response.body());
+                if(response.isSuccessful()) {
+                    System.out.println("Status code " + response.code());
+                    Log.i(TAG, "post submitted to API.\n" + response.body().toString());
+                }
             }
 
             @Override
-            public void onFailure(Call<Info> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 Log.e(TAG, "Unable to submit post to API.");
+                showMessage("Unable to submit post to API.");
             }
         });
     }

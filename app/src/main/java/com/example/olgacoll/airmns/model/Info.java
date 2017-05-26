@@ -4,6 +4,9 @@ package com.example.olgacoll.airmns.model;
  * Created by olgacoll on 26/5/17.
  */
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.Date;
 
 /**
@@ -14,14 +17,32 @@ import java.util.Date;
 public class Info {
 
     //--Attributes--
+    @SerializedName("date_time")
+    @Expose
     Date date_time;
+    @SerializedName("phone_number")
+    @Expose
     String phone_number;
+    @SerializedName("mail")
+    @Expose
     String mail;
+    @SerializedName("customer_service_manager")
+    @Expose
     String customer_service_manager;
+    @SerializedName("app_information")
+    @Expose
     String app_information;
+    @SerializedName("company_info")
+    @Expose
     String company_info;
+    @SerializedName("address")
+    @Expose
     String address;
+    @SerializedName("price_hour")
+    @Expose
     double price_hour;
+    @SerializedName("iva")
+    @Expose
     double iva;
 
     //--Constructor--
