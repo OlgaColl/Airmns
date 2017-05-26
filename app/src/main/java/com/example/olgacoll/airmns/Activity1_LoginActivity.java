@@ -142,13 +142,17 @@ public class Activity1_LoginActivity extends AppCompatActivity{
                     Log.i(TAG, "post submitted to API.\n" + response.body().toString());
 
                     System.out.println("Contrasenya " + user.getPassword());
-
-                    if(checkPassword(passworduser)){
-                        checkTypeUser(user.getType());
+                    if(!user.getMail().equals("User not found")){
+                        if(checkPassword(passworduser)){
+                            checkTypeUser(user.getType());
+                        }else{
+                            showMessage("Password incorrect");
+                            cleanFields();
+                        }
                     }else{
-                        showMessage("Password incorrect");
-                        cleanFields();
+                        showMessage("User not found");
                     }
+
                 }
             }
 
@@ -199,7 +203,6 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
     private boolean checkPassword(String passworduser){
         boolean flag = false;
-        System.out.println(passworduser);
         if(user.getPassword().equals(passworduser)) flag = true;
         return flag;
     }

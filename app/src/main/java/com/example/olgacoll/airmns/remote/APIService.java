@@ -2,6 +2,7 @@ package com.example.olgacoll.airmns.remote;
 
 import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Availability;
+import com.example.olgacoll.airmns.model.Info;
 import com.example.olgacoll.airmns.model.User;
 
 import java.util.List;
@@ -133,4 +134,7 @@ public interface APIService {
 
     @GET("listReservesNotRate")
     Call<String> listReservesNotRate(@Query("id_user") int id_user);
+
+    @GET("selectInfo")
+    Call<Info> selectInfo();
 }
