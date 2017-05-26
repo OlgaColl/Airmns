@@ -16,34 +16,43 @@ import com.example.olgacoll.airmns.model.User;
 
 public class Activity3A_MainUser extends AppCompatActivity{
 
+    //--Attributtes--
     Bundle bundle;
     User user;
     String mail, password, type, name, lastname, prefix_phone, phone;
     int id;
-
+    //Objects
     FloatingActionButton fab;
     View.OnClickListener listener;
     ImageView imageViewManageReservation, imageViewBookingHistory;
     ImageView imageViewRateReservation, imageViewEditProfile;
 
+
+
+    //--OnCreate--
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Oncreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3a_main_user);
+        //Objects
+        initObjects();
+        prepareListener();
+        initBundle();
+        addListener();
+    }
 
+
+
+    //Init objects
+
+    public void initObjects(){
         fab = (FloatingActionButton)findViewById(R.id.fab_L3A_main_user);
         imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation_L3A_main_user);
         imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory_L3A_main_user);
         imageViewRateReservation = (ImageView)findViewById(R.id.imageViewRateReservation_L3A_main_user);
         imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile_L3A_main_user);
-
-        prepareListener();
-        initBundle();
-        fab.setOnClickListener(listener);
-        imageViewManageReservation.setOnClickListener(listener);
-        imageViewBookingHistory.setOnClickListener(listener);
-        imageViewRateReservation.setOnClickListener(listener);
-        imageViewEditProfile.setOnClickListener(listener);
     }
 
     public void prepareListener(){
@@ -111,6 +120,18 @@ public class Activity3A_MainUser extends AppCompatActivity{
         startActivity(intent);
     }
 
+    public void addListener(){
+        fab.setOnClickListener(listener);
+        imageViewManageReservation.setOnClickListener(listener);
+        imageViewBookingHistory.setOnClickListener(listener);
+        imageViewRateReservation.setOnClickListener(listener);
+        imageViewEditProfile.setOnClickListener(listener);
+    }
+
+
+
+    //--Start activities--
+
     public void initManageReservation(){
         Intent intent = new Intent(this, Activity5A_UserReserve.class);
         startActivity(intent);
@@ -132,4 +153,5 @@ public class Activity3A_MainUser extends AppCompatActivity{
         intent.putExtras(bundle);
         startActivity(intent);
     }
+
 }

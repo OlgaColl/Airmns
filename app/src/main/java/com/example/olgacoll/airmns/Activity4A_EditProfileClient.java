@@ -182,6 +182,26 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     }
 
+    public void prepareItemListener() {
+        listenerSpinner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(
+                    AdapterView<?> parent,
+                    View view,
+                    int position,
+                    long id) {
+
+                indexAddress = position;
+                //editTextAddress.setText(dateAvailability[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+    }
+
     private void addListener(){
         buttonAddAddress.setOnClickListener(listener);
         buttonModifyAddress.setOnClickListener(listener);
@@ -365,26 +385,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         //showMessage("Profile edited successfully");
         //Intent intent = new Intent(this, Activity3A_MainUser.class);
         //startActivity(intent);
-    }
-
-    public void prepareItemListener() {
-        listenerSpinner = new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(
-                    AdapterView<?> parent,
-                    View view,
-                    int position,
-                    long id) {
-
-                indexAddress = position;
-                //editTextAddress.setText(dataAddress[position]);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        };
     }
 
     private void showMessage(String str){

@@ -5,9 +5,23 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.Address;
+import com.example.olgacoll.airmns.model.Availability;
+import com.example.olgacoll.airmns.remote.APIService;
+import com.example.olgacoll.airmns.remote.APIUtils;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -16,15 +30,26 @@ import android.widget.TextView;
 
 public class Activity7_MenuAvailability extends Activity {
 
-    //Layout objects
-    //Listener
-    View.OnClickListener listener;
-    //Date
-    TextView tv_date;
+    //objects
+    private static final String TAG = "Activity7_MenuAvailability";
+    APIService apiService;
     //Availability
     private static final int TIPO_DIALOGO = 0;
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
-    TextView tv_availability[];
+    //Attributes
+    int id;
+    int indexAvailability;
+    String dateAvailability[];
+    List<Availability> dataObjectAvailability;
+    //Bundle
+    Bundle bundle;
+    //Listener
+    View.OnClickListener listener;
+    AdapterView.OnItemSelectedListener listenerSpinner;
+    //Date
+    TextView tv_date;
+    //Spinner
+    Spinner spinnerAvailability;
     //Buttons
     Button b_add;
 
@@ -41,12 +66,13 @@ public class Activity7_MenuAvailability extends Activity {
         prepareViews();
         //Prepare reserve objects;
         prepareObjects();
+        //Spinner
+        controlSpinner();
         //Inicialize listener
         prepareListener();
         //On click listener
         addListener();
     }
-
 
 
 
@@ -56,16 +82,54 @@ public class Activity7_MenuAvailability extends Activity {
     private void prepareViews() {
         //ADD
         b_add = (Button) findViewById(R.id.button_add_L7_professional_availability);
+        //Bundle
+        bundle = this.getIntent().getExtras();
+        //Get user id
+        if (bundle != null) {
+            if (bundle.getString("id") != null) {
+                id = Integer.parseInt(bundle.getString("id"));
+            }
+        } else id = -1;
     }
-
-
 
     //-- Prepare objects (availability) --
     private void prepareObjects(){
-        //Instance object
-        //availability = new boolean[16];
-        //Inicialice objects
-        //for(int i = 0; i < availability.length; i++) availability[i] = false;
+        apiService = APIUtils.getAPIService();
+    }
+
+    //-- Control Spinner --
+    private void controlSpinner() {
+        System.out.println("ID USER en control sppiner " + id);
+        apiService.listAvailability(id).enqueue(new Callback<List<Availability>>() {
+            @Override
+            public void onResponse(Call<List<Availability>> call, Response<List<Availability>> response) {
+                //System.out.println(response.body().get(1).toString());
+                System.out.println("Response code: " + response.code());
+
+                dateAvailability = new String[response.body().size()];
+
+                //fillAddressSpinner
+                for(int i = 0; i < response.body().size(); i++){
+                    dateAvailability[i] = response.body().get(i).toString();
+                    dataObjectAvailability.add(response.body().get(i));
+                }
+
+                for(int i = 0; i < dataObjectAvailability.size(); i++){
+                    System.out.println(dataObjectAvailability.get(i).toString());
+                }
+
+                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dateAvailability);
+                spinnerAvailability.setAdapter(adaptador);
+                prepareItemListener();
+                spinnerAvailability.setOnItemSelectedListener(listenerSpinner);
+            }
+
+            @Override
+            public void onFailure(Call<List<Availability>> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
+
     }
 
     //-- Prepare listener --
@@ -100,6 +164,26 @@ public class Activity7_MenuAvailability extends Activity {
 
     }
 
+    public void prepareItemListener() {
+        listenerSpinner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(
+                    AdapterView<?> parent,
+                    View view,
+                    int position,
+                    long id) {
+
+                indexAvailability = position;
+                //editTextAddress.setText(dateAvailability[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+    }
+
     //-- Add Listeners--
     private void addListener() {
         //Button ADD
@@ -107,9 +191,16 @@ public class Activity7_MenuAvailability extends Activity {
     }
 
 
+
+    //--Methods--
+
     public void initIntroduceAvailability(){
         Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
         startActivity(intent);
+    }
+
+    private void showMessage(String str){
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
 
 

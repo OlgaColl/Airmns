@@ -62,7 +62,7 @@ public class Availability {
 
     @Override
     public String toString() {
-        return "Availability{" + "date=" + date + ", id_user=" + id_user + ", start_time=" + start_time + ", end_time=" + end_time + '}';
+        return "Date=" + date + ", id_user=" + id_user + ", start_time=" + start_time + ", end_time=" + end_time + '}';
     }
 }
 

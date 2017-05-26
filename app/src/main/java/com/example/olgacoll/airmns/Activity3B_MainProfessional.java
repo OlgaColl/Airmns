@@ -12,29 +12,41 @@ import android.widget.ImageView;
  */
 
 public class Activity3B_MainProfessional extends AppCompatActivity {
+
+    //--Attributes--
+    Bundle bundle;
+    int id;
+    //Objects
     FloatingActionButton fab;
     View.OnClickListener listener;
     ImageView imageViewManageReservation, imageViewBookingHistory;
     ImageView imageViewIntroduceAvailability, imageViewEditProfile;
 
+
+    //--OnCreate--
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //OnCreate
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout3b_main_autonomous);
+        //Init objects
+        initObjects();
+        prepareListener();
+        initBundle();
+        addListener();
+    }
 
+
+
+    //--OnPrepares--
+
+    public void initObjects(){
         fab = (FloatingActionButton)findViewById(R.id.fab_L3B_main_professional);
         imageViewManageReservation = (ImageView)findViewById(R.id.imageViewManageReservation_L3B_main_professional);
         imageViewBookingHistory = (ImageView)findViewById(R.id.imageViewBookingHistory_L3B_main_professional);
         imageViewIntroduceAvailability = (ImageView)findViewById(R.id.imageViewIntroduceAvailability_L3B_main_professional);
         imageViewEditProfile = (ImageView)findViewById(R.id.imageViewEditProfile_L3B_main_professional);
-
-        prepareListener();
-
-        fab.setOnClickListener(listener);
-        imageViewManageReservation.setOnClickListener(listener);
-        imageViewBookingHistory.setOnClickListener(listener);
-        imageViewIntroduceAvailability.setOnClickListener(listener);
-        imageViewEditProfile.setOnClickListener(listener);
     }
 
     public void prepareListener(){
@@ -67,6 +79,32 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void addListener(){
+        fab.setOnClickListener(listener);
+        imageViewManageReservation.setOnClickListener(listener);
+        imageViewBookingHistory.setOnClickListener(listener);
+        imageViewIntroduceAvailability.setOnClickListener(listener);
+        imageViewEditProfile.setOnClickListener(listener);
+    }
+
+
+
+    //--Bundle--
+
+    private void initBundle() {
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("id") != null) {
+                id = Integer.parseInt(bundle.getString("id"));
+                System.out.println("ID EN BUNDLE " + id);
+            }
+        }
+    }
+
+
+
+    //--Start Activities--
+
     public void initManageReservation(){
         Intent intent = new Intent(this, Activity5B_ProfessionalReserve.class);
         startActivity(intent);
@@ -79,6 +117,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
 
     public void initIntroduceAvailability(){
         Intent intent = new Intent(this, Activity7_MenuAvailability.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
