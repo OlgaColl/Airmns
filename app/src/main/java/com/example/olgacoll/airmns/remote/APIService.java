@@ -1,6 +1,7 @@
 package com.example.olgacoll.airmns.remote;
 
 import com.example.olgacoll.airmns.model.Address;
+import com.example.olgacoll.airmns.model.Availability;
 import com.example.olgacoll.airmns.model.User;
 
 import java.util.List;
@@ -84,33 +85,52 @@ public interface APIService {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> selectAddress(@Query("id_address") int id_address);
 
-    /*@GET("Search") //i.e https://api.test.com/Search?
-    Call<Products> getProducts(@Query("one") String one, @Query("two") String two,
-                               @Query("key") String key)*/
+    @GET("listAvailability")
+    Call<List<Availability>> listAvailability(@Query("id_user") int id);
 
-    /*@POST("/posts")
-    @FormUrlEncoded
-    Call<Post> savePost(@Field("title") String title,
-                        @Field("body") String body);
+    @POST
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> inputAvailability(@Query("date") String date,
+                                   @Query("id_user") int id_user,
+                                   @Query("start_time") int start_time,
+                                   @Query("end_time") int end_time);
 
-    @PUT("/posts")
-    @FormUrlEncoded
-    Call<Post> addPost(@Field("title") String title,
-                       @Field("body") String body);
+    @POST
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> updateAvailability(@Query("date") String date,
+                                   @Query("id_user") int id_user,
+                                   @Query("start_time") int start_time,
+                                   @Query("end_time") int end_time);
 
-    @GET("/posts")
-    Call<List<Post>> getPosts();
+    @POST
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> removeAvailability(@Query("date") String date,
+                                    @Query("id_user") int id_user);
 
-    @POST("/posts")
-    Call<Post> addPost(@Body Post post);
+    @GET("listAllReserves")
+    Call<String> listAllReserves(@Query("id_user") int id);
 
-    @PUT("/posts/{id}")
-    @FormUrlEncoded
-    Call<Post> updatePost(@Path("id") long id,
-                          @Field("title") String title,
-                          @Field("body") String body,
-                          @Field("userId") long userId);
+    @GET("listReservesByDate")
+    Call<String> listReservesByDate(@Query("id_user") int id);
 
-    @DELETE("/posts/{id}")
-    Call<Post> deletePost(@Path("id") long id);*/
+    @POST
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> addReserve(@Query("id_user_client") int id_user_client,
+                            @Query("id_user_professional") int id_user_professional,
+                            @Query("id_address") int id_address,
+                            @Query("date_time") String date_time,
+                            @Query("start_time") int start_time,
+                            @Query("long_time") int long_time,
+                            @Query("total_price") double total_price,
+                            @Query("observations") String observations,
+                            @Query("iva") double iva);
+
+    @POST
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> rateReserve(@Query("id_reservation") int id_reservation,
+                             @Query("qualification_service") int qualification_service,
+                             @Query("comments") String comments);
+
+    @GET("listReservesNotRate")
+    Call<String> listReservesNotRate(@Query("id_user") int id_user);
 }
