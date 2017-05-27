@@ -109,15 +109,21 @@ public interface APIService {
     Call<String> removeAvailability(@Query("date") String date,
                                     @Query("id_user") int id_user);
 
+    //@Headers("Content-Type: application/x-www-form-urlencoded")
+    @GET("findProfessionalForBooking")
+    Call<String> findProfessionalForBooking(@Query("date_time") String date_time,
+                                    @Query("start_time") int start_time,
+                                    @Query("long_time") int long_time);
+
     @GET("listAllBookings")
     Call<List<Booking>> listAllReserves(@Query("id_user") int id);
 
     @GET("listReservesByDate")
     Call<String> listReservesByDate(@Query("id_user") int id);
 
-    @POST
+    @POST("addBooking")
     @Headers("Content-Type: application/x-www-form-urlencoded")
-    Call<String> addReserve(@Query("id_user_client") int id_user_client,
+    Call<String> addBooking(@Query("id_user_client") int id_user_client,
                             @Query("id_user_professional") int id_user_professional,
                             @Query("id_address") int id_address,
                             @Query("date_time") String date_time,

@@ -65,7 +65,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
                         //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
                         break;
                     case R.id.imageViewManageReservation_L3A_main_user:
-                        initManageReservation();
+                        initManageBooking();
                         break;
                     case R.id.imageViewBookingHistory_L3A_main_user:
                         initBookingHistory();
@@ -132,8 +132,9 @@ public class Activity3A_MainUser extends AppCompatActivity{
 
     //--Start activities--
 
-    public void initManageReservation(){
+    public void initManageBooking(){
         Intent intent = new Intent(this, Activity5A_UserReserve.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

@@ -6,7 +6,6 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,10 +19,18 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
-import com.example.olgacoll.airmns.model.Client;
-import com.example.olgacoll.airmns.model.User;
+import com.example.olgacoll.airmns.model.Address;
+import com.example.olgacoll.airmns.remote.APIService;
+import com.example.olgacoll.airmns.remote.APIUtils;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 /**
@@ -32,11 +39,15 @@ import java.util.Calendar;
 
 public class Activity5A_UserReserve extends Activity {
 
+    //ApiService
+    APIService apiService;
+    private static final String TAG = "Activity5A_UserReserve";
     //Bundle bundle;
-    Bundle mBundle = new Bundle();
+    Bundle bundle;// = new Bundle();
     //User user;
     //String mail, password, type, name, lastname, prefix_phone, phone;
     int id;
+    int id_professional;
 
     //Listener
     OnClickListener listener;
@@ -58,6 +69,9 @@ public class Activity5A_UserReserve extends Activity {
     //Address
     Spinner spinner_address;
     String datos_address[];
+    String dateAddress[];
+    List<Address> dataObjectAddress;
+    int indexAddress = -1;
     //Observations
     EditText input_observations;
     //Button continue
@@ -80,22 +94,24 @@ public class Activity5A_UserReserve extends Activity {
     double total_pay;
     float precio_hora;
 
+
+
     // -- ON CREATE --
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //On Create
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout5a_reserve);
-
         //Prepare views
         prepareViews();
         //Prepare reserve objects;
         prepareObjects();
-
-        //initBundle();
         //Inicialize listener
         prepareListener();
         //Control Time and Address Spinner
         controlSpinner();
+        //InitBundle
+        //initBundle();
         //On click listener
         addListener();
         //Date
@@ -104,11 +120,11 @@ public class Activity5A_UserReserve extends Activity {
 
 
 
-
     // -- PREPARES --
 
     //-- Prepare views--
     private void prepareViews() {
+        //--VIEWS--
         //Date
         tv_date = (TextView) findViewById(R.id.print_date_5A_reserve);
         b_input_date = (Button) findViewById(R.id.button_date_5A_reserve);
@@ -125,49 +141,96 @@ public class Activity5A_UserReserve extends Activity {
         b_continue = (Button) findViewById(R.id.button_pay_5A_reserve);
         //Total pay
         tv_total_pay = (TextView) findViewById(R.id.total_value_text_5A_reserve);
-    }
-
-    /*private void initBundle() {
-        //int id, String mail, password, type, name, lastname, prefix_phone, phone;
+        //--BUNDLE--
+        //Bundle
         bundle = this.getIntent().getExtras();
+        //Get user id
         if (bundle != null) {
             if (bundle.getString("id") != null) {
                 id = Integer.parseInt(bundle.getString("id"));
-            }
-            if (bundle.getString("mail") != null) {
-                mail = bundle.getString("mail");
-            }
-            if (bundle.getString("password") != null) {
-                password = bundle.getString("password");
-            }
-            if (bundle.getString("type") != null) {
-                type = bundle.getString("type");
-            }
-            if (bundle.getString("name") != null) {
-                name = bundle.getString("name");
-            }
-            if (bundle.getString("lastname") != null) {
-                lastname = bundle.getString("lastname");
-            }
-            if (bundle.getString("prefix_phone") != null) {
-                prefix_phone = bundle.getString("prefix_phone");
-            }
-            if (bundle.getString("phone") != null) {
-                phone = bundle.getString("phone");
-            }
+                //System.out.println("Id bundle=" + id);
+            } else id = -1;
         }
-
-        user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
-        System.out.println(user.toString());
-    }*/
+    }
 
     // -- Prepare Reserve objects --
     private void prepareObjects() {
+        //ApiService
+        apiService = APIUtils.getAPIService();
+        //Attributes
         precio_hora = (float) 9.95;
         long_time = 1;
         address = "";
         observations = "";
         calcularPrecio();
+    }
+
+    //-- Control Spinner --
+    private void controlSpinner() {
+        //TIME
+        datos_time = getResources().getStringArray(R.array.txt_time_value_L5A_reserve);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter =
+                ArrayAdapter.createFromResource(this, R.array.txt_time_value_L5A_reserve, android.R.layout.simple_list_item_1);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner_long_time.setAdapter(adapter);
+        spinner_long_time.setOnItemSelectedListener(listener_time_spinner);
+
+        //--ADDRESS--
+        System.out.println("ID USER en control sppiner " + id);
+        apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
+            @Override
+            public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
+                //System.out.println(response.body().get(1).toString());
+                System.out.println("Response code: " + response.code());
+
+                dateAddress = new String[response.body().size()];
+                dataObjectAddress = new ArrayList<Address>();
+
+                //fillAddressSpinner
+                for(int i = 0; i < response.body().size(); i++){
+                    dateAddress[i] = response.body().get(i).toString();
+                    dataObjectAddress.add(response.body().get(i));
+                }
+
+                for(int i = 0; i < dataObjectAddress.size(); i++){
+                    System.out.println(dataObjectAddress.get(i).toString());
+                }
+
+                ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dateAddress);
+                spinner_address.setAdapter(adaptador);
+                prepareItemListener();
+                spinner_address.setOnItemSelectedListener(listener_address_spinner);
+            }
+
+            @Override
+            public void onFailure(Call<List<Address>> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
+
+    }
+
+    public void prepareItemListener() {
+        listener_address_spinner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(
+                    AdapterView<?> parent,
+                    View view,
+                    int position,
+                    long id) {
+
+                indexAddress = position;
+                //editTextAddress.setText(dateAvailability[position]);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
     }
 
     // -- Prepare Listener --
@@ -192,7 +255,7 @@ public class Activity5A_UserReserve extends Activity {
                     //CONTINUE
                     case R.id.button_pay_5A_reserve: //Continue
                         //Toast.makeText(getApplicationContext(), "CONTINUE", Toast.LENGTH_SHORT).show();
-                        reserveDone();
+                        bookingDone();
                         break;
                     //DEFAULT
                     default:
@@ -236,32 +299,6 @@ public class Activity5A_UserReserve extends Activity {
                 };
     }
 
-    //Control long time and address spinner
-    private void controlSpinner() {
-        //TIME
-        datos_time = getResources().getStringArray(R.array.txt_time_value_L5A_reserve);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter =
-                ArrayAdapter.createFromResource(this, R.array.txt_time_value_L5A_reserve, android.R.layout.simple_list_item_1);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner_long_time.setAdapter(adapter);
-        spinner_long_time.setOnItemSelectedListener(listener_time_spinner);
-
-
-        //Address
-        datos_address = getResources().getStringArray(R.array.txt_address_value_5A_reserve);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter1 =
-                ArrayAdapter.createFromResource(this, R.array.txt_address_value_5A_reserve, android.R.layout.simple_list_item_1);
-        // Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner_address.setAdapter(adapter1);
-        spinner_address.setOnItemSelectedListener(listener_address_spinner);
-    }
-
     //-- Add Listeners--
     private void addListener() {
         //Button date
@@ -274,7 +311,6 @@ public class Activity5A_UserReserve extends Activity {
         //Button continue
         b_continue.setOnClickListener(listener);
     }
-
 
 
 
@@ -315,7 +351,6 @@ public class Activity5A_UserReserve extends Activity {
             }
         };
     }
-
 
     // -- DIALOG TO INPUT DATE CLASS --
     @Override
@@ -363,9 +398,6 @@ public class Activity5A_UserReserve extends Activity {
         mTimePicker.show();
     }
 
-
-
-
     // -- PAY --
     private void calcularPrecio() {
         //Calcule total pay
@@ -376,73 +408,165 @@ public class Activity5A_UserReserve extends Activity {
         tv_total_pay.setText(" " + String.valueOf(total_pay)+"€");
     }
 
-
-
-
-    // -- RESERVE --
-    public void reserveDone(){
+    // -- BOOKING --
+    public void bookingDone(){
         //If input data is correct
         if (correctData()) {
-            //Date
-            String date_reserve = dia + "/" + (mes + 1) + "/" + anyo;
-            mBundle.putString("date_reserve", date_reserve);
-            //Time
-            mBundle.putInt("time_reserve", hour);
-            //Long Time
-            mBundle.putInt("long_time_reserve", long_time);
-            //Address
-            mBundle.putString("address_reserve", address);
-            //Observations
-            observations = input_observations.getText().toString();
-            mBundle.putString("observations_reserve", observations);
-            //Total pay
-            mBundle.putDouble("total_pay_reserve", total_pay);
-
-            //Start ResumeReserve activity
-            Intent intent = new Intent(this, Activity5A_ResumeReserve.class);
-            // set Bundle to intent
-            intent.putExtras(mBundle);
-            startActivity(intent);
+            if(id > 0) {
+                //Find professional availability
+                findIdProfessional();
+                //If find professional
+                if (id_professional > 0) {
+                    //Dialog confirm payment
+                    AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+                    //Set text
+                    alertbox.setMessage("Are you sure?");
+                    //Add Ok option
+                    alertbox.setPositiveButton("Continue to payment", new DialogInterface.OnClickListener() {
+                        //To do whe press Ok
+                        public void onClick(DialogInterface arg0, int arg1) {
+                        //Insert row in bd
+                        addBooking();
+                        }
+                    });
+                    //Add Cancel option
+                    alertbox.setNegativeButton("No, I want to change something",new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                            //System.exit(0);
+                        }
+                    });
+                    //Show
+                    alertbox.show();
+                }
+                //Notify professional not found
+                else showAlert("There is'nt professional availability in this dates.");
+            } else {
+                //Notify id not found
+                showMessage("Can't find your user identifier in BD. Is possible can't acces to server.");
+            }
         }
     }
 
     //Comprove if correct input date
     private boolean correctData(){
-        //--ALERT--
-        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-        //Add option
-        alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            //To do whe press Ok
-            public void onClick(DialogInterface arg0, int arg1) {
-                //mensaje("Pulsado el botón SI");
-            }
-        });
-
         //--CALENDAR--
         //Current date more 2 days (date correct input availability)
         Calendar calendario_actual = Calendar.getInstance();
         calendario_actual.add(Calendar.HOUR, 24);
-
         //--COMPROVE--
         //If calendar more or igual than current date return false
         if(calendar.before(calendario_actual) || minute != 0) {
             //Show message
-            alertbox.setMessage("Input date must be 2 days greater than current date and minutes must be 0."); alertbox.show();
+            showAlert("Input date must be 2 days greater than current date and minutes must be 0.");
             return false;
         }
         //If 7:00 is more than start time return false
         else if(hour < 7) {
             //Show message and Show
-            alertbox.setMessage("Start time must be more than 7:00."); alertbox.show();
+            showAlert("Start time must be more than 7:00.");
             return false;
         //If end time is more than 23:00 return false
         } else if((hour+long_time) > 23) {
             //Show message
-            alertbox.setMessage("End time less than 23:00."); alertbox.show();
+            showAlert("End time less than 23:00.");
             return false;
         //Else return true
         } else return true;
     }
 
+
+
+    // -- RETRACTIVE --
+
+    private void findIdProfessional(){
+        String date = String.valueOf(anyo) + "-" + String.valueOf(mes+1) + "-" + String.valueOf(dia);
+        System.out.println(date);
+        System.out.println(hour);
+        System.out.println(long_time);
+        apiService.findProfessionalForBooking(date, hour, long_time).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                System.out.println("Status code " + response.code());
+                System.out.println("Professional id = " + id_professional);
+                id_professional = Integer.parseInt(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                showMessage("Can't access to server.");
+                id_professional = -1;
+            }
+        });
+    }
+
+    private void addBooking(){
+        //Id address
+        int id_address = dataObjectAddress.get(indexAddress).getId_address();
+        //Date
+        String date = String.valueOf(anyo) + "-" + String.valueOf(mes+1) + "-" + String.valueOf(dia);
+        System.out.println(id);
+        System.out.println(id_professional);
+        System.out.println(id_address);
+        System.out.println(date);
+        System.out.println(hour);
+        System.out.println(long_time);
+        System.out.println(total_pay);
+        System.out.println(observations);
+        //Query
+        apiService.addBooking(id, id_professional, id_address, date, hour, long_time, total_pay, observations, 21).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                System.out.println("Status code " + response.code());
+                System.out.println("Add booking= {" + response.body() +"}");
+                if(response.body().equals("0")) {
+                    showMessage("Can't do booking. Please, check your data or do it later.");
+                }
+                else if(response.body().equals("1")) {
+                    //Show message
+                    showMessage("Payment succesfull!");
+                    //Close activity
+                    finishActivity();
+                }
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
+
+    }
+
+
+
+    // -- SHOW ALERT OR MESSAGE --
+
+    private void showAlert(String str){
+        //Declare alert
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        //Set text
+        alertbox.setMessage(str);
+        //Add option
+        alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            //To do whe press Ok
+            public void onClick(DialogInterface arg0, int arg1) {
+                //OK;
+            }
+        });
+        //Show
+        alertbox.show();
+    }
+
+    private void showMessage(String str){
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
+
+
+
+    // -- Finish Activity --
+
+    private void finishActivity(){
+        //Finish
+        this.finish();
+    }
 
 }
