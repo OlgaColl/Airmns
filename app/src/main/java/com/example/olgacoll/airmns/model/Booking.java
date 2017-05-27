@@ -3,9 +3,11 @@ package com.example.olgacoll.airmns.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Reserve {
+public class Booking {
 
     @SerializedName("id_reserve")
     @Expose
@@ -44,15 +46,15 @@ public class Reserve {
     @Expose
     double iva;
 
-    public Reserve(){}
+    public Booking(){}
 
-    public Reserve(int id_reserve, int qualification_service, String comments) {
+    public Booking(int id_reserve, int qualification_service, String comments) {
         this.id_reserve = id_reserve;
         this.qualification_service = qualification_service;
         this.comments = comments;
     }
 
-    public Reserve(int id_user_client, int id_user_professional, int id_address, Date date_time, int start_time, int long_time, double total_price, String observations, Double iva) {
+    public Booking(int id_user_client, int id_user_professional, int id_address, Date date_time, int start_time, int long_time, double total_price, String observations, Double iva) {
         this.id_user_client = id_user_client;
         this.id_user_professional = id_user_professional;
         this.id_address = id_address;
@@ -64,7 +66,7 @@ public class Reserve {
         this.iva=iva;
     }
 
-    public Reserve(int id_reserve, int id_user_client, int id_user_professional, int id_address, Date date_time,  int start_time, int long_time, double total_price, String observations, int qualification_service, String comments, double iva) {
+    public Booking(int id_reserve, int id_user_client, int id_user_professional, int id_address, Date date_time,  int start_time, int long_time, double total_price, String observations, int qualification_service, String comments, double iva) {
         this.id_reserve = id_reserve;
         this.id_user_client = id_user_client;
         this.id_user_professional = id_user_professional;
@@ -176,5 +178,14 @@ public class Reserve {
 
     public void setIva(double iva) {
         this.iva = iva;
+    }
+
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String date = sdf.format(date_time);
+        return "Date: " + date +
+                ", " + long_time + "h" +
+                ", price: " + total_price + "€";
     }
 }

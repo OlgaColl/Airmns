@@ -2,8 +2,8 @@ package com.example.olgacoll.airmns.remote;
 
 import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Availability;
+import com.example.olgacoll.airmns.model.Booking;
 import com.example.olgacoll.airmns.model.Info;
-import com.example.olgacoll.airmns.model.Reserve;
 import com.example.olgacoll.airmns.model.User;
 
 import java.util.List;
@@ -97,19 +97,6 @@ public interface APIService {
                                    @Query("start_time") int start_time,
                                    @Query("end_time") int end_time);
 
-   /* @POST
-    @Path("/inputAvailability")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String inputAvailability(@QueryParam("date") String date,
-                                    @QueryParam("id_user") int id_user,
-                                    @QueryParam("start_time") int start_time,
-                                    @QueryParam("end_time") int end_time){
-        return new Gson().toJson(model.inputAvailability(date, id_user, start_time, end_time));
-    }
-
-
-    */
     @POST("updateAvailability")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> updateAvailability(@Query("date") String date,
@@ -122,8 +109,8 @@ public interface APIService {
     Call<String> removeAvailability(@Query("date") String date,
                                     @Query("id_user") int id_user);
 
-    @GET("listAllReserves")
-    Call<List<Reserve>> listAllReserves(@Query("id_user") int id);
+    @GET("listAllBookings")
+    Call<List<Booking>> listAllReserves(@Query("id_user") int id);
 
     @GET("listReservesByDate")
     Call<String> listReservesByDate(@Query("id_user") int id);

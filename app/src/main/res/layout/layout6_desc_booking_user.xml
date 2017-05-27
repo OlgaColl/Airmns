@@ -1,11 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/primary_darker">
+
+    <TextView
+        android:id="@+id/tvtitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/txt_title_descbooking"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="32dp" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/date_text_L5_resume_reserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left|center_horizontal"
+        android:text="@string/txt_date_text_L5_resume_reserve"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#ffffff"
+        android:textStyle="italic" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="135dp"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:background="@drawable/borde">
+
+
+        <!-- DATE -->
+        <TextView
+            android:id="@+id/txt_date_descbooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp"/>
+
+        <!-- TIME -->
+        <TextView
+            android:id="@+id/txt_time_descbooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+        <!-- ADDRESS -->
+        <TextView
+            android:id="@+id/address_L8_resume_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+        <!-- OBSERVATIONS -->
+        <TextView
+            android:id="@+id/txt_observations_descbooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+        <TextView
+            android:id="@+id/txt_value_descbooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:textColor="#1b4f72"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+
+        <TextView
+            android:id="@+id/txt_price_descbooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:paddingBottom="3dp"
+            android:textColor="@color/primary_darker"
+            android:textSize="14sp"
+            android:layout_weight="0.05"
+            android:paddingLeft="3dp" />
+    </LinearLayout>
+
+
+    <!--string name="txt_title_descbooking">Detail booking</string>
+    <string name="txt_date_descbooking">Date: </string>
+    <string name="txt_time_descbooking">Time: </string>
+    <string name="txt_observations_descbooking">Observations: </string>
+    <string name="txt_value_descbooking">Value service: </string>
+    <string name="txt_price_descbooking">Price: </string-->
 </LinearLayout>

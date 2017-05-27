@@ -11,7 +11,10 @@ import android.widget.TextView;
 
 public class DescBookingUserActivity extends Activity {
 
-    TextView textView;
+    String date, time, observations, value;
+    double price;
+    TextView textView, textViewDate, textViewTime, textViewObservations, textViewValue, textViewPrice;
+    Bundle bundle;
     String text;
 
     @Override
@@ -19,15 +22,43 @@ public class DescBookingUserActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout6_desc_booking_user);
 
-        textView = (TextView) findViewById(R.id.textView);
-
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-
-        if (extras != null) {
-            text = (String) extras.get("nom").toString();
-        }
-
+        initComponents();
+        initBundle();
+        setDetailText();
         textView.setText(text);
+    }
+
+    private void initComponents(){
+        textView = (TextView) findViewById(R.id.textView);
+        textViewDate = (TextView) findViewById(R.id.txt_date_descbooking);
+        textViewTime = (TextView) findViewById(R.id.txt_time_descbooking);
+        textViewObservations = (TextView) findViewById(R.id.txt_observations_descbooking);
+        textViewValue = (TextView) findViewById(R.id.txt_price_descbooking);
+        textViewPrice = (TextView) findViewById(R.id.txt_price_descbooking);
+    }
+
+    private void initBundle() {
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("time") != null) {
+                time = bundle.getString("time");
+            }
+            if (bundle.getString("observations") != null) {
+                observations = bundle.getString("observations");
+            }if (bundle.getString("value") != null) {
+                value = bundle.getString("value");
+            }
+
+            price = bundle.getDouble("price");
+
+        }
+    }
+
+    private void setDetailText(){
+        textViewDate.setText("Date: " + date);
+        textViewTime.setText("Time: ");
+        textViewObservations.setText("Observations: " + observations);
+        textViewValue.setText("Value: " + value);
+        textViewPrice.setText("Price: " + price + "€");
     }
 }

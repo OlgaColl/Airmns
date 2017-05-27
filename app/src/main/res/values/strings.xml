@@ -105,6 +105,17 @@
     <!--buttons-->
     <string name="txt_button_pay_L5_resume_reserve">PAY</string>
 
+    <!-- LAYOUT 6 BOOKING HISTORY USER -->
+    <!-- Title -->
+    <string name="txt_title_booking_L6A">Booking history</string>
+
+    <!-- LAYOUT DESC BOOKING USER -->
+    <string name="txt_title_descbooking">Detail booking</string>
+    <string name="txt_date_descbooking">Date: </string>
+    <string name="txt_time_descbooking">Time: </string>
+    <string name="txt_observations_descbooking">Observations: </string>
+    <string name="txt_value_descbooking">Value service: </string>
+    <string name="txt_price_descbooking">Price: </string>
     <!-- LAYOUT 7 PROFESSIONAL AVAILABILITY -->
     <!--title-->
     <string name="txt_title_manage_reserve_L7_professional_availability">AVAILABILITY</string>
