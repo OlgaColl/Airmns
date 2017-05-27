@@ -144,7 +144,7 @@ public class Activity8B_ValueReserve extends Activity {
 
         for(int i = 0; i<iv_star.length; i++) {
             if (i<=valoration){
-                iv_star[i].setImageResource(R.drawable.ic_action_star);
+                iv_star[i].setImageResource(R.drawable.ic_action_star_yellow);
                 star.setColorFilter(filterBlack);
             } else{
                 iv_star[i].setImageResource(R.drawable.ic_action_star_border);

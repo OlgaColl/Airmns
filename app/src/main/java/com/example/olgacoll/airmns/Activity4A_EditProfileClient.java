@@ -33,8 +33,6 @@ import retrofit2.Response;
 
 public class Activity4A_EditProfileClient extends AppCompatActivity {
 
-
-    //--Attributes--
     private static final String TAG = "Activity4A_EditProfileClient";
     APIService apiService;
     //Objects
@@ -54,10 +52,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     View.OnClickListener listener;
     AdapterView.OnItemSelectedListener listenerSpinner;
 
-
-
-    //--OnCreate--
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,10 +63,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         controlSpinner();
         addListener();
     }
-
-
-
-    //--Prepares--
 
     public void initComponents(){
         apiService = APIUtils.getAPIService();

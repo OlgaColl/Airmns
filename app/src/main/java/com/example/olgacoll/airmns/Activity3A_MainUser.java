@@ -139,6 +139,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
 
     public void initBookingHistory(){
         Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

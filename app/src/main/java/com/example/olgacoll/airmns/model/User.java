@@ -12,28 +12,28 @@ public class User {
     //--Attributes--
     @SerializedName("id")
     @Expose
-    private int id;
+    int id;
     @SerializedName("mail")
     @Expose
-    private String mail;
+    String mail;
     @SerializedName("password")
     @Expose
-    private String password;
+    String password;
     @SerializedName("type")
     @Expose
-    private String type;
+    String type;
     @SerializedName("name")
     @Expose
-    private String name;
+    String name;
     @SerializedName("lastname")
     @Expose
-    private String lastname;
+    String lastname;
     @SerializedName("prefix_phone")
     @Expose
-    private String prefix_phone;
+    String prefix_phone;
     @SerializedName("phone")
     @Expose
-    private String phone;
+    String phone;
 
     public User(){}
 

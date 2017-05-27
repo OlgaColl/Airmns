@@ -3,6 +3,7 @@ package com.example.olgacoll.airmns.remote;
 import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Availability;
 import com.example.olgacoll.airmns.model.Info;
+import com.example.olgacoll.airmns.model.Reserve;
 import com.example.olgacoll.airmns.model.User;
 
 import java.util.List;
@@ -51,7 +52,7 @@ public interface APIService {
 
     //TODO Gestionar mail com a user not found.
     @GET("selectUser")
-    Call<String> selectUser(@Query("user_id") int id);
+    Call<User> selectUser(@Query("id_user") int id);
 
     @GET("listAllAddress")
     Call<List<Address>> listAllAddress(@Query("id_user") int id);
@@ -109,7 +110,7 @@ public interface APIService {
                                     @Query("id_user") int id_user);
 
     @GET("listAllReserves")
-    Call<String> listAllReserves(@Query("id_user") int id);
+    Call<List<Reserve>> listAllReserves(@Query("id_user") int id);
 
     @GET("listReservesByDate")
     Call<String> listReservesByDate(@Query("id_user") int id);

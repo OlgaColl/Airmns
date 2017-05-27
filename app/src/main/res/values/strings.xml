@@ -105,8 +105,6 @@
     <!--buttons-->
     <string name="txt_button_pay_L5_resume_reserve">PAY</string>
 
-
-
     <!-- LAYOUT 7 PROFESSIONAL AVAILABILITY -->
     <!--title-->
     <string name="txt_title_manage_reserve_L7_professional_availability">AVAILABILITY</string>
@@ -125,9 +123,6 @@
     <string name="txt_add_L7_professional_availability">ADD</string>
     <string name="txt_modify_L7_professional_availability">MODIFY</string>
     <string name="txt_remove_L7_professional_availability">DELETE</string>
-
-
-
 
     <!-- LAYOUT 8 VALUE RESERVE -->
     <!--title-->
