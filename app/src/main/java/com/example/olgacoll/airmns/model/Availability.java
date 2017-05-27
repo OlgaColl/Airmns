@@ -74,8 +74,8 @@ public class Availability {
 
     @Override
     public String toString() {
-        String to_date = new SimpleDateFormat("MM-dd-yyyy").format(date);
-        return "Date = " + to_date + ", Start time = " + start_time + ", End time =" + end_time;
+        String to_date = new SimpleDateFormat("dd-MM-yyyy").format(date);
+        return "Date = " + to_date + ", Start time = " + start_time + ", End time = " + end_time;
     }
 }
 

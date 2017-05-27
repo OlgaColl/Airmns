@@ -25,14 +25,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="left|center_horizontal"
         android:layout_weight="0.00"
+        android:gravity="center"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:gravity="center"
         android:text="@string/txt_definition_L7_menu_availability"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ffffff"
+        android:textColor="#1b4f72"
         android:textSize="8pt"
-        android:textStyle="italic" />
+        android:textStyle="bold|italic" />
 
     <Spinner
         android:id="@+id/spinner_L7_professional_availability"
