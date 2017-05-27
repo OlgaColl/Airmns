@@ -17,7 +17,12 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.Client;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by ericayala on 25/4/17.
@@ -26,6 +31,9 @@ import java.util.Calendar;
 public class Activity7_ProfessionalAvailability extends Activity {
 
     // -- ATTRIBUTES --
+    //Add OR Modify
+    String type;
+    int id_user;
     //Class objects
     //Time
     Calendar calendar;
@@ -40,7 +48,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
     //Layout objects
     //Listener
     View.OnClickListener listener;
-    View.OnClickListener listener_availability;
+    //View.OnClickListener listener_availability;
+    //Bundle
+    Bundle bundle;
     //Date
     TextView tv_date;
     Button b_input_date;
@@ -68,6 +78,8 @@ public class Activity7_ProfessionalAvailability extends Activity {
         prepareObjects();
         //Inicialize listener
         prepareListener();
+        //Init Bundle
+        initBundle();
         //On click listener
         addListener();
         //Date
@@ -120,7 +132,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
             }
         };
 
-        listener_availability = new View.OnClickListener() {
+        /*listener_availability = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Id view
@@ -136,7 +148,49 @@ public class Activity7_ProfessionalAvailability extends Activity {
                 //Toast.makeText(getApplicationContext(), String.valueOf(hour), Toast.LENGTH_SHORT).show();
 
             }
-        };
+        };*/
+    }
+
+    //-- Init bundle --
+    private void initBundle(){
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+            if (bundle.getString("type") != null) {
+                type = bundle.getString("type");
+            }
+            if (bundle.getString("id") != null) {
+                id_user = Integer.parseInt(bundle.getString("id"));
+            }
+            if (bundle.getString("date") != null) {
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                String date = bundle.getString("mail");
+                try {
+                    Date ob_date = format.parse(date);
+                    calendar = Calendar.getInstance();
+                    calendar.set(ob_date.getYear(), ob_date.getMonth(), ob_date.getDay());
+                    anyo = ob_date.getYear();
+                    mes = ob_date.getMonth();
+                    dia = ob_date.getDay();
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            if (bundle.getString("start_time") != null) {
+                start_time = Integer.parseInt( bundle.getString("start_time") );
+                et_start_time.setText(start_time);
+            }
+            if (bundle.getString("end_time") != null) {
+                end_time = Integer.parseInt( bundle.getString("end_time") );
+                et_end_time.setText(end_time);
+            }
+        }
+        //initFields();
+    }
+
+    //-- Init fields --
+    private void initFields(){
+        et_start_time.setText(start_time);
+        et_end_time.setText(end_time);
     }
 
     //-- Add Listeners--
@@ -152,14 +206,16 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
     // -- DATE --
     private void createDate() {
-        //Object Calendar
-        calendar = Calendar.getInstance();
-        //Add two days
-        calendar.add(Calendar.HOUR, 48);
-        //Calendar attributes
-        anyo = calendar.get(Calendar.YEAR);
-        mes = calendar.get(Calendar.MONTH);
-        dia = calendar.get(Calendar.DAY_OF_MONTH);
+        if(type.equals("add")) {
+            //Object Calendar
+            calendar = Calendar.getInstance();
+            //Add two days
+            calendar.add(Calendar.HOUR, 48);
+            //Calendar attributes
+            anyo = calendar.get(Calendar.YEAR);
+            mes = calendar.get(Calendar.MONTH);
+            dia = calendar.get(Calendar.DAY_OF_MONTH);
+        }
         //Print date
         printDateTime();
         //Create selected date
@@ -193,43 +249,34 @@ public class Activity7_ProfessionalAvailability extends Activity {
     //Print date in TextView
     private void printDateTime() {
         //Date
-        tv_date.setText(dia + "/" + (mes+1) + "/" + anyo);
+        tv_date.setText(dia + "-" + (mes+1) + "-" + anyo);
     }
 
 
 
     // -- SAVE CHANGES --
 
+    //save changes
     private void saveChanges() {
         //If input data is correct
         if (correctData()) {
             //Add 1 day
-            calendar.add(Calendar.HOUR, 24);
+            /*calendar.add(Calendar.HOUR, 24);
             anyo = calendar.get(Calendar.YEAR);
             mes = calendar.get(Calendar.MONTH);
             dia = calendar.get(Calendar.DAY_OF_MONTH);
-            printDateTime();
+            printDateTime();*/
             //Else print message
-        } else {
-            /*AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-            //Show message
-            alertbox.setMessage("Input date must be 2 days greater than current date. ");
-            //Add option
-            alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                //To do whe press Ok
-                public void onClick(DialogInterface arg0, int arg1) {
-                    //mensaje("Pulsado el botón SI");
-                }
-            });
-
-            //Show
-            alertbox.show();*/
         }
 
     }
 
     //Comprove if correct input date
     private boolean correctData(){
+        System.out.println(id_user);
+        System.out.println(dia + "-" + (mes+1) + "-" + anyo);
+        System.out.println(start_time);
+        System.out.println(end_time);
         //Declare alert
         AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
         //Add option
@@ -256,14 +303,6 @@ public class Activity7_ProfessionalAvailability extends Activity {
             //return
             return false;
         }
-        //-TIME-
-        /*//If 7 is more than start time return false
-        if(start_time < 7 & start_time > 22) return false;
-        //If end time is more than 23 return false
-        if(end_time > 23 & end_time < 8) return false;
-        //If start time is more than start time return false
-        if(end_time < start_time) return false;*/
-
 
         //I-TIME-
         if(start_time < 7 || start_time > 22 || end_time > 23 || end_time < 8 || end_time < start_time || end_time == start_time) {
@@ -276,7 +315,6 @@ public class Activity7_ProfessionalAvailability extends Activity {
         }
         //Else
         else return true;
-
     }
 
 }

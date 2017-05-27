@@ -41,7 +41,8 @@
         android:clipChildren="true"
         android:clipToPadding="true"
         android:prompt="@string/txt_spinner_L7_menu_availability"
-        android:spinnerMode="dialog" />
+        android:spinnerMode="dialog"
+        android:layout_weight="0.00" />
 
 
     <LinearLayout

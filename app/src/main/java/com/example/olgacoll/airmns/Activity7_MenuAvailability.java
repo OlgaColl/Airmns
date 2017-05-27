@@ -12,11 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Availability;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,6 +53,8 @@ public class Activity7_MenuAvailability extends Activity {
     Spinner spinnerAvailability;
     //Buttons
     Button b_add;
+    Button b_modify;
+    Button b_remove;
 
 
 
@@ -81,8 +83,10 @@ public class Activity7_MenuAvailability extends Activity {
 
     //-- Prepare views --
     private void prepareViews() {
-        //ADD
+        //Add, modify & delete
         b_add = (Button) findViewById(R.id.button_add_L7_professional_availability);
+        b_modify = (Button) findViewById(R.id.button_modify_L7_professional_availability);
+        b_remove = (Button) findViewById(R.id.button_remove_L7_professional_availability);
         //Bundle
         bundle = this.getIntent().getExtras();
         //Get user id
@@ -148,25 +152,25 @@ public class Activity7_MenuAvailability extends Activity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    //DATE
+                    //Add
                     case R.id.button_add_L7_professional_availability: //Choose date
                         initIntroduceAvailability();
                         break;
-                    //SELECT ALL
-                    /*case R.id.button_select_all_L7:
-                        changeAll(true);
+                    //Modify
+                    case R.id.button_modify_L7_professional_availability:
+                        initModifyAvailability();
                         break;
-                    //SELECT NONE
-                    case R.id.button_restart_L7:
-                        changeAll(false);
+                    //Remove
+                    case R.id.button_remove_L7_professional_availability:
+                        //changeAll(false);
                         break;
                     //OK
-                    case R.id.button_ok_L7:
+                    /*case R.id.button_ok_L7:
                         saveChanges();
-                        break;
+                        break;*/
                     //DEFAULT
                     default:
-                        break;*/
+                        break;
                 }
             }
         };
@@ -195,8 +199,10 @@ public class Activity7_MenuAvailability extends Activity {
 
     //-- Add Listeners--
     private void addListener() {
-        //Button ADD
+        //Buttons
         b_add.setOnClickListener(listener);
+        b_modify.setOnClickListener(listener);
+        b_remove.setOnClickListener(listener);
     }
 
 
@@ -204,7 +210,31 @@ public class Activity7_MenuAvailability extends Activity {
     //--Methods--
 
     public void initIntroduceAvailability(){
+        //User id
+        bundle.putString("id", Integer.toString(id));
+        //Type
+        bundle.putString("type", "add");
+        //Intent
         Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void initModifyAvailability(){
+        //User id
+        bundle.putString("id", Integer.toString(id));
+        //Type
+        bundle.putString("type", "modify");
+        //Date
+        String to_date = new SimpleDateFormat("yyyy-MM-dd").format(dataObjectAvailability.get(indexAvailability).getDate());
+        bundle.putString("date", to_date);
+        //Start time
+        bundle.putString("start_time", String.valueOf( dataObjectAvailability.get(indexAvailability).getStart_time() ));
+        //End time
+        bundle.putString("end_time", String.valueOf( dataObjectAvailability.get(indexAvailability).getEnd_time() ));
+        //Intent
+        Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 

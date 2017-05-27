@@ -7,6 +7,7 @@ package com.example.olgacoll.airmns.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -73,7 +74,8 @@ public class Availability {
 
     @Override
     public String toString() {
-        return "Date=" + date + ", id_user=" + id_user + ", start_time=" + start_time + ", end_time=" + end_time + '}';
+        String to_date = new SimpleDateFormat("MM-dd-yyyy").format(date);
+        return "Date = " + to_date + ", Start time = " + start_time + ", End time =" + end_time;
     }
 }
 
