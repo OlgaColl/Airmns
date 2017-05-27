@@ -303,7 +303,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                showMessage(call.toString());
+                showMessage(t.getMessage() + t.getCause());
             }
         });
     }

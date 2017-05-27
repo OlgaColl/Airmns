@@ -90,13 +90,26 @@ public interface APIService {
     @GET("listAvailability")
     Call<List<Availability>> listAvailability(@Query("id_user") int id);
 
-    @POST
+    @POST("inputAvailability")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> inputAvailability(@Query("date") String date,
                                    @Query("id_user") int id_user,
                                    @Query("start_time") int start_time,
                                    @Query("end_time") int end_time);
 
+   /* @POST
+    @Path("/inputAvailability")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    public String inputAvailability(@QueryParam("date") String date,
+                                    @QueryParam("id_user") int id_user,
+                                    @QueryParam("start_time") int start_time,
+                                    @QueryParam("end_time") int end_time){
+        return new Gson().toJson(model.inputAvailability(date, id_user, start_time, end_time));
+    }
+
+
+    */
     @POST
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> updateAvailability(@Query("date") String date,
