@@ -1,7 +1,9 @@
 package com.example.olgacoll.airmns;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -162,12 +164,8 @@ public class Activity7_MenuAvailability extends Activity {
                         break;
                     //Remove
                     case R.id.button_remove_L7_professional_availability:
-                        //changeAll(false);
+                        removeAvailability();
                         break;
-                    //OK
-                    /*case R.id.button_ok_L7:
-                        saveChanges();
-                        break;*/
                     //DEFAULT
                     default:
                         break;
@@ -218,6 +216,8 @@ public class Activity7_MenuAvailability extends Activity {
         Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
+        //Finish
+        this.finish();
     }
 
     public void initModifyAvailability(){
@@ -236,7 +236,48 @@ public class Activity7_MenuAvailability extends Activity {
         Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
+        //Finish
+        this.finish();
     }
+
+    public void removeAvailability(){//Declare alert
+        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+        //Set text
+        alertbox.setMessage("Are you sure?\n" + dataObjectAvailability.get(indexAvailability).toString());
+        //Add Ok option
+        alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            //To do whe press Ok
+            public void onClick(DialogInterface arg0, int arg1) {
+                String to_date = new SimpleDateFormat("yyyy-MM-dd").format(dataObjectAvailability.get(indexAvailability).getDate());
+                apiService.removeAvailability(to_date, id).enqueue(new Callback<String>() {
+                    @Override
+                    public void onResponse(Call<String> call, Response<String> response) {
+                        System.out.println("Status code " + response.code());
+                        if(response.body().equals("1")) showMessage("Availability uptade successful.");
+                        else if(response.body().equals("0")) showMessage("Can't update availability.");
+                    }
+
+                    @Override
+                    public void onFailure(Call<String> call, Throwable t) {
+                        showMessage("Can't access to server.");
+                    }
+                });
+            }
+        });
+        //Add Cancel option
+        alertbox.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                //System.exit(0);
+            }
+        });
+
+        //Show
+        alertbox.show();
+    }
+
+
+
+    //--Show Message--
 
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();

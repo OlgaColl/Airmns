@@ -19,7 +19,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.02"
         android:fontFamily="sans-serif"
-        android:gravity="center_vertical"
+        android:gravity="center_vertical|center_horizontal"
         android:text="@string/txt_title_manage_reserve_L7_professional_availability"
         android:textColor="@android:color/background_light"
         android:textSize="26sp"

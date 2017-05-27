@@ -110,14 +110,14 @@ public interface APIService {
 
 
     */
-    @POST
+    @POST("updateAvailability")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> updateAvailability(@Query("date") String date,
                                    @Query("id_user") int id_user,
                                    @Query("start_time") int start_time,
                                    @Query("end_time") int end_time);
 
-    @POST
+    @POST("removeAvailability")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> removeAvailability(@Query("date") String date,
                                     @Query("id_user") int id_user);

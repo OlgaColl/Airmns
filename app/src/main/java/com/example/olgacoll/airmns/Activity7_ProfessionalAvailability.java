@@ -61,6 +61,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
     //Bundle
     Bundle bundle;
     //Date
+    TextView tv_title;
     TextView tv_date;
     Button b_input_date;
     //Date
@@ -102,6 +103,8 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
     //-- Prepare views --
     private void prepareViews() {
+        //Title
+        tv_title = (TextView) findViewById(R.id.title_manage_reserve_L7_professional_availability);
         //Date
         tv_date = (TextView) findViewById(R.id.textView_date_L7_professional_availability);
         b_input_date = (Button) findViewById(R.id.button_date_L7);
@@ -153,6 +156,8 @@ public class Activity7_ProfessionalAvailability extends Activity {
         if (bundle != null) {
             if (bundle.getString("type") != null) {
                 type = bundle.getString("type");
+                tv_title.setText( tv_title.getText() + "\n(" + type + ")");
+
             }
             if (bundle.getString("id") != null) {
                 id_user = Integer.parseInt(bundle.getString("id"));
@@ -249,13 +254,9 @@ public class Activity7_ProfessionalAvailability extends Activity {
     private void saveChanges() {
         //If input data is correct
         if (correctData()) {
-            /*System.out.println(id_user);
-            System.out.println(dia + "-" + (mes+1) + "-" + anyo);
-            System.out.println(start_time);
-            System.out.println(end_time);*/
             if(type.equals("add")) inputAvailability();
+            else if(type.equals("modify")) modifyAvailability();
         }
-
     }
 
     //Comprove if correct input date
@@ -291,23 +292,44 @@ public class Activity7_ProfessionalAvailability extends Activity {
     // -- EXECUTE API SERVICE --
 
     private void inputAvailability(){
-        //System.out.println(anyo + "-" + (mes+1) + "-" + dia), id_user, start_time, end_time);
         String date = String.valueOf(anyo) + "/" + String.valueOf(mes+1) + "/" + String.valueOf(dia);
         apiService.inputAvailability(date, id_user, start_time, end_time).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 System.out.println("Status code " + response.code());
-                System.out.println(response.body());
-                System.out.println(call.toString());
+                if(response.body().equals("1")) {
+                    showMessage("Availability entered successful.");
+                    finishActivity();
+                }
+                else if(response.body().equals("0")) showMessage("Can't enter availability.");
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                showMessage(t.getMessage() + t.getCause());
+                showMessage("Can't access to server.");
             }
         });
     }
 
+    private void modifyAvailability(){
+        String date = String.valueOf(anyo) + "/" + String.valueOf(mes+1) + "/" + String.valueOf(dia);
+        apiService.updateAvailability(date, id_user, start_time, end_time).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                System.out.println("Status code " + response.code());
+                if(response.body().equals("1")) {
+                    showMessage("Availability remove successful.");
+                    finishActivity();
+                }
+                else if(response.body().equals("0")) showMessage("Can't remove availability.");
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
+    }
 
 
     // -- SHOW ALERT OR MESSAGE --
@@ -330,5 +352,12 @@ public class Activity7_ProfessionalAvailability extends Activity {
 
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
+
+
+    // -- Finish Activity --
+    private void finishActivity(){
+        //Finish
+        this.finish();
     }
 }
