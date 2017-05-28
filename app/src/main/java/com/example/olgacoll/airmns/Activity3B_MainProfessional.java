@@ -58,7 +58,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
                         initFab();
                         break;
                     case R.id.imageViewManageReservation_L3B_main_professional:
-                        initManageReservation();
+                        initManageBooking();
                         break;
                     case R.id.imageViewBookingHistory_L3B_main_professional:
                         initBookingHistory();
@@ -105,13 +105,25 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
 
     //--Start Activities--
 
-    public void initManageReservation(){
-        Intent intent = new Intent(this, Activity5B_ProfessionalReserve.class);
+    public void initManageBooking(){
+        /*Intent intent = new Intent(this, Activity5B_ProfessionalReserve.class);
+        startActivity(intent);*/
+        //Booking
+        bundle.putString("order", "more_now");
+        //Intent
+        Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void initBookingHistory(){
-        Intent intent = new Intent(this, Activity6B_BookingHistoryProfessional.class);
+        /*Intent intent = new Intent(this, Activity6B_BookingHistoryProfessional.class);
+        startActivity(intent);*/
+        //Booking
+        bundle.putString("order", "less_now");
+        //Intent
+        Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
 
@@ -122,7 +134,11 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     }
 
     public void initEditProfile(){
-        Intent intent = new Intent(this, Activity4B_EditProfileProfessional.class);
+        /*Intent intent = new Intent(this, Activity4B_EditProfileProfessional.class);
+        startActivity(intent);*/
+        Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
+        intent.putExtras(bundle);
         startActivity(intent);
     }
+
 }

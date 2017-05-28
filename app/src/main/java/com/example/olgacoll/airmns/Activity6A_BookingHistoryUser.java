@@ -30,6 +30,8 @@ import retrofit2.Response;
 
 public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
+    //--Attributtes--
+    //Objects
     private static final String TAG = "Activity6A_BookingHistoryUser";
     APIService apiService;
     Bundle bundle;
@@ -38,6 +40,8 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     String time, observations, value, date;
     Date bookingDate;
     int id;
+    String order="";
+    //Views
     ListView listView;
     TextView textViewTitle, textViewInfo;
     String[] bookings;
@@ -45,15 +49,23 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     List<Booking> dataBooking;
     AdapterView.OnItemClickListener listener;
 
+
+
+    //--OnCreate--
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.booking_history_user);
-
+        //Prepares
         initComponents();
         initBundle();
         onPrepare();
     }
+
+
+
+    //--Prepares--
 
     private void initComponents(){
         apiService = APIUtils.getAPIService();
@@ -70,6 +82,10 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             if (bundle.getString("id") != null) {
                 id = Integer.parseInt(bundle.getString("id"));
                 getUser();
+            }
+
+            if (bundle.getString("order") != null) {
+                order= bundle.getString("order");
             }
         }
     }
@@ -92,6 +108,10 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         };
     }
 
+
+
+    //--Methods--
+
     private void getUser(){
         apiService.selectUser(id).enqueue(new Callback<User>() {
             @Override
@@ -110,28 +130,58 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     }
 
     private void loadBooking(){
-        apiService.listAllReserves(id).enqueue(new Callback<List<Booking>>() {
-            @Override
-            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                System.out.println("Response code: " + response.code());
-                bookings = new String[response.body().size()];
+        //More than now (for professional)
+        if(order.equals("more_now")){
+            apiService.listBookingsByDate(id).enqueue(new Callback<List<Booking>>() {
+                @Override
+                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                    System.out.println("Response code: " + response.code());
+                    bookings = new String[response.body().size()];
 
-                for(int i = 0; i < bookings.length; i++){
-                    bookings[i] = response.body().get(i).toString();
-                    dataBooking.add(response.body().get(i));
+                    for (int i = 0; i < bookings.length; i++) {
+                        bookings[i] = response.body().get(i).toString();
+                        dataBooking.add(response.body().get(i));
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
+                    listView.setAdapter(adapter);
+                    listView.setOnItemClickListener(listener);
                 }
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
-                listView.setAdapter(adapter);
-                listView.setOnItemClickListener(listener);
-            }
+                @Override
+                public void onFailure(Call<List<Booking>> call, Throwable t) {
+                    showMessage("Unable to submit post to API.");
+                    System.out.println(t.getCause() + t.getMessage());
+                    showMessage("Can't access to server.");
+                }
+            });
+        }
+        //All time
+        else{
+            apiService.listAllReserves(id).enqueue(new Callback<List<Booking>>() {
+                @Override
+                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                    System.out.println("Response code: " + response.code());
+                    bookings = new String[response.body().size()];
 
-            @Override
-            public void onFailure(Call<List<Booking>>call, Throwable t) {
-                showMessage("Unable to submit post to API.");
-                System.out.println(t.getCause() + t.getMessage());
-            }
-        });
+                    for (int i = 0; i < bookings.length; i++) {
+                        bookings[i] = response.body().get(i).toString();
+                        dataBooking.add(response.body().get(i));
+                    }
+
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
+                    listView.setAdapter(adapter);
+                    listView.setOnItemClickListener(listener);
+                }
+
+                @Override
+                public void onFailure(Call<List<Booking>> call, Throwable t) {
+                    showMessage("Unable to submit post to API.");
+                    System.out.println(t.getCause() + t.getMessage());
+                    showMessage("Can't access to server.");
+                }
+            });
+        }
     }
 
     private void setBundles(){
@@ -152,7 +202,11 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     }
 
 
+
+    //--ShowMessage--
+
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
+
 }

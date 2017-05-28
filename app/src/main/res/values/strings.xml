@@ -80,6 +80,7 @@
     <!--buttons-->
     <string name="txt_button_date_5A_reserve">INPUT DATE</string>
     <string name="txt_button_time_5A_reserve">INPUT TIME</string>
+    <string name="txt_button_find_5A_reserve">FIND PROFESSIONAL AVAILABILITY</string>
     <string name="txt_button_pay_5A_reserve">CONTINUE</string>
 
 

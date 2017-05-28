@@ -48,6 +48,7 @@ public class Activity5A_UserReserve extends Activity {
     //String mail, password, type, name, lastname, prefix_phone, phone;
     int id;
     int id_professional;
+    boolean correct_data = false;
 
     //Listener
     OnClickListener listener;
@@ -75,6 +76,7 @@ public class Activity5A_UserReserve extends Activity {
     //Observations
     EditText input_observations;
     //Button continue
+    Button b_find;
     Button b_continue;
     //Total Pay
     TextView tv_total_pay;
@@ -137,6 +139,8 @@ public class Activity5A_UserReserve extends Activity {
         spinner_address = (Spinner) findViewById(R.id.spinner_address_5A_reserve);
         //Observations
         input_observations = (EditText) findViewById(R.id.input_observations_5A_reserve);
+        //Button Find Professional availability
+        b_find = (Button) findViewById(R.id.button_find_5A_reserve);
         //Button continue
         b_continue = (Button) findViewById(R.id.button_pay_5A_reserve);
         //Total pay
@@ -248,9 +252,9 @@ public class Activity5A_UserReserve extends Activity {
                     case R.id.button_time_5A_reserve: //Choose date
                         mostrarHora(v);
                         break;
-                    //OBSERVATIONS
-                    case R.id.input_observations_5A_reserve: //Input observations
-
+                    //FIND PROVESSIONAL AVAILABILITY
+                    case R.id.button_find_5A_reserve: //Input observations
+                        findIdProfessional();
                         break;
                     //CONTINUE
                     case R.id.button_pay_5A_reserve: //Continue
@@ -273,6 +277,8 @@ public class Activity5A_UserReserve extends Activity {
                         Toast.makeText(getApplicationContext(), "("+ datos_time[position]+")", Toast.LENGTH_SHORT).show();
                         //Increment 1 valor to index for to now how many hours
                         long_time = position+1;
+                        //Correct_data = false;
+                        correct_data = false;
                         //Calcule total price
                         calcularPrecio();
                     }
@@ -309,6 +315,8 @@ public class Activity5A_UserReserve extends Activity {
         //Input observations
         input_observations.setOnClickListener(listener);
         //Button continue
+        b_find.setOnClickListener(listener);
+        //Button continue
         b_continue.setOnClickListener(listener);
     }
 
@@ -335,7 +343,7 @@ public class Activity5A_UserReserve extends Activity {
         mes = calendar.get(Calendar.MONTH);
         dia = calendar.get(Calendar.DAY_OF_MONTH);
         hour = calendar.get(Calendar.HOUR_OF_DAY);
-
+        correct_data = false;
         //Print date
         printDateTime();
 
@@ -391,6 +399,7 @@ public class Activity5A_UserReserve extends Activity {
             public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
                 minute = selectedMinute;
                 hour = selectedHour;
+                correct_data = false;
                 printDateTime();
             }
         }, hour, minute, true);
@@ -413,33 +422,36 @@ public class Activity5A_UserReserve extends Activity {
         //If input data is correct
         if (correctData()) {
             if(id > 0) {
-                //Find professional availability
-                findIdProfessional();
-                //If find professional
-                if (id_professional > 0) {
-                    //Dialog confirm payment
-                    AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-                    //Set text
-                    alertbox.setMessage("Are you sure?");
-                    //Add Ok option
-                    alertbox.setPositiveButton("Continue to payment", new DialogInterface.OnClickListener() {
-                        //To do whe press Ok
-                        public void onClick(DialogInterface arg0, int arg1) {
-                        //Insert row in bd
-                        addBooking();
-                        }
-                    });
-                    //Add Cancel option
-                    alertbox.setNegativeButton("No, I want to change something",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int whichButton) {
-                            //System.exit(0);
-                        }
-                    });
-                    //Show
-                    alertbox.show();
-                }
+                //If professional is founded
+                if(correct_data) {
+                    //If find professional
+                    System.out.println("BD -> Professional id =" + id_professional);
+                    if (id_professional > 0) {
+                        //Dialog confirm payment
+                        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+                        //Set text
+                        alertbox.setMessage("Are you sure?");
+                        //Add Ok option
+                        alertbox.setPositiveButton("Continue to payment", new DialogInterface.OnClickListener() {
+                            //To do whe press Ok
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                //Insert row in bd
+                                addBooking();
+                            }
+                        });
+                        //Add Cancel option
+                        alertbox.setNegativeButton("No, I want to change something", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int whichButton) {
+                                //System.exit(0);
+                            }
+                        });
+                        //Show
+                        alertbox.show();
+                    }
+                    //Notify professional not found
+                    else showAlert("There is'nt professional availability in this dates.");
                 //Notify professional not found
-                else showAlert("There is'nt professional availability in this dates.");
+                } else showAlert("You must find professional availability.");
             } else {
                 //Notify id not found
                 showMessage("Can't find your user identifier in BD. Is possible can't acces to server.");
@@ -479,16 +491,20 @@ public class Activity5A_UserReserve extends Activity {
     // -- RETRACTIVE --
 
     private void findIdProfessional(){
+        //Instance date in correct format
         String date = String.valueOf(anyo) + "-" + String.valueOf(mes+1) + "-" + String.valueOf(dia);
-        System.out.println(date);
-        System.out.println(hour);
-        System.out.println(long_time);
+        //ApiService
         apiService.findProfessionalForBooking(date, hour, long_time).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 System.out.println("Status code " + response.code());
-                System.out.println("Professional id = " + id_professional);
                 id_professional = Integer.parseInt(response.body());
+                System.out.println("Response -> Professional id = " + id_professional);
+                if(id_professional < 0) showMessage("Professional availability not found.");
+                else if(id_professional > 0) {
+                    showMessage("Professional availability founded!");
+                    correct_data = true;
+                }
             }
 
             @Override
@@ -497,6 +513,9 @@ public class Activity5A_UserReserve extends Activity {
                 id_professional = -1;
             }
         });
+        //Show message
+        //if(id_professional < 0) showMessage("Professional availability not found.");
+        //else if(id_professional > 0) showMessage("Professional availability founded!");
     }
 
     private void addBooking(){
@@ -504,6 +523,9 @@ public class Activity5A_UserReserve extends Activity {
         int id_address = dataObjectAddress.get(indexAddress).getId_address();
         //Date
         String date = String.valueOf(anyo) + "-" + String.valueOf(mes+1) + "-" + String.valueOf(dia);
+        //Observations
+        observations = input_observations.getText().toString();
+        //Souts
         System.out.println(id);
         System.out.println(id_professional);
         System.out.println(id_address);

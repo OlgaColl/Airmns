@@ -242,7 +242,25 @@
         </LinearLayout>
 
 
-        <!-- BUTTON CONTINUE-->
+
+
+
+    </LinearLayout>
+
+    <!-- BUTTON CONTINUE-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/button_find_5A_reserve"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.02"
+            android:text="@string/txt_button_find_5A_reserve" />
+
         <Button
             android:id="@+id/button_pay_5A_reserve"
             android:layout_width="329dp"

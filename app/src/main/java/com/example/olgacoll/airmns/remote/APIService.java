@@ -118,8 +118,8 @@ public interface APIService {
     @GET("listAllBookings")
     Call<List<Booking>> listAllReserves(@Query("id_user") int id);
 
-    @GET("listReservesByDate")
-    Call<String> listReservesByDate(@Query("id_user") int id);
+    @GET("listBookingsByDate")
+    Call<List<Booking>>  listBookingsByDate(@Query("id_user") int id);
 
     @POST("addBooking")
     @Headers("Content-Type: application/x-www-form-urlencoded")
