@@ -1,6 +1,7 @@
 package com.example.olgacoll.airmns;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
@@ -251,15 +252,20 @@ public class Activity8B_RateBooking extends Activity {
             apiService.rateReserve(id_reserve, valoration, observations).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
-                    System.out.println(response.body());
+                    initMain();
                 }
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    showMessage("Unable to submit post to API.");
+                    showMessage("Error sending valoration. Try again");
                 }
             });
         }
+    }
+
+    private void initMain(){
+        Intent intent = new Intent(this, Activity3A_MainUser.class);
+        startActivity(intent);
     }
 
     private void showMessage(String str) {

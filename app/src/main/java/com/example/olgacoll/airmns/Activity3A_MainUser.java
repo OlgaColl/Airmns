@@ -156,4 +156,9 @@ public class Activity3A_MainUser extends AppCompatActivity{
         startActivity(intent);
     }
 
+    @Override
+    protected void onResume() {
+        initBundle();
+        super.onResume();
+    }
 }
