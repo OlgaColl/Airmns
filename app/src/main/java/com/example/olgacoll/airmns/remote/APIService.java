@@ -83,9 +83,8 @@ public interface APIService {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> removeAddress(@Query("id_address") int id_address);
 
-    @GET
-    @Headers("Content-Type: application/x-www-form-urlencoded")
-    Call<String> selectAddress(@Query("id_address") int id_address);
+    @GET("selectAddress")
+    Call<Address> selectAddress(@Query("id_address") int id_address);
 
     @GET("listAvailability")
     Call<List<Availability>> listAvailability(@Query("id_user") int id);
@@ -140,7 +139,7 @@ public interface APIService {
                              @Query("comments") String comments);
 
     @GET("listReservesNotRate")
-    Call<String> listReservesNotRate(@Query("id_user") int id_user);
+    Call<List<Booking>> listReservesNotRate(@Query("id_user") int id_user);
 
     @GET("selectInfo")
     Call<Info> selectInfo();

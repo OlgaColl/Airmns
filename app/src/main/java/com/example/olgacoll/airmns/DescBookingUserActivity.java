@@ -11,11 +11,10 @@ import android.widget.TextView;
 
 public class DescBookingUserActivity extends Activity {
 
-    String date, time, observations, value;
+    String date, time, observations, value, address, start_time;
     double price;
-    TextView textView, textViewDate, textViewTime, textViewObservations, textViewValue, textViewPrice;
+    TextView textViewDate, textViewTime, textViewObservations, textViewValue, textViewPrice, textViewAddress, textViewStartTime;
     Bundle bundle;
-    String text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,16 +24,16 @@ public class DescBookingUserActivity extends Activity {
         initComponents();
         initBundle();
         setDetailText();
-        textView.setText(text);
     }
 
     private void initComponents(){
-        textView = (TextView) findViewById(R.id.textView);
         textViewDate = (TextView) findViewById(R.id.txt_date_descbooking);
         textViewTime = (TextView) findViewById(R.id.txt_time_descbooking);
         textViewObservations = (TextView) findViewById(R.id.txt_observations_descbooking);
-        textViewValue = (TextView) findViewById(R.id.txt_price_descbooking);
+        textViewValue = (TextView) findViewById(R.id.txt_rate_descbooking);
         textViewPrice = (TextView) findViewById(R.id.txt_price_descbooking);
+        textViewAddress = (TextView) findViewById(R.id.txt_address_descbooking);
+        textViewStartTime = (TextView)findViewById(R.id.txt_start_time_descbooking);
     }
 
     private void initBundle() {
@@ -48,6 +47,21 @@ public class DescBookingUserActivity extends Activity {
             }if (bundle.getString("value") != null) {
                 value = bundle.getString("value");
             }
+            if (bundle.getString("date") != null) {
+                date = bundle.getString("date");
+            }
+
+            if (bundle.getString("addressSelected") != null) {
+                address = bundle.getString("addressSelected");
+            }
+
+            if (bundle.getString("start_time") != null) {
+                start_time = bundle.getString("start_time");
+            }
+
+            if (bundle.getString("value") != null) {
+                value = bundle.getString("start_time");
+            }
 
             price = bundle.getDouble("price");
 
@@ -55,10 +69,22 @@ public class DescBookingUserActivity extends Activity {
     }
 
     private void setDetailText(){
+        System.out.println(address);
         textViewDate.setText("Date: " + date);
-        textViewTime.setText("Time: ");
-        textViewObservations.setText("Observations: " + observations);
-        textViewValue.setText("Value: " + value);
+        textViewStartTime.setText("Start time: " + start_time + ":00h");
+        textViewTime.setText("Total time: " + time + "h");
+        textViewAddress.setText("Address: " + address);
+        if(observations != null){
+            textViewObservations.setText("Observations: " + observations);
+        }else{
+            textViewObservations.setText("Observations: any");
+        }
+        if(value != null){
+            textViewValue.setText("Qualification: " + value);
+        }else{
+            textViewValue.setText("Qualification: Pending rate");
+        }
+
         textViewPrice.setText("Price: " + price + "€");
     }
 }

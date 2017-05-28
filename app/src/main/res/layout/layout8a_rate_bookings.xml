@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/primary_darker"
+tools:context="com.example.olgacoll.airmns.Activity6A_BookingHistoryUser">
+
+<TextView
+    android:id="@+id/tvtitle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="@string/txt_title_booking_L8A"
+    android:textSize="30sp"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="32dp" />
+
+<TextView
+    android:id="@+id/tvinfo"
+    android:layout_width="143dp"
+    android:layout_height="32dp"
+    android:textAlignment="center"
+    android:textSize="12sp"
+    tools:layout_editor_absoluteY="73dp"
+    tools:layout_editor_absoluteX="0dp"
+    android:layout_below="@+id/tvtitle"/>
+
+<ListView
+    android:id="@+id/listview"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvinfo"
+    tools:layout_editor_absoluteY="105dp"
+    tools:layout_editor_absoluteX="-16dp" />
+</RelativeLayout>

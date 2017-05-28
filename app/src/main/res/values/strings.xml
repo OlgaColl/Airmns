@@ -138,6 +138,7 @@
 
     <!-- LAYOUT 8 VALUE RESERVE -->
     <!--title-->
+    <string name="txt_title_booking_L8A">Bookings to rate</string>
     <string name="txt_title_valorate_reserve_L8_value_reserve">VALUE RESERVE</string>
     <!-- user -->
     <string name="txt_user_name_L8_value_reserve">User name</string>

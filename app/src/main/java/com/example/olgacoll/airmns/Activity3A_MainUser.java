@@ -145,8 +145,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
     }
 
     public void initRateReservation(){
-        //Intent intent = new Intent(this, Activity8A_RateReservations.class);
-        Intent intent = new Intent(this, Activity8B_ValueReserve.class);
+        Intent intent = new Intent(this, Activity8A_BookingToRate.class);
         startActivity(intent);
     }
 

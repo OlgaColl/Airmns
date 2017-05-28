@@ -1,5 +1,6 @@
 package com.example.olgacoll.airmns;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +11,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Booking;
 import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
@@ -26,22 +26,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 /**
- * Created by olgacoll on 25/4/17.
+ * Created by olgacoll on 28/5/17.
  */
 
-public class Activity6A_BookingHistoryUser extends AppCompatActivity {
+public class Activity8A_BookingToRate extends AppCompatActivity {
 
     //--Attributtes--
     //Objects
-    private static final String TAG = "Activity6A_BookingHistoryUser";
+    private static final String TAG = "Activity8A_BookingToRate";
     APIService apiService;
     Bundle bundle;
     User user;
     double price;
-    String time, observations, value, date, address, start_time;
+    String time, observations, value, date;
     Date bookingDate;
-    int id, id_address;
-    String order="";
+    int id;
+    String order = "";
     //Views
     ListView listView;
     TextView textViewTitle, textViewInfo;
@@ -51,13 +51,12 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     AdapterView.OnItemClickListener listener;
 
 
-
     //--OnCreate--
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.booking_history_user);
+        setContentView(R.layout.layout8a_rate_bookings);
         //Prepares
         initComponents();
         initBundle();
@@ -65,16 +64,15 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     }
 
 
-
     //--Prepares--
 
-    private void initComponents(){
+    private void initComponents() {
         apiService = APIUtils.getAPIService();
         dataBooking = new ArrayList();
 
-        textViewTitle = (TextView)findViewById(R.id.tvtitle);
-        textViewInfo= (TextView)findViewById(R.id.tvinfo);
-        listView = (ListView)findViewById(R.id.listview);
+        textViewTitle = (TextView) findViewById(R.id.tvtitle);
+        textViewInfo = (TextView) findViewById(R.id.tvinfo);
+        listView = (ListView) findViewById(R.id.listview);
     }
 
     private void initBundle() {
@@ -86,54 +84,38 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             }
 
             if (bundle.getString("order") != null) {
-                order= bundle.getString("order");
+                order = bundle.getString("order");
             }
         }
     }
 
-    private void onPrepare(){
+    private void onPrepare() {
         listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 date = sdf.format(dataBooking.get(position).getDate_time());
                 value = dataBooking.get(position).getObservations();
                 observations = dataBooking.get(position).getComments();
                 price = dataBooking.get(position).getTotal_price();
-                start_time = String.valueOf(dataBooking.get(position).getStart_time());
-                time = String.valueOf(dataBooking.get(position).getLong_time());
                 //date = dataBooking.get(position).getDate_time();
 
                 bookingDate = dataBooking.get(position).getDate_time();
-                id_address = dataBooking.get(position).getId_address();
-
                 startDescBookingUser(dataBooking.get(position).toString());
             }
         };
     }
 
-    private void loadAddress() {
-        System.out.println("ID_ADDRESS: " + id_address);
-        apiService.selectAddress(id_address).enqueue(new Callback<Address>() {
-            @Override
-            public void onResponse(Call<Address> call, Response<Address> response) {
-                address = response.body().toString();
-            }
-
-            @Override
-            public void onFailure(Call<Address> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
-            }
-        });
-    }
-
 
     //--Methods--
 
-    private void getUser(){
+    private void getUser() {
         apiService.selectUser(id).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                System.out.println("Response code: " + response.code());
+                System.out.println(response.body());
                 loadBooking();
             }
 
@@ -145,10 +127,10 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         });
     }
 
-    private void loadBooking(){
+    private void loadBooking() {
         //More than now (for professional)
-        if(order.equals("more_now")){
-            apiService.listBookingsByDate(id).enqueue(new Callback<List<Booking>>() {
+        if (order.equals("more_now")) {
+            apiService.listReservesNotRate(id).enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
                     System.out.println("Response code: " + response.code());
@@ -173,7 +155,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             });
         }
         //All time
-        else{
+        else {
             apiService.listAllReserves(id).enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
@@ -200,31 +182,28 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         }
     }
 
-    private void setBundles(){
-        bundle.putString("start_time", start_time);
+    private void setBundles() {
         bundle.putString("time", time);
         bundle.putString("observations", observations);
         bundle.putString("value", value);
         bundle.putDouble("price", price);
         bundle.putString("date", date);
-        bundle.putString("addressSelected", address);
     }
 
-    private void startDescBookingUser(String booking){
-        loadAddress();
-        System.out.println(address);
+    private void startDescBookingUser(String booking) {
         setBundles();
+        //bundle.putString("booking", booking);
+
         Intent intent = new Intent(this, DescBookingUserActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
 
-
     //--ShowMessage--
 
-    private void showMessage(String str){
+    private void showMessage(String str) {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
-
 }
+

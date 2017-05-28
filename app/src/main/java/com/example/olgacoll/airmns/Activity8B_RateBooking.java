@@ -15,7 +15,7 @@ import android.widget.TextView;
  * Created by ericayala on 2/5/17.
  */
 
-public class Activity8B_ValueReserve extends Activity {
+public class Activity8B_RateBooking extends Activity {
 
 
     // -- ATTRIBUTES --
