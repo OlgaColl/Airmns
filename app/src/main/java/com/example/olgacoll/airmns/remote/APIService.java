@@ -132,7 +132,7 @@ public interface APIService {
                             @Query("observations") String observations,
                             @Query("iva") double iva);
 
-    @POST
+    @POST("rateBooking")
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> rateReserve(@Query("id_reservation") int id_reservation,
                              @Query("qualification_service") int qualification_service,

@@ -8,8 +8,6 @@
     android:paddingRight="24dp"
     android:background="@color/primary_darker">
 
-
-
     <!-- TITLE -->
     <TextView
         android:id="@+id/title_valorate_reserve_L8_value_reserve"
@@ -17,13 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.18"
-        android:fontFamily="sans-serif"
         android:gravity="center_vertical"
         android:text="@string/txt_title_valorate_reserve_L8_value_reserve"
         android:textColor="@android:color/background_light"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        tools:fontFamily="cursive" />
+        android:textSize="26sp" />
 
 
 
@@ -55,7 +50,7 @@
                 android:paddingBottom="3dp"
                 android:text="@string/txt_user_name_L8_value_reserve"
                 android:textColor="#1b4f72"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:paddingLeft="3dp" />
 
             <!-- Surname -->
@@ -68,7 +63,7 @@
                 android:paddingBottom="3dp"
                 android:text="@string/txt_user_surname_L8_value_reserve"
                 android:textColor="#1b4f72"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:paddingLeft="3dp" />
 
             <!-- Email -->
@@ -81,7 +76,7 @@
                 android:paddingBottom="3dp"
                 android:text="@string/txt_user_email_L8_value_reserve"
                 android:textColor="#1b4f72"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:paddingLeft="3dp" />
 
             <!-- Number phone -->
@@ -94,7 +89,7 @@
                 android:paddingBottom="3dp"
                 android:text="@string/txt_user_phone_L8_value_reserve"
                 android:textColor="#1b4f72"
-                android:textSize="14sp"
+                android:textSize="18sp"
                 android:paddingLeft="3dp" />
 
         </LinearLayout>
@@ -140,7 +135,7 @@
             android:text="@string/txt_print_date_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:layout_weight="0.05"
             android:paddingLeft="3dp"/>
 
@@ -150,10 +145,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:text="@string/txt_time_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:layout_weight="0.05"
             android:paddingLeft="3dp" />
 
@@ -163,23 +157,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="bottom"
-            android:text="@string/txt_address_L8_resume_reserve"
             android:paddingBottom="3dp"
             android:textColor="#1b4f72"
-            android:textSize="14sp"
-            android:layout_weight="0.05"
-            android:paddingLeft="3dp" />
-
-        <!-- OBSERVATIONS -->
-        <TextView
-            android:id="@+id/observations_L8_resume_reserve"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="bottom"
-            android:text="@string/txt_observations_L8_resume_reserve"
-            android:paddingBottom="3dp"
-            android:textColor="#1b4f72"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:layout_weight="0.05"
             android:paddingLeft="3dp" />
 
@@ -203,8 +183,7 @@
         android:layout_gravity="left|center_horizontal"
         android:text="@string/txt_title_observations_text_L8_valore_reserve"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#ffffff"
-        android:textStyle="italic" />
+        android:textColor="#ffffff" />
 
     <EditText
         android:id="@+id/input_observations_L8_valore_reserve_false"
@@ -214,8 +193,6 @@
         android:ems="10"
         android:inputType="textMultiLine"
         android:textColor="#1b4f72" />
-
-
 
     <!-- VALORATION -->
     <LinearLayout

@@ -8,8 +8,17 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.olgacoll.airmns.remote.APIService;
+import com.example.olgacoll.airmns.remote.APIUtils;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by ericayala on 2/5/17.
@@ -20,7 +29,11 @@ public class Activity8B_RateBooking extends Activity {
 
     // -- ATTRIBUTES --
     //Valoration
-    int valoration;
+    int valoration, id_reserve;
+
+    APIService apiService;
+    String name, lastname, mail, prefix, phone, observations;
+    String date, start_time, duration, address;
     //Listener
     View.OnClickListener listener;
     //User
@@ -32,11 +45,13 @@ public class Activity8B_RateBooking extends Activity {
     TextView tv_date;
     TextView tv_time;
     TextView tv_address;
-    TextView tv_observations;
+
+    EditText et_observations;
     //ImageView Valoration
     ImageView iv_star[];
     //Button
     Button b_done;
+    Bundle bundle;
 
     // -- ON CREATE --
     @Override
@@ -46,6 +61,9 @@ public class Activity8B_RateBooking extends Activity {
 
         //Prepare views
         prepareViews();
+        //Inicialize bundles
+        initBundle();
+        setText();
         //Inicialize listener
         prepareListener();
         //On click listener
@@ -58,6 +76,7 @@ public class Activity8B_RateBooking extends Activity {
 
     //-- Prepare views --
     private void prepareViews() {
+        apiService = APIUtils.getAPIService();
         //Valoration
         valoration = -1;
         //User
@@ -69,7 +88,7 @@ public class Activity8B_RateBooking extends Activity {
         tv_date = (TextView) findViewById(R.id.print_date_L8_resume_reserve);
         tv_time = (TextView) findViewById(R.id.time_L8_resume_reserve);
         tv_address = (TextView) findViewById(R.id.address_L8_resume_reserve);
-        tv_observations = (TextView) findViewById(R.id.observations_L8_resume_reserve);
+        et_observations = (EditText)findViewById(R.id.input_observations_L8_valore_reserve_false);
         //Image valoration
         iv_star = new ImageView[5];
         iv_star[0] = (ImageView) findViewById(R.id.star_0_L8);
@@ -79,6 +98,54 @@ public class Activity8B_RateBooking extends Activity {
         iv_star[4] = (ImageView) findViewById(R.id.star_4_L8);
         //Button Done
         b_done = (Button) findViewById(R.id.button_done_L8_resume_reserve);
+    }
+
+    private void initBundle(){
+        bundle = this.getIntent().getExtras();
+        if (bundle != null) {
+
+            id_reserve = bundle.getInt("id_reserve");
+
+            if (bundle.getString("name") != null) {
+                name = bundle.getString("name");
+            }
+            if (bundle.getString("lastname") != null) {
+                lastname = bundle.getString("lastname");
+            }
+            if (bundle.getString("mail") != null) {
+                mail = bundle.getString("mail");
+            }
+            if (bundle.getString("prefix") != null) {
+                prefix = bundle.getString("prefix");
+            }
+            if (bundle.getString("phone") != null) {
+                phone = bundle.getString("phone");
+            }
+            if (bundle.getString("date") != null) {
+                date = bundle.getString("date");
+            }
+            if (bundle.getString("start_time") != null) {
+                start_time = bundle.getString("start_time");
+            }
+            if (bundle.getString("duration") != null) {
+                duration = bundle.getString("duration");
+            }
+            if (bundle.getString("address") != null) {
+                address = bundle.getString("address");
+            }
+        }
+
+
+    }
+
+    private void setText(){
+        tv_name.setText("Name: " + name);
+        tv_surname.setText("Lastname: " + lastname);
+        tv_email.setText("Mail: " + mail);
+        tv_phone.setText("Phone: "  + prefix + " " + phone);
+        tv_date.setText("Date: " + date);
+        tv_time.setText("Start time: " + start_time + ":00h, duration: " + duration + "h");
+        tv_address.setText("Address: " + address);
     }
 
     //-- Prepare listener --
@@ -120,7 +187,7 @@ public class Activity8B_RateBooking extends Activity {
                         break;
                     //OK
                     case R.id.button_done_L8_resume_reserve:
-
+                        checkValoration();
                         break;
                     //DEFAULT
                     default:
@@ -170,11 +237,33 @@ public class Activity8B_RateBooking extends Activity {
 
     //-- Add Listeners--
     private void addListener() {
-        //Button date
-        b_done.setOnClickListener(listener);
         //Availability
         for(int i = 0; i<iv_star.length; i++) iv_star[i].setOnClickListener(listener);
+        //Button date
+        b_done.setOnClickListener(listener);
     }
 
+    private void checkValoration(){
+        if(valoration < 0){
+            showMessage("Value your reserve");
+        }else{
+            observations = et_observations.getText().toString();
+            apiService.rateReserve(id_reserve, valoration, observations).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    System.out.println(response.body());
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    showMessage("Unable to submit post to API.");
+                }
+            });
+        }
+    }
+
+    private void showMessage(String str) {
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
 }
 

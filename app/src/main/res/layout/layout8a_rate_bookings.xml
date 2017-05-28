@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/primary_darker"
-tools:context="com.example.olgacoll.airmns.Activity6A_BookingHistoryUser">
+tools:context="com.example.olgacoll.airmns.Activity8A_BookingToRate">
 
 <TextView
     android:id="@+id/tvtitle"

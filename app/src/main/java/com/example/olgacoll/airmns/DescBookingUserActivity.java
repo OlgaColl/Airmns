@@ -69,7 +69,6 @@ public class DescBookingUserActivity extends Activity {
     }
 
     private void setDetailText(){
-        System.out.println(address);
         textViewDate.setText("Date: " + date);
         textViewStartTime.setText("Start time: " + start_time + ":00h");
         textViewTime.setText("Total time: " + time + "h");

@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.model.Booking;
 import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
@@ -37,16 +38,15 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     APIService apiService;
     Bundle bundle;
     User user;
-    double price;
-    String time, observations, value, date;
+    String name, lastname, mail, prefix, phone, address;
+    String start_time, duration, observations, value, date;
     Date bookingDate;
-    int id;
+    int id, id_address, id_reserve;
     String order = "";
     //Views
     ListView listView;
     TextView textViewTitle, textViewInfo;
     String[] bookings;
-    String[] items;
     List<Booking> dataBooking;
     AdapterView.OnItemClickListener listener;
 
@@ -98,11 +98,14 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
                 date = sdf.format(dataBooking.get(position).getDate_time());
                 value = dataBooking.get(position).getObservations();
                 observations = dataBooking.get(position).getComments();
-                price = dataBooking.get(position).getTotal_price();
+                start_time = String.valueOf(dataBooking.get(position).getStart_time());
+                id_address = dataBooking.get(position).getId_address();
+                id_reserve = dataBooking.get(position).getId_reserve();
+                duration = String.valueOf(dataBooking.get(position).getLong_time());
                 //date = dataBooking.get(position).getDate_time();
 
                 bookingDate = dataBooking.get(position).getDate_time();
-                startDescBookingUser(dataBooking.get(position).toString());
+                startRateBooking(dataBooking.get(position).toString());
             }
         };
     }
@@ -115,7 +118,11 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 System.out.println("Response code: " + response.code());
-                System.out.println(response.body());
+                name = response.body().getName();
+                lastname = response.body().getLastname();
+                mail = response.body().getMail();
+                prefix = response.body().getPrefix_phone();
+                phone = response.body().getPhone();
                 loadBooking();
             }
 
@@ -123,6 +130,21 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
             public void onFailure(Call<User> call, Throwable t) {
                 showMessage("Unable to submit post to API.");
                 System.out.println(t.getCause() + t.getMessage());
+            }
+        });
+    }
+
+    private void loadAddress() {
+        System.out.println("ID_ADDRESS: " + id_address);
+        apiService.selectAddress(id_address).enqueue(new Callback<Address>() {
+            @Override
+            public void onResponse(Call<Address> call, Response<Address> response) {
+                address = response.body().toString();
+            }
+
+            @Override
+            public void onFailure(Call<Address> call, Throwable t) {
+                showMessage("Unable to submit post to API.");
             }
         });
     }
@@ -165,6 +187,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
                     for (int i = 0; i < bookings.length; i++) {
                         bookings[i] = response.body().get(i).toString();
                         dataBooking.add(response.body().get(i));
+                        System.out.println(dataBooking.get(i).toString());
                     }
 
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
@@ -183,18 +206,23 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     }
 
     private void setBundles() {
-        bundle.putString("time", time);
+        bundle.putInt("id_reserve", id_reserve);
+        bundle.putString("duration", duration);
         bundle.putString("observations", observations);
-        bundle.putString("value", value);
-        bundle.putDouble("price", price);
+        bundle.putString("start_time", start_time);
+        bundle.putString("address", address);
         bundle.putString("date", date);
+        bundle.putString("name", name);
+        bundle.putString("lastname", lastname);
+        bundle.putString("mail", mail);
+        bundle.putString("prefix", prefix);
+        bundle.putString("phone", phone);
     }
 
-    private void startDescBookingUser(String booking) {
+    private void startRateBooking(String booking) {
+        loadAddress();
         setBundles();
-        //bundle.putString("booking", booking);
-
-        Intent intent = new Intent(this, DescBookingUserActivity.class);
+        Intent intent = new Intent(this, Activity8B_RateBooking.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
