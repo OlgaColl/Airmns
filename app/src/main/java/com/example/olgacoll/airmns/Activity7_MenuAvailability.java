@@ -34,14 +34,11 @@ import retrofit2.Response;
 public class Activity7_MenuAvailability extends Activity {
 
     //objects
-    private static final String TAG = "Activity7_MenuAvailability";
     APIService apiService;
     //Availability
-    private static final int TIPO_DIALOGO = 0;
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
     //Attributes
-    int id;
-    int indexAvailability;
+    int id, indexAvailability;
     String dateAvailability[];
     List<Availability> dataObjectAvailability;
     //Bundle
@@ -54,9 +51,7 @@ public class Activity7_MenuAvailability extends Activity {
     //Spinner
     Spinner spinnerAvailability;
     //Buttons
-    Button b_add;
-    Button b_modify;
-    Button b_remove;
+    Button b_add, b_modify, b_remove;
 
 
 
@@ -107,26 +102,17 @@ public class Activity7_MenuAvailability extends Activity {
 
     //-- Control Spinner --
     private void controlSpinner() {
-        System.out.println("ID USER en control sppiner " + id);
         apiService.listAvailability(id).enqueue(new Callback<List<Availability>>() {
             @Override
             public void onResponse(Call<List<Availability>> call, Response<List<Availability>> response) {
-                //System.out.println(response.body().get(1).toString());
-                System.out.println("Response code: " + response.code());
-
                 dateAvailability = new String[response.body().size()];
                 dataObjectAvailability = new ArrayList<Availability>();
-
                 //fillAddressSpinner
                 for(int i = 0; i < response.body().size(); i++){
                     dateAvailability[i] = response.body().get(i).toString();
                     dataObjectAvailability.add(response.body().get(i));
                 }
-
-                for(int i = 0; i < dataObjectAvailability.size(); i++){
-                    System.out.println(dataObjectAvailability.get(i).toString());
-                }
-
+                //ArrayAdapter
                 ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dateAvailability);
                 spinnerAvailability.setAdapter(adaptador);
                 prepareItemListener();
@@ -136,12 +122,6 @@ public class Activity7_MenuAvailability extends Activity {
             @Override
             public void onFailure(Call<List<Availability>> call, Throwable t) {
                 showMessage("Can't access to server.");
-                System.out.println("---------");
-                System.out.println(t.getCause());
-                System.out.println(t.getLocalizedMessage());
-                System.out.println(t.getMessage());
-                System.out.println(t.getStackTrace());
-                System.out.println(t.getSuppressed());
             }
         });
 

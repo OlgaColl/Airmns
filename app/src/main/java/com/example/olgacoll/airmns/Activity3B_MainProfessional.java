@@ -57,7 +57,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
             public void onClick(View view){
                 switch(view.getId()){
                     case R.id.fab_L3B_main_professional:
-                        initFab();
+                        initInfo();
                         break;
                     case R.id.imageViewManageReservation_L3B_main_professional:
                         initManageBooking();
@@ -74,11 +74,6 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
                 }
             }
         };
-    }
-
-    public void initFab(){
-        Intent intent = new Intent(this, Activity9_InfoActivity.class);
-        startActivity(intent);
     }
 
     public void addListener(){
@@ -132,10 +127,13 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     }
 
     public void initEditProfile(){
-        /*Intent intent = new Intent(this, Activity4B_EditProfileProfessional.class);
-        startActivity(intent);*/
         Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
         intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void initInfo(){
+        Intent intent = new Intent(this, Activity9_InfoActivity.class);
         startActivity(intent);
     }
 

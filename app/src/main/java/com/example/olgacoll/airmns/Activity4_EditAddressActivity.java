@@ -48,6 +48,7 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
         initComponents();
         initBundle();
         prepareListener();
+        //Listener
         buttonSaveChanges.setOnClickListener(listener);
         textViewLinkBack.setOnClickListener(listener);
     }
@@ -67,7 +68,6 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
         editTextCity = (EditText) findViewById(R.id.change_city_L4_edit_address);
         buttonSaveChanges = (Button) findViewById(R.id.btn_saveChanges_L4_edit_address);
         textViewLinkBack = (TextView)findViewById(R.id.link_back_L4_edit_address);
-        //bundle = new Bundle();
     }
 
     private void initBundle(){
@@ -148,13 +148,13 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
         apiService.addAddress(id_user, street, number, floor, stair, door, city, postal_code).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
-                System.out.println(response.body());
+                showMessage("Added succesfull!");
+                finishActivity();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't access to server.");
             }
         });
     }
@@ -163,13 +163,13 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
         apiService.modifyAddress(id_address, street, number, floor, stair, door, city, postal_code).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
-                System.out.println(response.body());
+                showMessage("Succesfull modify");
+                finishActivity();
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't access to server.");
             }
         });
     }
@@ -244,6 +244,15 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
 
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
+
+
+
+    //--Finish Activity--
+
+    private void finishActivity(){
+        //Finish
+        this.finish();
     }
 
 }

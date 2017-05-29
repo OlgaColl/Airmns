@@ -15,12 +15,11 @@ import android.widget.TextView;
 
 public class Activity4B_EditProfileProfessional extends AppCompatActivity {
 
-    //--Attributes
+    //--Attributes--
 
     private static final String TAG = "Activity4EditProfile";
     EditText editTextName, editTextLastname, editTextEmail, editTextMobile, editTextPassword, editTextPassword2;
     Button buttonSaveChanges;
-    TextView textViewLinkBack;
     View.OnClickListener listener;
 
 
@@ -70,5 +69,5 @@ public class Activity4B_EditProfileProfessional extends AppCompatActivity {
         Intent intent = new Intent(this, Activity3A_MainUser.class);
         startActivity(intent);
     }
-    
+
 }

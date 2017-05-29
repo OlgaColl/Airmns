@@ -31,28 +31,22 @@ public class Activity8B_RateBooking extends Activity {
     // -- ATTRIBUTES --
     //Valoration
     int valoration, id_reserve;
-
+    //ApiService
     APIService apiService;
-    String name, lastname, mail, prefix, phone, observations;
-    String date, start_time, duration, address;
+    String name, lastname, mail, prefix, phone, observations, date, start_time, duration, address;
     //Listener
     View.OnClickListener listener;
-    //User
-    TextView tv_name;
-    TextView tv_surname;
-    TextView tv_email;
-    TextView tv_phone;
-    //Reserve
-    TextView tv_date;
-    TextView tv_time;
-    TextView tv_address;
-
+    //User & Booking
+    TextView tv_name, tv_surname, tv_email, tv_phone, tv_date, tv_time, tv_address;
+    //Observations
     EditText et_observations;
     //ImageView Valoration
     ImageView iv_star[];
     //Button
     Button b_done;
     Bundle bundle;
+
+
 
     // -- ON CREATE --
     @Override
@@ -262,5 +256,6 @@ public class Activity8B_RateBooking extends Activity {
     private void showMessage(String str) {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
+
 }
 

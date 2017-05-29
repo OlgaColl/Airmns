@@ -46,30 +46,24 @@ public class Activity7_ProfessionalAvailability extends Activity {
     //Class objects
     //Time
     Calendar calendar;
-    int anyo;
-    int mes;
-    int dia;
+    int anyo, mes, dia;
     //Availability
-    int start_time;
-    int end_time;
+    int start_time, end_time;
 
 
     //Layout objects
     //Listener
     View.OnClickListener listener;
-    //View.OnClickListener listener_availability;
     //Bundle
     Bundle bundle;
     //Date
-    TextView tv_title;
-    TextView tv_date;
+    TextView tv_title, tv_date;
     Button b_input_date;
     //Date
     private static final int TIPO_DIALOGO = 0;
     private static DatePickerDialog.OnDateSetListener oyenteSelectorFecha;
     //Start and end Time
-    EditText et_start_time;
-    EditText et_end_time;
+    EditText et_start_time, et_end_time;
     //Button Ok
     Button b_ok;
 
@@ -296,7 +290,6 @@ public class Activity7_ProfessionalAvailability extends Activity {
         apiService.inputAvailability(date, id_user, start_time, end_time).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
                 if(response.body().equals("1")) {
                     showMessage("Availability entered successful.");
                     finishActivity();
@@ -316,7 +309,6 @@ public class Activity7_ProfessionalAvailability extends Activity {
         apiService.updateAvailability(date, id_user, start_time, end_time).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
                 if(response.body().equals("1")) {
                     showMessage("Availability remove successful.");
                     finishActivity();

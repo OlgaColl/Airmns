@@ -498,9 +498,7 @@ public class Activity5A_UserReserve extends Activity {
         apiService.findProfessionalForBooking(date, hour, long_time).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
                 id_professional = Integer.parseInt(response.body());
-                System.out.println("Response -> Professional id = " + id_professional);
                 if(id_professional < 0) showMessage("Professional availability not found.");
                 else if(id_professional > 0) {
                     showMessage("Professional availability founded!");
@@ -514,9 +512,6 @@ public class Activity5A_UserReserve extends Activity {
                 id_professional = -1;
             }
         });
-        //Show message
-        //if(id_professional < 0) showMessage("Professional availability not found.");
-        //else if(id_professional > 0) showMessage("Professional availability founded!");
     }
 
     private void addBooking(){
@@ -526,21 +521,10 @@ public class Activity5A_UserReserve extends Activity {
         String date = String.valueOf(anyo) + "-" + String.valueOf(mes+1) + "-" + String.valueOf(dia);
         //Observations
         observations = input_observations.getText().toString();
-        //Souts
-        System.out.println(id);
-        System.out.println(id_professional);
-        System.out.println(id_address);
-        System.out.println(date);
-        System.out.println(hour);
-        System.out.println(long_time);
-        System.out.println(total_pay);
-        System.out.println(observations);
         //Query
         apiService.addBooking(id, id_professional, id_address, date, hour, long_time, total_pay, observations, 21).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
-                System.out.println("Add booking= {" + response.body() +"}");
                 if(response.body().equals("0")) {
                     showMessage("Can't do booking. Please, check your data or do it later.");
                 }

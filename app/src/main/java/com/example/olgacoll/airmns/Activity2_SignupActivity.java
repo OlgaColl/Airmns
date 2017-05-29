@@ -45,10 +45,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         initComponents();
         onPrepareListener();
         //Listener
-        buttonSignup.setOnClickListener(listener);
-        textViewLogin.setOnClickListener(listener);
-        radioButtonClient.setOnClickListener(listener);
-        radioButtonProfessional.setOnClickListener(listener);
+        addListener();
     }
 
 
@@ -94,6 +91,13 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         };
     }
 
+    public void addListener(){
+        buttonSignup.setOnClickListener(listener);
+        textViewLogin.setOnClickListener(listener);
+        radioButtonClient.setOnClickListener(listener);
+        radioButtonProfessional.setOnClickListener(listener);
+    }
+
 
 
     //--Methods--
@@ -109,15 +113,10 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void signUpUser(){
-        User user = new User();
-
-        //System.out.println(" Mail: " + mail +  " Password " + password +  " Type: " + type +  " Nom: " + name +  " Apellidos " + lastname +  " Prefix " + prefix_phone + " Phone "+ phone);
         apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()) {
-                    System.out.println("Status code " + response.code());
-                    System.out.println(response.body());
                     if(response.body().equals("1")) {
                         onSignupSuccess();
                     }else{
@@ -128,21 +127,24 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<String> call, Throwable t){
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't access to server.");
             }
         });
     }
 
     public void onSignupSuccess() {
-        Toast.makeText(getBaseContext(), "Sign up success!", Toast.LENGTH_LONG).show();
+        //ShowMessage
+        showMessage("Sign up success!");
+        //Intent
         Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
         startActivity(intent);
+        //Finish
+        this.finish();
     }
 
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Sign up failed", Toast.LENGTH_LONG).show();
     }
-
 
     public boolean validate() {
         boolean valid = true;

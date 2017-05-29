@@ -142,8 +142,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
-                System.out.println(t.getCause() + t.getMessage());
+                showMessage("Can't acces to server.");
             }
         });
     }
@@ -154,7 +153,6 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             apiService.listBookingsByDate(id).enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    System.out.println("Response code: " + response.code());
                     bookings = new String[response.body().size()];
 
                     for (int i = 0; i < bookings.length; i++) {
@@ -169,8 +167,6 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    showMessage("Unable to submit post to API.");
-                    System.out.println(t.getCause() + t.getMessage());
                     showMessage("Can't access to server.");
                 }
             });

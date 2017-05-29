@@ -38,8 +38,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     APIService apiService;
     Bundle bundle;
     User user;
-    String name, lastname, mail, prefix, phone, address;
-    String start_time, duration, observations, value, date;
+    String name, lastname, mail, prefix, phone, address, start_time, duration, observations, value, date;
     Date bookingDate;
     int id, id_address, id_reserve;
     String order = "";
@@ -105,7 +104,6 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
                 id_address = dataBooking.get(position).getId_address();
                 id_reserve = dataBooking.get(position).getId_reserve();
                 duration = String.valueOf(dataBooking.get(position).getLong_time());
-                //date = dataBooking.get(position).getDate_time();
 
                 bookingDate = dataBooking.get(position).getDate_time();
                 startRateBooking(dataBooking.get(position).toString());
@@ -148,34 +146,32 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Address> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't access to server.");
             }
         });
     }
 
     private void loadBooking() {
-            apiService.listBookingsNotRate(id).enqueue(new Callback<List<Booking>>() {
-                @Override
-                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    System.out.println("Response code: " + response.code());
-                    bookings = new String[response.body().size()];
+        apiService.listBookingsNotRate(id).enqueue(new Callback<List<Booking>>() {
+            @Override
+            public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                bookings = new String[response.body().size()];
 
-                    for (int i = 0; i < bookings.length; i++) {
-                        bookings[i] = response.body().get(i).toString();
-                        dataBooking.add(response.body().get(i));
-                    }
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
-                    listView.setAdapter(adapter);
-                    listView.setOnItemClickListener(listener);
+                for (int i = 0; i < bookings.length; i++) {
+                    bookings[i] = response.body().get(i).toString();
+                    dataBooking.add(response.body().get(i));
                 }
 
-                @Override
-                public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    System.out.println(t.getCause() + t.getMessage());
-                    //showMessage("Can't access to server.");
-                }
-            });
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(listener);
+            }
+
+            @Override
+            public void onFailure(Call<List<Booking>> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
     }
 
     private void setBundles() {
@@ -193,11 +189,14 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     }
 
     private void startRateBooking(String booking) {
+        //Methods
         loadAddress();
         setBundles();
+        //Intent
         Intent intent = new Intent(this, Activity8B_RateBooking.class);
         intent.putExtras(bundle);
         startActivity(intent);
+        //Finish
         this.finish();
     }
 
@@ -208,5 +207,6 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     private void showMessage(String str) {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
+
 }
 

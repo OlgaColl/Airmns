@@ -63,9 +63,7 @@ public class Activity9_InfoActivity extends AppCompatActivity {
         apiService.selectInfo().enqueue(new Callback<Info>() {
             @Override
             public void onResponse(Call<Info> call, Response<Info> response) {
-                System.out.println(response.body().toString());
                 if(response.isSuccessful()){
-                    System.out.println("Status code " + response.code());
                     textCompany = response.body().getCompany_info();
                     textApp = response.body().getApp_information();
                     textDevApp = response.body().getCustomer_service_manager();
@@ -78,8 +76,7 @@ public class Activity9_InfoActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Info> call, Throwable t) {
-                Log.e(TAG, "Unable to submit post to API.");
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't acces to server.");
             }
         });
     }

@@ -30,7 +30,7 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
     Bundle bundle;
     private static final String TAG = "Activity1_LoginActivity";
-    private static final int REQUEST_SIGNUP = 0;
+    //private static final int REQUEST_SIGNUP = 0;
     private APIService apiService;
     String mailuser, passworduser;
     User user;
@@ -50,6 +50,7 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         //OnPrepare
         initComponents();
         prepareListener();
+        //Listener
         textViewSignUpLink.setOnClickListener(listener);
         buttonLogin.setOnClickListener(listener);
     }
@@ -129,11 +130,8 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         apiService.login(mailuser).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                System.out.println(response.body());
                 if(response.isSuccessful()) {
-                    System.out.println("Status code " + response.code());
-                    System.out.println(response.body().getType());
-
+                    //Attributes
                     int id = response.body().getId();
                     String mail = response.body().getMail();
                     String password = response.body().getPassword();
@@ -142,12 +140,11 @@ public class Activity1_LoginActivity extends AppCompatActivity{
                     String lastname = response.body().getLastname();
                     String prefix_phone = response.body().getPrefix_phone();
                     String phone = response.body().getPhone();
-
+                    //User
                     user = new User(id, mail, password, type, name, lastname, prefix_phone, phone);
-
+                    //Log
                     Log.i(TAG, "post submitted to API.\n" + response.body().toString());
-
-                    System.out.println("Contrasenya " + user.getPassword());
+                    //Login
                     if(!user.getMail().equals("User not found")){
                         if(checkPassword(passworduser)){
                             checkTypeUser(user.getType());
@@ -164,8 +161,8 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.e(TAG, "Unable to submit post to API.");
-                showMessage("Unable to submit post to API.");
+                Log.e(TAG, "Can't access to server.");
+                showMessage("Can't access to server.");
             }
         });
     }
@@ -214,4 +211,5 @@ public class Activity1_LoginActivity extends AppCompatActivity{
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
+
 }

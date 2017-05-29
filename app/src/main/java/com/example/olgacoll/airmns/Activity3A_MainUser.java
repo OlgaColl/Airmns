@@ -62,8 +62,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
             public void onClick(View view){
                 switch(view.getId()){
                     case R.id.fab_L3A_main_user:
-                        initFab();
-                        //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+                        initInfo();
                         break;
                     case R.id.imageViewManageReservation_L3A_main_user:
                         initManageBooking();
@@ -115,11 +114,6 @@ public class Activity3A_MainUser extends AppCompatActivity{
         System.out.println(user.toString());
     }
 
-    public void initFab(){
-        Intent intent = new Intent(this, Activity9_InfoActivity.class);
-        startActivity(intent);
-    }
-
     public void addListener(){
         fab.setOnClickListener(listener);
         imageViewManageReservation.setOnClickListener(listener);
@@ -156,10 +150,18 @@ public class Activity3A_MainUser extends AppCompatActivity{
         startActivity(intent);
     }
 
+    public void initInfo(){
+        Intent intent = new Intent(this, Activity9_InfoActivity.class);
+        startActivity(intent);
+    }
+
+
+
+    //--OnResume--
+
     @Override
     protected void onResume() {
         initBundle();
-        //System.out.println("entra bundle");
         super.onResume();
     }
 }

@@ -271,8 +271,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
                                 showMessage("Unable to submit post to API.");
                             }
                         });
-                        //dialog.cancel();
-                        //Add toast to confirm remove item
                     }
                 });
 
@@ -369,8 +367,9 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         apiService.editUser(id, mail, password, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                System.out.println("Status code " + response.code());
-                System.out.println(response.body());
+                showMessage("Succesfull edit!");
+                finishActivity();
+
             }
 
             @Override
@@ -379,9 +378,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
             }
         });
 
-        //showMessage("Profile edited successfully");
-        //Intent intent = new Intent(this, Activity3A_MainUser.class);
-        //startActivity(intent);
     }
 
 
@@ -390,6 +386,15 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
 
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
+
+
+
+    //--Finish Activity--
+
+    private void finishActivity(){
+        //Finish
+        this.finish();
     }
 
 }
