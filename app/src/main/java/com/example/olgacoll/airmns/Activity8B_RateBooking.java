@@ -256,5 +256,7 @@ public class Activity8B_RateBooking extends Activity {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
 
+
+
 }
 

@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
@@ -73,13 +74,16 @@ public class Activity4B_EditAddress extends AppCompatActivity{
         if (bundle != null) {
             if (bundle.getString("id") != null) {
                 id_user = Integer.parseInt(bundle.getString("id"));
+                System.out.println(id_user);
             }
             if (bundle.getString("controlAddress") != null) {
                 controlAddress = bundle.getString("controlAddress");
                 changeButtonName(controlAddress);
+                System.out.println(controlAddress);
             }
             if (bundle.getString("controlIdAddress") != null) {
-                id_address = bundle.getInt("controlIdAddress");
+                id_address = Integer.parseInt( bundle.getString("controlIdAddress") );
+                loadAddress();
             }
         }
     }
@@ -123,6 +127,29 @@ public class Activity4B_EditAddress extends AppCompatActivity{
         }else{
             editAddressSuccess(controlAddress);
         }
+    }
+
+    private void loadAddress(){
+        apiService.selectAddress(id_address).enqueue(new Callback<Address>() {
+            @Override
+            public void onResponse(Call<Address> call, Response<Address> response) {
+                if(response.isSuccessful()) {
+                    //Set Text
+                    editTextStreet.setText( response.body().getStreet() );
+                    editTextNumber.setText( response.body().getNumber() );
+                    editTextStair.setText( response.body().getStair() );
+                    editTextFloor.setText( response.body().getFloor() );
+                    editTextDoor.setText( response.body().getDoor() );
+                    editTextPostalCode.setText( response.body().getPostal_code() );
+                    editTextCity.setText( response.body().getCity() );
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Address> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
     }
 
     private void editAddressFailed(String controlAddress){

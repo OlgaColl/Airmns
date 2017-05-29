@@ -105,7 +105,8 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
                 duration = String.valueOf(dataBooking.get(position).getLong_time());
 
                 bookingDate = dataBooking.get(position).getDate_time();
-                startRateBooking(dataBooking.get(position).toString());
+                //startRateBooking();
+                loadAddress();
             }
         };
     }
@@ -140,12 +141,18 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         apiService.selectAddress(id_address).enqueue(new Callback<Address>() {
             @Override
             public void onResponse(Call<Address> call, Response<Address> response) {
+                //Get value
                 address = response.body().toString();
+                //When is founded
+                startRateBooking();
             }
 
             @Override
             public void onFailure(Call<Address> call, Throwable t) {
-                showMessage("Can't access to server.");
+                //Notify
+                showMessage("Can't find address because can't access to server.");
+                //When finish
+                startRateBooking();
             }
         });
     }
@@ -157,6 +164,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
                 //Instance bookings array
                 bookings = new String[response.body().size()];
+                dataBooking.clear();
                 //Insert bookings in array
                 for (int i = 0; i < bookings.length; i++) {
                     bookings[i] = response.body().get(i).toString();
@@ -191,9 +199,12 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         bundle.putString("phone", phone);
     }
 
-    private void startRateBooking(String booking) {
+    private void startRateBooking(){
         //Methods
-        loadAddress();
+        //loadAddress();
+        //Wait last procedure
+        //try { wait(); } catch (InterruptedException io) {}
+        //When finish set bundles
         setBundles();
         //Intent
         Intent intent = new Intent(this, Activity8B_RateBooking.class);
@@ -211,5 +222,14 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
 
+
+
+    //--OnResume--
+
+    @Override
+    protected void onResume() {
+        loadBooking();
+        super.onResume();
+    }
 }
 

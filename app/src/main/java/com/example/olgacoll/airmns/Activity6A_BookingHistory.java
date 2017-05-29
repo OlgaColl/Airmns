@@ -109,7 +109,8 @@ public class Activity6A_BookingHistory extends AppCompatActivity {
                 bookingDate = dataBooking.get(position).getDate_time();
                 id_address = dataBooking.get(position).getId_address();
 
-                startDescBookingUser();
+                //startDescBookingUser();
+                loadAddress();
             }
         };
     }
@@ -120,11 +121,15 @@ public class Activity6A_BookingHistory extends AppCompatActivity {
             @Override
             public void onResponse(Call<Address> call, Response<Address> response) {
                 address = response.body().toString();
+                //When is founded
+                startDescBookingUser();
             }
 
             @Override
             public void onFailure(Call<Address> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't find address because can't access to server.");
+                //When is founded
+                startDescBookingUser();
             }
         });
     }
@@ -210,7 +215,6 @@ public class Activity6A_BookingHistory extends AppCompatActivity {
 
     private void startDescBookingUser(){
         //Methods
-        loadAddress();
         setBundles();
         //StartActivity
         Intent intent = new Intent(this, Activity6B_DescriptionBooking.class);

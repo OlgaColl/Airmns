@@ -134,7 +134,7 @@ public class Activity4A_EditProfile extends AppCompatActivity {
                 type = bundle.getString("type");
             }
             if (bundle.getString("prefix_phone") != null) {
-                prefix_phone = "+" + bundle.getString("prefix_phone");
+                prefix_phone = bundle.getString("prefix_phone");
             }
             if (bundle.getString("phone") != null) {
                 phone = bundle.getString("phone");
@@ -151,6 +151,7 @@ public class Activity4A_EditProfile extends AppCompatActivity {
             public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
                 //Array
                 dataAddress = new String[response.body().size()];
+                dataObjectAddress.clear();
                 //fillAddressSpinner
                 for(int i = 0; i < response.body().size(); i++){
                     dataAddress[i] = response.body().get(i).toString();
@@ -218,20 +219,16 @@ public class Activity4A_EditProfile extends AppCompatActivity {
         Intent intent = new Intent(this, Activity4B_EditAddress.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        //Close activity
-        this.finish();
     }
 
     public void modifyAddress(){
         //Put bundle
         bundle.putString("controlAddress", "modifyAddress");
-        bundle.putInt("controlIdAddress", dataObjectAddress.get(indexAddress).getId_address());
+        bundle.putString("controlIdAddress", String.valueOf( dataObjectAddress.get(indexAddress).getId_address() ));
         //Instance intnent
         Intent intent = new Intent(this, Activity4B_EditAddress.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        //Close activity
-        this.finish();
     }
 
     private void removeAddress() {
@@ -252,13 +249,15 @@ public class Activity4A_EditProfile extends AppCompatActivity {
                         apiService.removeAddress(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {
-                                System.out.println("Status code " + response.code());
-                                System.out.println(response.body());
+                                //Show
+                                showMessage("Succesful delete.");
+                                //Refresh listener
+                                controlSpinner();
                             }
 
                             @Override
                             public void onFailure(Call<String> call, Throwable t) {
-                                showMessage("Unable to submit post to API.");
+                                showMessage("Can't access to server.");
                             }
                         });
                     }
@@ -386,4 +385,13 @@ public class Activity4A_EditProfile extends AppCompatActivity {
         this.finish();
     }
 
+
+
+    //--OnResume--
+
+    @Override
+    protected void onResume() {
+        controlSpinner();
+        super.onResume();
+    }
 }
