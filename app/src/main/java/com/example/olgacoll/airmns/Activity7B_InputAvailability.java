@@ -5,19 +5,14 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.olgacoll.airmns.model.Client;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
@@ -34,12 +29,12 @@ import retrofit2.Response;
  * Created by ericayala on 25/4/17.
  */
 
-public class Activity7_ProfessionalAvailability extends Activity {
+public class Activity7B_InputAvailability extends Activity {
 
     // -- ATTRIBUTES --
     //ApiService
     APIService apiService;
-    private static final String TAG = "Activity7_ProfessionalAvailability";
+    private static final String TAG = "Activity7B_InputAvailability";
     //Add OR Modify
     String type="";
     int id_user;
@@ -74,7 +69,7 @@ public class Activity7_ProfessionalAvailability extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout7_professional_availability);
+        setContentView(R.layout.layout7b_input_availability);
 
         //Prepare views
         prepareViews();

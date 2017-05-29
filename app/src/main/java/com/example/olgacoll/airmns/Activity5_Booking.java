@@ -23,7 +23,6 @@ import com.example.olgacoll.airmns.model.Address;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -37,25 +36,22 @@ import retrofit2.Response;
  * Created by alumne on 10/03/17.
  */
 
-public class Activity5A_UserReserve extends Activity {
+public class Activity5_Booking extends Activity {
 
     //--Attributtes--
 
     //ApiService
     APIService apiService;
-    private static final String TAG = "Activity5A_UserReserve";
-    //Bundle bundle;
+    private static final String TAG = "Activity5_Booking";
+    //Bundle
     Bundle bundle;// = new Bundle();
-    //User user;
-    //String mail, password, type, name, lastname, prefix_phone, phone;
-    int id;
-    int id_professional;
+    //Objects
+    int id, id_professional;
     boolean correct_data = false;
 
     //Listener
     OnClickListener listener;
-    AdapterView.OnItemSelectedListener listener_time_spinner;
-    AdapterView.OnItemSelectedListener listener_address_spinner;
+    AdapterView.OnItemSelectedListener listener_time_spinner, listener_address_spinner;
 
     //Layout objects
     //Date
@@ -71,30 +67,23 @@ public class Activity5A_UserReserve extends Activity {
     String datos_time[];
     //Address
     Spinner spinner_address;
-    String datos_address[];
-    String dateAddress[];
+    String datos_address[],dateAddress[];
     List<Address> dataObjectAddress;
     int indexAddress = -1;
     //Observations
     EditText input_observations;
     //Button continue
-    Button b_find;
-    Button b_continue;
+    Button b_find, b_continue;
     //Total Pay
     TextView tv_total_pay;
 
     //Class objects
     Calendar calendar;
-    int anyo;
-    int mes;
-    int dia;
-    int hour;
-    int minute;
+    int anyo, mes, dia, hour, minute;
 
     //Reserve
     int long_time;
-    String address;
-    String observations;
+    String address, observations;
     double total_pay;
     float precio_hora;
 
@@ -105,7 +94,7 @@ public class Activity5A_UserReserve extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         //On Create
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout5a_reserve);
+        setContentView(R.layout.layout5_booking);
         //Prepare views
         prepareViews();
         //Prepare reserve objects;
@@ -114,8 +103,6 @@ public class Activity5A_UserReserve extends Activity {
         prepareListener();
         //Control Time and Address Spinner
         controlSpinner();
-        //InitBundle
-        //initBundle();
         //On click listener
         addListener();
         //Date
@@ -154,7 +141,6 @@ public class Activity5A_UserReserve extends Activity {
         if (bundle != null) {
             if (bundle.getString("id") != null) {
                 id = Integer.parseInt(bundle.getString("id"));
-                //System.out.println("Id bundle=" + id);
             } else id = -1;
         }
     }
@@ -168,6 +154,7 @@ public class Activity5A_UserReserve extends Activity {
         long_time = 1;
         address = "";
         observations = "";
+        //Price
         calcularPrecio();
     }
 
@@ -185,13 +172,10 @@ public class Activity5A_UserReserve extends Activity {
         spinner_long_time.setOnItemSelectedListener(listener_time_spinner);
 
         //--ADDRESS--
-        System.out.println("ID USER en control sppiner " + id);
         apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
             @Override
             public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
-                //System.out.println(response.body().get(1).toString());
-                System.out.println("Response code: " + response.code());
-
+                //Objects
                 dateAddress = new String[response.body().size()];
                 dataObjectAddress = new ArrayList<Address>();
 
@@ -201,10 +185,7 @@ public class Activity5A_UserReserve extends Activity {
                     dataObjectAddress.add(response.body().get(i));
                 }
 
-                for(int i = 0; i < dataObjectAddress.size(); i++){
-                    System.out.println(dataObjectAddress.get(i).toString());
-                }
-
+                //ArrayAdapter and Spinner
                 ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dateAddress);
                 spinner_address.setAdapter(adaptador);
                 prepareItemListener();
@@ -222,19 +203,13 @@ public class Activity5A_UserReserve extends Activity {
     public void prepareItemListener() {
         listener_address_spinner = new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(
-                    AdapterView<?> parent,
-                    View view,
-                    int position,
-                    long id) {
-
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 indexAddress = position;
-                //editTextAddress.setText(dateAvailability[position]);
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                //DoNothing
             }
         };
     }
@@ -390,10 +365,6 @@ public class Activity5A_UserReserve extends Activity {
 
     // -- TIME --
     private void mostrarHora(View v) {
-        Calendar calendar_time = Calendar.getInstance();
-        //hour = calendar_time.get(Calendar.HOUR_OF_DAY);
-        //minute = calendar_time.get(Calendar.MINUTE);
-
         TimePickerDialog mTimePicker;
         mTimePicker = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
             @Override
@@ -426,7 +397,6 @@ public class Activity5A_UserReserve extends Activity {
                 //If professional is founded
                 if(correct_data) {
                     //If find professional
-                    System.out.println("BD -> Professional id =" + id_professional);
                     if (id_professional > 0) {
                         //Dialog confirm payment
                         AlertDialog.Builder alertbox = new AlertDialog.Builder(this);

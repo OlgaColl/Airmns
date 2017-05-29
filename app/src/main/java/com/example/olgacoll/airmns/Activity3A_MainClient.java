@@ -14,7 +14,7 @@ import com.example.olgacoll.airmns.model.User;
  * Created by alumne on 07/03/17.
  */
 
-public class Activity3A_MainUser extends AppCompatActivity{
+public class Activity3A_MainClient extends AppCompatActivity{
 
     //--Attributtes--
 
@@ -36,7 +36,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         //Oncreate
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout3a_main_user);
+        setContentView(R.layout.layout3a_main_client);
         //Objects
         initObjects();
         prepareListener();
@@ -125,13 +125,13 @@ public class Activity3A_MainUser extends AppCompatActivity{
     //--Start activities--
 
     public void initManageBooking(){
-        Intent intent = new Intent(this, Activity5A_UserReserve.class);
+        Intent intent = new Intent(this, Activity5_Booking.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void initBookingHistory(){
-        Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
+        Intent intent = new Intent(this, Activity6A_BookingHistory.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -143,7 +143,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
     }
 
     public void initEditProfile(){
-        Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
+        Intent intent = new Intent(this, Activity4A_EditProfile.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -162,4 +162,5 @@ public class Activity3A_MainUser extends AppCompatActivity{
         initBundle();
         super.onResume();
     }
+
 }

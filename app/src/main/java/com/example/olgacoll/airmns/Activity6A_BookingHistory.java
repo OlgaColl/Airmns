@@ -29,12 +29,12 @@ import retrofit2.Response;
  * Created by olgacoll on 25/4/17.
  */
 
-public class Activity6A_BookingHistoryUser extends AppCompatActivity {
+public class Activity6A_BookingHistory extends AppCompatActivity {
 
     //--Attributtes--
 
     //Objects
-    private static final String TAG = "Activity6A_BookingHistoryUser";
+    private static final String TAG = "Activity6A_BookingHistory";
     APIService apiService;
     Bundle bundle;
     User user;
@@ -115,7 +115,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     }
 
     private void loadAddress() {
-        System.out.println("ID_ADDRESS: " + id_address);
+        //ApiService
         apiService.selectAddress(id_address).enqueue(new Callback<Address>() {
             @Override
             public void onResponse(Call<Address> call, Response<Address> response) {
@@ -176,14 +176,14 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             apiService.listAllReserves(id).enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    System.out.println("Response code: " + response.code());
+                    //Instance bookings array
                     bookings = new String[response.body().size()];
-
+                    //Insert value in array
                     for (int i = 0; i < bookings.length; i++) {
                         bookings[i] = response.body().get(i).toString();
                         dataBooking.add(response.body().get(i));
                     }
-
+                    //ArrayAdapter & Listener
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
                     listView.setAdapter(adapter);
                     listView.setOnItemClickListener(listener);
@@ -191,8 +191,6 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    showMessage("Unable to submit post to API.");
-                    System.out.println(t.getCause() + t.getMessage());
                     showMessage("Can't access to server.");
                 }
             });
@@ -215,7 +213,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         loadAddress();
         setBundles();
         //StartActivity
-        Intent intent = new Intent(this, Activity6B_DescBookingUserActivity.class);
+        Intent intent = new Intent(this, Activity6B_DescriptionBooking.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

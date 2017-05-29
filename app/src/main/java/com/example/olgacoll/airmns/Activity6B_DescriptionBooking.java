@@ -1,7 +1,6 @@
 package com.example.olgacoll.airmns;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -9,7 +8,7 @@ import android.widget.TextView;
  * Created by olgacoll on 13/5/17.
  */
 
-public class Activity6B_DescBookingUserActivity extends Activity {
+public class Activity6B_DescriptionBooking extends Activity {
 
     //--Attributes--
 
@@ -25,7 +24,7 @@ public class Activity6B_DescBookingUserActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout6_desc_booking_user);
+        setContentView(R.layout.layout6b_description_booking);
         //OnPrepare
         initComponents();
         initBundle();

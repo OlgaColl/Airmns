@@ -1,7 +1,6 @@
 package com.example.olgacoll.airmns;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
@@ -52,7 +51,7 @@ public class Activity8B_RateBooking extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout8b_value_reserve);
+        setContentView(R.layout.layout8b_rate_booking);
 
         //Prepare views
         prepareViews();

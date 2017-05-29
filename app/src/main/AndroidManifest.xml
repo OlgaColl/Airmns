@@ -22,18 +22,15 @@
         </activity>
         <activity android:name=".Activity1_LoginActivity"/>
         <activity android:name=".Activity2_SignupActivity"/>
-        <activity android:name=".Activity3A_MainUser" />
+        <activity android:name=".Activity3A_MainClient" />
         <activity android:name=".Activity3B_MainProfessional"/>
-        <activity android:name=".Activity4A_EditProfileClient"/>
-        <activity android:name=".Activity4B_EditProfileProfessional"/>
-        <activity android:name=".Activity4_EditAddressActivity"/>
-        <activity android:name=".Activity5A_UserReserve"/>
-        <activity android:name=".Activity5A_ResumeReserve"/>
-        <activity android:name=".Activity5B_ProfessionalReserve"/>
-        <activity android:name=".Activity6A_BookingHistoryUser"/>
-        <activity android:name=".Activity6B_DescBookingUserActivity"/>
-        <activity android:name=".Activity7_MenuAvailability"/>
-        <activity android:name=".Activity7_ProfessionalAvailability"/>
+        <activity android:name=".Activity4A_EditProfile"/>
+        <activity android:name=".Activity4B_EditAddress"/>
+        <activity android:name=".Activity5_Booking"/>
+        <activity android:name=".Activity6A_BookingHistory"/>
+        <activity android:name=".Activity6B_DescriptionBooking"/>
+        <activity android:name=".Activity7A_MenuAvailability"/>
+        <activity android:name=".Activity7B_InputAvailability"/>
         <activity android:name=".Activity8A_BookingToRate"/>
         <activity android:name=".Activity8B_RateBooking"/>
         <activity android:name=".Activity9_InfoActivity"/>

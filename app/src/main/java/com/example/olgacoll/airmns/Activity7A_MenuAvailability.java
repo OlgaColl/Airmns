@@ -31,7 +31,7 @@ import retrofit2.Response;
  * Created by ericayala on 25/5/17.
  */
 
-public class Activity7_MenuAvailability extends Activity {
+public class Activity7A_MenuAvailability extends Activity {
 
     //objects
     APIService apiService;
@@ -60,7 +60,7 @@ public class Activity7_MenuAvailability extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout7_menu_availability);
+        setContentView(R.layout.layout7a_menu_availability);
 
         //Prepare views
         prepareViews();
@@ -193,7 +193,7 @@ public class Activity7_MenuAvailability extends Activity {
         //Type
         bundle.putString("type", "add");
         //Intent
-        Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
+        Intent intent = new Intent(this, Activity7B_InputAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
         //Finish
@@ -213,7 +213,7 @@ public class Activity7_MenuAvailability extends Activity {
         //End time
         bundle.putString("end_time", String.valueOf( dataObjectAvailability.get(indexAvailability).getEnd_time() ));
         //Intent
-        Intent intent = new Intent(this, Activity7_ProfessionalAvailability.class);
+        Intent intent = new Intent(this, Activity7B_InputAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
         //Finish
@@ -232,7 +232,6 @@ public class Activity7_MenuAvailability extends Activity {
                 apiService.removeAvailability(to_date, id).enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
-                        System.out.println("Status code " + response.code());
                         if(response.body().equals("1")) showMessage("Availability uptade successful.");
                         else if(response.body().equals("0")) showMessage("Can't update availability.");
                     }
@@ -247,7 +246,7 @@ public class Activity7_MenuAvailability extends Activity {
         //Add Cancel option
         alertbox.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int whichButton) {
-                //System.exit(0);
+                //DoNothing
             }
         });
 

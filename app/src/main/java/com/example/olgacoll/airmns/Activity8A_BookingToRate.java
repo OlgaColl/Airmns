@@ -1,6 +1,5 @@
 package com.example.olgacoll.airmns;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -56,7 +55,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout8a_rate_bookings);
+        setContentView(R.layout.layout8a_booking_to_rate);
         //Prepares
         initComponents();
         initBundle();
@@ -119,25 +118,25 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         apiService.selectUser(id).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                System.out.println("Response code: " + response.code());
+                //Attributes
                 name = response.body().getName();
                 lastname = response.body().getLastname();
                 mail = response.body().getMail();
                 prefix = response.body().getPrefix_phone();
                 phone = response.body().getPhone();
+                //Load Booking
                 loadBooking();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
-                System.out.println(t.getCause() + t.getMessage());
+                showMessage("Can't access to server..");
             }
         });
     }
 
     private void loadAddress() {
-        System.out.println("ID_ADDRESS: " + id_address);
+        //ApiService
         apiService.selectAddress(id_address).enqueue(new Callback<Address>() {
             @Override
             public void onResponse(Call<Address> call, Response<Address> response) {
@@ -152,18 +151,20 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     }
 
     private void loadBooking() {
+        //ApiService
         apiService.listBookingsNotRate(id).enqueue(new Callback<List<Booking>>() {
             @Override
             public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
+                //Instance bookings array
                 bookings = new String[response.body().size()];
-
+                //Insert bookings in array
                 for (int i = 0; i < bookings.length; i++) {
                     bookings[i] = response.body().get(i).toString();
                     dataBooking.add(response.body().get(i));
                 }
-
+                //If list is empty notify
                 if (dataBooking.isEmpty()) showMessage("There aren't bookings.");
-
+                //ArrayAdapter & Listener
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(listener);

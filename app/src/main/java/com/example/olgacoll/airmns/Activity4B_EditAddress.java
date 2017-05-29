@@ -4,11 +4,9 @@ package com.example.olgacoll.airmns;
  * Created by olgacoll on 14/3/17.
  */
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -22,11 +20,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Activity4_EditAddressActivity extends AppCompatActivity{
+public class Activity4B_EditAddress extends AppCompatActivity{
 
     //--Attributes--
 
-    private static final String TAG = "Activity4_EditAddressActivity";
+    private static final String TAG = "Activity4B_EditAddress";
     APIService apiService;
     Bundle bundle;
     int id_user, id_address;
@@ -43,7 +41,7 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4_edit_address);
+        setContentView(R.layout.layout4b_edit_address);
         //OnPrepare
         initComponents();
         initBundle();
@@ -115,7 +113,7 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     //--Methods--
 
     private void initBack(){
-        Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
+        Intent intent = new Intent(this, Activity4A_EditProfile.class);
         startActivity(intent);
     }
 
@@ -144,7 +142,6 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     }
 
     private void addAddress(){
-        System.out.println("Id_user:" + id_user + " street:" + street + " number:" + number + " floor:" + floor + " stair: " + stair + " door: " + door + " city: " + city + " postal code: " + postal_code);
         apiService.addAddress(id_user, street, number, floor, stair, door, city, postal_code).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

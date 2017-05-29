@@ -13,10 +13,6 @@ import android.widget.Toast;
 import com.example.olgacoll.airmns.model.User;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -176,7 +172,7 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         initUserBundle();
         switch(type){
             case "client":
-                intent = new Intent(getApplicationContext(), Activity3A_MainUser.class);
+                intent = new Intent(getApplicationContext(), Activity3A_MainClient.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;

@@ -31,11 +31,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Activity4A_EditProfileClient extends AppCompatActivity {
+public class Activity4A_EditProfile extends AppCompatActivity {
 
     //--Attributes--
 
-    private static final String TAG = "Activity4A_EditProfileClient";
+    private static final String TAG = "Activity4A_EditProfile";
     APIService apiService;
     //Objects
     User user;
@@ -61,7 +61,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout4_edit_profile);
+        setContentView(R.layout.layout4a_edit_profile);
         //Prepares
         initComponents();
         prepareListener();
@@ -142,31 +142,21 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         }
         initFields();
         user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
-        System.out.println("ID Client" + id);
-        System.out.println(user.toString());
     }
 
     //Control address Spinner
     private void controlSpinner() {
-        System.out.println("ID USER en control sppiner " + id);
         apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
             @Override
             public void onResponse(Call<List<Address>> call, Response<List<Address>> response) {
-                //System.out.println(response.body().get(1).toString());
-                System.out.println("Response code: " + response.code());
-
+                //Array
                 dataAddress = new String[response.body().size()];
-
                 //fillAddressSpinner
                 for(int i = 0; i < response.body().size(); i++){
                     dataAddress[i] = response.body().get(i).toString();
                     dataObjectAddress.add(response.body().get(i));
                 }
-
-                for(int i = 0; i < dataObjectAddress.size(); i++){
-                    System.out.println(dataObjectAddress.get(i).toString());
-                }
-
+                //Array & Listener
                 ArrayAdapter<String> adaptador = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_style, dataAddress);
                 spinnerAddress.setAdapter(adaptador);
                 prepareItemListener();
@@ -225,7 +215,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         Log.d("Add address", "Add address");
         bundle.putString("controlAddress", "addAddress");
         //Put bundle
-        Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
+        Intent intent = new Intent(this, Activity4B_EditAddress.class);
         intent.putExtras(bundle);
         startActivity(intent);
         //Close activity
@@ -237,7 +227,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         bundle.putString("controlAddress", "modifyAddress");
         bundle.putInt("controlIdAddress", dataObjectAddress.get(indexAddress).getId_address());
         //Instance intnent
-        Intent intent = new Intent(this, Activity4_EditAddressActivity.class);
+        Intent intent = new Intent(this, Activity4B_EditAddress.class);
         intent.putExtras(bundle);
         startActivity(intent);
         //Close activity
@@ -362,8 +352,7 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     }
 
     private void editProfileSuccess(){
-
-        System.out.println("ID:" + id + " mail:" + mail + "name: " + name + "lastname: " + lastname + "prefix_phone: " + prefix_phone + " phone: " + phone);
+        //ApiService
         apiService.editUser(id, mail, password, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {

@@ -31,7 +31,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //OnCreate
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout3b_main_autonomous);
+        setContentView(R.layout.layout3b_main_professional);
         //Init objects
         initObjects();
         prepareListener();
@@ -93,7 +93,6 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
         if (bundle != null) {
             if (bundle.getString("id") != null) {
                 id = Integer.parseInt(bundle.getString("id"));
-                System.out.println("ID EN BUNDLE " + id);
             }
         }
     }
@@ -106,7 +105,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
         //Booking
         bundle.putString("order", "more_now");
         //Intent
-        Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
+        Intent intent = new Intent(this, Activity6A_BookingHistory.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -115,19 +114,19 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
         //Booking
         bundle.putString("order", "less_now");
         //Intent
-        Intent intent = new Intent(this, Activity6A_BookingHistoryUser.class);
+        Intent intent = new Intent(this, Activity6A_BookingHistory.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void initIntroduceAvailability(){
-        Intent intent = new Intent(this, Activity7_MenuAvailability.class);
+        Intent intent = new Intent(this, Activity7A_MenuAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
 
     public void initEditProfile(){
-        Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
+        Intent intent = new Intent(this, Activity4A_EditProfile.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
