@@ -195,6 +195,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         Intent intent = new Intent(this, Activity8B_RateBooking.class);
         intent.putExtras(bundle);
         startActivity(intent);
+        this.finish();
     }
 
 

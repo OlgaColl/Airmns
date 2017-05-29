@@ -10,9 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_action_info"
         android:supportsRtl="true"
-        android:theme="@style/AppThemeProva" >
-        <!--android:theme="@style/Theme.AppCompat.NoActionBar">-->
-
+        android:theme="@style/AppThemeProva">
         <activity
             android:name=".Activity0_SplashScreen"
             android:label="@string/app_name"
@@ -22,8 +20,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--activity android:name=".Activity0_SplashScreen"/-->
         <activity android:name=".Activity1_LoginActivity"/>
         <activity android:name=".Activity2_SignupActivity"/>
         <activity android:name=".Activity3A_MainUser" />

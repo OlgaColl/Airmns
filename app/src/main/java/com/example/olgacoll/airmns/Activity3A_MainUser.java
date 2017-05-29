@@ -158,6 +158,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
     @Override
     protected void onResume() {
         initBundle();
+        System.out.println("entra bundle");
         super.onResume();
     }
 }

@@ -220,22 +220,6 @@ public class Activity8B_RateBooking extends Activity {
         }
     }
 
-
-    /**
-     *
-     * his is how I solved this issue :
-
-     Declare an ImageView with src="@drawable/button"
-     Create a Drawable and set ColorFilter to it and after that use it as src to your declared ImageView like this :
-     >
-
-     Drawable myIcon = getResources().getDrawable( R.drawable.button );
-     ColorFilter filter = new LightingColorFilter( Color.BLUE, Color.BLUE );
-     myIcon.setColorFilter(filter);
-     color.setImageDrawable(myIcon);
-
-     * */
-
     //-- Add Listeners--
     private void addListener() {
         //Availability
@@ -265,8 +249,6 @@ public class Activity8B_RateBooking extends Activity {
 
     private void initMain(){
         this.finish();
-        //Intent intent = new Intent(this, Activity3A_MainUser.class);
-        //startActivity(intent);
     }
 
     private void showMessage(String str) {
