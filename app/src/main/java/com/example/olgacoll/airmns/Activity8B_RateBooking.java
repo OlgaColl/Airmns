@@ -245,7 +245,7 @@ public class Activity8B_RateBooking extends Activity {
     }
 
     private void checkValoration(){
-        if(valoration < 0){
+        if(valoration <= 0){
             showMessage("Value your reserve");
         }else{
             observations = et_observations.getText().toString();
@@ -264,8 +264,9 @@ public class Activity8B_RateBooking extends Activity {
     }
 
     private void initMain(){
-        Intent intent = new Intent(this, Activity3A_MainUser.class);
-        startActivity(intent);
+        this.finish();
+        //Intent intent = new Intent(this, Activity3A_MainUser.class);
+        //startActivity(intent);
     }
 
     private void showMessage(String str) {

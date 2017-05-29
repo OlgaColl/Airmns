@@ -86,7 +86,6 @@ public class Activity3A_MainUser extends AppCompatActivity{
         if (bundle != null) {
             if (bundle.getString("id") != null) {
                 id = Integer.parseInt(bundle.getString("id"));
-                System.out.println("ID EN BUNDLE " + id);
             }
             if (bundle.getString("mail") != null) {
                 mail = bundle.getString("mail");

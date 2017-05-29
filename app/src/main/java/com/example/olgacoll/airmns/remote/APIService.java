@@ -108,7 +108,6 @@ public interface APIService {
     Call<String> removeAvailability(@Query("date") String date,
                                     @Query("id_user") int id_user);
 
-    //@Headers("Content-Type: application/x-www-form-urlencoded")
     @GET("findProfessionalForBooking")
     Call<String> findProfessionalForBooking(@Query("date_time") String date_time,
                                     @Query("start_time") int start_time,
@@ -138,8 +137,8 @@ public interface APIService {
                              @Query("qualification_service") int qualification_service,
                              @Query("comments") String comments);
 
-    @GET("listReservesNotRate")
-    Call<List<Booking>> listReservesNotRate(@Query("id_user") int id_user);
+    @GET("listBookingsNotRate")
+    Call<List<Booking>> listBookingsNotRate(@Query("id_user") int id_user);
 
     @GET("selectInfo")
     Call<Info> selectInfo();

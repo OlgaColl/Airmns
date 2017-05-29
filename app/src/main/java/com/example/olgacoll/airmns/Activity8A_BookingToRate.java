@@ -150,9 +150,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     }
 
     private void loadBooking() {
-        //More than now (for professional)
-        if (order.equals("more_now")) {
-            apiService.listReservesNotRate(id).enqueue(new Callback<List<Booking>>() {
+            apiService.listBookingsNotRate(id).enqueue(new Callback<List<Booking>>() {
                 @Override
                 public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
                     System.out.println("Response code: " + response.code());
@@ -170,40 +168,12 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    showMessage("Unable to submit post to API.");
                     System.out.println(t.getCause() + t.getMessage());
-                    showMessage("Can't access to server.");
+                    //showMessage("Can't access to server.");
                 }
             });
-        }
-        //All time
-        else {
-            apiService.listAllReserves(id).enqueue(new Callback<List<Booking>>() {
-                @Override
-                public void onResponse(Call<List<Booking>> call, Response<List<Booking>> response) {
-                    System.out.println("Response code: " + response.code());
-                    bookings = new String[response.body().size()];
-
-                    for (int i = 0; i < bookings.length; i++) {
-                        bookings[i] = response.body().get(i).toString();
-                        dataBooking.add(response.body().get(i));
-                        System.out.println(dataBooking.get(i).toString());
-                    }
-
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
-                    listView.setAdapter(adapter);
-                    listView.setOnItemClickListener(listener);
-                }
-
-                @Override
-                public void onFailure(Call<List<Booking>> call, Throwable t) {
-                    showMessage("Unable to submit post to API.");
-                    System.out.println(t.getCause() + t.getMessage());
-                    showMessage("Can't access to server.");
-                }
-            });
-        }
     }
+
 
     private void setBundles() {
         bundle.putInt("id_reserve", id_reserve);
