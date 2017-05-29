@@ -10,6 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class Address {
 
     //--Attributes--
+
     @SerializedName("id_address")
     @Expose
     private int id_address;

@@ -17,6 +17,7 @@ import java.util.Date;
 public class Info {
 
     //--Attributes--
+
     @SerializedName("date_time")
     @Expose
     Date date_time;
@@ -45,7 +46,10 @@ public class Info {
     @Expose
     double iva;
 
+
+
     //--Constructor--
+
     public Info() {
     }
 
@@ -60,6 +64,8 @@ public class Info {
         this.price_hour = price_hour;
         this.iva = iva;
     }
+
+
 
     //Getters & Setters
 
@@ -134,6 +140,10 @@ public class Info {
     public void setIva(double iva) {
         this.iva = iva;
     }
+
+
+
+    //--ToString--
 
     @Override
     public String toString() {

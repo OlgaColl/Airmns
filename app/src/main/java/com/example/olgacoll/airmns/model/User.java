@@ -10,6 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class User {
 
     //--Attributes--
+
     @SerializedName("id")
     @Expose
     int id;
@@ -35,6 +36,10 @@ public class User {
     @Expose
     String phone;
 
+
+
+    //--Constructor--
+
     public User(){}
 
     public User(int id, String mail){
@@ -52,6 +57,8 @@ public class User {
         this.prefix_phone = prefix_phone;
         this.phone = phone;
     }
+
+
 
     //--Getters & Setters--
 
@@ -119,6 +126,9 @@ public class User {
         this.phone = phone;
     }
 
+
+
+    //--ToString--
 
     @Override
     public String toString() {

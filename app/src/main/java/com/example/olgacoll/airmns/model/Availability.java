@@ -16,6 +16,8 @@ import java.util.Date;
  */
 public class Availability {
 
+    //--Attributes--
+
     @SerializedName("date")
     @Expose
     Date date;
@@ -29,6 +31,10 @@ public class Availability {
     @Expose
     int end_time;
 
+
+
+    //--Constructors--
+
     public Availability(){}
 
     public Availability(Date date, int id_user, int start_time, int end_time) {
@@ -37,6 +43,8 @@ public class Availability {
         this.start_time = start_time;
         this.end_time = end_time;
     }
+
+
 
     //Getters and setters
 
@@ -71,6 +79,10 @@ public class Availability {
     public void setEnd_time(int end_time) {
         this.end_time = end_time;
     }
+
+
+
+    //--ToString--
 
     @Override
     public String toString() {

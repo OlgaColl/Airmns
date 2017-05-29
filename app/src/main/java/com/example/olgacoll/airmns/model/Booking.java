@@ -9,6 +9,8 @@ import java.util.Date;
 
 public class Booking {
 
+    //--Attributes--
+
     @SerializedName("id_reserve")
     @Expose
     int id_reserve;
@@ -46,6 +48,10 @@ public class Booking {
     @Expose
     double iva;
 
+
+
+    //--Constructors--
+
     public Booking(){}
 
     public Booking(int id_reserve, int qualification_service, String comments) {
@@ -80,6 +86,7 @@ public class Booking {
         this.comments = comments;
         this.iva = iva;
     }
+
 
 
     //Getters and Setters
@@ -179,6 +186,10 @@ public class Booking {
     public void setIva(double iva) {
         this.iva = iva;
     }
+
+
+
+    //--ToString--
 
     @Override
     public String toString() {
