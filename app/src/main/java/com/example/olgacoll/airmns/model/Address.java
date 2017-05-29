@@ -38,6 +38,8 @@ public class Address {
     @Expose
     private String postal_code;
 
+
+
     //--Constructors--
 
     public Address(){
@@ -55,6 +57,8 @@ public class Address {
         this.city = city;
         this.postal_code = postal_code;
     }
+
+
 
     //--Getters & Setters--
 
@@ -129,6 +133,10 @@ public class Address {
     public void setPostal_code(String postal_code) {
         this.postal_code = postal_code;
     }
+
+
+
+    //--ToString--
 
     @Override
     public String toString() {

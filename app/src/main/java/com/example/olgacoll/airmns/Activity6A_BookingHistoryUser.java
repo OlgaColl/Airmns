@@ -38,7 +38,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     Bundle bundle;
     User user;
     double price;
-    String time, observations, value, date, address, start_time;
+    String time, observations, value, date, address, start_time, comments;
     Date bookingDate;
     int id, id_address;
     String order="";
@@ -97,8 +97,9 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 date = sdf.format(dataBooking.get(position).getDate_time());
-                value = dataBooking.get(position).getObservations();
-                observations = dataBooking.get(position).getComments();
+                value = String.valueOf( dataBooking.get(position).getQualification_service() );
+                observations = dataBooking.get(position).getObservations();
+                comments = dataBooking.get(position).getComments();
                 price = dataBooking.get(position).getTotal_price();
                 start_time = String.valueOf(dataBooking.get(position).getStart_time());
                 time = String.valueOf(dataBooking.get(position).getLong_time());
@@ -204,6 +205,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         bundle.putString("start_time", start_time);
         bundle.putString("time", time);
         bundle.putString("observations", observations);
+        bundle.putString("comments", comments);
         bundle.putString("value", value);
         bundle.putDouble("price", price);
         bundle.putString("date", date);
@@ -214,7 +216,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         loadAddress();
         System.out.println(address);
         setBundles();
-        Intent intent = new Intent(this, DescBookingUserActivity.class);
+        Intent intent = new Intent(this, Activity6B_DescBookingUserActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }
