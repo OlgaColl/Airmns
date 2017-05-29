@@ -33,6 +33,8 @@ import retrofit2.Response;
 
 public class Activity4A_EditProfileClient extends AppCompatActivity {
 
+    //--Attributes--
+
     private static final String TAG = "Activity4A_EditProfileClient";
     APIService apiService;
     //Objects
@@ -52,6 +54,10 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
     View.OnClickListener listener;
     AdapterView.OnItemSelectedListener listenerSpinner;
 
+
+
+    //--OnCreate--
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +69,10 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         controlSpinner();
         addListener();
     }
+
+
+
+    //--OnPrepare--
 
     public void initComponents(){
         apiService = APIUtils.getAPIService();
@@ -87,25 +97,24 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         listener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (view.getId()) {
-                    case R.id.button_add_L4_edit_profile:
-                        addAddress();
-                        break;
-                    case R.id.button_modify_L4_edit_profile:
-                        modifyAddress();
-                        break;
-                    case R.id.button_remove_L4_edit_profile:
-                        removeAddress();
-                        break;
-                    case R.id.btn_save_changes:
-                        saveChanges();
-                        break;
-                }
+            switch (view.getId()) {
+                case R.id.button_add_L4_edit_profile:
+                    addAddress();
+                    break;
+                case R.id.button_modify_L4_edit_profile:
+                    modifyAddress();
+                    break;
+                case R.id.button_remove_L4_edit_profile:
+                    removeAddress();
+                    break;
+                case R.id.btn_save_changes:
+                    saveChanges();
+                    break;
+            }
             }
         };
     }
 
-    //TODO ID no gestionada
     private void initBundle(){
         bundle = this.getIntent().getExtras();
         if (bundle != null) {
@@ -211,7 +220,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         editTextMobile.setText(phone);
     }
 
-    //Per afegir, passem com a bundle id_user
     public void addAddress() {
         //Put bundle
         Log.d("Add address", "Add address");
@@ -224,7 +232,6 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         this.finish();
     }
 
-    //Per modificar, el bundle serà id_address
     public void modifyAddress(){
         //Put bundle
         bundle.putString("controlAddress", "modifyAddress");
@@ -377,7 +384,12 @@ public class Activity4A_EditProfileClient extends AppCompatActivity {
         //startActivity(intent);
     }
 
+
+
+    //--ShowMessage--
+
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
+
 }

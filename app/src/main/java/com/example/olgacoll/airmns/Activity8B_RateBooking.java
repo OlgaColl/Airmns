@@ -75,7 +75,7 @@ public class Activity8B_RateBooking extends Activity {
 
     // -- PREPARES --
 
-    //-- Prepare views --
+    //Prepare views
     private void prepareViews() {
         apiService = APIUtils.getAPIService();
         //Valoration
@@ -149,7 +149,7 @@ public class Activity8B_RateBooking extends Activity {
         tv_address.setText("Address: " + address);
     }
 
-    //-- Prepare listener --
+    //Prepare listener
     private  void prepareListener() {
 
         listener = new View.OnClickListener() {
@@ -200,7 +200,11 @@ public class Activity8B_RateBooking extends Activity {
 
     }
 
-    //-- Print stairs --
+
+
+    //--Methods--
+
+    //Print stairs
     private void printStars() {
         Drawable star, star_border;
 
@@ -220,7 +224,7 @@ public class Activity8B_RateBooking extends Activity {
         }
     }
 
-    //-- Add Listeners--
+    //Add Listeners
     private void addListener() {
         //Availability
         for(int i = 0; i<iv_star.length; i++) iv_star[i].setOnClickListener(listener);
@@ -250,6 +254,10 @@ public class Activity8B_RateBooking extends Activity {
     private void initMain(){
         this.finish();
     }
+
+
+
+    //--ShowMessage--
 
     private void showMessage(String str) {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();

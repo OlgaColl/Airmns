@@ -20,6 +20,8 @@ import retrofit2.Response;
 
 public class Activity2_SignupActivity extends AppCompatActivity {
 
+    //--Attributes--
+
     private static final String TAG = "Activity2_SignupActivity";
 
     EditText editTextName, editTextLastname, editTextEmail, editTextPrefix, editTextMobile, editTextPassword, editTextPassword2;
@@ -31,19 +33,27 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     User user;
     String mail, password, type, name, lastname, prefix_phone, phone, reEnterPassword;
 
+
+
+    //--OnCreate--
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout2_signup);
-
+        //OnPrepare
         initComponents();
         onPrepareListener();
-
+        //Listener
         buttonSignup.setOnClickListener(listener);
         textViewLogin.setOnClickListener(listener);
         radioButtonClient.setOnClickListener(listener);
         radioButtonProfessional.setOnClickListener(listener);
     }
+
+
+
+    //--OnPrepare--
 
     public void initComponents(){
         apiService = APIUtils.getAPIService();
@@ -84,15 +94,11 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         };
     }
 
+
+
+    //--Methods--
+
     public void signup() {
-        /*if (!validate()) {
-            onSignupFailed();
-        }else{
-            //onSignupSuccess();
-            signUpUser();
-
-        }*/
-
         name = editTextName.getText().toString();
         lastname = editTextLastname.getText().toString();
         mail = editTextEmail.getText().toString();
@@ -105,7 +111,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     public void signUpUser(){
         User user = new User();
 
-        System.out.println(" Mail: " + mail +  " Password " + password +  " Type: " + type +  " Nom: " + name +  " Apellidos " + lastname +  " Prefix " + prefix_phone + " Phone "+ phone);
+        //System.out.println(" Mail: " + mail +  " Password " + password +  " Type: " + type +  " Nom: " + name +  " Apellidos " + lastname +  " Prefix " + prefix_phone + " Phone "+ phone);
         apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -135,14 +141,8 @@ public class Activity2_SignupActivity extends AppCompatActivity {
 
     public void onSignupFailed() {
         Toast.makeText(getBaseContext(), "Sign up failed", Toast.LENGTH_LONG).show();
-        cleanFields();
     }
 
-    //TODO Clean fields in case of error
-    public void cleanFields(){
-        //editTextName.setText("");
-        //editTextName.setText("");
-    }
 
     public boolean validate() {
         boolean valid = true;
@@ -207,17 +207,9 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         return valid;
     }
 
-    public void setData(){
 
-        if(type.equals("client")){
 
-            //user = new Client(email, password, name, lastname, "+" + prefix, mobile);
-        }else{
-           // user = new Professional(email, password, name, lastname, "+" + prefix, mobile);
-        }
-
-        user.toString();
-    }
+    //--ShowMessage--
 
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();

@@ -22,17 +22,28 @@ import retrofit2.Response;
 
 public class Activity9_InfoActivity extends AppCompatActivity {
 
+    //--Attributes--
+
     TextView textViewCompanyInfo, textViewAppInfo, textViewDevApp, textViewMail, textViewPhone;
     String textCompany, textApp, textDevApp, textMail, textPhone;
     private APIService apiService;
     private static final String TAG = "Activity9_InfoActivity";
 
+
+
+    //--OnCreate--
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout9_info);
+        //Prepare
         initComponents();
     }
+
+
+
+    //--OnPrepare--
 
     public void initComponents(){
         textViewCompanyInfo = (TextView)findViewById(R.id.company_info_text_L9_info);
@@ -43,6 +54,10 @@ public class Activity9_InfoActivity extends AppCompatActivity {
         apiService = APIUtils.getAPIService();
         loadInfo();
     }
+
+
+
+    //--Methods--
 
     private void loadInfo(){
         apiService.selectInfo().enqueue(new Callback<Info>() {
@@ -69,10 +84,6 @@ public class Activity9_InfoActivity extends AppCompatActivity {
         });
     }
 
-    private void showMessage(String str){
-        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
-    }
-
     private void loadData(){
         textViewCompanyInfo.setText(textCompany);
         textViewAppInfo.setText(textApp);
@@ -80,4 +91,13 @@ public class Activity9_InfoActivity extends AppCompatActivity {
         textViewMail.setText("Mail: " + textMail);
         textViewPhone.setText("Phone: " + textPhone);
     }
+
+
+
+    //--ShowMessage--
+
+    private void showMessage(String str){
+        Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
+    }
+
 }

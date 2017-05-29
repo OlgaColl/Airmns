@@ -14,6 +14,7 @@ import android.widget.ImageView;
 public class Activity3B_MainProfessional extends AppCompatActivity {
 
     //--Attributes--
+
     Bundle bundle;
     int id;
     //Objects
@@ -21,6 +22,7 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     View.OnClickListener listener;
     ImageView imageViewManageReservation, imageViewBookingHistory;
     ImageView imageViewIntroduceAvailability, imageViewEditProfile;
+
 
 
     //--OnCreate--
@@ -106,8 +108,6 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     //--Start Activities--
 
     public void initManageBooking(){
-        /*Intent intent = new Intent(this, Activity5B_ProfessionalReserve.class);
-        startActivity(intent);*/
         //Booking
         bundle.putString("order", "more_now");
         //Intent
@@ -117,8 +117,6 @@ public class Activity3B_MainProfessional extends AppCompatActivity {
     }
 
     public void initBookingHistory(){
-        /*Intent intent = new Intent(this, Activity6B_BookingHistoryProfessional.class);
-        startActivity(intent);*/
         //Booking
         bundle.putString("order", "less_now");
         //Intent

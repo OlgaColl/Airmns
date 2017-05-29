@@ -24,6 +24,8 @@ import retrofit2.Response;
 
 public class Activity4_EditAddressActivity extends AppCompatActivity{
 
+    //--Attributes--
+
     private static final String TAG = "Activity4_EditAddressActivity";
     APIService apiService;
     Bundle bundle;
@@ -34,17 +36,25 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     TextView textViewLinkBack;
     View.OnClickListener listener;
 
+
+
+    //--OnCreate--
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout4_edit_address);
-
+        //OnPrepare
         initComponents();
         initBundle();
         prepareListener();
         buttonSaveChanges.setOnClickListener(listener);
         textViewLinkBack.setOnClickListener(listener);
     }
+
+
+
+    //--OnPrepare--
 
     private void initComponents(){
         apiService = APIUtils.getAPIService();
@@ -99,6 +109,10 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
             }
         };
     }
+
+
+
+    //--Methods--
 
     private void initBack(){
         Intent intent = new Intent(this, Activity4A_EditProfileClient.class);
@@ -161,6 +175,9 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
     }
 
 
+
+    //--Validate--
+
     public boolean validate() {
         boolean valid = true;
 
@@ -221,7 +238,12 @@ public class Activity4_EditAddressActivity extends AppCompatActivity{
         return valid;
     }
 
+
+
+    //--ShowMessage--
+
     private void showMessage(String str){
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
+
 }

@@ -25,7 +25,9 @@ import retrofit2.Response;
 //Removes Bind
 public class Activity1_LoginActivity extends AppCompatActivity{
 
+
     // -- Attributtes --
+
     Bundle bundle;
     private static final String TAG = "Activity1_LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
@@ -37,16 +39,24 @@ public class Activity1_LoginActivity extends AppCompatActivity{
     TextView textViewSignUpLink;
     View.OnClickListener listener;
 
+
+
+    //--OnCreate--
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout1_login);
-
+        //OnPrepare
         initComponents();
         prepareListener();
         textViewSignUpLink.setOnClickListener(listener);
         buttonLogin.setOnClickListener(listener);
     }
+
+
+
+    //--OnPrepare--
 
     public void initComponents(){
         user = new User();
@@ -59,37 +69,33 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         if(bundle == null) bundle = new Bundle();
     }
 
-    //eric es profesional 0 (no activitat), olga es client, comprovar amb pepe
     public void prepareListener() {
         listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.btn_login_L1_login:
-                        login();
-                        break;
-                    case R.id.link_signup_L1_login:
-                        Intent intent = new Intent(getApplicationContext(), Activity2_SignupActivity.class);
-                        startActivity(intent);
-                        break;
-                }
+            switch (v.getId()) {
+                case R.id.btn_login_L1_login:
+                    login();
+                    break;
+                case R.id.link_signup_L1_login:
+                    Intent intent = new Intent(getApplicationContext(), Activity2_SignupActivity.class);
+                    startActivity(intent);
+                    break;
+            }
             }
         };
     }
+
+
+
+    //--Methods--
 
     private void login(){
         if (!validate()) {
             onSignupFailed();
         }else{
             checkLogin();
-            //onSignupSuccess();
         }
-    }
-
-    public void onSignupSuccess() {
-        setResult(RESULT_OK, null);
-        Toast.makeText(getBaseContext(), "Login succes!", Toast.LENGTH_SHORT).show();
-
     }
 
     public void onSignupFailed() {
@@ -169,8 +175,6 @@ public class Activity1_LoginActivity extends AppCompatActivity{
     }
 
     private void checkTypeUser(String type){
-
-
         Intent intent;
         initUserBundle();
         switch(type){

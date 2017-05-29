@@ -32,6 +32,7 @@ import retrofit2.Response;
 public class Activity6A_BookingHistoryUser extends AppCompatActivity {
 
     //--Attributtes--
+
     //Objects
     private static final String TAG = "Activity6A_BookingHistoryUser";
     APIService apiService;
@@ -69,9 +70,10 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
     //--Prepares--
 
     private void initComponents(){
+        //ApiService
         apiService = APIUtils.getAPIService();
         dataBooking = new ArrayList();
-
+        //TextViews
         textViewTitle = (TextView)findViewById(R.id.tvtitle);
         textViewInfo= (TextView)findViewById(R.id.tvinfo);
         listView = (ListView)findViewById(R.id.listview);
@@ -84,7 +86,6 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
                 id = Integer.parseInt(bundle.getString("id"));
                 getUser();
             }
-
             if (bundle.getString("order") != null) {
                 order= bundle.getString("order");
             }
@@ -108,7 +109,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
                 bookingDate = dataBooking.get(position).getDate_time();
                 id_address = dataBooking.get(position).getId_address();
 
-                startDescBookingUser(dataBooking.get(position).toString());
+                startDescBookingUser();
             }
         };
     }
@@ -127,6 +128,7 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
             }
         });
     }
+
 
 
     //--Methods--
@@ -212,10 +214,11 @@ public class Activity6A_BookingHistoryUser extends AppCompatActivity {
         bundle.putString("addressSelected", address);
     }
 
-    private void startDescBookingUser(String booking){
+    private void startDescBookingUser(){
+        //Methods
         loadAddress();
-        System.out.println(address);
         setBundles();
+        //StartActivity
         Intent intent = new Intent(this, Activity6B_DescBookingUserActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);

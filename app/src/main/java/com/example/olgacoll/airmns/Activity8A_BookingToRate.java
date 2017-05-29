@@ -51,6 +51,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     AdapterView.OnItemClickListener listener;
 
 
+
     //--OnCreate--
 
     @Override
@@ -64,12 +65,14 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     }
 
 
+
     //--Prepares--
 
     private void initComponents() {
+        //Api
         apiService = APIUtils.getAPIService();
         dataBooking = new ArrayList();
-
+        //Views
         textViewTitle = (TextView) findViewById(R.id.tvtitle);
         textViewInfo = (TextView) findViewById(R.id.tvinfo);
         listView = (ListView) findViewById(R.id.listview);
@@ -109,6 +112,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
             }
         };
     }
+
 
 
     //--Methods--
@@ -174,7 +178,6 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
             });
     }
 
-
     private void setBundles() {
         bundle.putInt("id_reserve", id_reserve);
         bundle.putString("duration", duration);
@@ -197,6 +200,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         startActivity(intent);
         this.finish();
     }
+
 
 
     //--ShowMessage--

@@ -128,7 +128,7 @@ public class Activity5A_ResumeReserve extends Activity {
                 switch (v.getId()) {
                     //PAY
                     case R.id.button_pay_5A_reserve: //Continue
-                        reserveDone();
+                        //reserveDone();
                         break;
                     //DEFAULT
                     default:
@@ -162,8 +162,5 @@ public class Activity5A_ResumeReserve extends Activity {
         else return observations;
     }
 
-    //When press button user pay reserve
-    private void reserveDone(){
 
-    }
 }

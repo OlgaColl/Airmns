@@ -39,6 +39,8 @@ import retrofit2.Response;
 
 public class Activity5A_UserReserve extends Activity {
 
+    //--Attributtes--
+
     //ApiService
     APIService apiService;
     private static final String TAG = "Activity5A_UserReserve";
@@ -323,7 +325,6 @@ public class Activity5A_UserReserve extends Activity {
 
 
     // -- DATE --
-
     private void createDate() {
         //Instance date
         calendar = Calendar.getInstance();
@@ -488,7 +489,7 @@ public class Activity5A_UserReserve extends Activity {
 
 
 
-    // -- RETRACTIVE --
+    // -- METHODS --
 
     private void findIdProfessional(){
         //Instance date in correct format

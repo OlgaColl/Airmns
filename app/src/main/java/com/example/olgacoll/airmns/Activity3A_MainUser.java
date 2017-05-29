@@ -17,6 +17,7 @@ import com.example.olgacoll.airmns.model.User;
 public class Activity3A_MainUser extends AppCompatActivity{
 
     //--Attributtes--
+
     Bundle bundle;
     User user;
     String mail, password, type, name, lastname, prefix_phone, phone;
@@ -158,7 +159,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
     @Override
     protected void onResume() {
         initBundle();
-        System.out.println("entra bundle");
+        //System.out.println("entra bundle");
         super.onResume();
     }
 }
