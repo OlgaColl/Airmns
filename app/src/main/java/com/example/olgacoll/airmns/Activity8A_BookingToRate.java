@@ -200,18 +200,12 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
     }
 
     private void startRateBooking(){
-        //Methods
-        //loadAddress();
-        //Wait last procedure
-        //try { wait(); } catch (InterruptedException io) {}
         //When finish set bundles
         setBundles();
         //Intent
         Intent intent = new Intent(this, Activity8B_RateBooking.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        //Finish
-        this.finish();
     }
 
 
