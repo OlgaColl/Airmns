@@ -185,7 +185,8 @@ public class Booking {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String date = sdf.format(date_time);
         return "Date: " + date +
-                ", " + long_time + "h" +
-                ", price: " + total_price + "€";
+                ", Start time: " + start_time + ":00" +
+                " (" + long_time + "h)" +
+                " - " + total_price + "€";
     }
 }

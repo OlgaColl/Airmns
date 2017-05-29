@@ -89,7 +89,7 @@ public class Activity6B_DescBookingUserActivity extends Activity {
         textViewTime.setText("Total time: " + time + "h");
         textViewAddress.setText("Address: " + address);
         if(observations != null){
-            textViewObservations.setText("Comments: " + comments);
+            textViewObservations.setText("Observations: " + observations);
         }else{
             textViewObservations.setText("Observations: Any");
         }

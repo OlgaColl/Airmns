@@ -109,9 +109,7 @@ public class Activity3A_MainUser extends AppCompatActivity{
                 phone = bundle.getString("phone");
             }
         }
-
         user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
-        System.out.println(user.toString());
     }
 
     public void addListener(){

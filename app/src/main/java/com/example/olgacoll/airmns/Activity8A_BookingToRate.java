@@ -162,6 +162,8 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
                     dataBooking.add(response.body().get(i));
                 }
 
+                if (dataBooking.isEmpty()) showMessage("There aren't bookings.");
+
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, bookings);
                 listView.setAdapter(adapter);
                 listView.setOnItemClickListener(listener);
