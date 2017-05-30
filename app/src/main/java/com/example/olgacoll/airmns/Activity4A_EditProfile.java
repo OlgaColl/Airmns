@@ -166,7 +166,7 @@ public class Activity4A_EditProfile extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Address>> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't list address because can't access to server.");
             }
         });
 

@@ -227,10 +227,10 @@ public class Activity8B_RateBooking extends Activity {
 
     private void checkValoration(){
         if(valoration <= 0){
-            showMessage("Value your reserve");
+            showMessage("Please, rate your booking");
         }else{
             observations = et_observations.getText().toString();
-            apiService.rateReserve(id_reserve, valoration, observations).enqueue(new Callback<String>() {
+            apiService.rateReserve(id_reserve, valoration+1, observations).enqueue(new Callback<String>() {
                 @Override
                 public void onResponse(Call<String> call, Response<String> response) {
                     initMain();
@@ -238,7 +238,7 @@ public class Activity8B_RateBooking extends Activity {
 
                 @Override
                 public void onFailure(Call<String> call, Throwable t) {
-                    showMessage("Error sending valoration. Try again");
+                    showMessage("Can’t access to server.");
                 }
             });
         }
