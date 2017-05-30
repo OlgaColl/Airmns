@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import android.view.View.OnClickListener;
 
 import com.example.olgacoll.airmns.model.Address;
+import com.example.olgacoll.airmns.model.Info;
 import com.example.olgacoll.airmns.remote.APIService;
 import com.example.olgacoll.airmns.remote.APIUtils;
 
@@ -85,7 +87,7 @@ public class Activity5_Booking extends Activity {
     int long_time;
     String address, observations;
     double total_pay;
-    float precio_hora;
+    float precio_hora, iva;
 
 
 
@@ -103,6 +105,8 @@ public class Activity5_Booking extends Activity {
         prepareListener();
         //Control Time and Address Spinner
         controlSpinner();
+        //Find info
+        findInfo();
         //On click listener
         addListener();
         //Date
@@ -151,6 +155,7 @@ public class Activity5_Booking extends Activity {
         apiService = APIUtils.getAPIService();
         //Attributes
         precio_hora = (float) 9.95;
+        precio_hora = 21;
         long_time = 1;
         address = "";
         observations = "";
@@ -280,6 +285,23 @@ public class Activity5_Booking extends Activity {
 
                     }
                 };
+    }
+
+    private void findInfo(){
+        apiService.selectInfo().enqueue(new Callback<Info>() {
+            @Override
+            public void onResponse(Call<Info> call, Response<Info> response) {
+                if(response.isSuccessful()){
+                    precio_hora = (float) response.body().getPrice_hour() ;
+                    iva = (float) response.body().getIva();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Info> call, Throwable t) {
+                showMessage("Can't acces to server. You will get the default values");
+            }
+        });
     }
 
     //-- Add Listeners--
@@ -492,7 +514,7 @@ public class Activity5_Booking extends Activity {
         //Observations
         observations = input_observations.getText().toString();
         //Query
-        apiService.addBooking(id, id_professional, id_address, date, hour, long_time, total_pay, observations, 21).enqueue(new Callback<String>() {
+        apiService.addBooking(id, id_professional, id_address, date, hour, long_time, total_pay, observations, iva).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.body().equals("0")) {

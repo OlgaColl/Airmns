@@ -77,8 +77,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
                         signup();
                         break;
                     case R.id.link_login_L2_sign_up:
-                        Intent intent = new Intent(getApplicationContext(), Activity1_LoginActivity.class);
-                        startActivity(intent);
+                        finish();
                         break;
                     case R.id.radio_client_L2_sign_up:
                         type = "client";

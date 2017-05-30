@@ -172,17 +172,23 @@ public class Activity1_LoginActivity extends AppCompatActivity{
         initUserBundle();
         switch(type){
             case "client":
+                //Start new activity
                 intent = new Intent(getApplicationContext(), Activity3A_MainClient.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                //Finish activity
+                this.finish();
                 break;
             case "professional0":
                 showMessage("Professional unactivated");
                 break;
             case "professional1":
+                //Start new activity
                 intent = new Intent(getApplicationContext(), Activity3B_MainProfessional.class);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                //Finish activity
+                this.finish();
                 break;
         }
     }
