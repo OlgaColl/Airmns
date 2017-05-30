@@ -115,15 +115,12 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                if(response.isSuccessful()) {
-                    if(response.body().equals("1")) {
-                        onSignupSuccess();
-                    }else{
-                        onSignupFailed();
-                    }
+                if(validate()){
+                    if (response.body().equals("1")) onSignupSuccess();
+                } else {
+                    onSignupFailed();
                 }
             }
-
             @Override
             public void onFailure(Call<String> call, Throwable t){
                 showMessage("Can't access to server.");
@@ -184,7 +181,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
             editTextMobile.setError(null);
         }
 
-        if (mail.isEmpty() /*|| !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()*/) {
+        if (mail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(mail).matches()) {
             editTextEmail.setError("enter a valid email address");
             valid = false;
         } else {
@@ -192,7 +189,7 @@ public class Activity2_SignupActivity extends AppCompatActivity {
         }
 
         if (password.isEmpty() || password.length() < 4 || password.length() > 15) {
-            editTextPassword.setError("between 4 and 10 alphanumeric characters");
+            editTextPassword.setError("between 4 and 15 alphanumeric characters");
             valid = false;
         } else {
             editTextPassword.setError(null);
