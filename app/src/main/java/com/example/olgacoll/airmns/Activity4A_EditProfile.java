@@ -237,68 +237,72 @@ public class Activity4A_EditProfile extends AppCompatActivity {
     }
 
     private void showRemoveAlert() {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
-        builder1.setTitle("Remove address");
-        builder1.setMessage("Are you sure to delete the address " + dataAddress[indexAddress].toString() + "?");
-        builder1.setCancelable(true);
+        if(!dataObjectAddress.isEmpty()) {
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+            builder1.setTitle("Remove address");
+            builder1.setMessage("Are you sure to delete the address " + dataAddress[indexAddress].toString() + "?");
+            builder1.setCancelable(true);
 
-        builder1.setPositiveButton(
-                "Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        apiService.removeAddress(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
-                            @Override
-                            public void onResponse(Call<String> call, Response<String> response) {
-                                //If successful
-                                if(response.body().toString().equals("1")) {
-                                    //Show
-                                    showMessage("Successful delete.");
-                                    //Refresh listener
-                                    controlSpinner();
-                                } else removeAddressToUser();
+            builder1.setPositiveButton(
+                    "Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            apiService.removeAddress(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
+                                @Override
+                                public void onResponse(Call<String> call, Response<String> response) {
+                                    //If successful
+                                    if (response.body().toString().equals("1")) {
+                                        //Show
+                                        showMessage("Successful delete.");
+                                        //Refresh listener
+                                        controlSpinner();
+                                    } else removeAddressToUser();
 
-                            }
+                                }
 
-                            @Override
-                            public void onFailure(Call<String> call, Throwable t) {
-                                showMessage("Can't access to server.");
-                            }
-                        });
-                    }
-                });
+                                @Override
+                                public void onFailure(Call<String> call, Throwable t) {
+                                    showMessage("Can't access to server.");
+                                }
+                            });
+                        }
+                    });
 
-        builder1.setNegativeButton(
-                "No",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+            builder1.setNegativeButton(
+                    "No",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
 
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
     }
 
     private void removeAddressToUser() {
-        //ApiService
-        apiService.removeAddressToUser(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                //If successful
-                if(response.body().toString().equals("1")) {
-                    //Show
-                    showMessage("Successful delete.");
-                    //Refresh listener
-                    controlSpinner();
-                } else showMessage("Can't delete address. Please, try again later.");
+        if(!dataObjectAddress.isEmpty()) {
+            //ApiService
+            apiService.removeAddressToUser(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    //If successful
+                    if (response.body().toString().equals("1")) {
+                        //Show
+                        showMessage("Successful delete.");
+                        //Refresh listener
+                        controlSpinner();
+                    } else showMessage("Can't delete address. Please, try again later.");
 
-            }
+                }
 
-            @Override
-            public void onFailure(Call<String> call, Throwable t) {
-                showMessage("Can't access to server.");
-            }
-        });
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    showMessage("Can't access to server.");
+                }
+            });
+        }
     }
 
     public void saveChanges() {

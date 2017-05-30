@@ -121,6 +121,7 @@ public class Activity7A_MenuAvailability extends Activity {
 
             @Override
             public void onFailure(Call<List<Availability>> call, Throwable t) {
+                dataObjectAvailability = new ArrayList<Availability>();
                 showMessage("Can't access to server.");
             }
         });
@@ -217,37 +218,41 @@ public class Activity7A_MenuAvailability extends Activity {
     }
 
     public void removeAvailability(){//Declare alert
-        AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
-        //Set text
-        alertbox.setMessage("Are you sure?\n" + dataObjectAvailability.get(indexAvailability).toString());
-        //Add Ok option
-        alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-            //To do whe press Ok
-            public void onClick(DialogInterface arg0, int arg1) {
-                String to_date = new SimpleDateFormat("yyyy-MM-dd").format(dataObjectAvailability.get(indexAvailability).getDate());
-                apiService.removeAvailability(to_date, id).enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        if(response.body().equals("1")) showMessage("Availability uptade successful.");
-                        else if(response.body().equals("0")) showMessage("Can't update availability.");
-                    }
+        if(!dataObjectAvailability.isEmpty()) {
+            AlertDialog.Builder alertbox = new AlertDialog.Builder(this);
+            //Set text
+            alertbox.setMessage("Are you sure?\n" + dataObjectAvailability.get(indexAvailability).toString());
+            //Add Ok option
+            alertbox.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                //To do whe press Ok
+                public void onClick(DialogInterface arg0, int arg1) {
+                    String to_date = new SimpleDateFormat("yyyy-MM-dd").format(dataObjectAvailability.get(indexAvailability).getDate());
+                    apiService.removeAvailability(to_date, id).enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            if (response.body().equals("1"))
+                                showMessage("Availability uptade successful.");
+                            else if (response.body().equals("0"))
+                                showMessage("Can't update availability.");
+                        }
 
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        showMessage("Can't access to server.");
-                    }
-                });
-            }
-        });
-        //Add Cancel option
-        alertbox.setNegativeButton("Cancel",new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                //DoNothing
-            }
-        });
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            showMessage("Can't access to server.");
+                        }
+                    });
+                }
+            });
+            //Add Cancel option
+            alertbox.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    //DoNothing
+                }
+            });
 
-        //Show
-        alertbox.show();
+            //Show
+            alertbox.show();
+        }
     }
 
 
