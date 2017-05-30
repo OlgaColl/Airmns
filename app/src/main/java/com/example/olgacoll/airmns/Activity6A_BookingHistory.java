@@ -128,7 +128,8 @@ public class Activity6A_BookingHistory extends AppCompatActivity {
             @Override
             public void onFailure(Call<Address> call, Throwable t) {
                 showMessage("Can't find address because can't access to server.");
-                //When is founded
+                //When isn't founded
+                address="";
                 startDescBookingUser();
             }
         });

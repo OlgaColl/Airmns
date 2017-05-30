@@ -155,7 +155,7 @@ public class Activity5_Booking extends Activity {
         apiService = APIUtils.getAPIService();
         //Attributes
         precio_hora = (float) 9.95;
-        precio_hora = 21;
+        iva = 21;
         long_time = 1;
         address = "";
         observations = "";
@@ -236,7 +236,8 @@ public class Activity5_Booking extends Activity {
                         break;
                     //FIND PROVESSIONAL AVAILABILITY
                     case R.id.button_find_5A_reserve: //Input observations
-                        findIdProfessional();
+                        //If input data is correct
+                        if (correctData()) findIdProfessional();
                         break;
                     //CONTINUE
                     case R.id.button_pay_5A_reserve: //Continue
