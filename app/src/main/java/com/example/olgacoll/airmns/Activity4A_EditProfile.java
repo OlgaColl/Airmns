@@ -222,13 +222,15 @@ public class Activity4A_EditProfile extends AppCompatActivity {
     }
 
     public void modifyAddress(){
-        //Put bundle
-        bundle.putString("controlAddress", "modifyAddress");
-        bundle.putString("controlIdAddress", String.valueOf( dataObjectAddress.get(indexAddress).getId_address() ));
-        //Instance intnent
-        Intent intent = new Intent(this, Activity4B_EditAddress.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        if(!dataObjectAddress.isEmpty()) {
+            //Put bundle
+            bundle.putString("controlAddress", "modifyAddress");
+            bundle.putString("controlIdAddress", String.valueOf(dataObjectAddress.get(indexAddress).getId_address()));
+            //Instance intnent
+            Intent intent = new Intent(this, Activity4B_EditAddress.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 
     private void removeAddress() {

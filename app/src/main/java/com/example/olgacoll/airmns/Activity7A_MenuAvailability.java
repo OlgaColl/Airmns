@@ -200,21 +200,23 @@ public class Activity7A_MenuAvailability extends Activity {
     }
 
     public void initModifyAvailability(){
-        //User id
-        bundle.putString("id", Integer.toString(id));
-        //Type
-        bundle.putString("type", "modify");
-        //Date
-        String to_date = new SimpleDateFormat("yyyy-MM-dd").format(dataObjectAvailability.get(indexAvailability).getDate());
-        bundle.putString("date", to_date);
-        //Start time
-        bundle.putString("start_time", String.valueOf( dataObjectAvailability.get(indexAvailability).getStart_time() ));
-        //End time
-        bundle.putString("end_time", String.valueOf( dataObjectAvailability.get(indexAvailability).getEnd_time() ));
-        //Intent
-        Intent intent = new Intent(this, Activity7B_InputAvailability.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        if(!dataObjectAvailability.isEmpty()) {
+            //User id
+            bundle.putString("id", Integer.toString(id));
+            //Type
+            bundle.putString("type", "modify");
+            //Date
+            String to_date = new SimpleDateFormat("yyyy-MM-dd").format(dataObjectAvailability.get(indexAvailability).getDate());
+            bundle.putString("date", to_date);
+            //Start time
+            bundle.putString("start_time", String.valueOf(dataObjectAvailability.get(indexAvailability).getStart_time()));
+            //End time
+            bundle.putString("end_time", String.valueOf(dataObjectAvailability.get(indexAvailability).getEnd_time()));
+            //Intent
+            Intent intent = new Intent(this, Activity7B_InputAvailability.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 
     public void removeAvailability(){//Declare alert
@@ -231,7 +233,7 @@ public class Activity7A_MenuAvailability extends Activity {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
                             if (response.body().equals("1"))
-                                showMessage("Availability uptade successful.");
+                                showMessage("Availability delete successful.");
                             else if (response.body().equals("0"))
                                 showMessage("Can't update availability.");
                         }
