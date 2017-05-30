@@ -74,12 +74,10 @@ public class Activity4B_EditAddress extends AppCompatActivity{
         if (bundle != null) {
             if (bundle.getString("id") != null) {
                 id_user = Integer.parseInt(bundle.getString("id"));
-                System.out.println(id_user);
             }
             if (bundle.getString("controlAddress") != null) {
                 controlAddress = bundle.getString("controlAddress");
                 changeButtonName(controlAddress);
-                System.out.println(controlAddress);
             }
             if (bundle.getString("controlIdAddress") != null) {
                 id_address = Integer.parseInt( bundle.getString("controlIdAddress") );
@@ -117,8 +115,7 @@ public class Activity4B_EditAddress extends AppCompatActivity{
     //--Methods--
 
     private void initBack(){
-        Intent intent = new Intent(this, Activity4A_EditProfile.class);
-        startActivity(intent);
+        finishActivity();
     }
 
     private void saveChanges(){
@@ -172,7 +169,7 @@ public class Activity4B_EditAddress extends AppCompatActivity{
         apiService.addAddress(id_user, street, number, floor, stair, door, city, postal_code).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                showMessage("Added succesfull!");
+                showMessage("Added successful!");
                 finishActivity();
             }
 
@@ -187,7 +184,7 @@ public class Activity4B_EditAddress extends AppCompatActivity{
         apiService.modifyAddress(id_address, street, number, floor, stair, door, city, postal_code).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                showMessage("Succesfull modify");
+                showMessage("Successful modify");
                 finishActivity();
             }
 

@@ -305,10 +305,10 @@ public class Activity7B_InputAvailability extends Activity {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.body().equals("1")) {
-                    showMessage("Availability remove successful.");
+                    showMessage("Availability modify successful.");
                     finishActivity();
                 }
-                else if(response.body().equals("0")) showMessage("Can't remove availability.");
+                else if(response.body().equals("0")) showMessage("Can't modify availability.");
             }
 
             @Override

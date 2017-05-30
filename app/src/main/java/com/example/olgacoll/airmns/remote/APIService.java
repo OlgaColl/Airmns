@@ -83,6 +83,10 @@ public interface APIService {
     @Headers("Content-Type: application/x-www-form-urlencoded")
     Call<String> removeAddress(@Query("id_address") int id_address);
 
+    @POST("removeAddressToUser")
+    @Headers("Content-Type: application/x-www-form-urlencoded")
+    Call<String> removeAddressToUser(@Query("id_address") int id_address);
+
     @GET("selectAddress")
     Call<Address> selectAddress(@Query("id_address") int id_address);
 

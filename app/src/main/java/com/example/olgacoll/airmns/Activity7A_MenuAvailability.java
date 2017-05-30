@@ -196,8 +196,6 @@ public class Activity7A_MenuAvailability extends Activity {
         Intent intent = new Intent(this, Activity7B_InputAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        //Finish
-        this.finish();
     }
 
     public void initModifyAvailability(){
@@ -216,8 +214,6 @@ public class Activity7A_MenuAvailability extends Activity {
         Intent intent = new Intent(this, Activity7B_InputAvailability.class);
         intent.putExtras(bundle);
         startActivity(intent);
-        //Finish
-        this.finish();
     }
 
     public void removeAvailability(){//Declare alert
@@ -262,5 +258,14 @@ public class Activity7A_MenuAvailability extends Activity {
         Toast.makeText(getBaseContext(), str, Toast.LENGTH_LONG).show();
     }
 
+
+
+    //--OnResume--
+
+    @Override
+    protected void onResume() {
+        controlSpinner();
+        super.onResume();
+    }
 
 }

@@ -500,7 +500,7 @@ public class Activity5_Booking extends Activity {
                 }
                 else if(response.body().equals("1")) {
                     //Show message
-                    showMessage("Payment succesfull!");
+                    showMessage("Payment successful!");
                     //Close activity
                     finishActivity();
                 }

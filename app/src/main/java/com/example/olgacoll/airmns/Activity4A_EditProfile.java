@@ -249,10 +249,14 @@ public class Activity4A_EditProfile extends AppCompatActivity {
                         apiService.removeAddress(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {
-                                //Show
-                                showMessage("Succesful delete.");
-                                //Refresh listener
-                                controlSpinner();
+                                //If successful
+                                if(response.body().toString().equals("1")) {
+                                    //Show
+                                    showMessage("Successful delete.");
+                                    //Refresh listener
+                                    controlSpinner();
+                                } else removeAddressToUser();
+
                             }
 
                             @Override
@@ -273,6 +277,28 @@ public class Activity4A_EditProfile extends AppCompatActivity {
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
+    }
+
+    private void removeAddressToUser() {
+        //ApiService
+        apiService.removeAddressToUser(dataObjectAddress.get(indexAddress).getId_address()).enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                //If successful
+                if(response.body().toString().equals("1")) {
+                    //Show
+                    showMessage("Successful delete.");
+                    //Refresh listener
+                    controlSpinner();
+                } else showMessage("Can't delete address. Please, try again later.");
+
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                showMessage("Can't access to server.");
+            }
+        });
     }
 
     public void saveChanges() {
@@ -355,14 +381,14 @@ public class Activity4A_EditProfile extends AppCompatActivity {
         apiService.editUser(id, mail, password, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                showMessage("Succesfull edit!");
+                showMessage("Successful edit!");
                 finishActivity();
 
             }
 
             @Override
             public void onFailure(Call<String> call, Throwable t) {
-                showMessage("Unable to submit post to API.");
+                showMessage("Can't access to server.");
             }
         });
 
@@ -394,4 +420,5 @@ public class Activity4A_EditProfile extends AppCompatActivity {
         controlSpinner();
         super.onResume();
     }
+
 }

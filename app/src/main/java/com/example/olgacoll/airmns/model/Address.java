@@ -141,6 +141,6 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Street " + street + " " + number + ", " + floor + "º " + door + "ª " + stair + ", " + postal_code + " " + city;
+        return street + " " + number + ", " + floor + "º " + door + "ª " + stair + ", " + postal_code + " " + city;
     }
 }

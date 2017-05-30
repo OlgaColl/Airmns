@@ -45,7 +45,7 @@
         <ImageView android:id="@+id/imageViewManageReservation_L3B_main_professional"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:src="@drawable/button_3b_1_manage_reservation"
+            android:src="@drawable/button_3_manage_booking"
             android:scaleType="fitCenter"
             android:layout_weight="0.15"/>
 

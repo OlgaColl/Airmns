@@ -245,6 +245,9 @@ public class Activity8B_RateBooking extends Activity {
     }
 
     private void initMain(){
+        //Show result
+        showMessage("Successful!");
+        //Finish
         this.finish();
     }
 

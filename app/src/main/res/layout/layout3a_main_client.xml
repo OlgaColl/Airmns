@@ -52,7 +52,7 @@
         <ImageView android:id="@+id/imageViewManageReservation_L3A_main_user"
             android:layout_width="60dp"
             android:layout_height="match_parent"
-            android:src="@drawable/button_3a_1_manage_reservation"
+            android:src="@drawable/button_3_manage_booking"
             android:scaleType="fitCenter"
             android:layout_weight="0.15"/>
 
@@ -83,7 +83,7 @@
 
         <ImageView android:id="@+id/imageViewRateReservation_L3A_main_user"
             android:layout_height="match_parent"
-            android:src="@drawable/button_3a_3_valoration_reserve"
+            android:src="@drawable/button_3a_rate_booking"
             android:scaleType="fitCenter"
             android:layout_weight="0.15"
             android:layout_width="60dp" />
