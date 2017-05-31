@@ -232,9 +232,10 @@ public class Activity7A_MenuAvailability extends Activity {
                     apiService.removeAvailability(to_date, id).enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            if (response.body().equals("1"))
+                            if (response.body().equals("1")) {
                                 showMessage("Availability delete successful.");
-                            else if (response.body().equals("0"))
+                            controlSpinner();
+                            }else if (response.body().equals("0"))
                                 showMessage("Can't update availability.");
                         }
 
