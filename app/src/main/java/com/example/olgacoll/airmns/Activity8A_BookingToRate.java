@@ -150,9 +150,7 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
             @Override
             public void onFailure(Call<Address> call, Throwable t) {
                 //Notify
-                showMessage("Can't find address because can't access to server.");
-                //When finish
-                startRateBooking();
+                showMessage("Can't access to server.");
             }
         });
     }
@@ -225,5 +223,6 @@ public class Activity8A_BookingToRate extends AppCompatActivity {
         loadBooking();
         super.onResume();
     }
+
 }
 

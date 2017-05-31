@@ -112,20 +112,20 @@ public class Activity2_SignupActivity extends AppCompatActivity {
     }
 
     public void signUpUser(){
-        apiService.addUser(mail, password, type, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
-            @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                if(validate()){
+        if(validate()) {
+            apiService.addUser(mail, password, type, name, lastname, ("+" + prefix_phone), phone).enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
                     if (response.body().equals("1")) onSignupSuccess();
-                } else {
-                    onSignupFailed();
+                    else onSignupFailed();
                 }
-            }
-            @Override
-            public void onFailure(Call<String> call, Throwable t){
-                showMessage("Can't access to server.");
-            }
-        });
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+                    showMessage("Can't access to server.");
+                }
+            });
+        }
     }
 
     public void onSignupSuccess() {

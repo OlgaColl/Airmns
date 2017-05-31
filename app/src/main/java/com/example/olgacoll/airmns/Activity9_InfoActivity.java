@@ -2,7 +2,6 @@ package com.example.olgacoll.airmns;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -70,7 +69,6 @@ public class Activity9_InfoActivity extends AppCompatActivity {
                     textMail = response.body().getMail();
                     textPhone = response.body().getPhone_number();
                     loadData();
-                    Log.i(TAG, "post submitted to API.\n" + response.body().toString());
                 }
             } 
 

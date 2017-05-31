@@ -138,15 +138,17 @@ public class Activity1_LoginActivity extends AppCompatActivity{
                     String phone = response.body().getPhone();
                     //User
                     user = new User(id, mail, password, type, name, lastname, prefix_phone, phone);
-                    //Log
-                    Log.i(TAG, "post submitted to API.\n" + response.body().toString());
                     //Login
                     if(!user.getMail().equals("User not found")){
-                        if(checkPassword(passworduser)){
-                            checkTypeUser(user.getType());
-                        }else{
-                            showMessage("Password incorrect");
-                            cleanFields();
+                        try {
+                            if (checkPassword(passworduser)) {
+                                checkTypeUser(user.getType());
+                            } else {
+                                showMessage("Password incorrect");
+                                cleanFields();
+                            }
+                        }catch (Exception e) {
+                            showMessage("Can't do login");
                         }
                     }else{
                         showMessage("User not found");
@@ -157,7 +159,6 @@ public class Activity1_LoginActivity extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Log.e(TAG, "Can't access to server.");
                 showMessage("Can't access to server.");
             }
         });

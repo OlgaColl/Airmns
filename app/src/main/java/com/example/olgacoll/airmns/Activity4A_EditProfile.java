@@ -140,10 +140,34 @@ public class Activity4A_EditProfile extends AppCompatActivity {
                 phone = bundle.getString("phone");
             }
         }
-        initFields();
-        user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
+        selectUser();
     }
 
+    private void selectUser(){
+        apiService.selectUser(id).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if(response.isSuccessful()){
+                    id = response.body().getId();
+                    mail = response.body().getMail();
+                    name = response.body().getName();
+                    lastname = response.body().getLastname();
+                    type = response.body().getType();
+                    prefix_phone = response.body().getPrefix_phone();
+                    phone = response.body().getPhone();
+                    initFields();
+                    user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                showMessage("Can't list user because can't access to server.");
+            }
+        });
+        //initFields();
+        //user = new Client(id, mail, password, type, name, lastname, prefix_phone, phone);
+    }
     //Control address Spinner
     private void controlSpinner() {
         apiService.listAllAddress(id).enqueue(new Callback<List<Address>>() {
@@ -182,7 +206,6 @@ public class Activity4A_EditProfile extends AppCompatActivity {
                     long id) {
 
                 indexAddress = position;
-                //editTextAddress.setText(dateAvailability[position]);
             }
 
             @Override
@@ -345,6 +368,7 @@ public class Activity4A_EditProfile extends AppCompatActivity {
             valid = false;
         } else {
             editTextPrefix.setError(null);
+            if(!editTextPrefix.getText().toString().startsWith("+")) editTextPrefix.setText( "+"+editTextPrefix.getText().toString() );
         }
 
         if (phone.isEmpty() || phone.length()!= 9) {
@@ -387,9 +411,11 @@ public class Activity4A_EditProfile extends AppCompatActivity {
         apiService.editUser(id, mail, password, name, lastname, prefix_phone, phone).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
-                showMessage("Successful edit!");
-                finishActivity();
-
+                if(response.body().toString().equals("1")) {
+                    showMessage("Successful edit");
+                    finishActivity();
+                }
+                else showMessage("Can't edit profile.");
             }
 
             @Override
